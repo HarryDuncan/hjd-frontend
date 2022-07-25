@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const fetchData = async (method: string, query?: string) => {
-  console.log(process.env.NEXT_PUBLIC_API_URL);
   const queryUrl = `${process.env.NEXT_PUBLIC_API_URL}/${method}${
     query ? `/:${query}` : ""
   }`;
