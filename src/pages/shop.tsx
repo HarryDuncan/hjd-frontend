@@ -1,7 +1,5 @@
 import type { NextPage } from "next";
 
-const Shop: NextPage = () => {
-  return <div></div>;
-};
+const Shop: NextPage = () => <div />;
 
 export default Shop;

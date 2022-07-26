@@ -1,7 +1,5 @@
 import type { NextPage } from "next";
 
-const Dashboard: NextPage = () => {
-  return <div></div>;
-};
+const Dashboard: NextPage = () => <div />;
 
 export default Dashboard;
