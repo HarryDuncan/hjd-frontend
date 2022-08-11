@@ -1,6 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import ttfFont from "./fonts/AnimationS.ttf";
-import woff from "./fonts/AnimationS.woff";
 export const GlobalStyle = createGlobalStyle`
 
 @font-face {
@@ -8,8 +6,10 @@ export const GlobalStyle = createGlobalStyle`
   font-style: normal;
   font-weight: 100;
   src: local("HarryDuncan");
-  src: url(${woff}), format("woff");
-  src: url(${ttfFont}) format("truetype"); /* Safari, Android, iOS */
+  src: url("/fonts/Harryduncan.eot");
+  src: url("/fonts/Harryduncan.otf") format("opentype");
+  src: url(/fonts/HarryDuncan.woff), format("woff");
+  src: url(/fonts/HarryDuncan.ttf") format("truetype"); /* Safari, Android, iOS */
 }
   body {
     

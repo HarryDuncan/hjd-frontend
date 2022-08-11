@@ -7,27 +7,36 @@ export const SPACING_UNIT = 8;
 export const THEME: DefaultTheme = {
   spacing: (multiple = 1) => SPACING_UNIT * multiple,
   colors: {
-    mono: {
-      ui01: "#171719",
-      ui02: "#202123",
-      ui03: "#262a2d",
-      ui04: "#373d43",
-      ui05: "#5a6872",
-      ui06: "#c6cdd2",
-      text01: "#fff",
-      text02: "#c6cdd2",
-      text03: "#98a5ae",
-    },
-    threshold: {
-      low: "#a0f751",
-      lowmid: "#d1d40e",
-      mid: "#f9ef00",
-      midhigh: "#ff7326",
-      high: "#dc4545",
-    },
+    mono: {},
+
     brand: {
       brand01: "#0081a1",
       brand02: "#59cbe8",
+    },
+    gradients: {
+      lightSurface: `linear-gradient(0deg, rgba(255, 255, 255) 0%, rgba(222, 222, 222) 100%))`,
+      darkSurface: `linear-gradient(
+                      157deg,
+                      rgba(76, 76, 76, 1) 0%,
+                      rgba(74, 74, 74, 1) 0%,
+                      rgba(36, 36, 36, 1) 0%,
+                      rgba(27, 27, 27, 1) 100%
+                    );`,
+      lightText: `linear-gradient(
+                0deg,
+                rgba(255, 255, 255, 1) 0%,
+                rgba(205, 205, 205, 1) 10%,
+                rgba(133, 133, 133, 1) 14%,
+                rgba(219, 219, 219, 1) 50%,
+                rgba(255, 255, 255, 1) 100%
+              );`,
+      darkText: `linear-gradient(
+                157deg,
+                rgba(96, 96, 96, 1) 0%,
+                rgba(74, 74, 74, 1) 0%,
+                rgba(57, 57, 57, 1) 0%,
+                rgba(27, 27, 27, 1) 100%
+              );`,
     },
   },
   font: {
@@ -42,5 +51,12 @@ export const THEME: DefaultTheme = {
     alternative: {
       family: '"Source Sans Pro", monospace',
     },
+  },
+  breakpoints: {
+    wideScreen: 1501,
+    desktop: 1280,
+    tablet: 800,
+    mobile: 800,
+    smallMobile: 350,
   },
 };
