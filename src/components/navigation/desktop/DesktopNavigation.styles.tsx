@@ -48,7 +48,7 @@ export const NavItemLink = styled.div<{
     display: block;
     width: 100%;
     height: 1px;
-    bottom: 1.5rem;
+    bottom: 0.5rem;
     left: 0;
     background-color: ${({ $isNavTop }) => ($isNavTop ? "#000" : "#fff")};
     transform: ${({ $isActive }) => ($isActive ? `scaleX(1)` : `scaleX(0)`)};

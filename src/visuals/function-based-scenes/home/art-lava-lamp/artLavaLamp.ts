@@ -2,8 +2,11 @@ import { FunctionBasedScene } from "components/animation-widget/types";
 import { Asset } from "models/visuals/types";
 import {
   AmbientLight,
+  BoxGeometry,
   Color,
   DirectionalLight,
+  Mesh,
+  MeshBasicMaterial,
   PerspectiveCamera,
   PointLight,
   Scene,
@@ -79,7 +82,7 @@ interface ArtLavaLampSceneParams {
 const initializeScene = async (sceneData: ArtLavaLampData) => {
   // Camera
   const camera = new PerspectiveCamera(50, 1, 0.01, 2000);
-  camera.position.set(0, 0, 1000);
+  camera.position.set(0, 0, 100);
   camera.name = "art-lava";
   // SCENE
   const scene = new Scene();
@@ -91,8 +94,6 @@ const initializeScene = async (sceneData: ArtLavaLampData) => {
   const pathUrls = assets.map(({ url }) => url);
 
   const refractionMap = setUpRefractionEnvMap(pathUrls[0], "jpg");
-
-  // Set up bubble material
   const materialParams = { envMap: refractionMap };
 
   const advancedMaterial = initializeAdvancedMaterial(
@@ -105,6 +106,10 @@ const initializeScene = async (sceneData: ArtLavaLampData) => {
 
   // Set up lights and add to scene and sceneparams
   setUpLights(scene, sceneParams);
+  const geometry = new BoxGeometry(1, 1, 1);
+  const material = new MeshBasicMaterial({ color: 0x00ff00 });
+  const cube = new Mesh(geometry, material);
+  scene.add(cube);
 
   return { camera, scene, sceneParams };
 };
@@ -134,9 +139,8 @@ const updateCubes = (
   wallX: any,
   wallZ: any
 ) => {
-  object.reset();
   console.log(object);
-  console.log(time);
+  object.reset();
   const subtract = 12;
   const strength = 1.2 / ((Math.sqrt(numblobs) - 1) / 4 + 1);
 
@@ -147,7 +151,7 @@ const updateCubes = (
     const ballPosY = Math.tan(i * 1.77 + time) * 0.27 + 0.5;
     const ballPosZ =
       Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
-
+    console.log("t");
     object.addBall(ballPosX, ballPosY, ballPosZ, strength, subtract);
   }
 
@@ -162,7 +166,7 @@ const addMarchingCubes = (
   sceneParams: ArtLavaLampSceneParams
 ) => {
   const resolution = 105;
-
+  console.log(advancedMaterial);
   const effect = new MarchingCubes(
     resolution,
     advancedMaterial.material,
@@ -170,12 +174,11 @@ const addMarchingCubes = (
     true
   );
   effect.position.set(0, 0, 0);
-  effect.scale.set(700, 700, 700);
+  effect.scale.set(100, 100, 100);
 
-  effect.enableUvs = false;
+  effect.enableUvs = true;
   effect.enableColors = false;
   sceneParams.effect = effect;
-  console.log(effect);
   scene.add(effect);
 };
 
@@ -234,7 +237,7 @@ const onUpdate = (sceneParams: ArtLavaLampSceneParams) => {
     sceneParams.lsaturation - Math.cos(sceneParams.time),
     sceneParams.llightness
   );
-
+  console.log(sceneParams);
   updateCubes(
     sceneParams.effect,
     sceneParams.time,

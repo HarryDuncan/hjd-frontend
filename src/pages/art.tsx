@@ -3,27 +3,25 @@ import Layout from "components/layout/DefaultLayout";
 import { ParallaxImage } from "components/parallax-image/ParallaxImage";
 import { InnerContainer } from "components/styled-components/Containers";
 import { MainTitle } from "components/styled-components/Text";
-import { useStoreData } from "hooks/store/useStoreData";
-import { Product } from "models/shop/types";
+import { useArtItems } from "hooks/art/useArtItems";
+import { Painting } from "models/gallery/types";
 import type { NextPage } from "next";
 import { useMemo } from "react";
-import { HEADER_HEIGHT_OFFSET } from "./art";
 
-const SHOP_IMAGE_URL_ROOT = "/images/shop/";
-const Shop: NextPage = () => {
-  const {
-    shopData: { products },
-    loading,
-  } = useStoreData();
-  console.log([products]);
-  const productGalleryItems = useProductsInGallery(products);
+const rootUrl = "/images/art/";
+export const HEADER_HEIGHT_OFFSET = 200;
+const Art: NextPage = () => {
+  const { art } = useArtItems();
+  console.log(art);
+  const paintingGalleryItems = usePaintingsInGallery(art.paintings);
+
   return (
     <Layout>
       <ParallaxImage />
       <InnerContainer $topOffset={HEADER_HEIGHT_OFFSET}>
-        <MainTitle>Original Prints</MainTitle>
+        <MainTitle>Original Paintings</MainTitle>
         <DynamicCardGallery
-          items={productGalleryItems}
+          items={paintingGalleryItems}
           onClick={() => {
             console.log("tt");
           }}
@@ -33,13 +31,13 @@ const Shop: NextPage = () => {
   );
 };
 
-function useProductsInGallery(products: Product[]) {
+function usePaintingsInGallery(paintings: Painting[]) {
   return useMemo(() => {
-    return products.map(({ title, imageUrl }) => ({
-      imageUrl: `${SHOP_IMAGE_URL_ROOT}${imageUrl}`,
+    return paintings.map(({ imageUrl, title }) => ({
+      imageUrl: `${rootUrl}${imageUrl}`,
       title,
     }));
-  }, []);
+  }, [paintings]);
 }
 
-export default Shop;
+export default Art;

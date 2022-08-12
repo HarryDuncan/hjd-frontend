@@ -1,3 +1,4 @@
+import Layout from "components/layout/DefaultLayout";
 import { PageContainer } from "components/styled-components/Containers";
 import { useContent } from "hooks/content/useContent";
 import { useContentForPage } from "hooks/content/useContentForPage";
@@ -17,9 +18,9 @@ const Bio: NextPage = () => {
   );
   console.log(text, images);
   return (
-    <PageContainer>
+    <Layout>
       <h1>Music</h1>
-    </PageContainer>
+    </Layout>
   );
 };
 

@@ -10,7 +10,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={THEME}>
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
-        <DynamicNavigation />
         <Component {...pageProps} />
       </QueryClientProvider>
     </ThemeProvider>

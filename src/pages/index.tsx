@@ -1,4 +1,5 @@
 import { DynamicAnimationWidget } from "components/animation-widget/DynamicAnimationWidget";
+import Layout from "components/layout/DefaultLayout";
 import { PageContainer } from "components/styled-components/Containers";
 import { AssetTypes } from "models/visuals/types";
 import type { NextPage } from "next";
@@ -10,12 +11,12 @@ const scenes = [
       assets: [
         {
           name: "texture1",
-          url: "../images/textures/cube/img-1/",
+          url: "/images/textures/cube/img-1/",
           assetType: AssetTypes.texture,
         },
         {
           name: "texture2",
-          url: "../images/textures/cube/img-12/",
+          url: "/images/textures/cube/img-12/",
           assetType: AssetTypes.texture,
         },
       ],
@@ -35,9 +36,9 @@ const scenes = [
   // },
 ];
 const Home: NextPage = () => (
-  <PageContainer>
+  <Layout>
     <DynamicAnimationWidget scenes={scenes} />
-  </PageContainer>
+  </Layout>
 );
 
 export default Home;

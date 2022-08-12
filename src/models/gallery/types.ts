@@ -2,7 +2,7 @@ export type Painting = {
   blurb: string;
   externalUrl: string;
   id: number;
-  image: string;
+  imageUrl: string;
   medium: string;
   title: string;
   yearCompleted: number;

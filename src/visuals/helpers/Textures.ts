@@ -14,7 +14,7 @@ const getCubeUrls = (url: string, fileFormat: string) => [
 
   // Middle Middle
   `${url}pz.${fileFormat}`,
-  `../images/textures/cube/nz.${fileFormat}`,
+  `/images/textures/cube/nz.${fileFormat}`,
 ];
 
 export const setUpReflectionEnvMap = (

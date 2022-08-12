@@ -18,7 +18,7 @@ export const MenuButton = ({ onClick, isOpen, isDark }: MenuButtonProps) => {
     setIsActive(!isActive);
     onClick();
   };
-  console.log(isDark);
+
   return (
     <MenuButtonContainer
       onClick={handleClick}

@@ -12,7 +12,7 @@ export const SITE_PAGES = [
   { title: "Home", link: "/" },
   { title: "About", link: "/bio" },
   { title: "Mixes", link: "/music" },
-  { title: "Art", link: "/gallery" },
+  { title: "Art", link: "/art" },
   { title: "Campaigns", link: "/campaigns" },
   { title: "Shop", link: "/shop" },
 ];
@@ -36,35 +36,11 @@ const Navigation = () => {
   };
 
   const handleScroll = () => {
-    const currentLocation = window.location.pathname;
-
-    if (!isHome(currentLocation)) {
-      if (window.pageYOffset > 20) {
-        updateIsNavTop(false);
-      } else if (window.pageYOffset < 20) {
-        updateIsNavTop(true);
-      }
+    if (window.pageYOffset > 20) {
+      updateIsNavTop(false);
+    } else if (window.pageYOffset < 20) {
+      updateIsNavTop(true);
     }
-  };
-
-  // useEffect(() => {
-  //   if (isHome(window.location.pathname)) {
-  //     updateIsNavTop(false);
-  //   } else {
-  //     updateIsNavTop(true);
-  //   }
-  // }, [window.location.pathname]);
-
-  const isSiteDown = () => {
-    return false;
-    // return (
-    //   (siteStatus === "Maintenance" || siteStatus === "Down") &&
-    //   history.location.pathname !== "/Link"
-    // );
-  };
-
-  const changeNav = (target: string) => {
-    updateActiveNav(target);
   };
 
   useEffect(() => {

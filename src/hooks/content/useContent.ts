@@ -7,6 +7,8 @@ type SiteContent = {
   textContent: TextContent[];
 };
 export const useContent = (): SiteContent => {
-  const contentData = useQuery<SiteContent>([], () => getContent());
+  const contentData = useQuery<SiteContent>(["site-content"], () =>
+    getContent()
+  );
   return contentData.data ?? { imageContent: [], textContent: [] };
 };

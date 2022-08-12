@@ -24,7 +24,7 @@ export const MenuButtonContainer = styled.div<{
         colors: { gradients },
       },
       $isDark,
-    }) => ($isDark ? gradients.darkSurface : gradients.lightSurface)};
+    }) => ($isDark ? gradients.darkSurface : gradients.lightText)};
   }
   & :first-child {
     animation-name: ${({ $isActive }) => ($isActive ? activeOne : inactiveOne)};

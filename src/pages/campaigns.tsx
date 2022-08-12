@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
-import { PageContainer } from "components/styled-components/Containers";
 import React from "react";
+import Layout from "components/layout/DefaultLayout";
 
 const Campaigns: NextPage = () => (
-  <PageContainer>
+  <Layout>
     <h1>Campaigns</h1>
-  </PageContainer>
+  </Layout>
 );
 export default Campaigns;
