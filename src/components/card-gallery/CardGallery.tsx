@@ -5,14 +5,14 @@ import { CardGalleryContainer } from "./styledComponents";
 
 interface CardGalleryProps {
   items: CardDetails[];
-  onClick: (index: number) => void;
+  onClick: (id: number | string) => void;
   columnCount?: number;
 }
 
 const CardGallery = ({ items, onClick, columnCount }: CardGalleryProps) => {
-  const cardClicked = (index: number) => {
-    if (onClick) {
-      onClick(index);
+  const cardClicked = (id: number | string | undefined) => {
+    if (onClick && id) {
+      onClick(id);
     }
   };
 
@@ -55,8 +55,12 @@ const CardGallery = ({ items, onClick, columnCount }: CardGalleryProps) => {
 
   return (
     <CardGalleryContainer>
-      {items.map((item: CardDetails, key: number) => (
-        <Card cardDetails={item} onClick={() => cardClicked(key)} key={key} />
+      {items.map(({ id, title, imageUrl }) => (
+        <Card
+          cardDetails={{ title, imageUrl }}
+          onClick={() => cardClicked(id)}
+          key={id}
+        />
       ))}
     </CardGalleryContainer>
   );

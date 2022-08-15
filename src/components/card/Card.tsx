@@ -4,6 +4,7 @@ import { CardFooter, CardImage, CardTitle, CardWrapper } from "./Card.styles";
 export interface CardDetails {
   title: string;
   imageUrl?: string;
+  id?: number | string;
 }
 interface CardProps {
   cardDetails: CardDetails;
@@ -24,7 +25,9 @@ export function Card({ cardDetails, onClick }: CardProps) {
         <CardImage
           src={cardDetails.imageUrl}
           alt={cardDetails.title}
-          ref={imgElementRef}
+          height={100}
+          width={100}
+          quality={10}
         />
       )}
       <CardFooter>

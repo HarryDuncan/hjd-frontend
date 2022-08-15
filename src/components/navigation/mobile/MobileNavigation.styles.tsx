@@ -10,7 +10,7 @@ export const NavItemContainer = styled.div<{
   background: ${({ $isDark, theme }) =>
     $isDark
       ? theme.colors.gradients.darkSurface
-      : theme.colors.gradients.lightSurface};
+      : theme.colors.gradients.lightText};
   opacity: ${({ $isDark }) => ($isDark ? 0.95 : 1)};
   z-index: 300;
   display: flex;
@@ -48,10 +48,10 @@ export const MobileText = styled.span<{ $isDark: boolean }>`
     $isDark,
     theme: {
       colors: {
-        gradients: { darkText, lightText },
+        gradients: { darkSurface, lightText },
       },
     },
-  }) => ($isDark ? darkText : lightText)};
+  }) => ($isDark ? darkSurface : lightText)};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 4.5rem;

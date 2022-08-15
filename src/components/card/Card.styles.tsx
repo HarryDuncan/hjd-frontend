@@ -1,4 +1,5 @@
-import styled, { keyframes } from 'styled-components';
+import Image from "next/image";
+import styled, { keyframes } from "styled-components";
 
 export const CardTitle = styled.h2`
   color: rgba(237, 235, 233, 0);
@@ -13,6 +14,7 @@ export const CardTitle = styled.h2`
   top: 0;
   pointer-events: none;
   &: hover {
+
   }
 `;
 
@@ -31,16 +33,16 @@ export const CardWrapper = styled.div`
   display: inline-block;
   position: relative;
   vertical-align: middle;
-  width: 30%;
-  flex: 1 0 22%;
+  width: 20%;
   background-color: transparent !important;
   padding-bottom: -4%;
-  -webkit-box-shadow: 15px 15px 16px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow: 15px 15px 16px #ccc; /* Firefox 3.5 - 3.6 */
+  -webkit-box-shadow: 15px 15px 16px #ccc;
+  -moz-box-shadow: 15px 15px 16px #ccc;
   box-shadow: 15px 15px 16px #ccc;
   cursor: pointer;
   margin-bottom: 30px;
   margin-right: 1rem;
+  margin-left: 2rem;
   &:hover {
     ${CardTitle} {
       animation: ${showTitle} 500ms 1 forwards;
@@ -48,7 +50,7 @@ export const CardWrapper = styled.div`
   }
 `;
 
-export const CardImage = styled.img`
+export const CardImage = styled(Image)`
   object-fit: contain;
   width: 100%;
   min-height: 100px;

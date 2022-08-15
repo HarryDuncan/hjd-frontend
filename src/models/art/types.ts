@@ -1,5 +1,12 @@
+export type FetchArtResponse = {
+  art: {
+    paintings: Painting[];
+  };
+  loading: boolean;
+};
+
 export type Painting = {
-  blurb: string;
+  description: string;
   externalUrl: string;
   id: number;
   imageUrl: string;

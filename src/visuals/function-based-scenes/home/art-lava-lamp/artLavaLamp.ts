@@ -70,7 +70,7 @@ interface ArtLavaLampSceneParams {
   lx: number;
   ly: number;
   lz: number;
-
+  scene?: Scene;
   light?: DirectionalLight;
   pointLight?: PointLight;
   effect?: MarchingCubes;
@@ -82,7 +82,7 @@ interface ArtLavaLampSceneParams {
 const initializeScene = async (sceneData: ArtLavaLampData) => {
   // Camera
   const camera = new PerspectiveCamera(50, 1, 0.01, 2000);
-  camera.position.set(0, 0, 100);
+  camera.position.set(-500, 500, 1500);
   camera.name = "art-lava";
   // SCENE
   const scene = new Scene();
@@ -110,10 +110,17 @@ const initializeScene = async (sceneData: ArtLavaLampData) => {
   const material = new MeshBasicMaterial({ color: 0x00ff00 });
   const cube = new Mesh(geometry, material);
   scene.add(cube);
+  sceneParams.scene = scene;
 
   return { camera, scene, sceneParams };
 };
 
+const addGeom = (scene: Scene) => {
+  const geometry = new BoxGeometry(1, 1, 1);
+  const material = new MeshBasicMaterial({ color: 0x00ff00 });
+  const cube = new Mesh(geometry, material);
+  scene.add(cube);
+};
 const setUpLights = (scene: Scene, sceneParams: ArtLavaLampSceneParams) => {
   const directionalLight = new DirectionalLight(0xffffff);
   directionalLight.position.set(0.5, 0.5, 1);
@@ -139,7 +146,6 @@ const updateCubes = (
   wallX: any,
   wallZ: any
 ) => {
-  console.log(object);
   object.reset();
   const subtract = 12;
   const strength = 1.2 / ((Math.sqrt(numblobs) - 1) / 4 + 1);
@@ -151,13 +157,13 @@ const updateCubes = (
     const ballPosY = Math.tan(i * 1.77 + time) * 0.27 + 0.5;
     const ballPosZ =
       Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
-    console.log("t");
     object.addBall(ballPosX, ballPosY, ballPosZ, strength, subtract);
   }
 
-  if (floor) object.addPlaneY(2, 12);
-  if (wallZ) object.addPlaneZ(2, 12);
-  if (wallX) object.addPlaneX(2, 12);
+  // if (floor) object.addPlaneY(2, 12);
+  // if (wallZ) object.addPlaneZ(2, 12);
+  // if (wallX) object.addPlaneX(2, 12);
+  return object;
 };
 
 const addMarchingCubes = (
@@ -167,17 +173,13 @@ const addMarchingCubes = (
 ) => {
   const resolution = 105;
   console.log(advancedMaterial);
-  const effect = new MarchingCubes(
-    resolution,
-    advancedMaterial.material,
-    true,
-    true
-  );
-  effect.position.set(0, 0, 0);
-  effect.scale.set(100, 100, 100);
+  const material = new MeshBasicMaterial({ color: 0x00ff00 });
+  const effect = new MarchingCubes(resolution, material, true, true);
+  effect.position.set(1, 1, 1);
+  effect.scale.set(700, 700, 700);
 
   effect.enableUvs = true;
-  effect.enableColors = false;
+  effect.enableColors = true;
   sceneParams.effect = effect;
   scene.add(effect);
 };
@@ -200,7 +202,14 @@ const updateIndex = (sceneParams: ArtLavaLampSceneParams) =>
   sceneParams.index >= sceneParams.paths.length - 1 ? 0 : sceneParams.index + 1;
 
 const onUpdate = (sceneParams: ArtLavaLampSceneParams) => {
-  if (!sceneParams.effect || !sceneParams.light || !sceneParams.pointLight)
+  console.log(sceneParams);
+
+  if (
+    !sceneParams.effect ||
+    !sceneParams.light ||
+    !sceneParams.pointLight ||
+    !sceneParams.scene
+  )
     return;
   if (sceneParams.sceneControl.reinitialize) {
     sceneParams.sceneControl.reinitialize = false;
@@ -208,7 +217,7 @@ const onUpdate = (sceneParams: ArtLavaLampSceneParams) => {
     sceneParams.index = updateIndex(sceneParams);
     sceneParams.effect.material = changeMaterial(sceneParams);
   }
-  const delta = 1;
+  const delta = 0.01;
   sceneParams.time += delta * sceneParams.speed * 0.3;
   if (sceneParams.effect.material instanceof ShaderMaterial) {
     sceneParams.effect.material.uniforms.uBaseColor.value.setHSL(
@@ -237,8 +246,8 @@ const onUpdate = (sceneParams: ArtLavaLampSceneParams) => {
     sceneParams.lsaturation - Math.cos(sceneParams.time),
     sceneParams.llightness
   );
-  console.log(sceneParams);
-  updateCubes(
+
+  const effect = updateCubes(
     sceneParams.effect,
     sceneParams.time,
     sceneParams.numBlobs,
@@ -246,6 +255,10 @@ const onUpdate = (sceneParams: ArtLavaLampSceneParams) => {
     sceneParams.wallX,
     sceneParams.wallZ
   );
+  effect.delta = sceneParams.time;
+  sceneParams.effect = effect;
+  console.log(sceneParams.scene.children[0]);
+  sceneParams.scene.children[0] = effect;
 };
 
 const onClose = (sceneParams: ArtLavaLampSceneParams) => {

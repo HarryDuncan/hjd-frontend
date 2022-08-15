@@ -10,13 +10,12 @@ interface MobileNavigationProps {
   onSelect: (link: string) => void;
 }
 
-const REDIRECT_TIMEOUT = 500;
 export const MobileNavigation = ({
   isNavTop,
   onSelect,
 }: MobileNavigationProps) => {
   const [isMenuOpen, updateIsMenuOpen] = useState<boolean>(false);
-  const [redirect, setRedirect] = useState<string | undefined>();
+
   const handleMobileMenuClick = () => {
     updateIsMenuOpen(!isMenuOpen);
   };
@@ -24,14 +23,11 @@ export const MobileNavigation = ({
   const handleLinkClick = (link: string) => {
     updateIsMenuOpen(false);
     onSelect(link);
-    setTimeout(() => {
-      setRedirect(link);
-    }, REDIRECT_TIMEOUT);
   };
 
   useEffect(() => {
     const body = document.body;
-    body.classList.toggle("no-scroll", isMenuOpen);
+    body.style.overflow = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen]);
 
   return (
@@ -48,7 +44,7 @@ export const MobileNavigation = ({
             {SITE_PAGES.map((page: PageItem, index: number) => (
               <MobileText
                 $isDark={isNavTop}
-                key={index}
+                key={`${index}-${isNavTop}`}
                 onClick={() => handleLinkClick(page.link)}
               >
                 <Link href={page.link}>{page.title}</Link>

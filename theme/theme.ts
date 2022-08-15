@@ -7,7 +7,9 @@ export const SPACING_UNIT = 8;
 export const THEME: DefaultTheme = {
   spacing: (multiple = 1) => SPACING_UNIT * multiple,
   colors: {
-    mono: {},
+    mono: {
+      background: "#fafaff",
+    },
 
     brand: {
       brand01: "#0081a1",

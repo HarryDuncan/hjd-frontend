@@ -1,6 +1,6 @@
 import useDeviceSize from "hooks/useDeviceSize";
 import { useMemo } from "react";
-import { LinearEncoding, WebGLRenderer } from "three";
+import { LinearEncoding, sRGBEncoding, WebGLRenderer } from "three";
 // import { getRendererSize } from "../helpers/getRendererSize";
 import { DEFAULT_RENDERER_PARAMS } from "../rendererConstants";
 import { RendererParams } from "../types";
@@ -19,7 +19,7 @@ export const useWebGLRenderer = (
     renderer.setSize(width, height);
     renderer.setClearColor(0xfffffff, 0);
     renderer.physicallyCorrectLights = true;
-    renderer.outputEncoding = LinearEncoding;
+    renderer.outputEncoding = sRGBEncoding;
     return renderer;
   }, [width, height]);
 };

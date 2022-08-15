@@ -5,7 +5,7 @@ export default function Layout({ children }: { children: any }) {
   return (
     <>
       <DynamicNavigation />
-      <PageContainer>{children}</PageContainer>
+      <PageContainer className="page-container">{children}</PageContainer>
     </>
   );
 }

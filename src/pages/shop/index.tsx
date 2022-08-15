@@ -1,32 +1,30 @@
 import { DynamicCardGallery } from "components/card-gallery/DynamicGallery";
 import Layout from "components/layout/DefaultLayout";
-import { ParallaxImage } from "components/parallax-image/ParallaxImage";
+import { ParallaxImage } from "components/images/parallax-image/ParallaxImage";
 import { InnerContainer } from "components/styled-components/Containers";
-import { MainTitle } from "components/styled-components/Text";
-import { useStoreData } from "hooks/store/useStoreData";
+import { useShopData } from "hooks/shop/useShopData";
 import { Product } from "models/shop/types";
 import type { NextPage } from "next";
 import { useMemo } from "react";
-import { HEADER_HEIGHT_OFFSET } from "./art";
+import { useHandleRouting } from "hooks/useHandleRouting";
 
+const HEADER_HEIGHT_OFFSET = 200;
 const SHOP_IMAGE_URL_ROOT = "/images/shop/";
 const Shop: NextPage = () => {
   const {
     shopData: { products },
     loading,
-  } = useStoreData();
-  console.log([products]);
+  } = useShopData();
   const productGalleryItems = useProductsInGallery(products);
+
+  const handleRouting = useHandleRouting("shop/products/");
   return (
     <Layout>
-      <ParallaxImage />
+      <ParallaxImage mainTitle="Original Prints" />
       <InnerContainer $topOffset={HEADER_HEIGHT_OFFSET}>
-        <MainTitle>Original Prints</MainTitle>
         <DynamicCardGallery
           items={productGalleryItems}
-          onClick={() => {
-            console.log("tt");
-          }}
+          onClick={handleRouting}
         />
       </InnerContainer>
     </Layout>
@@ -35,11 +33,12 @@ const Shop: NextPage = () => {
 
 function useProductsInGallery(products: Product[]) {
   return useMemo(() => {
-    return products.map(({ title, imageUrl }) => ({
+    return products.map(({ title, imageUrl, id }) => ({
       imageUrl: `${SHOP_IMAGE_URL_ROOT}${imageUrl}`,
       title,
+      id,
     }));
-  }, []);
+  }, [products]);
 }
 
 export default Shop;

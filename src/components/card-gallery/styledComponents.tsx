@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const CardGalleryContainer = styled.div`
   position: relative;
   display: block;
-  width: calc(100% - 8em);
-  column-gap: 30px;
-  column-fill: initial;
-  -webkit-column-fill: initial;
+  width: 100%;
+  column-gap: 0px;
+  column-count: 1;
+  column-fill: balance;
+  -webkit-column-fill: balance;
   margin: 0 auto;
   padding-top: 1%;
   overflow-y: auto;

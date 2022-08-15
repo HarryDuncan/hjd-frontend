@@ -8,7 +8,7 @@ export const PageContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #ebebeb;
+  background-color: ${({ theme }) => theme.colors.mono.background};
   padding: 2rem;
   padding-top: ${NAV_HEIGHT};
   display: flex;
@@ -17,9 +17,17 @@ export const PageContainer = styled.div`
 `;
 
 export const InnerContainer = styled.div<{ $topOffset?: number }>`
-  background-color: #ebebeb;
+  background-color: ${({ theme }) => theme.colors.mono.background};
   width: 100%;
   display: block;
   margin-top: ${({ $topOffset }) => $topOffset ?? 0}px;
   z-index: 2;
 `;
+
+export const ViewItemContainer = styled.div`
+  background-color: ${({ theme }) => theme.colors.mono.background};
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+export const ViewItemDetailsContainer = styled.div<{}>``;

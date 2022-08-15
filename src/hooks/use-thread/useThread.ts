@@ -15,7 +15,6 @@ export const useThread = (
       return;
     }
     ev("scene:update");
-    console.log(camera);
     renderer.render(scene, camera);
     currentFrameRef.current = requestAnimationFrame(update);
   }, [currentFrameRef, renderer, scene, camera]);

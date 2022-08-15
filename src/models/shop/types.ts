@@ -35,3 +35,13 @@ export type ShippingZone = {
   ausPostZone: number;
   estimatedDeliveryTime: string;
 };
+
+export type ReturnedShopData = {
+  shopData: {
+    products: Product[];
+    productVariations: ProductVariations[];
+    shippingZones: ShippingZone[];
+    ShippingOptions: ShippingOption[];
+  };
+  loading: boolean;
+};

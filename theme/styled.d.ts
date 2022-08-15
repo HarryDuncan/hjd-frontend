@@ -4,7 +4,9 @@ declare module "styled-components" {
   export interface DefaultTheme {
     spacing: (multiple?: number) => number;
     colors: {
-      mono: {};
+      mono: {
+        background: string;
+      };
 
       brand: {
         brand01: "#0081a1";

@@ -2,7 +2,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export const ImageContainer = styled.div`
-  width: 100%;
+  width: calc(100% - 4rem);
   height: 200px;
   position: fixed;
 `;
@@ -18,4 +18,6 @@ export const StyledImage = styled(Image)`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  filter: brightness(50%);
 `;
