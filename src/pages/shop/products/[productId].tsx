@@ -1,6 +1,5 @@
 import ViewItemLayout from "components/layout/ViewItemLayout";
-import { ViewItemDetailsContainer } from "components/styled-components/Containers";
-import { ContentText, MainTitle } from "components/styled-components/Text";
+import { ProductInfo } from "components/shop/product-info/ProductInfo";
 import { useProductData } from "hooks/shop/useProductData";
 
 const rootUrl = "/images/shop/";
@@ -12,10 +11,7 @@ const ProductDetails = () => {
       imageUrl={`${rootUrl}${product?.imageUrl}`}
       title={product?.title}
     >
-      <ViewItemDetailsContainer>
-        <MainTitle $isDark={true}>{product.title}</MainTitle>
-        <ContentText>{product.description}</ContentText>
-      </ViewItemDetailsContainer>
+      <ProductInfo product={product} />
     </ViewItemLayout>
   );
 };

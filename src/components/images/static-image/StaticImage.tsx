@@ -13,9 +13,8 @@ export const StaticImage = ({
       <StyledImage
         alt={imageTitle}
         src={imageUrl}
-        layout="responsive"
-        height={100}
-        width={"100%"}
+        layout="fill"
+        objectFit="contain"
       />
     </ImageContainer>
   );

@@ -1,22 +1,30 @@
 import { ImageContent, TextContent } from "models/content/content.types";
 import { useMemo } from "react";
+import { useContent } from "./useContent";
 
-export const useContentForPage = (
-  textContent: TextContent[],
-  imageContent: ImageContent[],
-  textContentSelectionArray: string[],
-  imageContentSelectionArray: string[]
-) =>
-  useMemo(() => {
-    const text = textContent.flatMap((textContentItem) =>
-      textContentSelectionArray.includes(textContentItem.title)
-        ? textContentItem
+const DEFAULT_CONTENT_URL = `/images/content/`;
+export const useContentForPage = ({
+  textSelection = [],
+  imageSelection = [],
+  rootUrl = DEFAULT_CONTENT_URL,
+}: {
+  textSelection?: string[];
+  imageSelection?: string[];
+  rootUrl?: string;
+}) => {
+  const { textContent, imageContent } = useContent();
+  return useMemo(() => {
+    const text = textContent.flatMap((textContentItem: TextContent) =>
+      textSelection.includes(textContentItem.title) ? textContentItem : []
+    );
+    const images = imageContent.flatMap((imageContentItem: ImageContent) =>
+      imageSelection.includes(imageContentItem.title)
+        ? {
+            ...imageContentItem,
+            imageUrl: `${rootUrl}${imageContentItem.imageUrl}`,
+          }
         : []
     );
-    const images = imageContent.flatMap((imageContentItem) =>
-      imageContentSelectionArray.includes(imageContentItem.title)
-        ? imageContentItem
-        : []
-    );
-    return { images, text };
-  }, [imageContent, textContent]);
+    return { text, images };
+  }, [textContent, imageContent]);
+};

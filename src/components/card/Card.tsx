@@ -1,10 +1,12 @@
 import React, { useRef } from "react";
-import { CardFooter, CardImage, CardTitle, CardWrapper } from "./Card.styles";
+import { CardImage, CardTitle, CardWrapper } from "./Card.styles";
+import { CardFooter } from "./CardFooter";
 
 export interface CardDetails {
   title: string;
   imageUrl?: string;
   id?: number | string;
+  footer?: JSX.Element;
 }
 interface CardProps {
   cardDetails: CardDetails;
@@ -22,17 +24,15 @@ export function Card({ cardDetails, onClick }: CardProps) {
   return (
     <CardWrapper onClick={cardClicked}>
       {cardDetails.imageUrl && (
-        <CardImage
-          src={cardDetails.imageUrl}
-          alt={cardDetails.title}
-          height={100}
-          width={100}
-          quality={10}
-        />
+        <CardImage src={cardDetails.imageUrl} alt={cardDetails.title} />
       )}
-      <CardFooter>
-        <CardTitle>{cardDetails.title}</CardTitle>
-      </CardFooter>
+      {cardDetails.footer ? (
+        cardDetails.footer
+      ) : (
+        <CardFooter>
+          <CardTitle>{cardDetails.title}</CardTitle>
+        </CardFooter>
+      )}
     </CardWrapper>
   );
 }

@@ -27,7 +27,7 @@ export const MobileNavigation = ({
 
   useEffect(() => {
     const body = document.body;
-    body.style.overflow = isMenuOpen ? "hidden" : "auto";
+    body.style.overflowY = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen]);
 
   return (

@@ -1,11 +1,10 @@
-import Link from "next/link";
 import styled from "styled-components";
 
 export const NavItemList = styled.ul`
   display: flex;
   margin-top: 1rem;
   list-style: none;
-  margin-right: 4rem;
+  margin-right: 2.5%;
   text-align: center;
   border: none;
 `;
@@ -31,9 +30,7 @@ export const NavItemLabel = styled.span<{ $isNavTop: boolean }>`
   text-transform: uppercase;
   width: 0;
   background: ${({ theme, $isNavTop }) =>
-    $isNavTop
-      ? theme.colors.gradients.darkText
-      : theme.colors.gradients.lightText};
+    $isNavTop ? theme.colors.gradients.dark : theme.colors.gradients.light};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;

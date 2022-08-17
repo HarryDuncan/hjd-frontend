@@ -1,23 +1,25 @@
-import Image from "next/image";
+import { MainTitle } from "components/styled-components/Text";
 import styled from "styled-components";
 
 export const ImageContainer = styled.div`
-  width: calc(100% - 4rem);
-  height: 200px;
+  width: 95%;
+  left: 2.5%;
+  height: 100px;
   position: fixed;
-`;
-export const StyledImage = styled(Image)`
-  background-image: url("../images/art/8Bytes.jpg");
+  overflow: hidden;
+  & ${MainTitle} {
+    z-index: 4;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
+    width: calc(100% - 4rem);
+  }
 
-  /* Set a specific height */
-  min-height: 500px;
-  width: 100%;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  filter: brightness(50%);
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    width: calc(100% - 1rem);
+  }
 `;

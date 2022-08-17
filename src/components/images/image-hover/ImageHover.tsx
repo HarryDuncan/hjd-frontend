@@ -1,6 +1,11 @@
 import { gsap } from "gsap";
-
-import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import React, {
+  RefObject,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { ImageContainer, ImageElement, ImageWrap } from "./ImageHover.styles";
 
 interface ImageHoverProps {
@@ -52,7 +57,9 @@ const useOnMouseLeave = (hoverTimeline: any) =>
     hoverTimeline.current.reverse();
   }, [hoverTimeline]);
 
-const useRefArray = (arrayLength: number) =>
+const useRefArray = (
+  arrayLength: number
+): RefObject<HTMLDivElement>[] | null[] =>
   useMemo(
     () => Array.from(Array(arrayLength).keys()).map(() => React.createRef()),
     [arrayLength]

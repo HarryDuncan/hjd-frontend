@@ -5,19 +5,26 @@ import { useCampaignData } from "hooks/campaigns/useCampaignData";
 import { ParallaxImage } from "components/images";
 import { InnerContainer } from "components/styled-components/Containers";
 import { DynamicCardGallery } from "components/card-gallery/DynamicGallery";
-import { Campaign } from "models/campaigns/types";
 import { useHandleRouting } from "hooks/useHandleRouting";
+import { useContentForPage } from "hooks/content/useContentForPage";
+import { MAIN_GALLERY_TOP_OFFSET } from "constants/ui.constants";
+import {
+  CAMPAIGN_IMAGES,
+  CAMPAIGN_ROOT_URL,
+} from "constants/campaign.constants";
 
-const ROOT_URL = "/images/campaigns/";
-const HEADER_HEIGHT_OFFSET = 200;
 const Campaigns: NextPage = () => {
-  const { campaigns } = useCampaignData();
-  const campaignGalleryItems = useCampaignGalleryItems(campaigns);
+  const campaignGalleryItems = useCampaignGalleryItems();
   const handleRouting = useHandleRouting("campaigns/");
+  const { images } = useContentForPage({ imageSelection: CAMPAIGN_IMAGES });
   return (
     <Layout>
-      <ParallaxImage />
-      <InnerContainer $topOffset={HEADER_HEIGHT_OFFSET}>
+      <ParallaxImage
+        imageTitle="campaign-cover-img"
+        mainTitle={"Raising Funds and Awareness"}
+        imageUrl={images[0]?.imageUrl ?? ""}
+      />
+      <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
         <DynamicCardGallery
           items={campaignGalleryItems}
           onClick={handleRouting}
@@ -26,10 +33,11 @@ const Campaigns: NextPage = () => {
     </Layout>
   );
 };
-function useCampaignGalleryItems(campaigns: Campaign[]) {
+function useCampaignGalleryItems() {
+  const { campaigns } = useCampaignData();
   return useMemo(() => {
     return campaigns.map(({ coverImage, title, slug }) => ({
-      imageUrl: `${ROOT_URL}${coverImage}`,
+      imageUrl: `${CAMPAIGN_ROOT_URL}${coverImage}`,
       title,
       id: slug,
     }));

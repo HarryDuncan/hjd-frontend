@@ -2,14 +2,11 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export const ImageContainer = styled.div`
-  width: 40%;
-  height: 500px;
+  height: 100%;
+  width: 50%;
   position: relative;
 `;
 export const StyledImage = styled(Image)`
-  min-height: 500px;
-  width: 50%;
-
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;

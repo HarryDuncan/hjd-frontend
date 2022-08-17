@@ -12,7 +12,8 @@ export const MenuButtonContainer = styled.div<{
 }>`
   height: auto;
   display: block;
-  margin-right: 2rem;
+  margin-right: 1rem;
+  margin-top: 0.4rem;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -24,7 +25,7 @@ export const MenuButtonContainer = styled.div<{
         colors: { gradients },
       },
       $isDark,
-    }) => ($isDark ? gradients.darkSurface : gradients.lightText)};
+    }) => ($isDark ? gradients.dark : gradients.light)};
   }
   & :first-child {
     animation-name: ${({ $isActive }) => ($isActive ? activeOne : inactiveOne)};

@@ -8,9 +8,7 @@ export const NavItemContainer = styled.div<{
   width: 100vw;
   height: 100vh;
   background: ${({ $isDark, theme }) =>
-    $isDark
-      ? theme.colors.gradients.darkSurface
-      : theme.colors.gradients.lightText};
+    $isDark ? theme.colors.gradients.dark : theme.colors.gradients.light};
   opacity: ${({ $isDark }) => ($isDark ? 0.95 : 1)};
   z-index: 300;
   display: flex;
@@ -26,13 +24,13 @@ const growNav = keyframes`
     width: 0px;
   }
   to {
-    width: 100vw;
+    width: 100%;
   }
 }`;
 
 const shrinkNav = keyframes`
   from {
-  width: 100vw;
+  width: 100%;
   }
   to {
     width: 0px;
@@ -43,15 +41,15 @@ export const MobileText = styled.span<{ $isDark: boolean }>`
   cursor: pointer;
   font-family: "HarryDuncan";
   text-transform: uppercase;
-  padding-right: 2rem;
+  padding-right: 0.5rem;
   background: ${({
     $isDark,
     theme: {
       colors: {
-        gradients: { darkSurface, lightText },
+        gradients: { dark, light },
       },
     },
-  }) => ($isDark ? darkSurface : lightText)};
+  }) => ($isDark ? dark : light)};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 4.5rem;

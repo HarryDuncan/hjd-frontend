@@ -16,15 +16,7 @@ export const THEME: DefaultTheme = {
       brand02: "#59cbe8",
     },
     gradients: {
-      lightSurface: `linear-gradient(0deg, rgba(255, 255, 255) 0%, rgba(222, 222, 222) 100%))`,
-      darkSurface: `linear-gradient(
-                      157deg,
-                      rgba(76, 76, 76, 1) 0%,
-                      rgba(74, 74, 74, 1) 0%,
-                      rgba(36, 36, 36, 1) 0%,
-                      rgba(27, 27, 27, 1) 100%
-                    );`,
-      lightText: `linear-gradient(
+      light: `linear-gradient(
                 0deg,
                 rgba(255, 255, 255, 1) 0%,
                 rgba(205, 205, 205, 1) 10%,
@@ -32,7 +24,7 @@ export const THEME: DefaultTheme = {
                 rgba(219, 219, 219, 1) 50%,
                 rgba(255, 255, 255, 1) 100%
               );`,
-      darkText: `linear-gradient(
+      dark: `linear-gradient(
                 157deg,
                 rgba(96, 96, 96, 1) 0%,
                 rgba(74, 74, 74, 1) 0%,
@@ -42,13 +34,13 @@ export const THEME: DefaultTheme = {
     },
   },
   font: {
+    weight: {
+      light: 200,
+      normal: 400,
+      bold: 700,
+    },
     default: {
       family: "Inter, Arial, Helvetica, sans-serif",
-      weight: {
-        light: 200,
-        normal: 400,
-        bold: 700,
-      },
     },
     alternative: {
       family: '"Source Sans Pro", monospace',

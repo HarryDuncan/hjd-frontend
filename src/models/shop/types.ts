@@ -4,6 +4,7 @@ export type Product = {
   description: string;
   imageUrl: string;
   stock: number;
+  price: number | null;
   hasVariations: boolean;
   percentageDonated: number;
   variations?: ProductVariations[];

@@ -11,18 +11,18 @@ export const NavigationContainer = styled.div<{}>`
   justify-content: space-between;
   clear: both;
   position: fixed;
-  width: 100vw;
+  width: 100%;
   a {
     text-decoration: none;
   }
 `;
 
 export const NavBackgroundOverlay = styled.div<{ $isOpen?: boolean }>`
-  width: 100vw;
+  width: 100%;
   display: block;
   z-index: -1;
   position: fixed;
-  background: ${({ theme }) => theme.colors.gradients.darkSurface};
+  background: ${({ theme }) => theme.colors.gradients.dark};
   opacity: 0.95;
   animation-name: ${({ $isOpen }) => ($isOpen ? growNav : shrinkNav)};
   animation-duration: 0.3s;
@@ -31,12 +31,10 @@ export const NavBackgroundOverlay = styled.div<{ $isOpen?: boolean }>`
 `;
 
 export const NavTitle = styled.h1<{ $isDark?: boolean }>`
-  margin: 0 0 0 2rem;
+  margin: 0 2.5%;
   text-transform: uppercase;
   background: ${({ $isDark, theme }) =>
-    $isDark
-      ? theme.colors.gradients.darkText
-      : theme.colors.gradients.lightText};
+    $isDark ? theme.colors.gradients.dark : theme.colors.gradients.light};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.2rem;
