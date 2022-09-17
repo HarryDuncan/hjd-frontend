@@ -23,7 +23,7 @@ export const useRunAnimations = (sceneParams: AnimationWidgetScene[]) => {
     isRunningRef
   );
 
-  const { update } = useThreadWithPostProcessor(
+  const { update, pause } = useThreadWithPostProcessor(
     postProcessor,
     currentFrameRef,
     clock
@@ -43,5 +43,5 @@ export const useRunAnimations = (sceneParams: AnimationWidgetScene[]) => {
     sceneIndex,
     postProcessor
   );
-  return { container, currentFrameRef };
+  return { container, currentFrameRef, pause };
 };

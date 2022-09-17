@@ -1,10 +1,3 @@
-export type FetchArtResponse = {
-  art: {
-    paintings: Painting[];
-  };
-  loading: boolean;
-};
-
 export type Painting = {
   description: string;
   externalUrl: string;
@@ -13,4 +6,12 @@ export type Painting = {
   medium: string;
   title: string;
   yearCompleted: number;
+  slug: string;
+};
+
+export type FetchArtResponse = {
+  art: {
+    paintings: Painting[];
+  };
+  loading: boolean;
 };

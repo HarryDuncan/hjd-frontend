@@ -40,13 +40,15 @@ const Art: NextPage = () => {
 };
 
 function usePaintingsInGallery(paintings: Painting[]) {
-  return useMemo(() => {
-    return paintings.map(({ imageUrl, title, id }) => ({
-      imageUrl: `${ART_ROOT_URL}${imageUrl}`,
-      title,
-      id,
-    }));
-  }, [paintings]);
+  return useMemo(
+    () =>
+      paintings.map(({ imageUrl, title, slug }) => ({
+        imageUrl: `${ART_ROOT_URL}${imageUrl}`,
+        title,
+        id: slug,
+      })),
+    [paintings]
+  );
 }
 
 export default Art;

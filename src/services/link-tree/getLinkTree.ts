@@ -1,21 +1,21 @@
 import { gql } from "@apollo/client";
 import { client } from "network/ApolloClient";
 
-export const getCampaigns = async () => {
+export const getLinkTree = async () => {
   const query = gql`
-    query campaignData {
-      campaigns @rest(type: "campaign", path: "/campaigns") {
-        campaigns
+    query linkTree {
+      linkTree @rest(type: "link", path: "/link-tree") {
+        links
       }
     }
   `;
   return client.query({ query }).then((response) => {
     const {
       data: {
-        campaignData: { campaigns },
+        linkTree: { links },
       },
       loading,
     } = response;
-    return { campaigns, loading };
+    return { links, loading };
   });
 };

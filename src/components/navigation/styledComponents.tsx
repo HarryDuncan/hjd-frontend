@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+
 export const NAV_HEIGHT = "10vh";
 
 export const NavigationContainer = styled.div<{}>`

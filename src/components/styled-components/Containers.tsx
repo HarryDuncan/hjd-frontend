@@ -46,8 +46,8 @@ export const ViewItemContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   height: calc(100vh - ${NAV_HEIGHT});
-  width: 95%%;
-  margin: 0 2.5% 2.5% 0;
+  width: 95%;
+  margin: 0 2.5%;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     flex-direction: column;

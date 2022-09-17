@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainTitle = styled.h1<{ $isDark: boolean }>`
   text-transform: uppercase;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   margin: 0 auto;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -17,6 +17,7 @@ export const MainTitle = styled.h1<{ $isDark: boolean }>`
 
 export const ContentText = styled.span`
   font-family: arial;
+  font-size: 1.5rem;
 `;
 
 export const Label = styled.span`

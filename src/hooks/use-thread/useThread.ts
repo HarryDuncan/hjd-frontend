@@ -1,11 +1,11 @@
 import { ev } from "hooks/use-events/useEvents";
-import { useCallback, useEffect } from "react";
+import { MutableRefObject, useCallback, useEffect } from "react";
 import { PerspectiveCamera, Scene, WebGLRenderer } from "three";
 import { CSS3DRenderer } from "three/examples/jsm/renderers/CSS3DRenderer";
 
 export const useThread = (
   renderer: WebGLRenderer | CSS3DRenderer | undefined,
-  currentFrameRef: React.MutableRefObject<number>,
+  currentFrameRef: MutableRefObject<number>,
   scene: Scene,
   camera: PerspectiveCamera
 ) => {

@@ -15,12 +15,10 @@ const AnimationWidget = ({
   viewWidth = "100vw",
   viewHeight = "100vh",
 }: AnimationWidgetProps) => {
-  const { container, currentFrameRef } = useRunAnimations(scenes);
+  const { container, currentFrameRef, pause } = useRunAnimations(scenes);
 
-  useEffect(() => {
-    const currentFrame = currentFrameRef.current;
-    return () => cancelAnimationFrame(currentFrame);
-  }, [currentFrameRef]);
+  useEffect(() => () => pause(), [currentFrameRef]);
+
   return (
     <RootContainer
       containerRef={container}
