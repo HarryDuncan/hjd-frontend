@@ -1,4 +1,4 @@
-import { Camera, Scene } from "three";
+import { Camera, PerspectiveCamera, Scene } from "three";
 
 export interface AnimationWidgetScene {
   name: string;
@@ -8,7 +8,7 @@ export interface AnimationWidgetScene {
 export type FunctionBasedScene = {
   name: string;
   scene: null | Scene;
-  camera: null | Camera;
+  camera: null | PerspectiveCamera;
   sceneParams: any;
   sceneLength: number;
   init: (

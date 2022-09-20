@@ -44,6 +44,7 @@ export default class PostProcessor extends EffectComposer {
   }
 
   onResize() {
+    console.log(this.scene);
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.renderer.setSize(window.innerWidth, window.innerHeight);
   }

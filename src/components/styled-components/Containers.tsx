@@ -1,15 +1,15 @@
 import { NAV_HEIGHT } from "components/navigation/styledComponents";
 import styled from "styled-components";
 
-export const PageContainer = styled.div`
-  width: 100vw;
+export const PageContainer = styled.div<{ $topPadding: boolean }>`
+  width: 100%;
   min-height: 100%;
   position: absolute;
   margin: 0;
   top: 0;
   left: 0;
   background-color: ${({ theme }) => theme.colors.mono.background};
-  padding: ${NAV_HEIGHT} 0rem;
+  padding: ${({ $topPadding }) => `${$topPadding ? NAV_HEIGHT : 0} 0rem`};
   display: flex;
   flex-direction: column;
   overflow-x: hidden;

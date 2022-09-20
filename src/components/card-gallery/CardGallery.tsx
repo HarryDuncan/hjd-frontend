@@ -11,6 +11,7 @@ interface CardGalleryProps {
 
 const CardGallery = ({ items, onClick, columnCount }: CardGalleryProps) => {
   const cardClicked = (id: number | string | undefined) => {
+    console.log(id);
     if (onClick && id) {
       onClick(id);
     }

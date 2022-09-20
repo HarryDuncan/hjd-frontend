@@ -1,0 +1,1 @@
+export { CampaignCardFooter } from "./CampaignCardFooter";

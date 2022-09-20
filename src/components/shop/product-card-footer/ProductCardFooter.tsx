@@ -1,6 +1,7 @@
+import { CardFooter } from "components/card/Card.styles";
 import { Label } from "components/styled-components/Text";
 import { ProductVariations } from "models/shop/types";
-import { FooterContainer, Title } from "./ProductCardFooter.styles";
+import { Title } from "./ProductCardFooter.styles";
 
 interface ProductCardFooterProps {
   title: string;
@@ -18,7 +19,7 @@ export const ProductCardFooter = ({
   const priceLabel = getPriceLabel(price, variations);
   const variationLabel = variations.map(({ title }) => title);
   return (
-    <FooterContainer>
+    <CardFooter>
       <Title>{title}</Title>
       <Label>{!isSoldOut ? `AUD ${priceLabel}` : `Sold Out`}</Label>
       <br />
@@ -27,7 +28,7 @@ export const ProductCardFooter = ({
           {variationLabel[0]} - {variationLabel[variationLabel.length - 1]}
         </Label>
       )}
-    </FooterContainer>
+    </CardFooter>
   );
 };
 

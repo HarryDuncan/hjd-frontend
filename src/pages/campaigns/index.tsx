@@ -12,6 +12,7 @@ import {
   CAMPAIGN_IMAGES,
   CAMPAIGN_ROOT_URL,
 } from "constants/campaign.constants";
+import { CampaignCardFooter } from "components/campaigns/campaign-card-footer";
 
 const Campaigns: NextPage = () => {
   const campaignGalleryItems = useCampaignGalleryItems();
@@ -40,6 +41,7 @@ function useCampaignGalleryItems() {
       imageUrl: `${CAMPAIGN_ROOT_URL}${coverImage}`,
       title,
       id: slug,
+      footer: <CampaignCardFooter title={title} />,
     }));
   }, [campaigns]);
 }

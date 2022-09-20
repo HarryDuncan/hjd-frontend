@@ -7,6 +7,7 @@ import {
   DirectionalLight,
   Mesh,
   MeshBasicMaterial,
+  MeshPhongMaterial,
   PerspectiveCamera,
   PointLight,
   Scene,
@@ -35,7 +36,7 @@ const SCENE_PARAMS = {
   wallX: false,
   wallZ: false,
   time: 0,
-  speed: 1.0,
+  speed: 0.5,
   index: 0,
   hue: 0.45,
   saturation: 0.1,
@@ -82,6 +83,7 @@ interface ArtLavaLampSceneParams {
 const initializeScene = async (sceneData: ArtLavaLampData) => {
   // Camera
   const camera = new PerspectiveCamera(50, 1, 0.01, 2000);
+  camera.position.set(-500, 500, 1500);
   camera.position.set(0, 0, 1500);
   camera.name = "art-lava";
   // SCENE
@@ -105,21 +107,10 @@ const initializeScene = async (sceneData: ArtLavaLampData) => {
 
   // Set up lights and add to scene and sceneparams
   setUpLights(sceneParams.scene, sceneParams);
-  const geometry = new BoxGeometry(1, 1, 1);
-  const material = new MeshBasicMaterial({ color: 0x00ff00 });
-  const cube = new Mesh(geometry, material);
-  sceneParams.scene.add(cube);
 
-  addGeom(sceneParams.scene);
   return { camera, scene: sceneParams.scene, sceneParams };
 };
 
-const addGeom = (scene: Scene) => {
-  const geometry = new BoxGeometry(100, 100, 100);
-  const material = new MeshBasicMaterial({ color: 0x00ff00 });
-  const cube = new Mesh(geometry, material);
-  scene.add(cube);
-};
 const setUpLights = (scene: Scene, sceneParams: ArtLavaLampSceneParams) => {
   const directionalLight = new DirectionalLight(0xffffff);
   directionalLight.position.set(0.5, 0.5, 1);
@@ -151,7 +142,7 @@ const updateCubes = (object: any, time: any, numblobs: number) => {
       Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
     object.addBall(ballPosX, ballPosY, ballPosZ, strength, subtract);
   }
-
+  object.update();
   return object;
 };
 
@@ -161,13 +152,13 @@ const addMarchingCubes = (
   sceneParams: ArtLavaLampSceneParams
 ) => {
   const resolution = 105;
-  const material = new MeshBasicMaterial({ color: 0x00ff00 });
-  const effect = new MarchingCubes(resolution, material, true, true);
-  effect.position.set(1, 1, 1);
+  const material = new MeshPhongMaterial({ specular: 0x111111, shininess: 1 });
+  const effect = new MarchingCubes(resolution, material, true, true, 100000);
+  effect.position.set(0, 0, 0);
   effect.scale.set(700, 700, 700);
 
-  effect.enableUvs = true;
-  effect.enableColors = true;
+  effect.enableUvs = false;
+  effect.enableColors = false;
   sceneParams.effect = effect;
   sceneParams.scene.add(effect);
 };
@@ -204,10 +195,7 @@ const onUpdate = (sceneParams: ArtLavaLampSceneParams) => {
     sceneParams.effect.material = changeMaterial(sceneParams);
   }
 
-  const delta = 0.01;
-  const m = sceneParams.scene.children[4];
-  const { x, y, z } = m.position;
-  sceneParams.scene.children[4].position.set(x + delta, y + delta, z + delta);
+  const delta = 0.1;
 
   sceneParams.time += delta * sceneParams.speed * 0.3;
   if (sceneParams.effect.material instanceof ShaderMaterial) {
@@ -238,14 +226,7 @@ const onUpdate = (sceneParams: ArtLavaLampSceneParams) => {
     sceneParams.llightness
   );
 
-  const effect = updateCubes(
-    sceneParams.effect,
-    sceneParams.time,
-    sceneParams.numBlobs
-  );
-  effect.delta = sceneParams.time;
-  sceneParams.effect = effect;
-  sceneParams.scene.children[0] = effect;
+  updateCubes(sceneParams.effect, sceneParams.time, sceneParams.numBlobs);
 };
 
 const onClose = (sceneParams: ArtLavaLampSceneParams) => {

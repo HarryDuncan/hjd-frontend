@@ -12,7 +12,7 @@ export const getCampaigns = async () => {
   return client.query({ query }).then((response) => {
     const {
       data: {
-        campaignData: { campaigns },
+        campaigns: { campaigns },
       },
       loading,
     } = response;

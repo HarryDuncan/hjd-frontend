@@ -36,7 +36,7 @@ const scenes = [
   // },
 ];
 const Home: NextPage = () => (
-  <Layout>
+  <Layout topPadding={false}>
     <DynamicAnimationWidget scenes={scenes} />
   </Layout>
 );

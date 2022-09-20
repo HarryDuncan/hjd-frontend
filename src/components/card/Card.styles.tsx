@@ -72,3 +72,9 @@ export const CardImage = styled.img`
 `;
 
 export const CardFooterContainer = styled.div``;
+
+export const CardFooter = styled.div`
+  background: ${({ theme }) => theme.colors.gradients.dark};
+  padding: 20px;
+  color: white;
+`;

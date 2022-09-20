@@ -45,6 +45,7 @@ function usePaintingsInGallery(paintings: Painting[]) {
       paintings.map(({ imageUrl, title, slug }) => ({
         imageUrl: `${ART_ROOT_URL}${imageUrl}`,
         title,
+        slug,
         id: slug,
       })),
     [paintings]
