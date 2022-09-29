@@ -20,7 +20,6 @@ const Music: NextPage = () => {
     <Layout>
       <ParallaxImage
         imageTitle="music-cover-img"
-        mainTitle="Original Mixes"
         imageUrl={images[0]?.imageUrl ?? ""}
       />
 
@@ -28,13 +27,6 @@ const Music: NextPage = () => {
         <ContentText>
           The music visualizer project was done in 2020. Where one could stream
           music with custom made visuals using javascript
-        </ContentText>
-        <DynamicCardGallery items={mixGalleryItems} onClick={handleRouting} />
-      </InnerContainer>
-      <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
-        <Title>Featured Mixes</Title>
-        <ContentText>
-          Featured mixes for radio, collectives and parties
         </ContentText>
         <DynamicCardGallery items={mixGalleryItems} onClick={handleRouting} />
       </InnerContainer>

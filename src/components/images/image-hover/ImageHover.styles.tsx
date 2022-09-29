@@ -3,18 +3,18 @@ import styled from "styled-components";
 export const ImageContainer = styled.div<{ $backgroundImgUrl: string }>`
   background-image: url(${({ $backgroundImgUrl }) => $backgroundImgUrl});
   width: 100%;
-  height: 150px;
+  height: 550px;
   position: fixed;
   display: grid;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: 20% 20%;
   transform-origin: inherit;
   position: relative;
   will-change: transform;
-  filter: brightness(70%);
+  filter: brightness(40%);
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     width: 100%;
@@ -44,5 +44,5 @@ export const ImageElement = styled.div<{ $backgroundImgUrl: string }>`
   height: 100%;
   will-change: transform;
   border-radius: inherit;
-  filter: brightness(50%);
+  filter: brightness(90%);
 `;

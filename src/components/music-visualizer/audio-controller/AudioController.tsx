@@ -1,19 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import IdleTimer from "react-idle-timer";
-import { RendererNode } from "@hjd/visual-vault";
-import { Volume, SeekBar, Play, Forward, Rewind, Name } from "./components";
-import { secondsToClock } from "./functions";
-import { IMix } from "data";
-import { getWindowSize } from "utils";
-import { useAudioControls } from "./hooks/useAudioControls";
-
-import { useVolumeControls } from "./hooks/useVolumeControls";
-import { useSeekerControls } from "./hooks/useSeekerControls";
-import { useRenderNode } from "./hooks/useRendererNode";
+import { useRef, useState } from "react";
 import {
   AudioControllerContainer,
   ControlsContainer,
 } from "./AudioController.styles";
+import { ControlButton } from "./components/ControlButton";
+import { SeekBar } from "./components/seeker-bar/SeekerBar";
+import { useSeekerControls } from "./components/seeker-bar/useSeekerBar";
 
 interface AudioController {
   audioContext: AudioContext;
@@ -21,14 +13,71 @@ interface AudioController {
   onChangeSelectedAudio: (step: number) => void;
 }
 
+const ASSET_PATH = "/assets/";
+
 export const AudioController = ({
   audioContext,
   selectedAudioUrl,
   onChangeSelectedAudio,
 }: AudioController) => {
+  const audioRef = useRef<AudioContext | null>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
+  const handleRewind = () => {
+    console.log("ss");
+  };
+  const CONTROL_BUTTONS: ControlButton[] = [
+    {
+      handleClick: handleRewind,
+      iconProps: {
+        iconName: "Rewind",
+        iconSrc: `${ASSET_PATH}/rewind.png`,
+        iconHoveredSrc: `${ASSET_PATH}/rewind-hovered.png`,
+      },
+    },
+    {
+      handleClick: handleRewind,
+      iconProps: {
+        iconName: "Play/Pause",
+        iconSrc: `${ASSET_PATH}/play.png`,
+        iconHoveredSrc: `${ASSET_PATH}/play-hovered.png`,
+      },
+    },
+    {
+      handleClick: handleRewind,
+      iconProps: {
+        iconName: "Forward",
+        iconSrc: `${ASSET_PATH}/forward.png`,
+        iconHoveredSrc: `${ASSET_PATH}/forward-hovered.png`,
+      },
+    },
+  ];
+
+  const {
+    loadDuration,
+    handleSeek,
+    handleSeekSlider,
+    handleProgress,
+    seekerVal,
+    audioDuration,
+    currentAudioTime,
+  } = useSeekerControls(audioRef, isPlaying);
+
   return (
     <AudioControllerContainer>
-      <ControlsContainer></ControlsContainer>
+      <ControlsContainer>
+        {CONTROL_BUTTONS.map(({ handleClick, iconProps }) => (
+          <ControlButton handleClick={handleClick} iconProps={iconProps} />
+        ))}
+        <SeekBar
+          handleSeek={handleSeek}
+          handleSeekSlider={handleSeekSlider}
+          seekerVal={seekerVal}
+          duration={audioDuration}
+          currentAudioTime={currentAudioTime}
+          width={100}
+        />
+      </ControlsContainer>
     </AudioControllerContainer>
   );
 };

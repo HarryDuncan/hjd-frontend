@@ -14,22 +14,6 @@ export const PageContainer = styled.div<{ $topPadding: boolean }>`
   flex-direction: column;
   overflow-x: hidden;
   padding-bottom: 0;
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
-    padding: ${NAV_HEIGHT} 0rem;
-    padding-bottom: 0;
-  }
-
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}px) {
-    padding: ${NAV_HEIGHT} 0.5rem;
-    padding-bottom: 0;
-  }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.smallMobile}px) {
-    padding: ${NAV_HEIGHT} 0.5rem;
-    padding-bottom: 0;
-  }
 `;
 
 export const InnerContainer = styled.div<{ $topOffset?: number }>`
@@ -38,6 +22,7 @@ export const InnerContainer = styled.div<{ $topOffset?: number }>`
   display: block;
   margin-top: ${({ $topOffset }) => $topOffset ?? 0}px;
   z-index: 2;
+  position: relative;
 `;
 
 export const ViewItemContainer = styled.div`
@@ -51,9 +36,21 @@ export const ViewItemContainer = styled.div`
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     flex-direction: column;
+    height: auto;
+    padding-bottom: 1rem;
   }
 `;
 export const ViewItemDetailsContainer = styled.div<{}>`
   margin: 0 auto;
   text-align: center;
+  width: 50%;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
+    width: 100%;
+  }
+`;
+
+export const ContentContainer = styled.div`
+  width: 80%;
+  margin: 0 auto;
 `;

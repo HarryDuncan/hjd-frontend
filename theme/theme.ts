@@ -49,7 +49,7 @@ export const THEME: DefaultTheme = {
   breakpoints: {
     wideScreen: 1501,
     desktop: 1280,
-    tablet: 800,
+    tablet: 850,
     mobile: 800,
     smallMobile: 350,
   },

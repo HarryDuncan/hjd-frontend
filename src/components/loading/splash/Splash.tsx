@@ -1,5 +1,3 @@
-import SplashShadow from "/logo-dark.svg";
-
 import {
   DarkOverlay,
   Overlay,

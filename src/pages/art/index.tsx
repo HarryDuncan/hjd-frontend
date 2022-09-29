@@ -25,7 +25,6 @@ const Art: NextPage = () => {
   return (
     <Layout>
       <ParallaxImage
-        mainTitle="Original Paintings"
         imageUrl={images[0]?.imageUrl ?? ""}
         imageTitle={images[0]?.title ?? ""}
       />

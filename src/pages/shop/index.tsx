@@ -20,7 +20,6 @@ const Shop: NextPage = () => {
   return (
     <Layout>
       <ParallaxImage
-        mainTitle="Original Prints"
         imageTitle="shop-header"
         imageUrl={images[0]?.imageUrl ?? ""}
       />

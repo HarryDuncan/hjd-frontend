@@ -17,7 +17,9 @@ export const MainTitle = styled.h1<{ $isDark: boolean }>`
 
 export const ContentText = styled.span`
   font-family: arial;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  font-weight: 300;
 `;
 
 export const Label = styled.span`

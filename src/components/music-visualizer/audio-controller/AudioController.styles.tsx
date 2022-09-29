@@ -28,3 +28,7 @@ export const ControlsContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const ControlButtonContainer = styled.div`
+  cursor: pointer;
+`;

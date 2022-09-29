@@ -22,7 +22,6 @@ const Campaigns: NextPage = () => {
     <Layout>
       <ParallaxImage
         imageTitle="campaign-cover-img"
-        mainTitle={"Raising Funds and Awareness"}
         imageUrl={images[0]?.imageUrl ?? ""}
       />
       <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>

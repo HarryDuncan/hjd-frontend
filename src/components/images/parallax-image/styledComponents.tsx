@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const ImageContainer = styled.div`
   width: 95%;
   left: 2.5%;
-  height: 100px;
+  height: 250px;
   position: fixed;
   overflow: hidden;
   & ${MainTitle} {
