@@ -9,6 +9,7 @@ import { useHandleRouting } from "hooks/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
 import { MAIN_GALLERY_TOP_OFFSET } from "constants/ui.constants";
 import {
+  CAMPAIGN_BANNER_CONFIG,
   CAMPAIGN_IMAGES,
   CAMPAIGN_ROOT_URL,
 } from "constants/campaign.constants";
@@ -21,6 +22,7 @@ const Campaigns: NextPage = () => {
   return (
     <Layout>
       <ParallaxImage
+        hoverImageConfig={CAMPAIGN_BANNER_CONFIG}
         imageTitle="campaign-cover-img"
         imageUrl={images[0]?.imageUrl ?? ""}
       />

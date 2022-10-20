@@ -50,8 +50,8 @@ export const CardWrapper = styled.div`
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    width: 100%;
-    margin: 1rem 0rem;
+    width: calc(100% - 1rem);
+    margin: 1rem 0.5rem;
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.smallMobile}px) {

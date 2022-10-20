@@ -9,7 +9,11 @@ import type { NextPage } from "next";
 import { useMemo } from "react";
 import { useHandleRouting } from "hooks/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
-import { ART_IMAGES, ART_ROOT_URL } from "constants/art.constants";
+import {
+  ART_BANNER_CONFIG,
+  ART_IMAGES,
+  ART_ROOT_URL,
+} from "constants/art.constants";
 import { MAIN_GALLERY_TOP_OFFSET } from "constants/ui.constants";
 
 const Art: NextPage = () => {
@@ -25,6 +29,7 @@ const Art: NextPage = () => {
   return (
     <Layout>
       <ParallaxImage
+        hoverImageConfig={ART_BANNER_CONFIG}
         imageUrl={images[0]?.imageUrl ?? ""}
         imageTitle={images[0]?.title ?? ""}
       />

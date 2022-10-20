@@ -3,17 +3,24 @@ import {
   ContentContainer,
   ViewItemDetailsContainer,
 } from "components/styled-components/Containers";
-import { ScrollLeft, ScrollRight } from "components/styled-components/Images";
+import {
+  Exit,
+  ScrollLeft,
+  ScrollRight,
+} from "components/styled-components/Images";
 import { ContentText, MainTitle } from "components/styled-components/Text";
 import { ART_ROOT_URL } from "constants/art.constants";
-import { SCROLL_LEFT, SCROLL_RIGHT } from "constants/ui.constants";
+import { EXIT, SCROLL_LEFT, SCROLL_RIGHT } from "constants/ui.constants";
 import { usePaintingData } from "hooks/art/usePaintingData";
 import { useScrollPaintings } from "hooks/art/useScrollPaintings";
 import { Direction } from "../../../../utils/helpers/moveThroughArray";
+import { useRouter } from "next/router";
+import { useCallback } from "react";
 
 const PaintingDetails = () => {
   const { painting } = usePaintingData();
   const changePainting = useScrollPaintings();
+  const handleExit = useHandleExit();
   if (!painting) return null;
   return (
     <ViewItemLayout
@@ -21,6 +28,7 @@ const PaintingDetails = () => {
       title={painting?.title}
     >
       <ViewItemDetailsContainer>
+        <Exit src={EXIT} onClick={handleExit} />
         <ScrollLeft
           src={SCROLL_LEFT}
           onClick={() => changePainting(Direction.REVERSE)}
@@ -44,6 +52,13 @@ const PaintingDetails = () => {
       </ViewItemDetailsContainer>
     </ViewItemLayout>
   );
+};
+
+const useHandleExit = () => {
+  const router = useRouter();
+  return useCallback(() => {
+    router.push("/art");
+  }, [router]);
 };
 
 export default PaintingDetails;

@@ -21,6 +21,7 @@ export const InnerContainer = styled.div<{ $topOffset?: number }>`
   width: 100%;
   display: block;
   margin-top: ${({ $topOffset }) => $topOffset ?? 0}px;
+  margin-bottom: 1rem;
   z-index: 2;
   position: relative;
 `;

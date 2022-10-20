@@ -16,10 +16,12 @@ export const ImageContainer = styled.div`
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     width: calc(100% - 4rem);
+    height: 500px;
   }
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     width: calc(100% - 1rem);
+    height: 500px;
   }
 `;

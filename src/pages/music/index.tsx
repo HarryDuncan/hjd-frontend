@@ -7,10 +7,13 @@ import { InnerContainer } from "components/styled-components/Containers";
 import { useMixesData } from "hooks/mixes/useMixesData";
 import { MAIN_GALLERY_TOP_OFFSET } from "constants/ui.constants";
 import { useContentForPage } from "hooks/content/useContentForPage";
-import { MUSIC_IMAGES, MUSIC_ROOT_URL } from "constants/music.constants";
+import {
+  MUSIC_BANNER_CONFIG,
+  MUSIC_IMAGES,
+  MUSIC_ROOT_URL,
+} from "constants/music.constants";
 import { useHandleRouting } from "hooks/useHandleRouting";
 import { ContentText } from "components/styled-components/Text";
-import { Title } from "components/shop/product-card-footer/ProductCardFooter.styles";
 
 const Music: NextPage = () => {
   const mixGalleryItems = useMixesInGallery();
@@ -19,6 +22,7 @@ const Music: NextPage = () => {
   return (
     <Layout>
       <ParallaxImage
+        hoverImageConfig={MUSIC_BANNER_CONFIG}
         imageTitle="music-cover-img"
         imageUrl={images[0]?.imageUrl ?? ""}
       />

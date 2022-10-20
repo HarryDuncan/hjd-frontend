@@ -9,7 +9,7 @@ export const useGetCampaign = () => {
     getCampaigns()
   );
   if (!campaignData?.data || !campaignSlug)
-    return { campaign: [], loading: true };
+    return { campaign: null, loading: true };
   const campaign = campaignData.data.campaigns.find(
     ({ slug }) => slug === campaignSlug
   );

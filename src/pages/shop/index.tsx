@@ -6,7 +6,11 @@ import { InnerContainer } from "components/styled-components/Containers";
 import { useHandleRouting } from "hooks/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
 import { MAIN_GALLERY_TOP_OFFSET } from "constants/ui.constants";
-import { SHOP_IMAGES, SHOP_IMAGE_URL_ROOT } from "constants/shop.contants";
+import {
+  SHOP_BANNER_CONFIG,
+  SHOP_IMAGES,
+  SHOP_IMAGE_URL_ROOT,
+} from "constants/shop.constants";
 import { useShopData } from "hooks/shop/useShopData";
 import { useProductsWithVariations } from "hooks/shop/useProductsWithVariations";
 import { useMemo } from "react";
@@ -16,10 +20,10 @@ const Shop: NextPage = () => {
   const productGalleryItems = useProductsInGallery();
   const { images } = useContentForPage({ imageSelection: SHOP_IMAGES });
   const handleRouting = useHandleRouting("shop/products/");
-  console.log(productGalleryItems);
   return (
     <Layout>
       <ParallaxImage
+        hoverImageConfig={SHOP_BANNER_CONFIG}
         imageTitle="shop-header"
         imageUrl={images[0]?.imageUrl ?? ""}
       />

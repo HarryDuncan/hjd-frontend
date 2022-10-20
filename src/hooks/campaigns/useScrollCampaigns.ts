@@ -5,22 +5,20 @@ import {
   Direction,
   moveThroughArray,
 } from "../../../utils/helpers/moveThroughArray";
-import { useArtData } from "./useArtData";
+import { useCampaignData } from "./useCampaignData";
 
-export const useScrollPaintings = () => {
-  const {
-    art: { paintings },
-  } = useArtData();
+export const useScrollCampaigns = () => {
+  const { campaigns } = useCampaignData();
 
   const handleRouting = useHandleRouting("");
   const currentSlug = useParams("slug");
 
-  const currentIndex = paintings.findIndex(({ slug }) => slug === currentSlug);
+  const currentIndex = campaigns.findIndex(({ slug }) => slug === currentSlug);
   return useCallback(
     (step: Direction) => {
-      const { newIndex } = moveThroughArray(paintings, currentIndex, step);
-      handleRouting(paintings[newIndex].slug);
+      const { newIndex } = moveThroughArray(campaigns, currentIndex, step);
+      handleRouting(campaigns[newIndex].slug);
     },
-    [currentSlug, paintings]
+    [currentSlug, campaigns]
   );
 };

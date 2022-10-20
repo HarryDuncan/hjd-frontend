@@ -13,6 +13,17 @@ const IMAGE_CONTENT_SECTIONS = [
   "DJ",
 ] as string[];
 
+const BIO_BANNER_CONFIG = {
+  default: {
+    heightPx: 500,
+    positionPercentage: { x: 50, y: 50 },
+  },
+  final: {
+    heightPx: 500,
+    positionPercentage: { x: 20, y: 20 },
+  },
+};
+
 const Bio: NextPage = () => {
   const { text, images } = useBioPageContent();
   return (
@@ -20,7 +31,11 @@ const Bio: NextPage = () => {
       <BioPage>
         {images.map((image, index) => (
           <InnerContainer $topOffset={0}>
-            <ImageHover title={image.title} imageUrl={image.imageUrl} />
+            <ImageHover
+              hoverImageConfig={BIO_BANNER_CONFIG}
+              title={image.title}
+              imageUrl={image.imageUrl}
+            />
             <TextContainer>
               <MainTitle $isDark={false}>{text[index].title}</MainTitle>
               <ContentText>{text[index].content}</ContentText>

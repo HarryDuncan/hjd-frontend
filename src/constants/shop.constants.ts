@@ -1,7 +1,7 @@
-export const ART_IMAGES = ["bio1"];
-export const ART_ROOT_URL = "/images/art/";
+export const SHOP_IMAGE_URL_ROOT = "/images/shop/";
+export const SHOP_IMAGES = ["banner1"];
 
-export const ART_BANNER_CONFIG = {
+export const SHOP_BANNER_CONFIG = {
   default: {
     heightPx: 100,
     positionPercentage: { x: 50, y: 50 },

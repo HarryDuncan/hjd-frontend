@@ -8,7 +8,7 @@ export const NavItemContainer = styled.div<{
   width: 100vw;
   height: 100vh;
   background: ${({ $isDark, theme }) =>
-    $isDark ? theme.colors.gradients.dark : theme.colors.gradients.light};
+    $isDark ? theme.colors.gradients.dark : theme.colors.mono.background};
   opacity: ${({ $isDark }) => ($isDark ? 0.95 : 1)};
   z-index: 300;
   display: flex;

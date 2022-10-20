@@ -6,18 +6,39 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-import { ImageContainer, ImageElement, ImageWrap } from "./ImageHover.styles";
+import {
+  HoverImageContainer,
+  DefaultImage,
+  ImageWrap,
+} from "./ImageHover.styles";
 
 interface ImageHoverProps {
   imageUrl: string;
   title: string;
+  hoverImageConfig: ImageHoverConfig;
 }
+
+export type ImageHoverConfig = {
+  default: ImageProps;
+  final: ImageProps;
+};
+
+export type ImageProps = {
+  heightPx?: number;
+  widthPx?: number;
+  positionPercentage: { x: number; y: number };
+};
 
 const REPETITIONS = 3;
 const REPETITION_STAGGER = -0.12;
 const INTIAL_SCALE = 1.5;
 type Timeline = any;
-export const ImageHover = ({ imageUrl, title }: ImageHoverProps) => {
+
+export const ImageHover = ({
+  imageUrl,
+  hoverImageConfig,
+  title,
+}: ImageHoverProps) => {
   const refs = useRefArray(REPETITIONS);
   const hoverTimelineCb = useHoverTimeline();
   const timeLine = useRef<Timeline | null>(null);
@@ -26,22 +47,32 @@ export const ImageHover = ({ imageUrl, title }: ImageHoverProps) => {
   useEffect(() => {
     timeLine.current = hoverTimelineCb(refs);
   }, []);
+
   return (
-    <ImageContainer
+    <HoverImageContainer
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       $backgroundImgUrl={imageUrl}
+      $imageProps={hoverImageConfig.final}
     >
       {Array.from(Array(REPETITIONS).keys()).map((key, index) =>
         key === 0 ? (
           <ImageWrap>
-            <ImageElement $backgroundImgUrl={imageUrl} ref={refs[index]} />
+            <DefaultImage
+              $backgroundImgUrl={imageUrl}
+              $imageProps={hoverImageConfig.default}
+              ref={refs[index]}
+            />
           </ImageWrap>
         ) : (
-          <ImageElement $backgroundImgUrl={imageUrl} ref={refs[index]} />
+          <DefaultImage
+            $backgroundImgUrl={imageUrl}
+            $imageProps={hoverImageConfig.default}
+            ref={refs[index]}
+          />
         )
       )}
-    </ImageContainer>
+    </HoverImageContainer>
   );
 };
 
@@ -68,7 +99,6 @@ const useRefArray = (
 const useHoverTimeline = () => {
   return useCallback((refs: any) => {
     if (!refs || refs.some((ref: any) => ref.current === null)) return null;
-    const property = "scale";
     let animationProperties = {
       duration: 0.8,
       ease: "power2.inOut",
