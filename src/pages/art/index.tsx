@@ -32,6 +32,7 @@ const Art: NextPage = () => {
         hoverImageConfig={ART_BANNER_CONFIG}
         imageUrl={images[0]?.imageUrl ?? ""}
         imageTitle={images[0]?.title ?? ""}
+        mainTitle={"View Original Pieces"}
       />
       <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
         <DynamicCardGallery

@@ -8,7 +8,7 @@ export const Line = styled.div`
 
 export const MenuButtonContainer = styled.div<{
   $isActive: boolean;
-  $isDark: boolean;
+  $isLight: boolean;
 }>`
   height: auto;
   display: block;
@@ -24,8 +24,8 @@ export const MenuButtonContainer = styled.div<{
       theme: {
         colors: { gradients },
       },
-      $isDark,
-    }) => ($isDark ? gradients.dark : gradients.light)};
+      $isLight,
+    }) => ($isLight ? gradients.dark : gradients.light)};
   }
   & :first-child {
     animation-name: ${({ $isActive }) => ($isActive ? activeOne : inactiveOne)};

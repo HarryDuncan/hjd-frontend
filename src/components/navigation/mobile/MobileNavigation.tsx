@@ -38,12 +38,12 @@ export const MobileNavigation = ({
         isDark={isNavTop}
       />
 
-      <NavItemContainer $isOpen={isMenuOpen} $isDark={!isNavTop}>
+      <NavItemContainer $isOpen={isMenuOpen} $isLight={!isNavTop}>
         {isMenuOpen && (
           <>
             {SITE_PAGES.map((page: PageItem, index: number) => (
               <MobileText
-                $isDark={isNavTop}
+                $isLight={isNavTop}
                 key={`${index}-${isNavTop}`}
                 onClick={() => handleLinkClick(page.link)}
               >

@@ -1,37 +1,38 @@
+import { NAV_HEIGHT } from "components/navigation/styledComponents";
 import styled from "styled-components";
 
-export const ScrollLeft = styled.img`
+const ViewItemIcon = styled.img`
   position: absolute;
-  height: 2rem;
-  left: 1rem;
-  top: 50%;
+  height: 2.5rem;
   cursor: pointer;
+`;
+export const ScrollLeft = styled(ViewItemIcon)`
+  left: 3%;
+  top: 50%;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     top: auto;
   }
 `;
 
-export const ScrollRight = styled.img`
-  position: absolute;
-  right: 1rem;
+export const ScrollRight = styled(ViewItemIcon)`
+  right: 3%;
   top: 50%;
-  height: 2rem;
-  cursor: pointer;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     top: auto;
   }
 `;
 
-export const Exit = styled.img`
-  position: absolute;
-  right: 1rem;
+export const Exit = styled(ViewItemIcon)`
+  right: 3%;
   top: 4rem;
-  height: 2rem;
-  cursor: pointer;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
-    top: auto;
+    top: 8vh;
+  }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    top: ${NAV_HEIGHT};
   }
 `;

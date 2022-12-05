@@ -6,6 +6,8 @@ declare module "styled-components" {
     colors: {
       mono: {
         background: string;
+        lightText: "#f0f0f0";
+        darkText: "#030303";
       };
 
       brand: {

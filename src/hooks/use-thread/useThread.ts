@@ -7,18 +7,20 @@ export const useThread = (
   renderer: WebGLRenderer | CSS3DRenderer | undefined,
   currentFrameRef: MutableRefObject<number>,
   scene: Scene | null,
-  camera: PerspectiveCamera | null
+  camera: PerspectiveCamera | null,
+  sceneIndex: number
 ) => {
+  console.log(sceneIndex);
   const update = useCallback(() => {
     if (!renderer || !scene || !camera) {
       console.warn("renderer not defined");
       return;
     }
     ev("scene:update");
-    console.log(scene);
+    console.log(scene.name);
     renderer.render(scene, camera);
     currentFrameRef.current = requestAnimationFrame(update);
-  }, [currentFrameRef, renderer, scene, camera]);
+  }, [currentFrameRef, renderer, scene, camera, sceneIndex]);
 
   const pause = useCallback(() => {
     cancelAnimationFrame(currentFrameRef.current);

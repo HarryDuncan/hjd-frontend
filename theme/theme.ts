@@ -9,6 +9,8 @@ export const THEME: DefaultTheme = {
   colors: {
     mono: {
       background: "#fafaff",
+      lightText: "#f0f0f0",
+      darkText: "#030303",
     },
 
     brand: {

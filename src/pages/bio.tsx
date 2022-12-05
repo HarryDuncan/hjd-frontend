@@ -37,7 +37,7 @@ const Bio: NextPage = () => {
               imageUrl={image.imageUrl}
             />
             <TextContainer>
-              <MainTitle $isDark={false}>{text[index].title}</MainTitle>
+              <MainTitle $isLight={false}>{text[index].title}</MainTitle>
               <ContentText>{text[index].content}</ContentText>
             </TextContainer>
           </InnerContainer>

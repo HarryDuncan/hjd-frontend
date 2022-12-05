@@ -86,8 +86,8 @@ const initializeScene = async (sceneData: ArtLavaLampData) => {
   camera.position.set(-500, 500, 1500);
   camera.position.set(0, 0, 1500);
   camera.name = "art-lava";
-  // SCENE
 
+  // SCENE
   const {
     data: { assets },
   } = sceneData;
@@ -103,15 +103,15 @@ const initializeScene = async (sceneData: ArtLavaLampData) => {
   const sceneParams = { ...SCENE_PARAMS, scene: new Scene() };
   sceneParams.paths = pathUrls;
   sceneParams.scene.background = new Color(0xffffff);
-  addMarchingCubes(sceneParams.scene, advancedMaterial, sceneParams);
+  addMarchingCubes(advancedMaterial, sceneParams);
 
   // Set up lights and add to scene and sceneparams
-  setUpLights(sceneParams.scene, sceneParams);
-
+  setUpLights(sceneParams);
+  sceneParams.scene.name = "artLavaLamp";
   return { camera, scene: sceneParams.scene, sceneParams };
 };
 
-const setUpLights = (scene: Scene, sceneParams: ArtLavaLampSceneParams) => {
+const setUpLights = (sceneParams: ArtLavaLampSceneParams) => {
   const directionalLight = new DirectionalLight(0xffffff);
   directionalLight.position.set(0.5, 0.5, 1);
   sceneParams.scene.add(directionalLight);
@@ -147,12 +147,11 @@ const updateCubes = (object: any, time: any, numblobs: number) => {
 };
 
 const addMarchingCubes = (
-  scene: Scene,
   advancedMaterial: any,
   sceneParams: ArtLavaLampSceneParams
 ) => {
   const resolution = 105;
-  const material = new MeshPhongMaterial({ specular: 0x111111, shininess: 1 });
+  const { material } = advancedMaterial;
   const effect = new MarchingCubes(resolution, material, true, true, 100000);
   effect.position.set(0, 0, 0);
   effect.scale.set(700, 700, 700);

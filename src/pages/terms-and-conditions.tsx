@@ -4,7 +4,7 @@ import { MainTitle } from "components/styled-components/Text";
 const TermsAndConditions = () => {
   return (
     <Layout>
-      <MainTitle $isDark={true}> Terms and Conditions</MainTitle>
+      <MainTitle $isLight={true}> Terms and Conditions</MainTitle>
       <p>
         Harry J Dee is an online fundraising service and ecommerce store that is
         owned and operated by Harry J Dee trading as Harry J Dee (Harry J Dee,

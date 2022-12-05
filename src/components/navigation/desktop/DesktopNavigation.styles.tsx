@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NavItemList = styled.ul`
   display: flex;
-  margin-top: 1rem;
+  margin-top: 0rem;
   list-style: none;
   margin-right: 2.5%;
   text-align: center;
@@ -24,7 +24,7 @@ export const NavItemLabel = styled.span<{ $isNavTop: boolean }>`
   text-align: right;
   cursor: pointer;
   font-family: "HarryDuncan";
-  font-size: 2.7rem;
+  font-size: 3.5rem;
   margin: 0;
   letter-spacing: 0.2rem;
   text-transform: uppercase;
@@ -45,7 +45,7 @@ export const NavItemLink = styled.div<{
     display: block;
     width: 100%;
     height: 1px;
-    bottom: 0.5rem;
+    bottom: 1.5rem;
     left: 0;
     background-color: ${({ $isNavTop }) => ($isNavTop ? "#000" : "#fff")};
     transform: ${({ $isActive }) => ($isActive ? `scaleX(1)` : `scaleX(0)`)};

@@ -25,6 +25,7 @@ const Campaigns: NextPage = () => {
         hoverImageConfig={CAMPAIGN_BANNER_CONFIG}
         imageTitle="campaign-cover-img"
         imageUrl={images[0]?.imageUrl ?? ""}
+        mainTitle={"Supporting Various Causes"}
       />
       <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
         <DynamicCardGallery

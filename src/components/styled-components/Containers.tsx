@@ -51,7 +51,17 @@ export const ViewItemDetailsContainer = styled.div<{}>`
   }
 `;
 
-export const ContentContainer = styled.div`
-  width: 80%;
-  margin: 0 auto;
+export const FullScreenAnimationContainer = styled.div`
+  position: relative;
+  height: 100%;
+  width: 100%;
+`;
+
+export const OverlayDiv = styled.div`
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: ${({ theme }) => theme.colors.gradients.dark};
+  opacity: 0.65;
 `;

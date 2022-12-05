@@ -31,16 +31,16 @@ export const NavBackgroundOverlay = styled.div<{ $isOpen?: boolean }>`
   backdrop-filter: blur(2005px);
 `;
 
-export const NavTitle = styled.h1<{ $isDark?: boolean }>`
+export const NavTitle = styled.h1<{ $isLight?: boolean }>`
   margin: 0 2.5%;
   text-transform: uppercase;
-  background: ${({ $isDark, theme }) =>
-    $isDark ? theme.colors.gradients.dark : theme.colors.gradients.light};
+  background: ${({ $isLight, theme }) =>
+    $isLight ? theme.colors.gradients.dark : theme.colors.gradients.light};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.2rem;
   text-align: left;
-  font-size: 4rem;
+  font-size: 5rem;
   font-family: "Harryduncan",
     @media only screen and
       (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {

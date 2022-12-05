@@ -22,18 +22,18 @@ const scenes = [
       ],
     },
   },
-  // {
-  //   name: "SpinningBlocks",
-  //   data: {
-  //     assets: [
-  //       {
-  //         name: "mainMesh",
-  //         url: "../images/textures/cube/img-12/",
-  //         assetType: AssetTypes.geometry,
-  //       },
-  //     ],
-  //   },
-  // },
+  {
+    name: "SpinningBlocks",
+    data: {
+      assets: [
+        {
+          name: "mainMesh",
+          url: "../assets/models/blocks.glb",
+          assetType: AssetTypes.geometry,
+        },
+      ],
+    },
+  },
 ];
 const Home: NextPage = () => (
   <Layout topPadding={false}>

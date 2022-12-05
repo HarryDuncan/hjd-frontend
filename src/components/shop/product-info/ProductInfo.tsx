@@ -27,7 +27,7 @@ export const ProductInfo = ({ product }: { product: Product }) => {
         src={SCROLL_RIGHT}
         onClick={() => changeProduct(Direction.FORWARD)}
       />
-      <MainTitle $isDark={true}>{title}</MainTitle>
+      <MainTitle $isLight={true}>{title}</MainTitle>
       <ContentText>{description}</ContentText>
     </ViewItemDetailsContainer>
   );

@@ -26,6 +26,7 @@ const Shop: NextPage = () => {
         hoverImageConfig={SHOP_BANNER_CONFIG}
         imageTitle="shop-header"
         imageUrl={images[0]?.imageUrl ?? ""}
+        mainTitle={"Limited edition prints"}
       />
       <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
         <DynamicCardGallery

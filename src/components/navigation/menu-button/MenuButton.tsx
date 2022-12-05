@@ -23,7 +23,7 @@ export const MenuButton = ({ onClick, isOpen, isDark }: MenuButtonProps) => {
     <MenuButtonContainer
       onClick={handleClick}
       $isActive={isActive}
-      $isDark={isDark}
+      $isLight={isDark}
     >
       <Line />
       <Line />

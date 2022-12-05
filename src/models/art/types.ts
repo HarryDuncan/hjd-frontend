@@ -7,6 +7,7 @@ export type Painting = {
   title: string;
   yearCompleted: number;
   slug: string;
+  dimensions: string;
 };
 
 export type FetchArtResponse = {

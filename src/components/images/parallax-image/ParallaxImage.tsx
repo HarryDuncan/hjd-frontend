@@ -7,18 +7,18 @@ interface ParallaxImageProps {
   imageUrl: string;
   imageTitle: string;
   hoverImageConfig: ImageHoverConfig;
+  mainTitle?: string;
 }
 
 export const ParallaxImage = ({
   imageUrl = "",
   imageTitle = "img",
   hoverImageConfig,
+  mainTitle,
 }: ParallaxImageProps) => {
   return (
     <ImageContainer>
-      <MainTitle $isDark={false}>
-        Original, Exclusive and Premium Goods
-      </MainTitle>
+      {mainTitle && <MainTitle $isLight={false}>{mainTitle}</MainTitle>}
       <ImageHover
         hoverImageConfig={hoverImageConfig}
         imageUrl={imageUrl}

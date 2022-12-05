@@ -9,7 +9,7 @@ export type Campaign = {
   startDate: string;
   endDate: string;
   coverImage: string;
-  sceneName: string;
+  componentId: string;
   slug: string;
 };
 

@@ -4,10 +4,10 @@ import { FunctionBasedScene } from "../types";
 export const useUpdateScene = (
   initializedScenes: FunctionBasedScene[],
   areScenesInitialized: boolean,
-  sceneIndex: React.MutableRefObject<number>
+  sceneIndex: number
 ) => {
   const updateScene = useCallback(() => {
-    const currentIndex = sceneIndex.current;
+    const currentIndex = sceneIndex;
     const currentScene: FunctionBasedScene = initializedScenes[currentIndex];
     if (currentScene) {
       currentScene.onUpdate(currentScene.sceneParams);

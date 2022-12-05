@@ -1,10 +1,10 @@
-import Layout from "components/layout/DefaultLayout";
+import { CampaignContent } from "components/campaigns/content";
+import ViewCampaign from "components/layout/CampaignLayout";
 import {
   Exit,
   ScrollLeft,
   ScrollRight,
 } from "components/styled-components/Images";
-import { MainTitle } from "components/styled-components/Text";
 import { EXIT, SCROLL_LEFT, SCROLL_RIGHT } from "constants/ui.constants";
 import { useGetCampaign } from "hooks/campaigns/useGetCampaign";
 import { useScrollCampaigns } from "hooks/campaigns/useScrollCampaigns";
@@ -18,7 +18,7 @@ const Slug = () => {
   const changeCampaign = useScrollCampaigns();
   if (!campaign) return null;
   return (
-    <Layout>
+    <ViewCampaign>
       <Exit src={EXIT} onClick={handleExit} />
       <ScrollLeft
         src={SCROLL_LEFT}
@@ -28,8 +28,8 @@ const Slug = () => {
         src={SCROLL_RIGHT}
         onClick={() => changeCampaign(Direction.FORWARD)}
       />
-      <MainTitle $isDark={true}>{campaign.title}</MainTitle>
-    </Layout>
+      <CampaignContent />
+    </ViewCampaign>
   );
 };
 

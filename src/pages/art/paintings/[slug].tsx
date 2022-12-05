@@ -37,12 +37,17 @@ const PaintingDetails = () => {
           src={SCROLL_RIGHT}
           onClick={() => changePainting(Direction.FORWARD)}
         />
-        <MainTitle $isDark>{painting.title}</MainTitle>
+        <MainTitle $isLight>{painting.title}</MainTitle>
         <ContentContainer>
           <ContentText>{painting.description}</ContentText>
           <br />
           <br />
           {painting.medium && <ContentText>{painting.medium}</ContentText>}
+          <br />
+          <br />
+          {painting.dimensions && (
+            <ContentText>{painting.dimensions}</ContentText>
+          )}
           <br />
           <br />
           {painting.yearCompleted && (

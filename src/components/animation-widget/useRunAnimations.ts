@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect } from "react";
+import { MutableRefObject, useEffect, useMemo, useState } from "react";
 import { useThreeJs } from "hooks/use-three-js/useThreeJs";
 import { useThread, useThreadWithPostProcessor } from "hooks/use-thread";
 import { AnimationWidgetScene, FunctionBasedScene } from "./types";
@@ -10,8 +10,9 @@ import { useChangeScenes } from "./scenes/useChangeScenes";
 import { WebGLRenderer } from "three";
 
 export const useRunAnimations = (sceneParams: AnimationWidgetScene[]) => {
+  const [sceneIndex, updateSceneIndex] = useState<number>(0);
   // Refs
-  const { sceneIndex, isRunningRef } = useAnimationWidgetRefs();
+  const { isRunningRef } = useAnimationWidgetRefs();
 
   const { container, postProcessor, renderer, currentFrameRef, clock } =
     useThreeJs();
@@ -34,7 +35,7 @@ export const useRunAnimations = (sceneParams: AnimationWidgetScene[]) => {
 
   useEffect(() => {
     if (areScenesInitialized) {
-      setActiveScene(0);
+      setActiveScene(sceneIndex);
       update();
     }
   }, [areScenesInitialized, setActiveScene, update]);
@@ -44,6 +45,7 @@ export const useRunAnimations = (sceneParams: AnimationWidgetScene[]) => {
     initializedScenes,
     areScenesInitialized,
     sceneIndex,
+    updateSceneIndex,
     postProcessor
   );
   return { container, currentFrameRef, pause };
@@ -52,14 +54,35 @@ export const useRunAnimations = (sceneParams: AnimationWidgetScene[]) => {
 function useThreadWithWidget(
   initializedScenes: FunctionBasedScene[],
   areScenesInitialized: boolean,
-  sceneIndex: MutableRefObject<number>,
+  sceneIndex: number,
   renderer: WebGLRenderer,
   currentFrameRef: React.MutableRefObject<number>
 ) {
-  const { scene, camera } = initializedScenes[sceneIndex.current] ?? {
-    scene: null,
-    camera: null,
-  };
-  const { update, pause } = useThread(renderer, currentFrameRef, scene, camera);
+  const { scene, camera } = useCurrentSceneAndCamera(
+    initializedScenes,
+    sceneIndex
+  );
+
+  const { update, pause } = useThread(
+    renderer,
+    currentFrameRef,
+    scene,
+    camera,
+    sceneIndex
+  );
+
   return { update, pause };
 }
+
+const useCurrentSceneAndCamera = (
+  initializedScenes: FunctionBasedScene[],
+  sceneIndex: number
+) =>
+  useMemo(
+    () =>
+      initializedScenes[sceneIndex] ?? {
+        scene: null,
+        camera: null,
+      },
+    [initializedScenes, sceneIndex]
+  );

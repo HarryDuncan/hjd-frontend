@@ -11,7 +11,7 @@ import {
 export const SITE_PAGES = [
   { title: "Home", link: "/" },
   { title: "About", link: "/bio" },
-  { title: "Mixes", link: "/music" },
+  // { title: "Mixes", link: "/music" },
   { title: "Art", link: "/art" },
   { title: "Campaigns", link: "/campaigns" },
   { title: "Shop", link: "/shop" },
@@ -72,7 +72,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <NavBackgroundOverlay $isOpen={!isNavTop || isNavDark} />
-      <NavTitle $isDark={isNavTop && !isNavDark}>HARRY J DEE</NavTitle>
+      <NavTitle $isLight={isNavTop && !isNavDark}>HARRY J DEE</NavTitle>
       {LARGE_NAV_WINDOW_SIZES.includes(windowSize) ? (
         <DesktopNav
           isNavTop={isNavTop}
