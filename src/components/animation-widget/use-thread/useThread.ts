@@ -1,26 +1,30 @@
-import { ev } from "hooks/use-events/useEvents";
+import { FunctionBasedScene } from "components/animation-widget/types";
 import { MutableRefObject, useCallback, useEffect } from "react";
-import { PerspectiveCamera, Scene, WebGLRenderer } from "three";
-import { CSS3DRenderer } from "three/examples/jsm/renderers/CSS3DRenderer";
+import { WebGLRenderer } from "three";
 
 export const useThread = (
-  renderer: WebGLRenderer | CSS3DRenderer | undefined,
+  renderer: WebGLRenderer | undefined,
   currentFrameRef: MutableRefObject<number>,
-  scene: Scene | null,
-  camera: PerspectiveCamera | null,
+  initializedScenes: FunctionBasedScene[],
   sceneIndex: number
 ) => {
-  console.log(sceneIndex);
   const update = useCallback(() => {
-    if (!renderer || !scene || !camera) {
+    const { scene, camera, onUpdate, sceneParams } = initializedScenes[
+      sceneIndex
+    ] ?? {
+      scene: null,
+      camera: null,
+      onUpdate: null,
+      sceneParams: null,
+    };
+    if (!renderer || !scene || !camera || !onUpdate || !sceneParams) {
       console.warn("renderer not defined");
       return;
     }
-    ev("scene:update");
-    console.log(scene.name);
+    onUpdate(sceneParams);
     renderer.render(scene, camera);
     currentFrameRef.current = requestAnimationFrame(update);
-  }, [currentFrameRef, renderer, scene, camera, sceneIndex]);
+  }, [currentFrameRef, renderer, initializedScenes, sceneIndex]);
 
   const pause = useCallback(() => {
     cancelAnimationFrame(currentFrameRef.current);

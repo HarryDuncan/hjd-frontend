@@ -26,6 +26,7 @@ const Campaigns: NextPage = () => {
         imageTitle="campaign-cover-img"
         imageUrl={images[0]?.imageUrl ?? ""}
         mainTitle={"Supporting Various Causes"}
+        imageHeightPx={400}
       />
       <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
         <DynamicCardGallery

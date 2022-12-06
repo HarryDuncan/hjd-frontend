@@ -37,7 +37,7 @@ const PaintingDetails = () => {
           src={SCROLL_RIGHT}
           onClick={() => changePainting(Direction.FORWARD)}
         />
-        <MainTitle $isLight>{painting.title}</MainTitle>
+        <MainTitle $isLight={false}>{painting.title}</MainTitle>
         <ContentContainer>
           <ContentText>{painting.description}</ContentText>
           <br />
@@ -45,13 +45,13 @@ const PaintingDetails = () => {
           {painting.medium && <ContentText>{painting.medium}</ContentText>}
           <br />
           <br />
-          {painting.dimensions && (
-            <ContentText>{painting.dimensions}</ContentText>
+          {painting.yearCompleted && (
+            <ContentText>Completed in {painting.yearCompleted}</ContentText>
           )}
           <br />
           <br />
-          {painting.yearCompleted && (
-            <ContentText>Completed in {painting.yearCompleted}</ContentText>
+          {painting.dimensions && (
+            <ContentText>{painting.dimensions}</ContentText>
           )}
         </ContentContainer>
       </ViewItemDetailsContainer>

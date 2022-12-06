@@ -2,12 +2,8 @@ import { FunctionBasedScene } from "components/animation-widget/types";
 import { Asset } from "models/visuals/types";
 import {
   AmbientLight,
-  BoxGeometry,
   Color,
   DirectionalLight,
-  Mesh,
-  MeshBasicMaterial,
-  MeshPhongMaterial,
   PerspectiveCamera,
   PointLight,
   Scene,
@@ -82,6 +78,7 @@ interface ArtLavaLampSceneParams {
 
 const initializeScene = async (sceneData: ArtLavaLampData) => {
   // Camera
+  console.warn("setting up scene");
   const camera = new PerspectiveCamera(50, 1, 0.01, 2000);
   camera.position.set(-500, 500, 1500);
   camera.position.set(0, 0, 1500);

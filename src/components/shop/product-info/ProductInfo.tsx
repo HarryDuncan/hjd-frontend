@@ -4,7 +4,11 @@ import {
   ScrollLeft,
   ScrollRight,
 } from "components/styled-components/Images";
-import { ContentText, MainTitle } from "components/styled-components/Text";
+import {
+  ContentSubText,
+  ContentText,
+  MainTitle,
+} from "components/styled-components/Text";
 import { EXIT, SCROLL_LEFT, SCROLL_RIGHT } from "constants/ui.constants";
 import { useScrollProducts } from "hooks/shop/useScrollProducts";
 import { Product } from "models/shop/types";
@@ -27,8 +31,10 @@ export const ProductInfo = ({ product }: { product: Product }) => {
         src={SCROLL_RIGHT}
         onClick={() => changeProduct(Direction.FORWARD)}
       />
-      <MainTitle $isLight={true}>{title}</MainTitle>
+      <MainTitle $isLight={false}>{title}</MainTitle>
       <ContentText>{description}</ContentText>
+      <br />
+      <ContentSubText>Sold Out</ContentSubText>
     </ViewItemDetailsContainer>
   );
 };

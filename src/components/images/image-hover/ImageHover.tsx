@@ -50,7 +50,7 @@ export const ImageHover = ({
 
   return (
     <HoverImageContainer
-      onMouseEnter={onMouseEnter}
+      onMouseOver={onMouseEnter}
       onMouseLeave={onMouseLeave}
       $backgroundImgUrl={imageUrl}
       $imageProps={hoverImageConfig.final}

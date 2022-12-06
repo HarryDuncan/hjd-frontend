@@ -21,7 +21,6 @@ export const InnerContainer = styled.div<{ $topOffset?: number }>`
   width: 100%;
   display: block;
   margin-top: ${({ $topOffset }) => $topOffset ?? 0}px;
-  margin-bottom: 1rem;
   z-index: 2;
   position: relative;
 `;
@@ -50,7 +49,10 @@ export const ViewItemDetailsContainer = styled.div<{}>`
     width: 100%;
   }
 `;
-
+export const ContentContainer = styled.div`
+  width: 80%;
+  margin: 0 auto;
+`;
 export const FullScreenAnimationContainer = styled.div`
   position: relative;
   height: 100%;

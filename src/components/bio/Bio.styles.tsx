@@ -7,6 +7,7 @@ export const TextContainer = styled.div`
   color: white;
   left: 10%;
   text-align: center;
+  pointer-events: none;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     width: 95%;

@@ -24,7 +24,7 @@ export const NavItemLabel = styled.span<{ $isNavTop: boolean }>`
   text-align: right;
   cursor: pointer;
   font-family: "HarryDuncan";
-  font-size: 3.5rem;
+  font-size: 4rem;
   margin: 0;
   letter-spacing: 0.2rem;
   text-transform: uppercase;
@@ -45,7 +45,7 @@ export const NavItemLink = styled.div<{
     display: block;
     width: 100%;
     height: 1px;
-    bottom: 1.5rem;
+    bottom: 0.2rem;
     left: 0;
     background-color: ${({ $isNavTop }) => ($isNavTop ? "#000" : "#fff")};
     transform: ${({ $isActive }) => ($isActive ? `scaleX(1)` : `scaleX(0)`)};

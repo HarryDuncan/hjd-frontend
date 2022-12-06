@@ -7,6 +7,7 @@ export const MainTitle = styled.h1<{ $isLight?: boolean }>`
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   text-align: center;
+  pointer-events: none;
   position: relative;
   background: ${({ $isLight, theme }) =>
     $isLight ? theme.colors.gradients.light : theme.colors.gradients.dark};
@@ -22,6 +23,16 @@ export const ContentText = styled.span<{ $isLight?: boolean }>`
   font-size: 1rem;
   letter-spacing: 0.2rem;
   font-weight: 300;
+  white-space: pre-wrap;
+`;
+
+export const ContentSubText = styled.span`
+  font-family: arial;
+  color: ${({ theme }) => theme.colors.mono.lightGray};
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  font-weight: 300;
+  white-space: pre-wrap;
 `;
 
 export const Label = styled.span`

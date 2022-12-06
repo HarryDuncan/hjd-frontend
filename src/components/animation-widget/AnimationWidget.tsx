@@ -16,7 +16,6 @@ const AnimationWidget = ({
   viewHeight = "100vh",
 }: AnimationWidgetProps) => {
   const { container, currentFrameRef, pause } = useRunAnimations(scenes);
-
   useEffect(() => () => pause(), [currentFrameRef]);
 
   return (

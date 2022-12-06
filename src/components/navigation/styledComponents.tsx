@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-export const NAV_HEIGHT = "10vh";
+export const NAV_HEIGHT = "8vh";
 
 export const NavigationContainer = styled.div<{}>`
   margin: 0 auto;
@@ -49,13 +49,12 @@ export const NavTitle = styled.h1<{ $isLight?: boolean }>`
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    font-size: 3.7rem;
-    margin: 0.25rem 0.5rem;
+    font-size: 4.4rem;
+    margin: 0rem 0.5rem;
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.smallMobile}px) {
-    font-size: 3.1rem;
-    margin: 0.25rem 0.5rem;
+    margin: 0rem 0.5rem;
   }
 `;
 

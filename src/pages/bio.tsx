@@ -3,26 +3,13 @@ import { ImageHover } from "components/images/image-hover";
 import Layout from "components/layout/DefaultLayout";
 import { InnerContainer } from "components/styled-components/Containers";
 import { ContentText, MainTitle } from "components/styled-components/Text";
+import {
+  BIO_BANNER_CONFIG,
+  BIO_PAGE_SECTIONS,
+  IMAGE_CONTENT_SECTIONS,
+} from "constants/bio.constants";
 import { useContentForPage } from "hooks/content/useContentForPage";
 import type { NextPage } from "next";
-
-const BIO_PAGE_SECTIONS = ["Artist", "Creative Technologist", "DJ"];
-const IMAGE_CONTENT_SECTIONS = [
-  "artist",
-  "creative-technologist",
-  "DJ",
-] as string[];
-
-const BIO_BANNER_CONFIG = {
-  default: {
-    heightPx: 500,
-    positionPercentage: { x: 50, y: 50 },
-  },
-  final: {
-    heightPx: 500,
-    positionPercentage: { x: 20, y: 20 },
-  },
-};
 
 const Bio: NextPage = () => {
   const { text, images } = useBioPageContent();
@@ -37,8 +24,8 @@ const Bio: NextPage = () => {
               imageUrl={image.imageUrl}
             />
             <TextContainer>
-              <MainTitle $isLight={false}>{text[index].title}</MainTitle>
-              <ContentText>{text[index].content}</ContentText>
+              <MainTitle $isLight={true}>{text[index].title}</MainTitle>
+              <ContentText $isLight={true}>{text[index].content}</ContentText>
             </TextContainer>
           </InnerContainer>
         ))}

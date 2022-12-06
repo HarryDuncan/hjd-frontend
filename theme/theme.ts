@@ -11,6 +11,7 @@ export const THEME: DefaultTheme = {
       background: "#fafaff",
       lightText: "#f0f0f0",
       darkText: "#030303",
+      lightGray: "#949292",
     },
 
     brand: {

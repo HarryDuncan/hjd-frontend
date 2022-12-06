@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 export const Line = styled.div`
   width: 50px;
-  height: 5px;
+  height: 10px;
   display: block;
 `;
 
@@ -13,13 +13,13 @@ export const MenuButtonContainer = styled.div<{
   height: auto;
   display: block;
   margin-right: 1rem;
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   ${Line} {
-    margin: 7px auto;
+    margin: 5px auto;
     background: ${({
       theme: {
         colors: { gradients },
@@ -47,13 +47,13 @@ export const activeOne = keyframes`
    
   }
   to {
-    transform: translateY(12px) rotate(45deg);
+    transform: translateY(18px) rotate(45deg);
   }
 }`;
 
 export const inactiveOne = keyframes`
  from {
-    transform: translateY(12px) rotate(45deg);
+    transform: translateY(18px) rotate(45deg);
   }
   to {
     transform: translateY(0) rotate(0);

@@ -3,11 +3,11 @@ export const CAMPAIGN_IMAGES = ["banner3"];
 
 export const CAMPAIGN_BANNER_CONFIG = {
   default: {
-    heightPx: 100,
+    heightPx: 150,
     positionPercentage: { x: 50, y: 50 },
   },
   final: {
-    heightPx: 100,
+    heightPx: 150,
     positionPercentage: { x: 20, y: 20 },
   },
 };

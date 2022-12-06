@@ -16,7 +16,6 @@ export const useChangeScenes = (
         initializedScenes,
         updatedIndex ?? sceneIndex
       );
-      console.log(newIndex);
       updateSceneIndex(newIndex);
       const currentScene = initializedScenes[newIndex];
       if (currentScene.camera && currentScene.scene) {
@@ -34,7 +33,6 @@ export const useChangeScenes = (
 
   useEffect(() => {
     if (areScenesInitialized) {
-      console.log(sceneIndex);
       const currentSceneIndex = sceneIndex;
       const { sceneLength } = initializedScenes[
         currentSceneIndex

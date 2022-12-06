@@ -100,6 +100,7 @@ const updateMaterialIndex = (sceneParams: SceneParams) =>
     ? 0
     : sceneParams.materialIndex + 1;
 const onUpdate = (sceneParams: SceneParams) => {
+  console.log("playing blocks");
   if (sceneParams.reinitialise) {
     sceneParams.shouldChangeColors = true;
     sceneParams.reinitialise = false;

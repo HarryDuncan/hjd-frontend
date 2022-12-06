@@ -1,10 +1,10 @@
-import styled, { keyframes, ThemeConsumer } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const NavItemContainer = styled.div<{
   $isOpen: boolean;
   $isLight: boolean;
 }>`
-  margin-top: 4rem;
+  margin-top: 7vh;
   width: 100vw;
   height: 100vh;
   background: ${({ $isLight, theme }) =>
