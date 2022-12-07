@@ -39,7 +39,7 @@ const shrinkNav = keyframes`
 export const MobileText = styled.span<{ $isLight: boolean }>`
   text-align: right;
   cursor: pointer;
-  font-family: "HarryDuncan";
+  font-family: "Harryduncan";
   text-transform: uppercase;
   padding-right: 0.5rem;
   background: ${({

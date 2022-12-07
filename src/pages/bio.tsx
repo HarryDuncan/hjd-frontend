@@ -17,7 +17,7 @@ const Bio: NextPage = () => {
     <Layout>
       <BioPage>
         {images.map((image, index) => (
-          <InnerContainer $topOffset={0}>
+          <InnerContainer $topOffset={0} key={index}>
             <ImageHover
               hoverImageConfig={BIO_BANNER_CONFIG}
               title={image.title}

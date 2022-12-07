@@ -2,19 +2,18 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
 @font-face {
-  font-family: "HarryDuncan";
+  font-family: "Harryduncan";
   font-style: normal;
   font-weight: 100;
-  src: local("HarryDuncan");
+  src: url(/fonts/Harryduncan.woff2), format("woff2");
   src: url("/fonts/Harryduncan.eot");
   src: url("/fonts/Harryduncan.otf") format("opentype");
-  src: url(/fonts/HarryDuncan.woff), format("woff");
-  src: url(/fonts/HarryDuncan.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url(/fonts/Harryduncan.ttf") format("truetype"); /* Safari, Android, iOS */
 }
   body {
     
   }
   
- h1 { font-family : 'HarryDuncan'}
- h2 { font-family : 'HarryDuncan'}
+ h1 { font-family : 'Harryduncan'}
+ h2 { font-family : 'Harryduncan'}
 `;

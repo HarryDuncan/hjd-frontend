@@ -100,14 +100,13 @@ const updateMaterialIndex = (sceneParams: SceneParams) =>
     ? 0
     : sceneParams.materialIndex + 1;
 const onUpdate = (sceneParams: SceneParams) => {
-  console.log("playing blocks");
   if (sceneParams.reinitialise) {
     sceneParams.shouldChangeColors = true;
     sceneParams.reinitialise = false;
   }
 
   const delta = 1;
-  sceneParams.time += delta * 0.5;
+  sceneParams.time += delta * 0.005;
   sceneParams.camera.position.set(
     moveCameraZ(sceneParams.time, 15),
     sceneParams.camera.position.y,

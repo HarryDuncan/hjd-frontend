@@ -1,6 +1,5 @@
 import { DynamicAnimationWidget } from "components/animation-widget/DynamicAnimationWidget";
 import Layout from "components/layout/DefaultLayout";
-import { PageContainer } from "components/styled-components/Containers";
 import { AssetTypes } from "models/visuals/types";
 import type { NextPage } from "next";
 

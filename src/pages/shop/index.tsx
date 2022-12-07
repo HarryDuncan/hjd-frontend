@@ -15,13 +15,14 @@ import { useShopData } from "hooks/shop/useShopData";
 import { useProductsWithVariations } from "hooks/shop/useProductsWithVariations";
 import { useMemo } from "react";
 import { ProductCardFooter } from "components/shop";
+import { DynamicLayout } from "components/layout/DynamicLayout";
 
 const Shop: NextPage = () => {
   const productGalleryItems = useProductsInGallery();
   const { images } = useContentForPage({ imageSelection: SHOP_IMAGES });
   const handleRouting = useHandleRouting("shop/products/");
   return (
-    <Layout>
+    <DynamicLayout>
       <ParallaxImage
         hoverImageConfig={SHOP_BANNER_CONFIG}
         imageTitle="shop-header"
@@ -34,7 +35,7 @@ const Shop: NextPage = () => {
           onClick={handleRouting}
         />
       </InnerContainer>
-    </Layout>
+    </DynamicLayout>
   );
 };
 

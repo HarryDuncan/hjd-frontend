@@ -57,7 +57,7 @@ export const ImageHover = ({
     >
       {Array.from(Array(REPETITIONS).keys()).map((key, index) =>
         key === 0 ? (
-          <ImageWrap>
+          <ImageWrap key={index}>
             <DefaultImage
               $backgroundImgUrl={imageUrl}
               $imageProps={hoverImageConfig.default}
@@ -66,6 +66,7 @@ export const ImageHover = ({
           </ImageWrap>
         ) : (
           <DefaultImage
+            key={index}
             $backgroundImgUrl={imageUrl}
             $imageProps={hoverImageConfig.default}
             ref={refs[index]}

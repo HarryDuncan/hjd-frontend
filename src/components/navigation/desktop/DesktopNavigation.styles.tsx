@@ -23,7 +23,7 @@ export const NavItem = styled.li`
 export const NavItemLabel = styled.span<{ $isNavTop: boolean }>`
   text-align: right;
   cursor: pointer;
-  font-family: "HarryDuncan";
+  font-family: "Harryduncan";
   font-size: 4rem;
   margin: 0;
   letter-spacing: 0.2rem;

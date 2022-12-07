@@ -6,7 +6,7 @@ import { useArtData } from "hooks/art/useArtData";
 
 import { Painting } from "models/art/types";
 import type { NextPage } from "next";
-import { useMemo } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useHandleRouting } from "hooks/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
 import {
@@ -15,6 +15,8 @@ import {
   ART_ROOT_URL,
 } from "constants/art.constants";
 import { MAIN_GALLERY_TOP_OFFSET } from "constants/ui.constants";
+import { SkeletonCard } from "components/loading/skeleton/SkeletonCard";
+import { DynamicLayout } from "components/layout/DynamicLayout";
 
 const Art: NextPage = () => {
   const {
@@ -26,21 +28,27 @@ const Art: NextPage = () => {
   });
 
   const handleRouting = useHandleRouting("art/paintings/");
+  const [loading, setIsLoading] = useState<boolean>(true);
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
   return (
-    <Layout>
-      <ParallaxImage
-        hoverImageConfig={ART_BANNER_CONFIG}
-        imageUrl={images[0]?.imageUrl ?? ""}
-        imageTitle={images[0]?.title ?? ""}
-        mainTitle={"View Original Pieces"}
-      />
-      <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
-        <DynamicCardGallery
-          items={paintingGalleryItems}
-          onClick={handleRouting}
+    <Suspense fallback={SkeletonCard}>
+      <DynamicLayout>
+        <ParallaxImage
+          hoverImageConfig={ART_BANNER_CONFIG}
+          imageUrl={images[0]?.imageUrl ?? ""}
+          imageTitle={images[0]?.title ?? ""}
+          mainTitle={"View Original Pieces"}
         />
-      </InnerContainer>
-    </Layout>
+        <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
+          <DynamicCardGallery
+            items={paintingGalleryItems}
+            onClick={handleRouting}
+          />
+        </InnerContainer>
+      </DynamicLayout>
+    </Suspense>
   );
 };
 

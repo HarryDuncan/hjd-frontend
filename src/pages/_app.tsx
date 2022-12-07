@@ -4,21 +4,21 @@ import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle, THEME } from "../../theme";
-import { initializeIcons } from "@uifabric/icons";
 
-initializeIcons();
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   const isSplashShowing = useSplash();
   return (
-    <ThemeProvider theme={THEME}>
-      <GlobalStyle />
-      <QueryClientProvider client={queryClient}>
-        <Splash isVisible={isSplashShowing} />
-        <Component {...pageProps} />
-      </QueryClientProvider>
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={THEME}>
+        <GlobalStyle />
+        <QueryClientProvider client={queryClient}>
+          <Splash isVisible={isSplashShowing} />
+          <Component {...pageProps} />
+        </QueryClientProvider>
+      </ThemeProvider>
+    </>
   );
 }
 
