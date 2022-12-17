@@ -6,17 +6,17 @@ export const AIDS_DAY_SCENE = [
     data: [
       {
         name: "background-image",
-        url: "/images/textures/harryJdee.jpg",
-        assetType: AssetTypes.texture,
-      },
-      {
-        name: "background-image",
         url: "/images/campaigns/AidsDay.jpg",
         assetType: AssetTypes.texture,
       },
       {
-        name: "background-image",
-        url: "/images/campaigns/PayTheRent.jpg",
+        name: "revealed-image",
+        url: "/images/textures/harryJdee.jpg",
+        assetType: AssetTypes.texture,
+      },
+      {
+        name: "shape",
+        url: "/images/textures/harryJdee.jpg",
         assetType: AssetTypes.texture,
       },
     ],

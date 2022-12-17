@@ -5,6 +5,7 @@ export const getRatio = (height: number, width: number) => {
     width,
     height,
   ]);
+  console.log(m);
 
   const originalRatio = {
     w: m[0] / width,
