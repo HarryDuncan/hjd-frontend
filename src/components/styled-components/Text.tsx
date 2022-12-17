@@ -22,7 +22,7 @@ export const ContentText = styled.span<{ $isLight?: boolean }>`
     $isLight ? theme.colors.mono.lightText : theme.colors.mono.darkText};
   font-size: 1rem;
   letter-spacing: 0.2rem;
-  font-weight: 300;
+  font-weight: 600;
   white-space: pre-wrap;
 `;
 

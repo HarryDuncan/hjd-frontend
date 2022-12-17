@@ -5,6 +5,7 @@ const ViewItemIcon = styled.img`
   position: absolute;
   height: 2.5rem;
   cursor: pointer;
+  z-index: 5;
 `;
 export const ScrollLeft = styled(ViewItemIcon)`
   left: 3%;

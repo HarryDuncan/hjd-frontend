@@ -21,18 +21,6 @@ const scenes = [
       ],
     },
   },
-  {
-    name: "SpinningBlocks",
-    data: {
-      assets: [
-        {
-          name: "mainMesh",
-          url: "../assets/models/blocks.glb",
-          assetType: AssetTypes.geometry,
-        },
-      ],
-    },
-  },
 ];
 const Home: NextPage = () => (
   <Layout topPadding={false}>

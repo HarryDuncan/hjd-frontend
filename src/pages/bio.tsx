@@ -39,7 +39,6 @@ function useBioPageContent() {
     textSelection: BIO_PAGE_SECTIONS,
     imageSelection: IMAGE_CONTENT_SECTIONS,
   });
-
   text.sort(
     (a, b) =>
       BIO_PAGE_SECTIONS.indexOf(a.title) - BIO_PAGE_SECTIONS.indexOf(b.title)

@@ -1,4 +1,8 @@
-export const BIO_PAGE_SECTIONS = ["Artist", "Creative Technologist", "DJ"];
+export const BIO_PAGE_SECTIONS = [
+  "Visual Arts",
+  "Creative Technology",
+  "Music and Experiences",
+];
 export const IMAGE_CONTENT_SECTIONS = [
   "artist",
   "creative-technologist",

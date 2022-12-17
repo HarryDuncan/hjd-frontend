@@ -1,3 +1,4 @@
+import AnimationWidget from "components/animation-widget/AnimationWidget";
 import { OverlayDiv } from "components/styled-components/Containers";
 import { ContentText, MainTitle } from "components/styled-components/Text";
 import { useGetCampaign } from "hooks/campaigns/useGetCampaign";
@@ -5,7 +6,8 @@ import {
   CampaignContentContainer,
   DescriptionContainer,
   InnerDescriptionContainer,
-} from "./CampaignContent.styles";
+} from "../CampaignContent.styles";
+import { AIDS_DAY_SCENE } from "./aidsDay.constants";
 
 const AidsDay = () => {
   const { campaign } = useGetCampaign();
@@ -14,11 +16,12 @@ const AidsDay = () => {
   const { height, width } = useContentHeightAndWidth();
   return (
     <CampaignContentContainer>
+      <AnimationWidget scenes={AIDS_DAY_SCENE} viewWidth={"100%"} />
       <DescriptionContainer $height={height} $width={width}>
         <OverlayDiv />
         <InnerDescriptionContainer>
           <MainTitle $isLight={false}>{campaign.title}</MainTitle>
-          <ContentText $isLight={true}>{campaign.description}</ContentText>
+          <ContentText $isLight={false}>{campaign.description}</ContentText>
         </InnerDescriptionContainer>
       </DescriptionContainer>
     </CampaignContentContainer>

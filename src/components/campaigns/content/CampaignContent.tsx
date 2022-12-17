@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 const DynamicAidsDay = dynamic(
-  () => import("components/campaigns/content/AidsDay"),
+  () => import("components/campaigns/content/aids-day/AidsDay"),
   {
     suspense: true,
   }

@@ -1,6 +1,4 @@
-import { CubeTextureLoader, TextureLoader } from "three";
-
-import { createKeyName } from "./utils";
+import { CubeTextureLoader, MathUtils, Texture, TextureLoader } from "three";
 
 const getCubeUrls = (url: string, fileFormat: string) => [
   // Middle Right
@@ -56,3 +54,18 @@ export const fitTextureToPlane = (
 
   return texture;
 };
+
+export const loadTexture = (path: string) =>
+  new Promise((resolve: (value: Texture) => void) => {
+    const textureLoader = new TextureLoader();
+    textureLoader.load(path, (data) => {
+      if (
+        !MathUtils.isPowerOfTwo(data.image.width) ||
+        !MathUtils.isPowerOfTwo(data.image.height)
+      ) {
+        console.warn(`"${path}" image size is not power of 2.`);
+      }
+      data.needsUpdate = true;
+      resolve(data);
+    });
+  });
