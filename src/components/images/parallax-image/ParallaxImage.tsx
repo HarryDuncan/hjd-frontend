@@ -20,7 +20,7 @@ export const ParallaxImage = ({
 }: ParallaxImageProps) => {
   return (
     <ParallaxImageContainer $height={imageHeightPx}>
-      {mainTitle && <MainTitle $isLight={false}>{mainTitle}</MainTitle>}
+      {mainTitle && <MainTitle $isLight={true}>{mainTitle}</MainTitle>}
       <ImageHover
         hoverImageConfig={hoverImageConfig}
         imageUrl={imageUrl}

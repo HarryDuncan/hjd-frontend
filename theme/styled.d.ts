@@ -6,7 +6,7 @@ declare module "styled-components" {
     colors: {
       mono: {
         background: string;
-        lightText: "#f0f0f0";
+        lightText: "#fffcfc";
         darkText: "#030303";
         lightGray: "#949292";
       };

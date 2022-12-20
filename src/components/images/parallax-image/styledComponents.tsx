@@ -10,8 +10,9 @@ export const ParallaxImageContainer = styled.div<{ $height?: number }>`
   & ${MainTitle} {
     z-index: 4;
     position: absolute;
-    top: 0;
+    top: 5rem;
     width: 100%;
+    margin: 0 auto;
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {

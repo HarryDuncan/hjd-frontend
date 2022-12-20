@@ -1,12 +1,33 @@
 import { NAV_HEIGHT } from "components/navigation/styledComponents";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const onMouseOut = keyframes`
+100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+`;
+
+const onMouseOver = keyframes`
+ 100% {
+    opacity: 0.7;
+    transform: scale(0.7);
+  }
+`;
 
 const ViewItemIcon = styled.img`
   position: absolute;
   height: 2.5rem;
   cursor: pointer;
   z-index: 5;
+  animation-timing-function: ease-in-out;
+  -webkit-animation: ${onMouseOut} 500ms 1 forwards;
+  &:hover {
+    animation-timing-function: ease-in-out;
+    -webkit-animation: ${onMouseOver} 500ms 1 forwards;
+  }
 `;
+
 export const ScrollLeft = styled(ViewItemIcon)`
   left: 3%;
   top: 50%;

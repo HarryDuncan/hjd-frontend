@@ -1,5 +1,4 @@
 import { DynamicCardGallery } from "components/card-gallery/DynamicGallery";
-import Layout from "components/layout/DefaultLayout";
 import { ParallaxImage } from "components/images/parallax-image/ParallaxImage";
 import { InnerContainer } from "components/styled-components/Containers";
 import { useArtData } from "hooks/art/useArtData";
@@ -9,12 +8,11 @@ import type { NextPage } from "next";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useHandleRouting } from "hooks/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
+import { ART_IMAGES, ART_ROOT_URL } from "constants/art.constants";
 import {
-  ART_BANNER_CONFIG,
-  ART_IMAGES,
-  ART_ROOT_URL,
-} from "constants/art.constants";
-import { MAIN_GALLERY_TOP_OFFSET } from "constants/ui.constants";
+  BANNER_IMAGE_HOVER_CONFIG,
+  MAIN_GALLERY_TOP_OFFSET,
+} from "constants/ui.constants";
 import { SkeletonCard } from "components/loading/skeleton/SkeletonCard";
 import { DynamicLayout } from "components/layout/DynamicLayout";
 
@@ -36,10 +34,11 @@ const Art: NextPage = () => {
     <Suspense fallback={SkeletonCard}>
       <DynamicLayout>
         <ParallaxImage
-          hoverImageConfig={ART_BANNER_CONFIG}
+          hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
           imageUrl={images[0]?.imageUrl ?? ""}
           imageTitle={images[0]?.title ?? ""}
           mainTitle={"View Original Pieces"}
+          imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
         />
         <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
           <DynamicCardGallery

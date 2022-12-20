@@ -24,6 +24,7 @@ export const ContentText = styled.span<{ $isLight?: boolean }>`
   letter-spacing: 0.2rem;
   font-weight: 600;
   white-space: pre-wrap;
+  position: relative;
 `;
 
 export const ContentSubText = styled.span`

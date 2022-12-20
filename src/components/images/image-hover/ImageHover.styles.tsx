@@ -32,7 +32,7 @@ export const HoverImageContainer = styled.div<{
   transform-origin: inherit;
   position: relative;
   will-change: transform;
-  filter: brightness(130%);
+  filter: brightness(50%);
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     width: 100%;
@@ -57,5 +57,5 @@ export const DefaultImage = styled.div<{
     $imageProps.heightPx ? `${$imageProps.heightPx}px` : `100%`};
   will-change: transform;
   border-radius: inherit;
-  filter: brightness(100%);
+  filter: brightness(50%);
 `;

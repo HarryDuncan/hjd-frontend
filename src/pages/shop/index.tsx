@@ -5,7 +5,10 @@ import { ParallaxImage } from "components/images/parallax-image/ParallaxImage";
 import { InnerContainer } from "components/styled-components/Containers";
 import { useHandleRouting } from "hooks/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
-import { MAIN_GALLERY_TOP_OFFSET } from "constants/ui.constants";
+import {
+  BANNER_IMAGE_HOVER_CONFIG,
+  MAIN_GALLERY_TOP_OFFSET,
+} from "constants/ui.constants";
 import {
   SHOP_BANNER_CONFIG,
   SHOP_IMAGES,
@@ -24,7 +27,7 @@ const Shop: NextPage = () => {
   return (
     <DynamicLayout>
       <ParallaxImage
-        hoverImageConfig={SHOP_BANNER_CONFIG}
+        hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
         imageTitle="shop-header"
         imageUrl={images[0]?.imageUrl ?? ""}
         mainTitle={"Limited edition prints"}

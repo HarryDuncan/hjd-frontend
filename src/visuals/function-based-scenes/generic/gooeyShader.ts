@@ -14,7 +14,6 @@ import { getTextureRatio } from "visuals/helpers/textures/getTextureRatio";
 import { clamp } from "visuals/helpers/utils/clamp";
 import { getMeshByName } from "visuals/helpers/utils/getMeshByName";
 import { shapeFrag } from "./gooey-shader/gooeyFrag";
-import { t } from "./gooey-shader/testFag";
 import { defaultVertex } from "./gooey-shader/vertex";
 
 interface GooeyShaderData {

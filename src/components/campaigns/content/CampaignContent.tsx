@@ -2,8 +2,8 @@ import { useGetCampaign } from "hooks/campaigns/useGetCampaign";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
-const DynamicAidsDay = dynamic(
-  () => import("components/campaigns/content/aids-day/AidsDay"),
+const DynamicCampaignDetails = dynamic(
+  () => import("components/campaigns/campaign-details/CampaignDetails"),
   {
     suspense: true,
   }
@@ -16,9 +16,13 @@ export const CampaignContent = () => {
   const getCampaignContent = () => {
     switch (campaign.componentId) {
       case "AidsDay":
-        return <DynamicAidsDay />;
+      case "PayTheRent":
+        return <DynamicCampaignDetails />;
       default:
-        <div />;
+        console.warn(
+          `a campaign details component hasn't been specified for ${campaign.componentId}`
+        );
+        return <div />;
     }
   };
 
