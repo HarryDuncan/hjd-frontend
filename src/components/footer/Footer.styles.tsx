@@ -1,3 +1,4 @@
+import { ContentText } from "components/styled-components/Text";
 import styled from "styled-components";
 
 export const FooterContainer = styled.div`
@@ -6,7 +7,7 @@ export const FooterContainer = styled.div`
   margin: 0 auto;
   display: flex;
   position: relative;
-  background: ${({ theme }) => theme.colors.gradients.dark};
+  background: ${({ theme }) => theme.colors.mono.background};
   color: white;
   height: auto;
   padding-top: 3rem;
@@ -16,7 +17,7 @@ export const FooterCenterText = styled.div`
   font-size: 0.9em;
   text-decoration: none;
   letter-spacing: 0.2em;
-  padding: 5px 5px;
+  padding: 2rem 5px;
   position: relative;
   margin: 0 auto;
   font-family: arial;
@@ -24,8 +25,7 @@ export const FooterCenterText = styled.div`
   width: 80%;
 `;
 export const FooterLink = styled.a`
-  color: white;
-  font-size: 0.9em;
+  color: black;
   text-decoration: none;
   letter-spacing: 0.2em;
   padding: 5px 5px;

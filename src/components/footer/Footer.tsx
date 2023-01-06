@@ -1,18 +1,23 @@
+import { ContentText } from "components/styled-components/Text";
 import { FooterCenterText, FooterContainer, FooterLink } from "./Footer.styles";
 
 export const Footer = () => {
   return (
     <FooterContainer>
-      <FooterLink href="mailto: harry@harryjdee.com">Get In Touch</FooterLink>
-      <FooterLink href="/terms-and-conditions">Terms and Conditions</FooterLink>
+      <FooterLink href="mailto: harry@harryjdee.com">
+        <ContentText>Get In Touch</ContentText>
+      </FooterLink>
+      <FooterLink href="/terms-and-conditions">
+        <ContentText>Terms And Conditions</ContentText>
+      </FooterLink>
 
       <FooterCenterText>
-        <p>
+        <ContentText>
           Harry J Dee acknowledges the traditional custodians of the lands on
           which he works, the Wurundjeri people of the Kulin Nation. We pay our
           respects to Elders past, present and emerging. Harry J Dee
           acknowledges that sovereignty has never been ceded
-        </p>
+        </ContentText>
       </FooterCenterText>
     </FooterContainer>
   );
