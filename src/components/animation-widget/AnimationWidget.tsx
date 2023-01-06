@@ -17,11 +17,15 @@ const AnimationWidget = ({
 }: AnimationWidgetProps) => {
   const { container, currentFrameRef, pause } = useRunAnimations(scenes);
   useEffect(() => () => pause(), [currentFrameRef]);
-
+  let width = "100vw";
+  setTimeout(() => {
+    width = "100.1vw";
+    console.log("asdasd");
+  }, 10000);
   return (
     <RootContainer
       containerRef={container}
-      viewWidth={viewWidth}
+      viewWidth={width}
       viewHeight={viewHeight}
     />
   );

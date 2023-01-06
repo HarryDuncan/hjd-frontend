@@ -4,6 +4,7 @@ import { OverlayDiv } from "components/styled-components/Containers";
 import { ContentText, MainTitle } from "components/styled-components/Text";
 import { AIDS_DAY_SCENE, PAY_THE_RENT_SCENE } from "constants/campaigns";
 import { useGetCampaign } from "hooks/campaigns/useGetCampaign";
+import useDeviceSize from "hooks/useDeviceSize";
 import { Campaign } from "models/campaigns/types";
 import {
   CampaignContentContainer,

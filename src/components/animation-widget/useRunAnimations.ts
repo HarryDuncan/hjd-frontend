@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useState } from "react";
 import { useThreeJs } from "hooks/use-three-js/useThreeJs";
 import { useThread } from "components/animation-widget/use-thread";
 import { AnimationWidgetScene } from "./types";
@@ -6,11 +6,15 @@ import { useScenes } from "./scenes/useScenes";
 import { useChangeScenes } from "./scenes/useChangeScenes";
 
 export const useRunAnimations = (sceneParams: AnimationWidgetScene[]) => {
-  const { initializedScenes, areScenesInitialized } = useScenes(sceneParams);
+  console.log("asdasd");
+  const { container, postProcessor, renderer, currentFrameRef } = useThreeJs();
+  const { initializedScenes, areScenesInitialized } = useScenes(
+    sceneParams,
+    container,
+    renderer
+  );
 
   const [sceneIndex, updateSceneIndex] = useState<number>(0);
-
-  const { container, postProcessor, renderer, currentFrameRef } = useThreeJs();
 
   const { update, pause } = useThread(
     renderer,

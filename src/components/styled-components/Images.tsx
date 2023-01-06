@@ -31,19 +31,11 @@ const ViewItemIcon = styled.img`
 export const ScrollLeft = styled(ViewItemIcon)`
   left: 3%;
   top: 50%;
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
-    top: auto;
-  }
 `;
 
 export const ScrollRight = styled(ViewItemIcon)`
   right: 3%;
   top: 50%;
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
-    top: auto;
-  }
 `;
 
 export const Exit = styled(ViewItemIcon)`

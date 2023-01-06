@@ -10,16 +10,9 @@ import {
   ShaderMaterial,
 } from "three";
 import { MarchingCubes } from "three/examples/jsm/objects/MarchingCubes.js";
-import { initializeAdvancedMaterial } from "visuals/helpers/Materials";
-import { setUpRefractionEnvMap } from "visuals/helpers/Textures";
+import { initializeAdvancedMaterial } from "visuals/helpers/materials/initializeAdvancedMaterial";
 
-const ADVANCED_MATERIAL_TYPES = {
-  CHROME: "CHROME",
-  LIQUID: "LIQUID",
-  SHINY: "SHINY",
-  MATTE: "MATTE",
-  PLASTIC: "PLASTIC",
-};
+import { setUpRefractionEnvMap } from "visuals/helpers/Textures";
 
 interface ArtLavaLampData {
   name: string;
@@ -91,10 +84,7 @@ const initializeScene = async (sceneData: ArtLavaLampData) => {
   const refractionMap = setUpRefractionEnvMap(pathUrls[0], "jpg");
   const materialParams = { envMap: refractionMap };
 
-  const advancedMaterial = initializeAdvancedMaterial(
-    ADVANCED_MATERIAL_TYPES.SHINY,
-    materialParams
-  );
+  const advancedMaterial = initializeAdvancedMaterial("SHINY", materialParams);
   const sceneParams = { ...SCENE_PARAMS, scene: new Scene() };
   sceneParams.paths = pathUrls;
   sceneParams.scene.background = new Color(0xffffff);
@@ -163,10 +153,7 @@ const changeMaterial = (sceneParams: ArtLavaLampSceneParams) => {
 
   // Set up bubble material
   const materialParams = { envMap: refractionMap };
-  const advancedMaterial = initializeAdvancedMaterial(
-    ADVANCED_MATERIAL_TYPES.SHINY,
-    materialParams
-  );
+  const advancedMaterial = initializeAdvancedMaterial("SHINY", materialParams);
 
   return advancedMaterial.material;
 };
