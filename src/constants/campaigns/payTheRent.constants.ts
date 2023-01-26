@@ -1,10 +1,13 @@
 export const PAY_THE_RENT_SCENE = [
   {
     name: "PayTheRentScene",
-    data: {
-      mainMesh: "../home.glb",
-      texture1: { path: "../campaigns/payTheRent/PayTheRent.jpg" },
-      texture2: { path: "../campaigns/payTheRent/AlwaysWas.jpg" },
-    },
+    data: [
+      { path: "../assets/models/blocks.glb", name: "MainMesh" },
+      { path: "../images/campaigns/PayTheRent.jpg", name: "texture1" },
+      {
+        path: "../images/campaigns/pay-the-rent/AlwaysWas.jpg",
+        name: "texture2",
+      },
+    ],
   },
 ];
