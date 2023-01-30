@@ -8,6 +8,7 @@ export const NavigationContainer = styled.div<{}>`
   top: 0;
   z-index: 3;
   height: ${NAV_HEIGHT};
+  min-height: 4.5rem;
   display: flex;
   justify-content: space-between;
   clear: both;

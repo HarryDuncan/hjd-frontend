@@ -1,1 +1,0 @@
-export { PayTheRentScene } from "./PayTheRent";

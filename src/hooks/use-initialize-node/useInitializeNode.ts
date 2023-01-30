@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { WebGLRenderer } from "three";
 import { CSS3DRenderer } from "three/examples/jsm/renderers/CSS3DRenderer";
-import { ContainerNode } from "visual/interfaces";
+import { ContainerNode } from "visuals/interfaces";
 
 export const useInitializeNode = (
   containerRef: ContainerNode,

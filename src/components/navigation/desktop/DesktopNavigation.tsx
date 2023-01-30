@@ -7,7 +7,7 @@ import {
   NavItemLink,
   NavItemList,
 } from "./DesktopNavigation.styles";
-import { SITE_PAGES } from "./../Navigation";
+import { SITE_PAGES } from "../Navigation";
 
 interface DesktopNavProps {
   isNavTop: boolean;

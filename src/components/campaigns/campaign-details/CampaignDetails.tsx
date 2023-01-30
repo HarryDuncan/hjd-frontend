@@ -1,11 +1,9 @@
-import AnimationWidget from "components/animation-widget/AnimationWidget";
-import { AnimationWidgetScene } from "components/animation-widget/types";
 import { OverlayDiv } from "components/styled-components/Containers";
 import { ContentText, MainTitle } from "components/styled-components/Text";
-import { AIDS_DAY_SCENE, PAY_THE_RENT_SCENE } from "constants/campaigns";
 import { useGetCampaign } from "hooks/campaigns/useGetCampaign";
-import useDeviceSize from "hooks/useDeviceSize";
+
 import { Campaign } from "models/campaigns/types";
+import { DynamicInteractiveScene } from "visuals/interactive-scene/DynamicInteractiveScene";
 import {
   CampaignContentContainer,
   DescriptionContainer,
@@ -13,20 +11,21 @@ import {
 } from "./CampaignDetails.styles";
 
 const CampaignDetails = () => {
-  const { campaign, campaignConsts } = useCampaignData();
+  const {
+    campaign,
+    campaignConsts: { sceneData },
+  } = useCampaignData();
   if (!campaign) return null;
   const { height, width } = useContentHeightAndWidth();
   return (
     <CampaignContentContainer>
-      <AnimationWidget
-        scenes={campaignConsts?.sceneData ?? ([] as AnimationWidgetScene[])}
-        viewWidth={"100%"}
-      />
+      {sceneData && <DynamicInteractiveScene parameters={sceneData} />}
+
       <DescriptionContainer $height={height} $width={width}>
         <OverlayDiv />
         <InnerDescriptionContainer>
-          <MainTitle $isLight={true}>{campaign.title}</MainTitle>
-          <ContentText $isLight={true}>{campaign.description}</ContentText>
+          <MainTitle $isLight>{campaign.title}</MainTitle>
+          <ContentText $isLight>{campaign.description}</ContentText>
         </InnerDescriptionContainer>
       </DescriptionContainer>
     </CampaignContentContainer>
@@ -46,15 +45,15 @@ const useCampaignData = () => {
 };
 
 const useGetCampaignConsts = (campaign: Campaign | null | undefined) => {
-  if (!campaign) return null;
+  if (!campaign) return { sceneData: null };
   switch (campaign.componentId) {
     case "AidsDay":
-      return { sceneData: AIDS_DAY_SCENE };
+      return { sceneData: null };
     case "PayTheRent":
-      return { sceneData: PAY_THE_RENT_SCENE };
+      return { sceneData: null };
     default:
       console.warn(`constants haven't been set up for ${campaign.componentId}`);
-      return null;
+      return { sceneData: null };
   }
 };
 export default CampaignDetails;
