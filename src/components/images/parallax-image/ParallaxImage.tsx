@@ -1,4 +1,5 @@
 import { MainTitle } from "components/styled-components/Text";
+import { ReactNode } from "react";
 import { ImageHover } from "../image-hover";
 import { ImageHoverConfig } from "../image-hover/ImageHover";
 import { ParallaxImageContainer } from "./styledComponents";
@@ -9,6 +10,7 @@ interface ParallaxImageProps {
   hoverImageConfig: ImageHoverConfig;
   mainTitle?: string;
   imageHeightPx?: number;
+  children?: ReactNode;
 }
 
 export const ParallaxImage = ({
@@ -17,15 +19,15 @@ export const ParallaxImage = ({
   hoverImageConfig,
   mainTitle,
   imageHeightPx = 250,
-}: ParallaxImageProps) => {
-  return (
-    <ParallaxImageContainer $height={imageHeightPx}>
-      {mainTitle && <MainTitle $isLight={true}>{mainTitle}</MainTitle>}
-      <ImageHover
-        hoverImageConfig={hoverImageConfig}
-        imageUrl={imageUrl}
-        title={imageTitle}
-      />
-    </ParallaxImageContainer>
-  );
-};
+  children,
+}: ParallaxImageProps) => (
+  <ParallaxImageContainer $height={imageHeightPx}>
+    {mainTitle && <MainTitle $isLight>{mainTitle}</MainTitle>}
+    {children && children}
+    <ImageHover
+      hoverImageConfig={hoverImageConfig}
+      imageUrl={imageUrl}
+      title={imageTitle}
+    />
+  </ParallaxImageContainer>
+);

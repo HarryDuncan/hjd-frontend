@@ -1,15 +1,21 @@
 import { BioPage, TextContainer } from "components/bio/Bio.styles";
-import { ImageHover } from "components/images/image-hover";
+import { ParallaxImage } from "components/images";
 import Layout from "components/layout/DefaultLayout";
 import { InnerContainer } from "components/styled-components/Containers";
-import { ContentText, MainTitle } from "components/styled-components/Text";
+import { ContentText } from "components/styled-components/Text";
+import { TextScroller } from "components/text-scroller/TextScroller";
 import {
-  BIO_BANNER_CONFIG,
   BIO_PAGE_SECTIONS,
   IMAGE_CONTENT_SECTIONS,
 } from "constants/bio.constants";
+import {
+  BANNER_IMAGE_HOVER_CONFIG,
+  MAIN_GALLERY_TOP_OFFSET,
+} from "constants/ui.constants";
 import { useContentForPage } from "hooks/content/useContentForPage";
 import type { NextPage } from "next";
+import { DynamicInteractiveScene } from "visuals/interactive-scene/DynamicInteractiveScene";
+import { h } from "visuals/visual-configs/bio/h";
 
 const Bio: NextPage = () => {
   const { text, images } = useBioPageContent();
@@ -18,15 +24,18 @@ const Bio: NextPage = () => {
       <BioPage>
         {images.map((image, index) => (
           <InnerContainer $topOffset={0} key={index}>
-            <ImageHover
-              hoverImageConfig={BIO_BANNER_CONFIG}
-              title={image.title}
-              imageUrl={image.imageUrl}
-            />
+            <ParallaxImage
+              hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
+              imageTitle="shop-header"
+              imageUrl={image.imageUrl ?? ""}
+              imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
+            >
+              <TextScroller text={` ${text[index].title} `} />
+            </ParallaxImage>
             <TextContainer>
-              <MainTitle $isLight={true}>{text[index].title}</MainTitle>
-              <ContentText $isLight={true}>{text[index].content}</ContentText>
+              <ContentText>{text[index].content}</ContentText>
             </TextContainer>
+            <DynamicInteractiveScene parameters={h} />
           </InnerContainer>
         ))}
       </BioPage>

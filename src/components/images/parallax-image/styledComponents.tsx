@@ -2,9 +2,8 @@ import { MainTitle } from "components/styled-components/Text";
 import styled from "styled-components";
 
 export const ParallaxImageContainer = styled.div<{ $height?: number }>`
-  width: 95%;
-  left: 2.5%;
-  height: ${({ $height }) => ($height ? $height : 250)}px;
+  width: 100%;
+  height: ${({ $height }) => $height || 250}px;
   position: fixed;
   overflow: hidden;
   & ${MainTitle} {
@@ -16,7 +15,6 @@ export const ParallaxImageContainer = styled.div<{ $height?: number }>`
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
-    width: calc(100% - 4rem);
     height: 500px;
     & ${MainTitle} {
       font-size: 2.5rem;
@@ -25,7 +23,6 @@ export const ParallaxImageContainer = styled.div<{ $height?: number }>`
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    width: calc(100% - 1rem);
     height: 500px;
   }
 `;

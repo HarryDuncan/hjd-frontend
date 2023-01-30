@@ -16,6 +16,7 @@ import {
   CAMPAIGN_ROOT_URL,
 } from "constants/campaign.constants";
 import { CampaignCardFooter } from "components/campaigns/campaign-card-footer";
+import { TextScroller } from "components/text-scroller/TextScroller";
 
 const Campaigns: NextPage = () => {
   const campaignGalleryItems = useCampaignGalleryItems();
@@ -27,9 +28,11 @@ const Campaigns: NextPage = () => {
         hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
         imageTitle="campaign-cover-img"
         imageUrl={images[0]?.imageUrl ?? ""}
-        mainTitle={"Supporting Various Causes"}
-        imageHeightPx={400}
-      />
+        imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
+      >
+        <TextScroller text=" Supporting Various Causes " />
+      </ParallaxImage>
+
       <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
         <DynamicCardGallery
           items={campaignGalleryItems}
@@ -41,14 +44,16 @@ const Campaigns: NextPage = () => {
 };
 function useCampaignGalleryItems() {
   const { campaigns } = useCampaignData();
-  return useMemo(() => {
-    return campaigns.map(({ coverImage, title, slug }) => ({
-      imageUrl: `${CAMPAIGN_ROOT_URL}${coverImage}`,
-      title,
-      id: slug,
-      footer: <CampaignCardFooter title={title} />,
-    }));
-  }, [campaigns]);
+  return useMemo(
+    () =>
+      campaigns.map(({ coverImage, title, slug }) => ({
+        imageUrl: `${CAMPAIGN_ROOT_URL}${coverImage}`,
+        title,
+        id: slug,
+        footer: <CampaignCardFooter title={title} />,
+      })),
+    [campaigns]
+  );
 }
 
 export default Campaigns;

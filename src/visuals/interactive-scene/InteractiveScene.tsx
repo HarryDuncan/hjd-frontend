@@ -73,6 +73,7 @@ const InteractiveScene = ({
   useAddEvent(initializedMeshes, events);
 
   const initializeSceneWithData = useCallback(() => {
+    console.log(scene);
     if (scene) {
       initializedMeshes.forEach((mesh) => scene.add(mesh));
       lights.forEach((light) => scene.add(light));
@@ -85,9 +86,18 @@ const InteractiveScene = ({
         camera,
         passes: [],
       });
+
       update();
     }
-  }, [scene, initializedMeshes, update, postProcessor, renderer, camera]);
+  }, [
+    scene,
+    initializedMeshes,
+    sceneComponents,
+    update,
+    postProcessor,
+    renderer,
+    camera,
+  ]);
 
   useEffect(() => {
     initializeSceneWithData();

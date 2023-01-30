@@ -15,6 +15,7 @@ import {
 } from "constants/ui.constants";
 import { SkeletonCard } from "components/loading/skeleton/SkeletonCard";
 import { DynamicLayout } from "components/layout/DynamicLayout";
+import { TextScroller } from "components/text-scroller/TextScroller";
 
 const Art: NextPage = () => {
   const {
@@ -37,9 +38,10 @@ const Art: NextPage = () => {
           hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
           imageUrl={images[0]?.imageUrl ?? ""}
           imageTitle={images[0]?.title ?? ""}
-          mainTitle={"View Original Pieces"}
           imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
-        />
+        >
+          <TextScroller text=" Original Paintings " />
+        </ParallaxImage>
         <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
           <DynamicCardGallery
             items={paintingGalleryItems}

@@ -1,3 +1,4 @@
+import { ParallaxImageContainer } from "components/images/parallax-image/styledComponents";
 import { NAV_HEIGHT } from "components/navigation/styledComponents";
 import styled from "styled-components";
 
@@ -9,7 +10,7 @@ export const PageContainer = styled.div<{ $topPadding: boolean }>`
   top: 0;
   left: 0;
   background-color: ${({ theme }) => theme.colors.mono.background};
-  padding: ${({ $topPadding }) => `${$topPadding ? NAV_HEIGHT : 0} 0rem`};
+  padding: ${({ $topPadding }) => `${$topPadding ? "5rem" : 0} 0rem`};
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
@@ -23,6 +24,9 @@ export const InnerContainer = styled.div<{ $topOffset?: number }>`
   margin-top: ${({ $topOffset }) => $topOffset ?? 0}px;
   z-index: 2;
   position: relative;
+  ${ParallaxImageContainer} {
+    position: relative;
+  }
 `;
 
 export const ViewItemContainer = styled.div`

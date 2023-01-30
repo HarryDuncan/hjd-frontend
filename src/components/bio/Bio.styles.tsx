@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const TextContainer = styled.div`
-  position: absolute;
+  position: relative;
+  padding: 10%;
   width: 80%;
-  top: 20%;
   color: white;
-  left: 10%;
   text-align: center;
   pointer-events: none;
   @media only screen and (max-width: ${({ theme }) =>
@@ -18,7 +17,7 @@ export const TextContainer = styled.div`
 `;
 
 export const BioPage = styled.div`
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {

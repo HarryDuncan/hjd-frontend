@@ -19,6 +19,7 @@ import { useProductsWithVariations } from "hooks/shop/useProductsWithVariations"
 import { useMemo } from "react";
 import { ProductCardFooter } from "components/shop";
 import { DynamicLayout } from "components/layout/DynamicLayout";
+import { TextScroller } from "components/text-scroller/TextScroller";
 
 const Shop: NextPage = () => {
   const productGalleryItems = useProductsInGallery();
@@ -30,8 +31,10 @@ const Shop: NextPage = () => {
         hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
         imageTitle="shop-header"
         imageUrl={images[0]?.imageUrl ?? ""}
-        mainTitle={"Limited edition prints"}
-      />
+        imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
+      >
+        <TextScroller text=" Limited Edition " />
+      </ParallaxImage>
       <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
         <DynamicCardGallery
           items={productGalleryItems}
@@ -51,23 +54,25 @@ const useProductsInGallery = () => {
     productVariations
   );
 
-  return useMemo(() => {
-    return formattedProducts.map(
-      ({ title, imageUrl, id, variations, isSoldOut, price }) => ({
-        imageUrl: `${SHOP_IMAGE_URL_ROOT}${imageUrl}`,
-        title,
-        id,
-        footer: (
-          <ProductCardFooter
-            title={title}
-            variations={variations ?? []}
-            price={price}
-            isSoldOut={isSoldOut ?? false}
-          />
-        ),
-      })
-    );
-  }, [formattedProducts]);
+  return useMemo(
+    () =>
+      formattedProducts.map(
+        ({ title, imageUrl, id, variations, isSoldOut, price }) => ({
+          imageUrl: `${SHOP_IMAGE_URL_ROOT}${imageUrl}`,
+          title,
+          id,
+          footer: (
+            <ProductCardFooter
+              title={title}
+              variations={variations ?? []}
+              price={price}
+              isSoldOut={isSoldOut ?? false}
+            />
+          ),
+        })
+      ),
+    [formattedProducts]
+  );
 };
 
 export default Shop;
