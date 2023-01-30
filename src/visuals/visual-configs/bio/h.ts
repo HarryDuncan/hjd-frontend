@@ -30,8 +30,14 @@ export const h = {
       assetType: ASSET_TYPES.Texture,
     },
   ],
-
+  visualComponentConfig: {
+    viewHeight: "100%",
+    viewWidth: "50%",
+    backgroundColor: "blue",
+  },
   sceneFunctions: {
-    onTimeUpdate: (scene: InteractiveScene) => {},
+    onPageScroll: (scene: InteractiveScene, event) => {
+      console.log(window.scrollY);
+    },
   },
 };

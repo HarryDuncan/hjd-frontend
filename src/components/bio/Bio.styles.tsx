@@ -16,6 +16,11 @@ export const TextContainer = styled.div`
   }
 `;
 
+export const BioContentContainer = styled.div<{ $index: number }>`
+  display: flex;
+  flex-direction: ${({ $index }) => ($index % 2 === 0 ? "row" : "row-reverse")};
+`;
+
 export const BioPage = styled.div`
   width: 100%;
   margin: 0 auto;

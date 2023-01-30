@@ -1,4 +1,8 @@
-import { BioPage, TextContainer } from "components/bio/Bio.styles";
+import {
+  BioContentContainer,
+  BioPage,
+  TextContainer,
+} from "components/bio/Bio.styles";
 import { ParallaxImage } from "components/images";
 import Layout from "components/layout/DefaultLayout";
 import { InnerContainer } from "components/styled-components/Containers";
@@ -32,10 +36,12 @@ const Bio: NextPage = () => {
             >
               <TextScroller text={` ${text[index].title} `} />
             </ParallaxImage>
-            <TextContainer>
-              <ContentText>{text[index].content}</ContentText>
-            </TextContainer>
-            <DynamicInteractiveScene parameters={h} />
+            <BioContentContainer $index={index}>
+              <TextContainer>
+                <ContentText>{text[index].content}</ContentText>
+              </TextContainer>
+              <DynamicInteractiveScene parameters={h} />
+            </BioContentContainer>
           </InnerContainer>
         ))}
       </BioPage>

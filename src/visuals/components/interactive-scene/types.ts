@@ -10,7 +10,8 @@ import {
 import { InteractiveThreeScene as InteractiveScene } from "./InteractiveScene";
 
 export type InteractiveSceneFunctions = {
-  onTimeUpdate: (material: InteractiveScene) => void;
+  onTimeUpdate?: (scene: InteractiveScene) => void;
+  onPageScroll?: (scene: InteractiveScene, scrollEvent) => void;
 };
 
 export type SceneObjectType = Particle[] | typeof MarchingCubes | any;

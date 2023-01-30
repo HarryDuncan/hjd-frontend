@@ -2,7 +2,6 @@ import { Clock, Scene } from "three";
 import { InteractionEventObject } from "visuals/helpers/interactions/types";
 import { AnimationManager } from "../animation-manager/AnimationManager";
 import { CustomAnimation } from "../animation-manager/animationManager.types";
-import { defaultInteractiveSceneFunctions } from "./interactiveScene.constants";
 import { InteractiveSceneFunctions, SceneObject } from "./types";
 
 export class InteractiveThreeScene extends Scene {
@@ -24,7 +23,7 @@ export class InteractiveThreeScene extends Scene {
 
   constructor(
     interactions: InteractionEventObject[],
-    sceneFunctions: InteractiveSceneFunctions = defaultInteractiveSceneFunctions,
+    sceneFunctions: InteractiveSceneFunctions = {},
     sceneParams: any = {},
     sceneObjects: SceneObject[] = []
   ) {
@@ -46,9 +45,17 @@ export class InteractiveThreeScene extends Scene {
   }
 
   bindMaterialFunctions() {
-    document.addEventListener("scene:update", () =>
-      this.sceneFunctions.onTimeUpdate(this)
-    );
+    const { onTimeUpdate, onPageScroll } = this.sceneFunctions;
+    if (onTimeUpdate) {
+      document.addEventListener("scene:update", () => {
+        onTimeUpdate(this);
+      });
+    }
+    if (onPageScroll) {
+      document.addEventListener("scroll", (event) => {
+        onPageScroll(this, event);
+      });
+    }
   }
 
   onGestureEvent(event: CustomEvent) {
