@@ -1,4 +1,9 @@
-import { DoubleSide, MeshMatcapMaterial, ShaderMaterial } from "three";
+import {
+  DoubleSide,
+  MeshBasicMaterial,
+  MeshMatcapMaterial,
+  ShaderMaterial,
+} from "three";
 import {
   InteractiveMaterialParameters,
   MATERIAL_TYPES,
@@ -44,6 +49,6 @@ export const getMaterial = (
     }
     case MATERIAL_TYPES.standard:
     default:
-      return materialParameters;
+      return new MeshBasicMaterial(materialParameters);
   }
 };

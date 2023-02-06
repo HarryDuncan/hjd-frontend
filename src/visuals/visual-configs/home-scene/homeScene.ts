@@ -17,6 +17,7 @@ const formatAssetsWithUniforms = (uniforms: any, assets: Asset[]) => {
   uniforms.uRevealedImageRatio.value = getTextureRatio(
     assets[1].data as Texture
   );
+  console.log(uniforms.uRevealedImageRatio);
   return uniforms;
 };
 
@@ -33,11 +34,12 @@ export const getGooeyShaderSceneData = (assets: Asset[]): SceneData => {
     uTime: { value: 0 },
     uPosition: { value: new Vector2(0, 0) },
     uResolution: {
-      value: new Vector2(window.innerWidth, window.innerHeight),
+      value: new Vector2(window.outerWidth, window.outerHeight),
     },
   };
   const formattedUniforms = formatAssetsWithUniforms(uniforms, assets);
-  const geometry = new PlaneGeometry(2, 2);
+  const geometry = new PlaneGeometry(3, 2);
+
   return {
     isSceneDataInitialized: true,
     meshConfigs: [
@@ -59,18 +61,18 @@ export const getGooeyShaderSceneData = (assets: Asset[]): SceneData => {
 
 export const homeScene = {
   threeJsParams: {
-    camera: { position: { x: 0, y: 0, z: 2 } },
+    camera: { position: { x: 0, y: 0.3, z: 2 } },
   },
   formatSceneData: getGooeyShaderSceneData,
   assets: [
     {
       name: "uCoverImage",
-      url: "../images/campaigns/AidsDay.jpg",
+      url: "../images/content/home-over.jpg",
       assetType: ASSET_TYPES.Texture,
     },
     {
       name: "uRevealedImage",
-      url: "../images/campaigns/PayTheRent.jpg",
+      url: "../images/content/home-under-desktop.jpg",
       assetType: ASSET_TYPES.Texture,
     },
   ],

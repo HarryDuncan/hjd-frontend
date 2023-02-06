@@ -17,7 +17,7 @@ export const Text = ({
   textObject.fontSize = 1.5;
   textObject.position.set(position.x, position.y, position.z);
   textObject.font = fontUrl ?? "../assets/fonts/AnimationS.woff";
-  textObject.color = 0x000000;
+  textObject.color = 0xffffff;
   textObject.depthOffset = 30;
   textObject.anchorX = "center";
   textObject.anchorY = "top";
@@ -29,8 +29,12 @@ export const Text = ({
   textObject.geometry.applyMatrix4(
     new Matrix4().makeTranslation(-center.x * 2, -center.y * 2, -center.z * 2)
   );
+
   if (materialProps) {
-    const material = getMaterial(materialProps, MATERIAL_TYPES.matcap);
+    const material = getMaterial(
+      materialProps.materialParameters,
+      materialProps.materialType
+    );
     textObject.material = material;
   }
   // Update the rendering:

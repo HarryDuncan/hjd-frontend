@@ -19,13 +19,13 @@ export const useInteractiveScene = (
       interactions,
       Binding.InteractiveScene
     );
-    const scene = isSceneDataInitialized
-      ? new InteractiveScene(
-          boundInteractions,
-          sceneFunctions,
-          sceneParams,
-          sceneObjects
-        )
-      : null;
-    return scene;
+    if (!isSceneDataInitialized) return null;
+    console.log("ttt");
+    console.log(sceneObjects);
+    return new InteractiveScene(
+      boundInteractions,
+      sceneFunctions,
+      sceneParams,
+      sceneObjects
+    );
   }, [isSceneDataInitialized]);

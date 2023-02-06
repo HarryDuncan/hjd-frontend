@@ -10,7 +10,7 @@ export const getRatio = (height: number, width: number) => {
     w: m[0] / width,
     h: m[1] / height,
   };
-
+  console.log(originalRatio);
   const coverRatio = 1 / Math.max(originalRatio.w, originalRatio.h);
 
   return new Vector2(

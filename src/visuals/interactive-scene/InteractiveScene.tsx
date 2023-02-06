@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useSetUpScene } from "visuals/hooks/scene-data/useSetUpScene";
 import { Asset } from "visuals/hooks/use-assets/types";
 import { useInteractiveScene } from "visuals/hooks/use-interactive-scene/useInteractiveScene";
@@ -72,9 +72,10 @@ const InteractiveScene = ({
   );
   useAddEvent(initializedMeshes, events);
 
+  const [isInit, setIsInit] = useState(false);
   const initializeSceneWithData = useCallback(() => {
-    console.log(scene);
     if (scene) {
+      setIsInit(true);
       initializedMeshes.forEach((mesh) => scene.add(mesh));
       lights.forEach((light) => scene.add(light));
       setSceneProperties(sceneData.sceneProperties, scene);
@@ -86,22 +87,15 @@ const InteractiveScene = ({
         camera,
         passes: [],
       });
-
       update();
     }
-  }, [
-    scene,
-    initializedMeshes,
-    sceneComponents,
-    update,
-    postProcessor,
-    renderer,
-    camera,
-  ]);
+  }, [initializedMeshes, update, postProcessor, renderer, camera, setIsInit]);
 
   useEffect(() => {
-    initializeSceneWithData();
-  }, [initializeSceneWithData]);
+    if (!isInit) {
+      initializeSceneWithData();
+    }
+  }, [initializeSceneWithData, isInit]);
 
   return (
     <RootContainer containerRef={container} config={visualComponentConfig} />

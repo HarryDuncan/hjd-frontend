@@ -1,48 +1,33 @@
-import {
-  BioContentContainer,
-  BioPage,
-  TextContainer,
-} from "components/bio/Bio.styles";
-import { ParallaxImage } from "components/images";
+import { BioPage } from "components/bio/Bio.styles";
+import { BioSection } from "components/bio/BioSection";
+
 import Layout from "components/layout/DefaultLayout";
-import { InnerContainer } from "components/styled-components/Containers";
-import { ContentText } from "components/styled-components/Text";
-import { TextScroller } from "components/text-scroller/TextScroller";
+
 import {
   BIO_PAGE_SECTIONS,
   IMAGE_CONTENT_SECTIONS,
 } from "constants/bio.constants";
-import {
-  BANNER_IMAGE_HOVER_CONFIG,
-  MAIN_GALLERY_TOP_OFFSET,
-} from "constants/ui.constants";
+
 import { useContentForPage } from "hooks/content/useContentForPage";
 import type { NextPage } from "next";
-import { DynamicInteractiveScene } from "visuals/interactive-scene/DynamicInteractiveScene";
-import { h } from "visuals/visual-configs/bio/h";
+import { useMemo } from "react";
+import { formatLetter, letters } from "visuals/visual-configs/bio/letters";
 
+const BIO_LETTERS = ["H", "J", "D"];
 const Bio: NextPage = () => {
   const { text, images } = useBioPageContent();
+  const bioLetters = useBioLetters();
   return (
     <Layout>
       <BioPage>
         {images.map((image, index) => (
-          <InnerContainer $topOffset={0} key={index}>
-            <ParallaxImage
-              hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
-              imageTitle="shop-header"
-              imageUrl={image.imageUrl ?? ""}
-              imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
-            >
-              <TextScroller text={` ${text[index].title} `} />
-            </ParallaxImage>
-            <BioContentContainer $index={index}>
-              <TextContainer>
-                <ContentText>{text[index].content}</ContentText>
-              </TextContainer>
-              <DynamicInteractiveScene parameters={h} />
-            </BioContentContainer>
-          </InnerContainer>
+          <BioSection
+            key={`section-${index}`}
+            image={image}
+            text={text[index]}
+            bioLetters={bioLetters[index]}
+            index={index}
+          />
         ))}
       </BioPage>
     </Layout>
@@ -66,5 +51,15 @@ function useBioPageContent() {
   );
   return { text, images };
 }
+
+const useBioLetters = () =>
+  useMemo(
+    () =>
+      BIO_LETTERS.map((char) => {
+        const formatSceneData = formatLetter(char);
+        return { ...letters, formatSceneData };
+      }),
+    []
+  );
 
 export default Bio;
