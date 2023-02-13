@@ -9,6 +9,45 @@ import { getMeshesByIdentifier } from "visuals/helpers/scene/getMeshesByIdentifi
 import { ASSET_TYPES } from "visuals/hooks/use-assets/types";
 import { InteractiveScene } from "visuals/interactive-scene";
 
+export const onPageScroll = (scene: InteractiveScene, _event) => {
+  console.log("sss");
+  const meshes = getMeshesByIdentifier(scene, "title");
+  const mesh = meshes[0];
+  if (!mesh) return;
+
+  const rotateAndUpdate = () => {
+    const scrollPercentage = window.scrollY / window.innerHeight;
+    const angle = 360 * scrollPercentage;
+    const radians = (angle * Math.PI) / 180;
+    mesh?.rotation.set(0, radians, 0);
+  };
+
+  if (window.scrollY < window.innerHeight && mesh.name === "title-H") {
+    // requestAnimationFrame(rotateAndUpdate);
+    rotateAndUpdate();
+  } else if (mesh.name === "title-H" && mesh?.rotation.y !== 0) {
+    mesh?.rotation.set(0, 0, 0);
+  }
+  if (
+    window.scrollY > window.innerHeight &&
+    window.scrollY < window.innerHeight * 2 &&
+    mesh.name === "title-J"
+  ) {
+    rotateAndUpdate();
+  } else if (mesh.name === "title-J" && mesh?.rotation.y !== 0) {
+    mesh?.rotation.set(0, 0, 0);
+  }
+  if (
+    window.scrollY > window.innerHeight * 2 &&
+    window.scrollY < window.innerHeight * 3 &&
+    mesh.name === "title-D"
+  ) {
+    rotateAndUpdate();
+  } else if (mesh.name === "title-D" && mesh?.rotation.y !== 0) {
+    mesh?.rotation.set(0, 0, 0);
+  }
+};
+
 export const formatLetter = (letterChar: string) => (loadedAssets: Asset[]) => {
   const text = {
     componentType: COMPONENT_TYPES.TEXT,
@@ -45,42 +84,6 @@ export const letters = {
     viewWidth: "50%",
   },
   sceneFunctions: {
-    onPageScroll: (scene: InteractiveScene, _event) => {
-      const meshes = getMeshesByIdentifier(scene, "title");
-      const mesh = meshes[0];
-      if (!mesh) return;
-
-      const rotateAndUpdate = () => {
-        const scrollPercentage = window.scrollY / window.innerHeight;
-        const angle = 360 * scrollPercentage;
-        const radians = (angle * Math.PI) / 180;
-        mesh?.rotation.set(0, radians, 0);
-      };
-
-      if (window.scrollY < window.innerHeight && mesh.name === "title-H") {
-        // requestAnimationFrame(rotateAndUpdate);
-        rotateAndUpdate();
-      } else if (mesh.name === "title-H" && mesh?.rotation.y !== 0) {
-        mesh?.rotation.set(0, 0, 0);
-      }
-      if (
-        window.scrollY > window.innerHeight &&
-        window.scrollY < window.innerHeight * 2 &&
-        mesh.name === "title-J"
-      ) {
-        rotateAndUpdate();
-      } else if (mesh.name === "title-J" && mesh?.rotation.y !== 0) {
-        mesh?.rotation.set(0, 0, 0);
-      }
-      if (
-        window.scrollY > window.innerHeight * 2 &&
-        window.scrollY < window.innerHeight * 3 &&
-        mesh.name === "title-D"
-      ) {
-        rotateAndUpdate();
-      } else if (mesh.name === "title-D" && mesh?.rotation.y !== 0) {
-        mesh?.rotation.set(0, 0, 0);
-      }
-    },
+    onPageScroll,
   },
 };

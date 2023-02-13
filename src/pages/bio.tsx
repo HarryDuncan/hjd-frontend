@@ -10,13 +10,18 @@ import {
 
 import { useContentForPage } from "hooks/content/useContentForPage";
 import type { NextPage } from "next";
-import { useMemo } from "react";
-import { formatLetter, letters } from "visuals/visual-configs/bio/letters";
+import { useEffect, useMemo } from "react";
+import {
+  formatLetter,
+  letters,
+  onPageScroll,
+} from "visuals/visual-configs/bio/letters";
 
 const BIO_LETTERS = ["H", "J", "D"];
 const Bio: NextPage = () => {
   const { text, images } = useBioPageContent();
   const bioLetters = useBioLetters();
+  useCleanupListeners();
   return (
     <Layout>
       <BioPage>
@@ -62,4 +67,13 @@ const useBioLetters = () =>
     []
   );
 
+const useCleanupListeners = () => {
+  useEffect(() => () => {
+    document.removeEventListener("scroll", (event) =>
+      onPageScroll(null, event)
+    );
+
+    console.log("removed the event listener");
+  });
+};
 export default Bio;

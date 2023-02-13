@@ -8,7 +8,11 @@ import type { NextPage } from "next";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useHandleRouting } from "hooks/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
-import { ART_IMAGES, ART_ROOT_URL } from "constants/art.constants";
+import {
+  ART_GALLERY_LOAD_MORE,
+  ART_IMAGES,
+  ART_ROOT_URL,
+} from "constants/art.constants";
 import {
   BANNER_IMAGE_HOVER_CONFIG,
   MAIN_GALLERY_TOP_OFFSET,
@@ -31,6 +35,7 @@ const Art: NextPage = () => {
   useEffect(() => {
     setIsLoading(false);
   }, []);
+
   return (
     <Suspense fallback={SkeletonCard}>
       <DynamicLayout>
@@ -46,6 +51,7 @@ const Art: NextPage = () => {
           <DynamicCardGallery
             items={paintingGalleryItems}
             onClick={handleRouting}
+            loadMoreProps={ART_GALLERY_LOAD_MORE}
           />
         </InnerContainer>
       </DynamicLayout>

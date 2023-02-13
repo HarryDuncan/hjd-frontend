@@ -46,7 +46,6 @@ export class InteractiveThreeScene extends Scene {
 
   bindMaterialFunctions() {
     const { onTimeUpdate, onPageScroll } = this.sceneFunctions;
-    console.log("setting");
     if (onTimeUpdate) {
       document.addEventListener("scene:update", () => {
         onTimeUpdate(this);
@@ -54,9 +53,13 @@ export class InteractiveThreeScene extends Scene {
     }
 
     if (onPageScroll) {
-      document.addEventListener("scroll", (event) => {
-        onPageScroll(this, event);
-      });
+      document.addEventListener(
+        "scroll",
+        (event) => {
+          onPageScroll(this, event);
+        },
+        false
+      );
     }
   }
 
