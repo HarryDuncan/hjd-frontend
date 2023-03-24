@@ -29,12 +29,12 @@ export const TextScrollerContainer = styled.div<{ $isAnimating: boolean }>`
   justify-content: center;
   overflow: hidden;
   position: absolute;
-  z-index: 5;
+  z-index: 2;
   animation: ${scrollText} 3000s linear infinite;
   & ${TextScrollerText} {
     display: inline-block;
     white-space: pre;
-
+    z-index: 1;
     animation: appear 0.1s ease-out forwards;
   }
 `;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const ParallaxImageContainer = styled.div<{ $height?: number }>`
   width: 100%;
   height: ${({ $height }) => $height || 250}px;
-  position: fixed;
+  position: absolute;
   overflow: hidden;
   & ${MainTitle} {
     z-index: 4;
@@ -15,7 +15,6 @@ export const ParallaxImageContainer = styled.div<{ $height?: number }>`
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
-    height: 500px;
     & ${MainTitle} {
       font-size: 2.5rem;
     }
@@ -23,6 +22,5 @@ export const ParallaxImageContainer = styled.div<{ $height?: number }>`
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    height: 500px;
   }
 `;

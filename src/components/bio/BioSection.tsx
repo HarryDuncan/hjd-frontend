@@ -22,7 +22,6 @@ export const BioSection = ({
   bioLetters,
   index,
 }: BioSectionProps) => {
-  console.log(bioLetters);
   return (
     <InnerContainer $topOffset={0}>
       <ParallaxImage
