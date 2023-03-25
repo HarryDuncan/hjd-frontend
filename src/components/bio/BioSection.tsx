@@ -2,18 +2,19 @@ import { ParallaxImage } from "components/images";
 import { InnerContainer } from "components/styled-components/Containers";
 import { ContentText } from "components/styled-components/Text";
 import { TextScroller } from "components/text-scroller/TextScroller";
+// import { DynamicInteractiveScene } from "components/visual-components/DynamicInteractiveScene";
 import {
   BANNER_IMAGE_HOVER_CONFIG,
   MAIN_GALLERY_TOP_OFFSET,
 } from "constants/ui.constants";
 import { ImageContent, TextContent } from "models/content/content.types";
-import { DynamicInteractiveScene } from "visuals/interactive-scene/DynamicInteractiveScene";
+
 import { BioContentContainer, TextContainer } from "./Bio.styles";
 
 interface BioSectionProps {
   image: ImageContent;
   text: TextContent;
-  bioLetters: any;
+  bioLetters?: any;
   index: number;
 }
 export const BioSection = ({
@@ -36,8 +37,9 @@ export const BioSection = ({
         <TextContainer>
           <ContentText>{text.content}</ContentText>
         </TextContainer>
-        <DynamicInteractiveScene parameters={bioLetters} />
       </BioContentContainer>
     </InnerContainer>
   );
 };
+
+// <DynamicInteractiveScene {...bioLetters} />

@@ -13,7 +13,7 @@ export const SITE_PAGES = [
   { title: "About", link: "/bio" },
   // { title: "Mixes", link: "/music" },
   { title: "Art", link: "/art" },
-  { title: "Campaigns", link: "/campaigns" },
+  // { title: "Campaigns", link: "/campaigns" },
   { title: "Shop", link: "/shop" },
 ];
 

@@ -12,7 +12,7 @@ export const INITIAL_STATE: VisualState = {
   visualComponentConfig: {
     viewWidth: "100vw",
     viewHeight: "100vh",
-    backgroundColor: "#ebebed",
+    backgroundColor: "white",
     backgroundUrl: "",
   },
   layers: [],

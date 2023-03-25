@@ -11,17 +11,17 @@ import {
 import { useContentForPage } from "hooks/content/useContentForPage";
 import type { NextPage } from "next";
 import { useEffect, useMemo } from "react";
-import {
-  formatLetter,
-  letters,
-  onPageScroll,
-} from "visuals/visual-configs/bio/letters";
+// import {
+//   formatLetter,
+//   letters,
+//   onPageScroll,
+// } from "visual-configs/bio/letters";
 
 const BIO_LETTERS = ["H", "J", "D"];
 const Bio: NextPage = () => {
   const { text, images } = useBioPageContent();
-  const bioLetters = useBioLetters();
-  useCleanupListeners();
+  // const bioLetters = useBioLetters();
+  // useCleanupListeners();
   return (
     <Layout>
       <BioPage>
@@ -30,7 +30,7 @@ const Bio: NextPage = () => {
             key={`section-${index}`}
             image={image}
             text={text[index]}
-            bioLetters={bioLetters[index]}
+            bioLetters={null}
             index={index}
           />
         ))}
@@ -57,23 +57,23 @@ function useBioPageContent() {
   return { text, images };
 }
 
-const useBioLetters = () =>
-  useMemo(
-    () =>
-      BIO_LETTERS.map((char) => {
-        const formatSceneData = formatLetter(char);
-        return { ...letters, formatSceneData };
-      }),
-    []
-  );
+// const useBioLetters = () =>
+//   useMemo(
+//     () =>
+//       BIO_LETTERS.map((char) => {
+//         const formatSceneData = formatLetter(char);
+//         return { ...letters, formatSceneData };
+//       }),
+//     []
+//   );
 
-const useCleanupListeners = () => {
-  useEffect(() => () => {
-    document.removeEventListener("scroll", (event) =>
-      onPageScroll(null, event)
-    );
+// const useCleanupListeners = () => {
+//   useEffect(() => () => {
+//     document.removeEventListener("scroll", (event) =>
+//       onPageScroll(null, event)
+//     );
 
-    console.log("removed the event listener");
-  });
-};
+//     console.log("removed the event listener");
+//   });
+// };
 export default Bio;

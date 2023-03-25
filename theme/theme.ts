@@ -8,7 +8,7 @@ export const THEME: DefaultTheme = {
   spacing: (multiple = 1) => SPACING_UNIT * multiple,
   colors: {
     mono: {
-      background: "#ebebed",
+      background: "#fafafa",
       lightText: "#fffcfc",
       darkText: "#030303",
       lightGray: "#949292",
