@@ -36,7 +36,7 @@ export const NavTitle = styled.h1<{ $isLight?: boolean }>`
   margin: 0 2.5%;
   text-transform: uppercase;
   background: ${({ $isLight, theme }) =>
-    $isLight ? theme.colors.gradients.dark : theme.colors.gradients.light};
+    $isLight ? theme.colors.gradients.light : theme.colors.gradients.dark};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.2rem;

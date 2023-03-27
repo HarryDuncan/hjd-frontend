@@ -21,9 +21,9 @@ export const updateCubes = (object, time, numblobs) => {
     const ballx =
       Math.sin(i + 1.26 * time * (1.03 + 0.5 * Math.cos(0.21 * i))) * 0.27 +
       0.5;
-    const bally = Math.tan(i * 1.77 + time) * 0.27 + 0.5;
+    const bally = Math.tan(i * 1.77 + time) * 0.27;
     const ballz =
-      Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.1;
+      Math.cos(i + 1.2 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * -0.07;
 
     object.addBall(ballx, bally, ballz, strength, subtract);
   }

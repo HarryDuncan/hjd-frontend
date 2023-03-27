@@ -13,7 +13,7 @@ export const defaultCameraParams: CameraParams = {
   perspectiveCameraProps: {
     fov: 45,
     aspect: 1 / 1,
-    near: 1,
+    near: 0.1,
     far: 1000,
   },
   orthographicCameraProps: {
@@ -23,13 +23,11 @@ export const defaultCameraParams: CameraParams = {
 
 export const useCamera = (cameraParams: CameraParams = defaultCameraParams) => {
   const { width, height } = useDeviceSize();
-  console.log(width);
-  console.log(height);
   const formattedCameraParams = {
     ...cameraParams,
     PerspectiveCameraProps: {
       ...cameraParams.perspectiveCameraProps,
-      aspect: width / height,
+      aspect: height / width,
     },
   };
   return useMemo(() => {

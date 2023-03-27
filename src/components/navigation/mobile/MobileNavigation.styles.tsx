@@ -4,11 +4,11 @@ export const NavItemContainer = styled.div<{
   $isOpen: boolean;
   $isLight: boolean;
 }>`
-  margin-top: 7vh;
+  margin-top: 8vh;
   width: 100vw;
   height: 100vh;
   background: ${({ $isLight, theme }) =>
-    $isLight ? theme.colors.gradients.dark : theme.colors.mono.background};
+    $isLight ? theme.colors.mono.background : theme.colors.gradients.dark};
   opacity: ${({ $isLight }) => ($isLight ? 0.95 : 1)};
   z-index: 300;
   display: flex;
@@ -49,7 +49,7 @@ export const MobileText = styled.span<{ $isLight: boolean }>`
         gradients: { dark, light },
       },
     },
-  }) => ($isLight ? dark : light)};
+  }) => ($isLight ? light : dark)};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 4.5rem;

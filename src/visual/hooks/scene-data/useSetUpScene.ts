@@ -18,7 +18,7 @@ export const useSetUpScene = (
     postProcessor,
     clock,
   } = useThreeJs(threeJsParams);
-  console.log(camera);
+
   const { initializedAssets, areAssetsInitialized } = useAssets(assets);
   const { update, pause } = useThreadWithPostProcessor(
     postProcessor,

@@ -35,10 +35,8 @@ export const getMaterial = (
       );
     }
     case MATERIAL_TYPES.STANDARD_SHADER: {
-      const {
-        shaders,
-        uniforms,
-      } = materialParameters as StandardShaderMaterialParameters;
+      const { shaders, uniforms } =
+        materialParameters as StandardShaderMaterialParameters;
       return new ShaderMaterial({
         // @ts-ignore
         uniforms,
@@ -60,9 +58,7 @@ export const getMaterial = (
         // @ts-ignore
         material: { imageUrl, envMapType },
       } = materialParameters as EnvMapMaterialParameters;
-
       const envMap = setUpEnvMap(imageUrl, envMapType);
-      console.log(envMap);
       return new MeshStandardMaterial({
         envMap,
         roughness: 0.1,

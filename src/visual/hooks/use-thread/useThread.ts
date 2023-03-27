@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { WebGLRenderer } from "three";
 import { CSS3DRenderer } from "three/examples/jsm/renderers/CSS3DRenderer";
 import { ev } from "../use-events/useEventsWithMeshes";
@@ -15,7 +15,6 @@ export const useThread = (
       return;
     }
     ev("scene:update");
-    console.log(renderer);
     renderer.render(scene, camera);
     currentFrameRef.current = requestAnimationFrame(update);
   }, [currentFrameRef, renderer, scene, camera]);

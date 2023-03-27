@@ -7,7 +7,6 @@ import {
 
 import { ASSET_TYPES } from "visual/hooks/use-assets/types";
 
-
 // export const onPageScroll = (scene: InteractiveScene, _event) => {
 
 //   const meshes = getMeshesByIdentifier(scene, "title");
@@ -81,8 +80,9 @@ export const letters = {
   visualComponentConfig: {
     viewHeight: "100%",
     viewWidth: "50%",
-  // },
-  // sceneFunctions: {
-  //   onPageScroll,
-  // },
+    // },
+    // sceneFunctions: {
+    //   onPageScroll,
+    // },
+  },
 };

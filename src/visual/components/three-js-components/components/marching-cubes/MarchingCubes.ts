@@ -19,8 +19,8 @@ export const MarchingCubes = ({
     50000
   );
   marchingCubeEffect.position.set(0, 0, 0);
-  marchingCubeEffect.scale.set(5, 5, 5);
-  marchingCubeEffect.isolation = 5;
+  marchingCubeEffect.scale.set(6, 6, 6);
+  marchingCubeEffect.isolation = 10;
   marchingCubeEffect.enableUvs = false;
   marchingCubeEffect.enableColors = false;
   marchingCubeEffect.name = `marching-cubes`;

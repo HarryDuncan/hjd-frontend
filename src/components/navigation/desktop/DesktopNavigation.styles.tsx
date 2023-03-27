@@ -20,7 +20,7 @@ export const NavItem = styled.li`
   position: relative;
 `;
 
-export const NavItemLabel = styled.span<{ $isNavTop: boolean }>`
+export const NavItemLabel = styled.span<{ $isLight: boolean }>`
   text-align: right;
   cursor: pointer;
   font-family: "Harryduncan";
@@ -29,14 +29,14 @@ export const NavItemLabel = styled.span<{ $isNavTop: boolean }>`
   letter-spacing: 0.2rem;
   text-transform: uppercase;
   width: 0;
-  background: ${({ theme, $isNavTop }) =>
-    $isNavTop ? theme.colors.gradients.dark : theme.colors.gradients.light};
+  background: ${({ theme, $isLight }) =>
+    $isLight ? theme.colors.gradients.light : theme.colors.gradients.dark};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
 
 export const NavItemLink = styled.div<{
-  $isNavTop: boolean;
+  $isLight: boolean;
   $isActive: boolean;
 }>`
   &:before {
@@ -47,7 +47,7 @@ export const NavItemLink = styled.div<{
     height: 1px;
     bottom: 0.2rem;
     left: 0;
-    background-color: ${({ $isNavTop }) => ($isNavTop ? "#000" : "#fff")};
+    background-color: ${({ $isLight }) => ($isLight ? "#fff" : "#000")};
     transform: ${({ $isActive }) => ($isActive ? `scaleX(1)` : `scaleX(0)`)};
     transition: transform 0.3s ease;
   }

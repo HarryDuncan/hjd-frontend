@@ -4,7 +4,7 @@ import { useInitializeAssets } from "./useInitializeAssets";
 
 export const useAssets = (assets: Asset[]) => {
   const [areAssetsInitialized, setAreAssetsInitialized] = useState(
-    assets.length ? false : true
+    assets.length ?
   );
   const [initializedAssets, setInitializedAssets] = useState<Asset[]>([]);
   const initializeAssets = useInitializeAssets(assets);

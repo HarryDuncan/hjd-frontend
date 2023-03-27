@@ -1,28 +1,19 @@
 import { useEffect, useState } from "react";
 import { MenuButton } from "../menu-button/MenuButton";
-import { PageItem } from "../navigation.types";
+import { NavTheme, PageItem } from "../navigation.types";
 import { MobileText, NavItemContainer } from "./MobileNavigation.styles";
-import { SITE_PAGES } from "./../Navigation";
 import Link from "next/link";
+import { NAV_THEMES, SITE_PAGES } from "../navigation.constants";
 
 interface MobileNavigationProps {
-  isNavTop: boolean;
-  onSelect: (link: string) => void;
+  navTheme: NavTheme;
 }
 
-export const MobileNavigation = ({
-  isNavTop,
-  onSelect,
-}: MobileNavigationProps) => {
+export const MobileNavigation = ({ navTheme }: MobileNavigationProps) => {
   const [isMenuOpen, updateIsMenuOpen] = useState<boolean>(false);
 
   const handleMobileMenuClick = () => {
     updateIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleLinkClick = (link: string) => {
-    updateIsMenuOpen(false);
-    onSelect(link);
   };
 
   useEffect(() => {
@@ -35,17 +26,20 @@ export const MobileNavigation = ({
       <MenuButton
         onClick={handleMobileMenuClick}
         isOpen={isMenuOpen}
-        isDark={isNavTop}
+        isLight={navTheme === NAV_THEMES.LIGHT}
       />
 
-      <NavItemContainer $isOpen={isMenuOpen} $isLight={!isNavTop}>
+      <NavItemContainer
+        $isOpen={isMenuOpen}
+        $isLight={navTheme === NAV_THEMES.LIGHT}
+      >
         {isMenuOpen && (
           <>
             {SITE_PAGES.map((page: PageItem, index: number) => (
               <MobileText
-                $isLight={isNavTop}
-                key={`${index}-${isNavTop}`}
-                onClick={() => handleLinkClick(page.link)}
+                $isLight={navTheme === NAV_THEMES.DARK}
+                key={`${index}-${navTheme}`}
+                onClick={handleMobileMenuClick}
               >
                 <Link href={page.link}>{page.title}</Link>
               </MobileText>

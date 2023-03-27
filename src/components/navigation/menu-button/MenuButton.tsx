@@ -4,10 +4,10 @@ import { Line, MenuButtonContainer } from "./styledComponents";
 interface MenuButtonProps {
   onClick: () => void;
   isOpen: boolean;
-  isDark: boolean;
+  isLight: boolean;
 }
 
-export const MenuButton = ({ onClick, isOpen, isDark }: MenuButtonProps) => {
+export const MenuButton = ({ onClick, isOpen, isLight }: MenuButtonProps) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export const MenuButton = ({ onClick, isOpen, isDark }: MenuButtonProps) => {
     <MenuButtonContainer
       onClick={handleClick}
       $isActive={isActive}
-      $isLight={isDark}
+      $isLight={isLight}
     >
       <Line />
       <Line />

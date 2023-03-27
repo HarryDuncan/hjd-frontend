@@ -19,7 +19,7 @@ const ViewItemIcon = styled.img`
   position: absolute;
   height: 2.5rem;
   cursor: pointer;
-  z-index: 5;
+  z-index: 2;
   animation-timing-function: ease-in-out;
   -webkit-animation: ${onMouseOut} 500ms 1 forwards;
   &:hover {
@@ -27,15 +27,20 @@ const ViewItemIcon = styled.img`
     -webkit-animation: ${onMouseOver} 500ms 1 forwards;
   }
 `;
-
-export const ScrollLeft = styled(ViewItemIcon)`
-  left: 3%;
-  top: 50%;
+const ScrollIcon = styled(ViewItemIcon)`
+  top: 55%;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    top: 42%;
+  }
 `;
 
-export const ScrollRight = styled(ViewItemIcon)`
+export const ScrollLeft = styled(ScrollIcon)`
+  left: 3%;
+`;
+
+export const ScrollRight = styled(ScrollIcon)`
   right: 3%;
-  top: 50%;
 `;
 
 export const Exit = styled(ViewItemIcon)`
