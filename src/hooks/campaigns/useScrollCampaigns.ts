@@ -19,6 +19,6 @@ export const useScrollCampaigns = () => {
       const { newIndex } = moveThroughArray(campaigns, currentIndex, step);
       handleRouting(campaigns[newIndex].slug);
     },
-    [currentSlug, campaigns]
+    [campaigns, currentIndex, handleRouting]
   );
 };

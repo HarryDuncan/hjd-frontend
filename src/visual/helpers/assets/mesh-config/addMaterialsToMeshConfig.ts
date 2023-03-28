@@ -13,7 +13,6 @@ export const addMaterialsToMeshConfig = (formattedGeometries, config) => {
     const materialType =
       materialConfig?.material.materialType ?? MATERIAL_TYPES.STANDARD;
     const material = getMaterial(materialParams, materialType);
-    console.log(material);
     return {
       ...geometry,
       material,

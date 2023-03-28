@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import { client } from "network/ApolloClient";
+
 export const getArt = async () => {
   const query = gql`
     query art {
@@ -9,7 +10,9 @@ export const getArt = async () => {
     }
   `;
   return client.query({ query }).then((response) => {
-    const art = response.data.art;
+    const {
+      data: { art },
+    } = response;
     const loading = response.loading;
     return { art, loading };
   });

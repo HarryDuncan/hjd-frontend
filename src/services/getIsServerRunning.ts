@@ -1,21 +1,19 @@
 import { gql } from "@apollo/client";
 import { client } from "network/ApolloClient";
 
-export const getMixes = async () => {
+export const getIsServerRunning = async () => {
   const query = gql`
-    query mixes {
-      mixes @rest(type: "mix", path: "/music") {
-        mixes
+    query server {
+      server @rest(type: "server", path: "/isActive") {
+        isServerActive
       }
     }
   `;
   return client.query({ query }).then((response) => {
     const {
-      data: {
-        mixes: { mixes },
-      },
+      data: { server },
     } = response;
     const loading = response.loading;
-    return { mixes, loading };
+    return { server, loading };
   });
 };

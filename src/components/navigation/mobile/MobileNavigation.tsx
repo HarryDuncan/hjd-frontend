@@ -17,7 +17,7 @@ export const MobileNavigation = ({ navTheme }: MobileNavigationProps) => {
   };
 
   useEffect(() => {
-    const body = document.body;
+    const { body } = document;
     body.style.overflowY = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen]);
 
@@ -38,7 +38,7 @@ export const MobileNavigation = ({ navTheme }: MobileNavigationProps) => {
             {SITE_PAGES.map((page: PageItem, index: number) => (
               <MobileText
                 $isLight={navTheme === NAV_THEMES.DARK}
-                key={`${index}-${navTheme}`}
+                key={`${page.title}-${navTheme}`}
                 onClick={handleMobileMenuClick}
               >
                 <Link href={page.link}>{page.title}</Link>

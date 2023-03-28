@@ -1,8 +1,9 @@
-import React from "react";
+import React, { MutableRefObject } from "react";
+
 export type ContainerNode =
-  | React.MutableRefObject<Element>
-  | React.MutableRefObject<null>
-  | React.MutableRefObject<JSX.Element>;
+  | MutableRefObject<Element>
+  | MutableRefObject<null>
+  | MutableRefObject<JSX.Element>;
 
 // ###################
 // Object Positions

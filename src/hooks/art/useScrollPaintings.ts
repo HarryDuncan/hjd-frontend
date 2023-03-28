@@ -21,6 +21,6 @@ export const useScrollPaintings = () => {
       const { newIndex } = moveThroughArray(paintings, currentIndex, step);
       handleRouting(paintings[newIndex].slug);
     },
-    [currentSlug, paintings]
+    [paintings, currentIndex, handleRouting]
   );
 };

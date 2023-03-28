@@ -2,7 +2,7 @@ import { Group } from "three";
 import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 export const loadGLTF = (path: string) =>
-  new Promise((resolve: (value: Group) => void) => {
+  new Promise((resolve: (data: Group) => void) => {
     const gltfLoader = new GLTFLoader();
     gltfLoader.load(
       path,

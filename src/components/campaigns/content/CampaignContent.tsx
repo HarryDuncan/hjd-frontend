@@ -26,9 +26,5 @@ export const CampaignContent = () => {
     }
   };
 
-  return (
-    <>
-      <Suspense>{getCampaignContent()}</Suspense>
-    </>
-  );
+  return <Suspense>{getCampaignContent()}</Suspense>;
 };

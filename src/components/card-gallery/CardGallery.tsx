@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { Card, CardDetails } from "components/card/Card";
 import { CardGalleryContainer } from "./styledComponents";
 
@@ -19,7 +18,7 @@ const CardGallery = ({ items, onClick, loadMoreProps }: CardGalleryProps) => {
     }
   };
 
-  const displayedCards = useLoadMoreOnScroll(loadMoreProps, items);
+  const displayedCards = useLoadMoreOnScroll(items, loadMoreProps);
   return (
     <CardGalleryContainer>
       {displayedCards.map(({ id, title, imageUrl, footer }) => (
@@ -34,26 +33,25 @@ const CardGallery = ({ items, onClick, loadMoreProps }: CardGalleryProps) => {
 };
 
 const useLoadMoreOnScroll = (
-  loadMoreProps: LoadMoreProps,
-  items: CardDetails[]
+  items: CardDetails[],
+  loadMoreProps?: LoadMoreProps
 ): CardDetails[] => {
-  useCleanupListeners();
+  // useCleanupListeners();
   if (!loadMoreProps) {
     return items;
   }
-  document.addEventListener("scroll", (event) => handleGalleryScroll());
+  // document.addEventListener("scroll", (event) => handleGalleryScroll());
 
-  console.log(loadMoreProps);
   return items;
 };
-const useCleanupListeners = () => {
-  useEffect(
-    () => () => document.removeEventListener("scroll", handleGalleryScroll),
-    []
-  );
-};
+// const useCleanupListeners = () => {
+//   useEffect(
+//     () => () => document.removeEventListener("scroll", handleGalleryScroll),
+//     []
+//   );
+// };
 
-const handleGalleryScroll = () => {
-  console.log("sssd");
-};
+// const handleGalleryScroll = () => {
+//   console.log("sssd");
+// };
 export default CardGallery;

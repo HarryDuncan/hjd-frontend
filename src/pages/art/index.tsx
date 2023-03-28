@@ -24,6 +24,7 @@ import { TextScroller } from "components/text-scroller/TextScroller";
 const Art: NextPage = () => {
   const {
     art: { paintings },
+    isError,
   } = useArtData();
   const paintingGalleryItems = usePaintingsInGallery(paintings);
   const { images } = useContentForPage({
@@ -31,14 +32,9 @@ const Art: NextPage = () => {
   });
 
   const handleRouting = useHandleRouting("art/paintings/");
-  const [loading, setIsLoading] = useState<boolean>(true);
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
   return (
     <Suspense fallback={SkeletonCard}>
-      <DynamicLayout>
+      <DynamicLayout isError={isError}>
         <ParallaxImage
           hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
           imageUrl={images[0]?.imageUrl ?? ""}

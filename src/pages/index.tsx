@@ -8,8 +8,6 @@ import { InteractiveSceneParams } from "visual/visual-components/interactive-sce
 
 const Home: NextPage = () => {
   const homeScene = useHomeSceneData();
-  console.log(homeScene);
-  console.log(homeScene.formatSceneData);
   return (
     <Layout topPadding={false}>
       <DynamicInteractiveScene {...homeScene} />
@@ -18,8 +16,7 @@ const Home: NextPage = () => {
 };
 
 const useHomeSceneData = () => {
-  const { threeJsParams, materialFunctions, assets, events, interactions } =
-    useDefaultConfig();
+  const { threeJsParams, events } = useDefaultConfig();
 
   const sceneParams = homeScene() as unknown as InteractiveSceneParams;
   return {

@@ -1,7 +1,7 @@
 import { TextureLoader, MathUtils as Math, Texture } from "three";
 
 export const loadTexture = (path: string) =>
-  new Promise((resolve: (value: Texture) => void) => {
+  new Promise((resolve: (data: Texture) => void) => {
     const textureLoader = new TextureLoader();
     textureLoader.load(path, (data) => {
       if (

@@ -1,10 +1,9 @@
 import { Asset } from "models/visuals/types";
-import { Vector3 } from "three";
-import {
-  COMPONENT_TYPES,
-  TextProps,
-} from "visual/components/three-js-components/components/threeJsComponents.types";
-
+// import { Vector3 } from "three";
+// import {
+//   COMPONENT_TYPES,
+//   TextProps,
+// } from "visual/components/three-js-components/components/threeJsComponents.types";
 import { ASSET_TYPES } from "visual/hooks/use-assets/types";
 
 // export const onPageScroll = (scene: InteractiveScene, _event) => {
@@ -46,24 +45,25 @@ import { ASSET_TYPES } from "visual/hooks/use-assets/types";
 //   }
 // };
 
-export const formatLetter = (letterChar: string) => (loadedAssets: Asset[]) => {
-  // const text = {
-  //   componentType: COMPONENT_TYPES.TEXT,
-  //   componentProps: {
-  //     fontUrl: "../fonts/Harryduncan.woff",
-  //     text: letterChar,
-  //     materialProps: {
-  //       materialType: MATERIAL_TYPES.standard,
-  //       materialParameters: {
-  //         map: loadedAssets[0].data,
-  //       },
-  //     },
-  //     name: `title-${letterChar}`,
-  //     position: new Vector3(-0.75, 0.75, 0),
-  //   } as TextProps,
-  // };
-  // return { isSceneDataInitialized: true, sceneComponents: [text] };
-};
+export const formatLetter =
+  (_letterChar: string) => (_loadedAssets: Asset[]) => {
+    // const text = {
+    //   componentType: COMPONENT_TYPES.TEXT,
+    //   componentProps: {
+    //     fontUrl: "../fonts/Harryduncan.woff",
+    //     text: letterChar,
+    //     materialProps: {
+    //       materialType: MATERIAL_TYPES.standard,
+    //       materialParameters: {
+    //         map: loadedAssets[0].data,
+    //       },
+    //     },
+    //     name: `title-${letterChar}`,
+    //     position: new Vector3(-0.75, 0.75, 0),
+    //   } as TextProps,
+    // };
+    // return { isSceneDataInitialized: true, sceneComponents: [text] };
+  };
 
 export const letters = {
   threeJsParams: {

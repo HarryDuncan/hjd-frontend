@@ -30,7 +30,7 @@ const InteractiveScene = ({
   threeJsParams,
   interactions = [],
   assets,
-  materialParams,
+
   sceneFunctions,
   visualComponentConfig,
   formatSceneData = defaultFormatSceneData,
@@ -97,7 +97,6 @@ const useSceneData = (
   formatSceneData: (assets: Asset[]) => SceneData
 ): SceneData => {
   return useMemo(() => {
-    console.log(formatSceneData);
     if (!areAssetsInitialized) return EMPTY_SCENE_DATA;
     const sceneData = formatSceneData(initializedAssets);
     return sceneData;

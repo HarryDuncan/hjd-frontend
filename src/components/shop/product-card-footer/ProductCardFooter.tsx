@@ -17,7 +17,7 @@ export const ProductCardFooter = ({
   isSoldOut,
 }: ProductCardFooterProps) => {
   const priceLabel = getPriceLabel(price, variations);
-  const variationLabel = variations.map(({ title }) => title);
+  const variationLabel = variations.map(({ title: label }) => label);
   return (
     <CardFooter>
       <Title>{title}</Title>
@@ -38,7 +38,9 @@ const getPriceLabel = (
 ) => {
   if (price) return price;
 
-  const productPrices: number[] = variations.map(({ price }) => price);
+  const productPrices: number[] = variations.map(
+    ({ price: variationPrice }) => variationPrice
+  );
   const min = Math.min(...productPrices);
   const max = Math.max(...productPrices);
   return `${min}-$${max}`;

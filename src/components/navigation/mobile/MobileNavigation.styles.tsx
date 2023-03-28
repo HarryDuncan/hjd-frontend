@@ -1,10 +1,10 @@
 import styled, { keyframes } from "styled-components";
+import { NAV_OVERLAY_HEIGHT } from "../navigation.constants";
 
 export const NavItemContainer = styled.div<{
   $isOpen: boolean;
   $isLight: boolean;
 }>`
-  margin-top: 8vh;
   width: 100vw;
   height: 100vh;
   background: ${({ $isLight, theme }) =>
@@ -17,6 +17,7 @@ export const NavItemContainer = styled.div<{
   animation-name: ${({ $isOpen }) => ($isOpen ? growNav : shrinkNav)};
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
+  margin-top: ${NAV_OVERLAY_HEIGHT};
 `;
 
 const growNav = keyframes`

@@ -1,3 +1,5 @@
+import { FetchResponse } from "models/general.types";
+
 export type Campaign = {
   id: number;
   title: string;
@@ -13,7 +15,6 @@ export type Campaign = {
   slug: string;
 };
 
-export type FetchCampaignResponse = {
+export type FetchCampaignResponse = FetchResponse & {
   campaigns: Campaign[];
-  loading: boolean;
 };

@@ -12,12 +12,16 @@ export const MenuButtonContainer = styled.div<{
 }>`
   height: auto;
   display: block;
-  margin-right: 1rem;
-  margin-top: 0.3rem;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+  margin: 0.3rem 2.5%;
+
+  @media only screen and (max-width: ${({ theme: { breakpoints } }) =>
+      breakpoints.mobile}px) {
+    margin: 0.3rem 0.5rem;
+  }
   ${Line} {
     margin: 5px auto;
     background: ${({

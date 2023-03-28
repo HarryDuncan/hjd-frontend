@@ -26,5 +26,5 @@ export const useContentForPage = ({
         : []
     );
     return { text, images };
-  }, [textContent, imageContent]);
+  }, [textContent, imageContent, imageSelection, rootUrl, textSelection]);
 };

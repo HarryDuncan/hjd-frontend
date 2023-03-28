@@ -1,3 +1,5 @@
+import { FetchResponse } from "models/general.types";
+
 export type Painting = {
   description: string;
   externalUrl: string;
@@ -10,9 +12,8 @@ export type Painting = {
   dimensions: string;
 };
 
-export type FetchArtResponse = {
+export type FetchArtResponse = FetchResponse & {
   art: {
     paintings: Painting[];
   };
-  loading: boolean;
 };

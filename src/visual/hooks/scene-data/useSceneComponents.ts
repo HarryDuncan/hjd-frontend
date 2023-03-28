@@ -48,10 +48,12 @@ export const useSceneComponents = (
             componentProps as PlaneProps;
           return Plane({ name, position, size, material });
         }
-        case COMPONENT_TYPES.CUBE:
+        case COMPONENT_TYPES.CUBE: {
           const { name, material, position, size } =
             componentProps as CubeProps;
           return Cube({ name, position, size, material });
+        }
+
         default:
           console.warn("component not set up for this component type");
           return [];

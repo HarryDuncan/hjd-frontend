@@ -17,8 +17,9 @@ const CampaignDetails = () => {
     campaign,
     campaignConsts: { sceneData },
   } = useCampaignData();
-  if (!campaign) return null;
   const { height, width } = useContentHeightAndWidth();
+  if (!campaign) return null;
+
   return (
     <CampaignContentContainer>
       {sceneData && (

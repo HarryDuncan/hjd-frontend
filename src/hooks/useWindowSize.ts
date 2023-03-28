@@ -1,4 +1,4 @@
-import { useEffect, Dispatch, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useTheme } from "styled-components";
 
 export const WINDOW_SCREEN_TYPE = {
@@ -19,9 +19,8 @@ export const useWindowScreenType = () => {
       return WINDOW_SCREEN_TYPE.DESKTOP;
     } else if (document.documentElement.clientWidth > breakpoints.tablet) {
       return WINDOW_SCREEN_TYPE.TABLET;
-    } else {
-      return WINDOW_SCREEN_TYPE.MOBILE;
     }
+    return WINDOW_SCREEN_TYPE.MOBILE;
   }, [breakpoints]);
 };
 
@@ -41,6 +40,6 @@ export const useWindowSize = () => {
     handleResize();
     // Remove event listener on cleanup
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [getScreenSize]);
   return windowSize;
 };

@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { NAV_OVERLAY_HEIGHT } from "./navigation.constants";
 
 export const NAV_HEIGHT = "8vh";
 
@@ -64,13 +65,13 @@ export const growNav = keyframes`
     height: 0px;
   }
   to {
-    height: 4em;
+    height: ${NAV_OVERLAY_HEIGHT}
   }
 }`;
 
 export const shrinkNav = keyframes`
   from {
-    height: 4em;
+    height: ${NAV_OVERLAY_HEIGHT}
   }
   to {
     height: 0px;

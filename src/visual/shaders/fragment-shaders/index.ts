@@ -2,7 +2,6 @@ export * from "./interactive-object";
 export * from "./interactive-particles";
 export * from "./interactive-web-gl";
 export * from "./webgl-shaders";
-export * from "./texture-distortion";
 export * from "./surface-scattering";
 export * from "./image-hover";
 export * from "./attraction-morphing";

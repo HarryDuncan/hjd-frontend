@@ -19,7 +19,7 @@ export const useSceneData = (
   useMemo(() => {
     if (!areAssetsInitialized) return { isSceneDataInitialized: false };
     return formatToWebGL(initializedAssets, materialParams);
-  }, [areAssetsInitialized]);
+  }, [areAssetsInitialized, materialParams]);
 
 const formatToWebGL = (
   initializedAssets: Asset[],

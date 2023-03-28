@@ -1,4 +1,3 @@
-import React, { useRef } from "react";
 import { CardImage, CardTitle, CardWrapper } from "./Card.styles";
 import { CardFooter } from "./CardFooter";
 
@@ -13,8 +12,7 @@ interface CardProps {
   onClick?: () => void;
 }
 
-export function Card({ cardDetails, onClick }: CardProps) {
-  const imgElementRef = useRef<HTMLImageElement | null>(null);
+export const Card = ({ cardDetails, onClick }: CardProps) => {
   const cardClicked = () => {
     if (onClick) {
       onClick();
@@ -35,4 +33,4 @@ export function Card({ cardDetails, onClick }: CardProps) {
       )}
     </CardWrapper>
   );
-}
+};

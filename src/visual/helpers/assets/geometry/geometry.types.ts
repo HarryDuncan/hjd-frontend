@@ -11,10 +11,12 @@ export type MaterialParameters =
   | InteractiveMaterialParameters
   | MatcapMaterialParameters;
 
-export enum MeshTypes {
-  MESH = "mesh",
-  POINTS = "points",
-}
+export const MESH_TYPES = {
+  MESH: "mesh",
+  POINTS: "points",
+};
+
+export type MeshTypes = keyof typeof MESH_TYPES;
 
 export interface FormattedGeometry {
   geometry: Geometry;

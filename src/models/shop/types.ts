@@ -1,3 +1,5 @@
+import { FetchResponse } from "models/general.types";
+
 export type Product = {
   id: number;
   title: string;
@@ -37,12 +39,11 @@ export type ShippingZone = {
   estimatedDeliveryTime: string;
 };
 
-export type ReturnedShopData = {
+export type ReturnedShopData = FetchResponse & {
   shopData: {
     products: Product[];
     productVariations: ProductVariations[];
     shippingZones: ShippingZone[];
     ShippingOptions: ShippingOption[];
   };
-  loading: boolean;
 };

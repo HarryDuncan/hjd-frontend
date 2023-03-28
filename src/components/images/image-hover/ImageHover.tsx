@@ -57,8 +57,9 @@ export const ImageHover = ({
     >
       {Array.from(Array(REPETITIONS).keys()).map((key, index) =>
         key === 0 ? (
-          <ImageWrap key={index}>
+          <ImageWrap key={key}>
             <DefaultImage
+              aria-label={title}
               $backgroundImgUrl={imageUrl}
               $imageProps={hoverImageConfig.default}
               ref={refs[index]}
@@ -66,7 +67,8 @@ export const ImageHover = ({
           </ImageWrap>
         ) : (
           <DefaultImage
-            key={index}
+            key={key}
+            aria-label={title}
             $backgroundImgUrl={imageUrl}
             $imageProps={hoverImageConfig.default}
             ref={refs[index]}
@@ -100,7 +102,7 @@ const useRefArray = (
 const useHoverTimeline = () => {
   return useCallback((refs: any) => {
     if (!refs || refs.some((ref: any) => ref.current === null)) return null;
-    let animationProperties = {
+    const animationProperties = {
       duration: 0.8,
       ease: "power2.inOut",
       stagger: REPETITION_STAGGER,

@@ -13,7 +13,9 @@ export const getShopData = async () => {
     }
   `;
   return client.query({ query }).then((response) => {
-    const shopData = response.data.shopData;
+    const {
+      data: { shopData },
+    } = response;
     const loading = response.loading;
     return { shopData, loading };
   });

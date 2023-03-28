@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 import { useActiveNav } from "../hooks/useActiveNav";
-import { useIsNavDark } from "../hooks/useIsNavDark";
 import { NAV_THEMES, SITE_PAGES } from "../navigation.constants";
 import { NavTheme, PageItem } from "../navigation.types";
 import {
@@ -21,7 +20,7 @@ export const DesktopNav = ({ navTheme }: DesktopNavProps) => {
   return (
     <NavItemList>
       {SITE_PAGES.map((page: PageItem, index: number) => (
-        <NavItem key={index}>
+        <NavItem key={page.title}>
           <NavItemLink
             $isLight={navTheme === NAV_THEMES.DARK}
             $isActive={activeNav === page.link}

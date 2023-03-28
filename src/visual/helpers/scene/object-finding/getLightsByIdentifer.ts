@@ -1,4 +1,3 @@
-export const getLightsByIdentifier = (scene, identifier) => {
-  console.log(scene);
+export const getLightsByIdentifier = (_scene, _identifier) => {
   return [];
 };

@@ -7,7 +7,6 @@ import { SceneData } from "visual/components/interactive/scene/types";
 import { useMeshes } from "visual/hooks/scene-data/useMeshes";
 import PostProcessor from "visual/components/post-processor/PostProcessor";
 import { EMPTY_SCENE_DATA } from "consts";
-import { useEventsWithMesh } from "visual/hooks/use-events/useEventsWithMeshes";
 import { defaultFormatWithContext } from "scenes/default-configs/defaultFormatSceneData";
 import { useSceneComponents } from "visual/hooks/scene-data/useSceneComponents";
 import { useLights } from "visual/hooks/scene-data/useLights";
@@ -83,7 +82,7 @@ export const InteractiveSceneContainer = ({
 const useSceneData = (
   initializedAssets: Asset[],
   areAssetsInitialized: boolean,
-  formatSceneData: (assets: Asset[], context, dispatch) => SceneData
+  formatSceneData: (_assets: Asset[], _context, _dispatch) => SceneData
 ): SceneData => {
   const sceneDataContext = useAppSelector((state) => state.sceneData);
   const dispatch = useAppDispatch();

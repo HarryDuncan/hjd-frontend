@@ -1,3 +1,5 @@
+import { FetchResponse } from "models/general.types";
+
 export interface LinkTreeLink {
   id: number;
   title: string;
@@ -5,7 +7,6 @@ export interface LinkTreeLink {
   order: number;
 }
 
-export interface FetchLinkTreeResponse {
+export type FetchLinkTreeResponse = FetchResponse & {
   links: LinkTreeLink[];
-  loading: boolean;
-}
+};

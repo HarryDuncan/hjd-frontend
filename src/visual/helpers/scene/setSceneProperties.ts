@@ -1,4 +1,4 @@
-import { Scene } from "three";
+import { Scene, Texture } from "three";
 import { SceneProperties } from "visual/components/interactive/scene/types";
 
 export const setSceneProperties = (
@@ -7,7 +7,6 @@ export const setSceneProperties = (
 ) => {
   if (!sceneProperties) return;
   if (sceneProperties.background !== null) {
-    // @ts-ignore
-    scene.background = sceneProperties.background;
+    scene.background = sceneProperties.background as Texture;
   }
 };

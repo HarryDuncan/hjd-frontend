@@ -15,14 +15,6 @@ export const useRandomObjectProperties = (
   numberOfObjects: number,
   bounds: Bounds3D
 ) => {
-  const {
-    lowerBoundX,
-    upperBoundX,
-    lowerBoundY,
-    upperBoundY,
-    lowerBoundZ,
-    upperBoundZ,
-  } = bounds;
   return useMemo(() => {
     const coords = getRandomCoordinates(numberOfObjects, bounds);
 
@@ -35,13 +27,5 @@ export const useRandomObjectProperties = (
       });
     }
     return randomObjects;
-  }, [
-    numberOfObjects,
-    lowerBoundX,
-    upperBoundX,
-    lowerBoundY,
-    upperBoundY,
-    lowerBoundZ,
-    upperBoundZ,
-  ]);
+  }, [numberOfObjects, bounds]);
 };

@@ -22,6 +22,6 @@ export const useScrollProducts = () => {
       const { newIndex } = moveThroughArray(products, currentIndex, step);
       handleRouting(products[newIndex].id);
     },
-    [currentProductId, products]
+    [products, currentIndex, handleRouting]
   );
 };

@@ -68,10 +68,8 @@ const performAnimation = (
   switch (animationType) {
     case ANIMATION_TYPES.TRAVERSE:
       {
-        const {
-          curve,
-          animationDurationMilis,
-        } = animationConfig as TraversalAnimationConfig;
+        const { curve, animationDurationMilis } =
+          animationConfig as TraversalAnimationConfig;
         if (curve) {
           const currentProg = easeOut(progress / animationDurationMilis) * 100;
           const { x, y, z } = traverseThroughtArray(
@@ -84,10 +82,8 @@ const performAnimation = (
       break;
     case ANIMATION_TYPES.ROTATE:
       {
-        const {
-          animationDurationMilis,
-          rotationAxis,
-        } = animationConfig as RotationAnimationConfig;
+        const { animationDurationMilis, rotationAxis } =
+          animationConfig as RotationAnimationConfig;
         const rotation = MathUtils.degToRad(
           easeOut(progress / animationDurationMilis) * 360
         );

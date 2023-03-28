@@ -11,10 +11,12 @@ import {
 import { useIsNavDark } from "./hooks/useIsNavDark";
 import { useIsNavTop } from "./hooks/useIsNavTop";
 import { NavTheme } from "./navigation.types";
+import { useIsServerRunning } from "hooks/useIsServerRunning";
 
 const Navigation = () => {
   const windowSize = useWindowSize();
   const navTheme = useNavTheme();
+  useIsServerRunning();
 
   return (
     <NavigationContainer>

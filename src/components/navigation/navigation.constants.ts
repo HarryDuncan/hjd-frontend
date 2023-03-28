@@ -1,7 +1,6 @@
 import { WINDOW_SCREEN_TYPE } from "hooks/useWindowSize";
-import { PageItem } from "./navigation.types";
 
-export const SITE_PAGES: PageItem[] = [
+export const SITE_PAGES = [
   { title: "Home", link: "/", isNavDark: true },
   { title: "About", link: "/bio" },
   // { title: "Mixes", link: "/music" },
@@ -19,3 +18,5 @@ export const NAV_THEMES = {
   LIGHT: "LIGHT",
   DARK: "DARK",
 };
+
+export const NAV_OVERLAY_HEIGHT = "4em";

@@ -20,7 +20,7 @@ interface BioSectionProps {
 export const BioSection = ({
   image,
   text,
-  bioLetters,
+
   index,
 }: BioSectionProps) => {
   return (
