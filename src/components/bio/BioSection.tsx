@@ -3,13 +3,11 @@ import { InnerContainer } from "components/styled-components/Containers";
 import { ContentText } from "components/styled-components/Text";
 import { TextScroller } from "components/text-scroller/TextScroller";
 // import { DynamicInteractiveScene } from "components/visual-components/DynamicInteractiveScene";
-import {
-  BANNER_IMAGE_HOVER_CONFIG,
-  MAIN_GALLERY_TOP_OFFSET,
-} from "constants/ui.constants";
+import { MAIN_GALLERY_TOP_OFFSET } from "constants/ui.constants";
 import { ImageContent, TextContent } from "models/content/content.types";
 
 import { BioContentContainer, TextContainer } from "./Bio.styles";
+import { BIO_BANNER_CONFIG } from "constants/bio.constants";
 
 interface BioSectionProps {
   image: ImageContent;
@@ -26,7 +24,7 @@ export const BioSection = ({
   return (
     <InnerContainer $topOffset={0}>
       <ParallaxImage
-        hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
+        hoverImageConfig={BIO_BANNER_CONFIG}
         imageTitle="bio-header"
         imageUrl={image.imageUrl ?? ""}
         imageHeightPx={MAIN_GALLERY_TOP_OFFSET}

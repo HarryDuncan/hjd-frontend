@@ -17,7 +17,6 @@ const Home: NextPage = () => {
 
 const useHomeSceneData = () => {
   const { threeJsParams, events } = useDefaultConfig();
-
   const sceneParams = homeScene() as unknown as InteractiveSceneParams;
   return {
     events,
