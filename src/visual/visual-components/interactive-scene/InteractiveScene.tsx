@@ -21,7 +21,7 @@ interface InteractiveSceneProps {
   assets: Asset[];
   sceneFunctions;
   visualComponentConfig;
-  formatSceneData: (assets: Asset[]) => SceneData;
+  formatSceneData: (_assets: Asset[]) => SceneData;
   events?;
   animations?;
 }

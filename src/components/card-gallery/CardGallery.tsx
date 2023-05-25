@@ -36,7 +36,6 @@ const CardGallery = ({ items, onClick, loadMoreProps }: CardGalleryProps) => {
           key={`card-${id}`}
           cardDetails={{ title, imageUrl, footer }}
           onClick={() => cardClicked(id)}
-          key={id}
         />
       ))}
     </CardGalleryContainer>

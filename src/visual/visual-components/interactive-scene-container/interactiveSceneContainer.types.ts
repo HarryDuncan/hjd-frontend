@@ -10,7 +10,7 @@ export interface InteractiveSceneProps {
   assets: Asset[];
   sceneFunctions;
   visualComponentConfig;
-  formatSceneData: (loadedAssets: Asset[], context, dispatch) => SceneData;
+  formatSceneData: (_loadedAssets: Asset[], _context, _dispatch) => SceneData;
   events;
   animations?: CustomAnimation[];
 }
