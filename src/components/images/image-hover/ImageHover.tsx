@@ -11,29 +11,17 @@ import {
   DefaultImage,
   ImageWrap,
 } from "./ImageHover.styles";
-
-interface ImageHoverProps {
-  imageUrl: string;
-  title: string;
-  hoverImageConfig: ImageHoverConfig;
-}
-
-export type ImageHoverConfig = {
-  default: ImageProps;
-  final: ImageProps;
-};
-
-export type ImageProps = {
-  heightPx?: number;
-  widthPx?: number;
-  positionPercentage: { x: number; y: number };
-};
+import { ImageHoverConfig } from "./imageHover.types";
 
 const REPETITIONS = 3;
 const REPETITION_STAGGER = -0.12;
 const INTIAL_SCALE = 1.5;
 type Timeline = any;
-
+interface ImageHoverProps {
+  imageUrl: string;
+  title: string;
+  hoverImageConfig: ImageHoverConfig;
+}
 export const ImageHover = ({
   imageUrl,
   hoverImageConfig,

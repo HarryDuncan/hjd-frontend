@@ -19,7 +19,7 @@ export const DesktopNav = ({ navTheme }: DesktopNavProps) => {
 
   return (
     <NavItemList>
-      {SITE_PAGES.map((page: PageItem, index: number) => (
+      {SITE_PAGES.map((page: PageItem, _index: number) => (
         <NavItem key={page.title}>
           <NavItemLink
             $isLight={navTheme === NAV_THEMES.DARK}

@@ -7,10 +7,10 @@ import { homeScene } from "visual-configs/homeSceneMarching";
 import { InteractiveSceneParams } from "visual/visual-components/interactive-scene/interactiveScene.types";
 
 const Home: NextPage = () => {
-  const homeScene = useHomeSceneData();
+  const homeSceneData = useHomeSceneData();
   return (
     <Layout topPadding={false}>
-      <DynamicInteractiveScene {...homeScene} />
+      <DynamicInteractiveScene {...homeSceneData} />
     </Layout>
   );
 };

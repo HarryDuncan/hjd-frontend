@@ -15,14 +15,11 @@ export default function Layout({
     <>
       <DynamicNavigation />
       <PageContainer $topPadding={topPadding} className="page-container">
-        <>
-          {isError ? (
-            <>Oops we are having an issue with our servers</>
-          ) : (
-            <>{children}</>
-          )}
-        </>
-
+        {isError ? (
+          <>Oops we are having an issue with our servers</>
+        ) : (
+          <>{children}</>
+        )}
         <Footer />
       </PageContainer>
     </>

@@ -12,8 +12,8 @@ export const getArt = async () => {
   return client.query({ query }).then((response) => {
     const {
       data: { art },
+      loading,
     } = response;
-    const loading = response.loading;
     return { art, loading };
   });
 };

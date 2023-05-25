@@ -12,7 +12,7 @@ import { BIO_BANNER_CONFIG } from "constants/bio.constants";
 interface BioSectionProps {
   image: ImageContent;
   text: TextContent;
-  bioLetters?: any;
+  //  bioLetters?: any;
   index: number;
 }
 export const BioSection = ({

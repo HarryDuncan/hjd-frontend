@@ -30,7 +30,6 @@ const Bio: NextPage = () => {
             key={`section-${index}`}
             image={image}
             text={text[index]}
-            bioLetters={null}
             index={index}
           />
         ))}

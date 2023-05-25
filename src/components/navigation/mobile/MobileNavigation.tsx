@@ -35,7 +35,7 @@ export const MobileNavigation = ({ navTheme }: MobileNavigationProps) => {
       >
         {isMenuOpen && (
           <>
-            {SITE_PAGES.map((page: PageItem, index: number) => (
+            {SITE_PAGES.map((page: PageItem, _index: number) => (
               <MobileText
                 $isLight={navTheme === NAV_THEMES.DARK}
                 key={`${page.title}-${navTheme}`}

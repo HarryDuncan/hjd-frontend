@@ -6,7 +6,6 @@ export default function Layout({
   topPadding = true,
 }: {
   topPadding?: boolean;
-  children: any;
 }) {
   return (
     <>

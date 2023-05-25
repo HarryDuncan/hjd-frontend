@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ImageProps } from "./ImageHover";
+import { ImageProps } from "./imageHover.types";
 
 export const ImageWrap = styled.div`
   transform-origin: inherit;

@@ -78,9 +78,9 @@ export const shrinkNav = keyframes`
   }
 `;
 
-const SiteDownBar = styled.div`
-  margin: 0 auto;
-  margin-top: 1em;
-  padding: 0.5%;
-  height: fit-content;
-`;
+// const SiteDownBar = styled.div`
+//   margin: 0 auto;
+//   margin-top: 1em;
+//   padding: 0.5%;
+//   height: fit-content;
+// `;

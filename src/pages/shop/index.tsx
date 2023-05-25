@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import { DynamicCardGallery } from "components/card-gallery/DynamicGallery";
-import Layout from "components/layout/DefaultLayout";
 import { ParallaxImage } from "components/images/parallax-image/ParallaxImage";
 import { InnerContainer } from "components/styled-components/Containers";
 import { useHandleRouting } from "hooks/useHandleRouting";
@@ -9,11 +8,7 @@ import {
   BANNER_IMAGE_HOVER_CONFIG,
   MAIN_GALLERY_TOP_OFFSET,
 } from "constants/ui.constants";
-import {
-  SHOP_BANNER_CONFIG,
-  SHOP_IMAGES,
-  SHOP_IMAGE_URL_ROOT,
-} from "constants/shop.constants";
+import { SHOP_IMAGES, SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
 import { useShopData } from "hooks/shop/useShopData";
 import { useProductsWithVariations } from "hooks/shop/useProductsWithVariations";
 import { useMemo } from "react";

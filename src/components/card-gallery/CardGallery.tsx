@@ -14,7 +14,7 @@ export interface LoadMoreProps {
 }
 interface CardGalleryProps {
   items: CardDetails[];
-  onClick: (id: number | string) => void;
+  onClick: (_id: number | string) => void;
   loadMoreProps?: LoadMoreProps;
 }
 
@@ -54,7 +54,7 @@ const useLoadMoreOnScroll = (
     loadMoreProps?.initialLoadSize ?? items.length
   );
   const [scrollBreakPoint, setScrollBreakPoint] = useState<number>(200);
-  const onScroll = useCallback((event) => {
+  const onScroll = useCallback((_event) => {
     const { pageYOffset } = window;
     if (pageYOffset > scrollBreakPoint) {
       setScrollBreakPoint(scrollBreakPoint + 200);

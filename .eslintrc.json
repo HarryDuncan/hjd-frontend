@@ -54,5 +54,17 @@
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "react/react-in-jsx-scope": "off",
     "import/namespace": "off"
+  },
+  "globals": {
+    "React": true,
+    "google": true,
+    "mount": true,
+    "mountWithRouter": true,
+    "shallow": true,
+    "shallowWithRouter": true,
+    "context": true,
+    "expect": true,
+    "jsdom": true,
+    "JSX": true
   }
 }

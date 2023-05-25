@@ -4,7 +4,7 @@ import { useProductData } from "hooks/shop/useProductData";
 
 const rootUrl = "/images/shop/";
 const ProductDetails = () => {
-  const { product, loading } = useProductData();
+  const { product } = useProductData();
   if (!product) return null;
   return (
     <ViewItemLayout

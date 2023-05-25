@@ -15,9 +15,11 @@ export const useWindowScreenType = () => {
   return useCallback(() => {
     if (document.documentElement.clientWidth >= breakpoints.wideScreen) {
       return WINDOW_SCREEN_TYPE.WIDE_SCREEN;
-    } else if (document.documentElement.clientWidth > breakpoints.desktop) {
+    }
+    if (document.documentElement.clientWidth > breakpoints.desktop) {
       return WINDOW_SCREEN_TYPE.DESKTOP;
-    } else if (document.documentElement.clientWidth > breakpoints.tablet) {
+    }
+    if (document.documentElement.clientWidth > breakpoints.tablet) {
       return WINDOW_SCREEN_TYPE.TABLET;
     }
     return WINDOW_SCREEN_TYPE.MOBILE;

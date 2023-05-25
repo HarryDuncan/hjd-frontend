@@ -12,8 +12,8 @@ export const getIsServerRunning = async () => {
   return client.query({ query }).then((response) => {
     const {
       data: { server },
+      loading,
     } = response;
-    const loading = response.loading;
     return { server, loading };
   });
 };

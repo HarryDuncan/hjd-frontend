@@ -3,6 +3,7 @@ import Layout from "components/layout/DefaultLayout";
 import { LinkTree } from "components/link-tree/LinkTree";
 import { useLinkTree } from "hooks/useLinkTree";
 import { AssetTypes } from "models/visuals/types";
+
 const scenes = [
   {
     name: "ArtLavaLamp",

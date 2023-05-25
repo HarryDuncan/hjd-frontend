@@ -10,7 +10,7 @@ export const LinkTree = ({ links }: LinkTreeProps) => (
     {links.map(({ url, title }) => (
       <LinkTreeItem>
         <a href={url}>
-          <MainTitle $isLight={true}>{title}</MainTitle>
+          <MainTitle $isLight>{title}</MainTitle>
         </a>
       </LinkTreeItem>
     ))}
