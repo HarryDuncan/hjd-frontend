@@ -62,7 +62,7 @@ const useLoadMoreOnScroll = (
         setItemsDisplayed((i) => i + Number(loadMoreProps?.loadMoreSize ?? 0));
       }
     },
-    [setScrollBreakPoint, setItemsDisplayed]
+    [scrollBreakPoint, loadMoreProps]
   );
   useEffect(() => {
     // add eventlistener to window
