@@ -1,8 +1,9 @@
 import { ViewItemContainer } from "components/styled-components/Containers";
 import Layout from "./DefaultLayout";
+import { ReactNode } from "react";
 
 interface ViewItemProps {
-  children: any;
+  children: ReactNode;
 }
 export default function ViewCampaign({ children }: ViewItemProps) {
   return (

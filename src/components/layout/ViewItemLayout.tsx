@@ -1,11 +1,12 @@
 import { StaticImage } from "components/images";
 import { ViewItemContainer } from "components/styled-components/Containers";
 import Layout from "./DefaultLayout";
+import { ReactNode } from "react";
 
 interface ViewItemProps {
   title: string;
   imageUrl: string;
-  children: any;
+  children: ReactNode;
 }
 export default function ViewItem({ imageUrl, title, children }: ViewItemProps) {
   return (

@@ -16,8 +16,8 @@ export const TextScroller = ({ text }: TextScrollerProps) => {
       {text
         .repeat(100)
         .split("")
-        .map((char, index) => (
-          <TextScrollerText key={`text-${index}`} $isLight>
+        .map((char) => (
+          <TextScrollerText key={`text-${char}`} $isLight>
             {char}
           </TextScrollerText>
         ))}

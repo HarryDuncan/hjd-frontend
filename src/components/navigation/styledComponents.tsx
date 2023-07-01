@@ -3,7 +3,7 @@ import { NAV_OVERLAY_HEIGHT } from "./navigation.constants";
 
 export const NAV_HEIGHT = "8vh";
 
-export const NavigationContainer = styled.div<{}>`
+export const NavigationContainer = styled.div`
   margin: 0 auto;
   left: 0;
   top: 0;

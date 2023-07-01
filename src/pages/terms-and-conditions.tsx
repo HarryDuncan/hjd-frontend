@@ -93,15 +93,15 @@ const TermsAndConditions = () => {
           banking payments. Credit/Debit card and Internet Banking transactions
           are subject to the policies and terms defined by Stripe and, beyond
           any obligations as a merchant which we are not able to exclude, we
-          assume no responsibility for such transactions. Stripe's privacy
+          assume no responsibility for such transactions. Stripe&apos;s privacy
           policy can be found here. 7. USER COMMUNICATION Harry J Dee will only
           send you emails that You elect to receive. These emails include
           donation receipts, purchase receipts and order tracking and updates.
           9. COOKIES Cookies are small pieces of information stored on Your
           computer when You access a website. Most websites use cookies to
-          provide useful features for their visitors. Harry J Dee uses 'session'
-          cookies, which are removed from Your computer once You leave the Harry
-          J Dee site.
+          provide useful features for their visitors. Harry J Dee uses
+          &apos;session&apos; cookies, which are removed from Your computer once
+          You leave the Harry J Dee site.
         </ContentText>
       </ViewItemDetailsContainer>
     </Layout>
