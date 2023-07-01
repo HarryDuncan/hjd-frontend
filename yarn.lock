@@ -1190,6 +1190,13 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
+bidi-js@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/bidi-js/-/bidi-js-1.0.2.tgz#1a497a762c2ddea377429d2649c9ce0f8a91527f"
+  integrity sha512-rzSy/k7WdX5zOyeHHCOixGXbCHkyogkxPKL2r8QtzHmVQDiWCXUWa18bLdMWT9CYMLOYTjWpTHawuev2ouYJVw==
+  dependencies:
+    require-from-string "^2.0.2"
+
 big-integer@^1.6.16:
   version "1.6.51"
   resolved "https://registry.npmjs.org/big-integer/-/big-integer-1.6.51.tgz"
@@ -3798,6 +3805,11 @@ request-progress@^3.0.0:
   dependencies:
     throttleit "^1.0.0"
 
+require-from-string@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
+  integrity sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
+
 requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
@@ -4128,6 +4140,11 @@ text-table@^0.2.0:
   resolved "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
   integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
 
+three-subdivide@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/three-subdivide/-/three-subdivide-1.1.2.tgz#e29f770dcfc748096086e9a20a66d0b16905d171"
+  integrity sha512-qcMX3vIyKiZecJQuDZFoIkImOFwMBT/SzdGwMwoL+48Pq/6r3+jVGIKOP03sMjK9bOQDy3wc1ZH+xiUaYk2aCw==
+
 three@^0.143.0:
   version "0.143.0"
   resolved "https://registry.npmjs.org/three/-/three-0.143.0.tgz"
@@ -4196,6 +4213,26 @@ tr46@^3.0.0:
   integrity sha512-l7FvfAHlcmulp8kr+flpQZmVwtu7nfRV7NZujtN0OqES8EL4O4e0qqzL0DC5gAvx/ZC/9lk6rhcUwYvkBnBnYA==
   dependencies:
     punycode "^2.1.1"
+
+troika-three-text@^0.48.0-unicode.1:
+  version "0.48.0-unicode.1"
+  resolved "https://registry.yarnpkg.com/troika-three-text/-/troika-three-text-0.48.0-unicode.1.tgz#ca2d5431e03cf2ef51a55fd1313779858e86b47e"
+  integrity sha512-8a3zC8ETgFCdUmyt2sQLhSGfHTvB5fjFOPZu/BCO4gDmalI3Q/MLu6UAmrI0s/hNnMYUIXWlHjVQQLPip1r3kw==
+  dependencies:
+    bidi-js "^1.0.2"
+    troika-three-utils "^0.47.2"
+    troika-worker-utils "^0.47.2"
+    webgl-sdf-generator "1.1.1"
+
+troika-three-utils@^0.47.2:
+  version "0.47.2"
+  resolved "https://registry.yarnpkg.com/troika-three-utils/-/troika-three-utils-0.47.2.tgz#af49ca694245dce631963d5fefe4e8e1b8af9044"
+  integrity sha512-/28plhCxfKtH7MSxEGx8e3b/OXU5A0xlwl+Sbdp0H8FXUHKZDoksduEKmjQayXYtxAyuUiCRunYIv/8Vi7aiyg==
+
+troika-worker-utils@^0.47.2:
+  version "0.47.2"
+  resolved "https://registry.yarnpkg.com/troika-worker-utils/-/troika-worker-utils-0.47.2.tgz#e7c5de5f37d56c072b13fa8112bb844e048ff46c"
+  integrity sha512-mzss4MeyzUkYBppn4x5cdAqrhBHFEuVmMMgLMTyFV23x6GvQMyo+/R5E5Lsbrt7WSt5RfvewjcwD1DChRTA9lA==
 
 ts-invariant@^0.10.3:
   version "0.10.3"
@@ -4414,6 +4451,11 @@ w3c-xmlserializer@^3.0.0:
   integrity sha512-3WFqGEgSXIyGhOmAFtlicJNMjEps8b1MG31NCA0/vOF9+nKMUW1ckhi9cnNHmf88Rzw5V+dwIwsm2C7X8k9aQg==
   dependencies:
     xml-name-validator "^4.0.0"
+
+webgl-sdf-generator@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/webgl-sdf-generator/-/webgl-sdf-generator-1.1.1.tgz#3e1b422b3d87cd3cc77f2602c9db63bc0f6accbd"
+  integrity sha512-9Z0JcMTFxeE+b2x1LJTdnaT8rT8aEp7MVxkNwoycNmJWwPdzoXzMh0BjJSh/AEFP+KPYZUli814h8bJZFIZ2jA==
 
 webidl-conversions@^7.0.0:
   version "7.0.0"

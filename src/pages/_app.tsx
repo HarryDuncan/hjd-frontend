@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle, THEME } from "../../theme";
 import { store } from "redux/store";
+import { WindowStateProvider } from "visual/compat/window-state/windowStateProvider";
 
 const queryClient = new QueryClient();
 
@@ -13,15 +14,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   const isSplashShowing = useSplash();
 
   return (
-    <ThemeProvider theme={THEME}>
-      <Provider store={store}>
-        <GlobalStyle />
-        <QueryClientProvider client={queryClient}>
-          <Splash isVisible={isSplashShowing} />
-          <Component {...pageProps} />
-        </QueryClientProvider>
-      </Provider>
-    </ThemeProvider>
+    <WindowStateProvider>
+      <ThemeProvider theme={THEME}>
+        <Provider store={store}>
+          <GlobalStyle />
+          <QueryClientProvider client={queryClient}>
+            <Splash isVisible={isSplashShowing} />
+            <Component {...pageProps} />
+          </QueryClientProvider>
+        </Provider>
+      </ThemeProvider>
+    </WindowStateProvider>
   );
 }
 

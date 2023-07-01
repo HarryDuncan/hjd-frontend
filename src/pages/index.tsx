@@ -1,31 +1,52 @@
 import Layout from "components/layout/DefaultLayout";
-import { DynamicInteractiveScene } from "components/visual-components/DynamicInteractiveScene";
+import { DynamicScene } from "components/visual-components/DynamicInteractiveNode";
+import { useSceneConfigAndAssets } from "hooks/useSceneConfigAndAssets";
 import type { NextPage } from "next";
-import { deepMergeObjects } from "utils";
-import { useDefaultConfig } from "visual-configs/default/useDefaultConfig";
-import { homeScene } from "visual-configs/homeSceneMarching";
-import { InteractiveSceneParams } from "visual/visual-components/interactive-scene/interactiveScene.types";
+import { useMemo } from "react";
+import { CustomAnimationConfig } from "visual/display/animation/animation.types";
+import { InteractiveScene } from "visual/display/components/interactive-scene";
+import { animateMarchingCube } from "visual/display/scene-elements/components/marching-cubes/marchingCubeAnimation";
+import { useSceneData } from "visual/set-up/config/useSceneData";
 
 const Home: NextPage = () => {
-  const homeSceneData = useHomeSceneData();
   return (
     <Layout topPadding={false}>
-      <DynamicInteractiveScene {...homeSceneData} />
+      <HomeSceneContent />
     </Layout>
   );
 };
 
-const useHomeSceneData = () => {
-  const { threeJsParams, events } = useDefaultConfig();
-  const sceneParams = homeScene() as unknown as InteractiveSceneParams;
-  return {
-    events,
-    ...sceneParams,
-    threeJsParams: deepMergeObjects(
-      threeJsParams,
-      sceneParams.threeJsParams ?? {}
-    ),
-  };
+const HomeSceneContent = () => {
+  const { areAssetsInitialized, initializedAssets, configData } =
+    useSceneConfigAndAssets("home-scene");
+  const sceneData = useSceneData(
+    configData,
+    initializedAssets,
+    areAssetsInitialized
+  );
+  const sceneParameters = useMemo(() => {
+    const { animationConfig } = configData;
+
+    return {
+      sceneFunctions: {
+        onTimeUpdate: (scene: InteractiveScene) => {
+          animateMarchingCube(scene);
+        },
+      },
+      interactionEvents: [],
+      sceneData,
+      animations: animationConfig as CustomAnimationConfig[],
+      events: [],
+    };
+  }, [configData, areAssetsInitialized, initializedAssets]);
+
+  return (
+    <DynamicScene
+      assets={initializedAssets}
+      visualComponentConfig={undefined}
+      {...sceneParameters}
+    />
+  );
 };
 
 export default Home;
