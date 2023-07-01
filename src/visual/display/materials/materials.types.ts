@@ -15,10 +15,6 @@ export type ShaderMaterialProps = MaterialProps & {
   uniforms: Uniform;
 };
 
-export type StandardMaterialTypes = MaterialProps & {
-  material?: any;
-};
-
 export type MatcapMaterialProps = MaterialProps & {
   matcap: Texture | null;
 };
@@ -38,7 +34,6 @@ export type PhongMaterialProps = MaterialProps & {
 };
 export type MaterialConfigProps =
   | MatcapMaterialProps
-  | StandardMaterialTypes
   | ShaderMaterialProps
   | VideoMaterialProps
   | EnvMapMaterialProps;

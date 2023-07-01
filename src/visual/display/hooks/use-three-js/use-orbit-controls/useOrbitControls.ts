@@ -20,5 +20,5 @@ export const useOrbitControls = (
     };
     controls.screenSpacePanning = false;
     return controls;
-  }, [renderer, camera]);
+  }, [renderer, camera, hasOrbitControls]);
 };

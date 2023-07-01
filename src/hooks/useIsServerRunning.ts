@@ -3,7 +3,7 @@ import { getIsServerRunning } from "services/getIsServerRunning";
 import { useHandleRouting } from "./useHandleRouting";
 
 export const useIsServerRunning = () => {
-  const serverData = useQuery<any>(["server"], () => getIsServerRunning());
+  const serverData = useQuery(["server"], () => getIsServerRunning());
   const reroute = useHandleRouting("");
   if (serverData.isError) {
     reroute("");

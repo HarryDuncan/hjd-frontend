@@ -1,5 +1,6 @@
 import { gsap } from "gsap";
 import React, {
+  MutableRefObject,
   RefObject,
   useCallback,
   useEffect,
@@ -16,7 +17,7 @@ import { ImageHoverConfig } from "./imageHover.types";
 const REPETITIONS = 3;
 const REPETITION_STAGGER = -0.12;
 const INTIAL_SCALE = 1.5;
-type Timeline = any;
+type Timeline = gsap.core.Timeline;
 interface ImageHoverProps {
   imageUrl: string;
   title: string;
@@ -34,7 +35,7 @@ export const ImageHover = ({
   const onMouseLeave = useOnMouseLeave(timeLine);
   useEffect(() => {
     timeLine.current = hoverTimelineCb(refs);
-  }, []);
+  }, [refs, hoverTimelineCb]);
 
   return (
     <HoverImageContainer
@@ -67,13 +68,13 @@ export const ImageHover = ({
   );
 };
 
-const useOnMouseEnter = (hoverTimeline: any) =>
+const useOnMouseEnter = (hoverTimeline: MutableRefObject<Timeline | null>) =>
   useCallback(() => {
     if (!hoverTimeline.current) return;
     hoverTimeline.current.play();
   }, [hoverTimeline]);
 
-const useOnMouseLeave = (hoverTimeline: any) =>
+const useOnMouseLeave = (hoverTimeline: MutableRefObject<Timeline | null>) =>
   useCallback(() => {
     if (!hoverTimeline.current) return;
     hoverTimeline.current.reverse();
@@ -88,8 +89,14 @@ const useRefArray = (
   );
 
 const useHoverTimeline = () => {
-  return useCallback((refs: any) => {
-    if (!refs || refs.some((ref: any) => ref.current === null)) return null;
+  return useCallback((refs: RefObject<HTMLDivElement>[] | null[]) => {
+    if (
+      !refs ||
+      refs.some(
+        (ref: RefObject<HTMLDivElement> | null) => ref?.current === null
+      )
+    )
+      return null;
     const animationProperties = {
       duration: 0.8,
       ease: "power2.inOut",
@@ -97,20 +104,25 @@ const useHoverTimeline = () => {
       scale: 0,
     };
     const firstInnerElementProperties = { scale: INTIAL_SCALE };
+    const firstRef = refs[0];
+    const second = refs[1];
+    const third = refs[2];
+    if (firstRef?.current && second?.current && third?.current) {
+      const timeline = gsap
+        .timeline({ paused: true })
+        .set(firstRef?.current, firstInnerElementProperties)
+        .to(
+          [firstRef.current, second.current, third.current],
+          animationProperties,
+          0
+        );
 
-    const timeline = gsap
-      .timeline({ paused: true })
-      .set(refs[0].current, firstInnerElementProperties)
-      .to(
-        [refs[0].current, refs[1].current, refs[2].current],
-        animationProperties,
-        0
-      );
+      timeline.set([firstRef.current, second.current], {
+        transformOrigin: "50% 50%",
+      });
 
-    timeline.set([refs[0].current, refs[1].current], {
-      transformOrigin: "50% 50%",
-    });
-
-    return timeline;
+      return timeline;
+    }
+    return gsap.timeline({ paused: true });
   }, []);
 };

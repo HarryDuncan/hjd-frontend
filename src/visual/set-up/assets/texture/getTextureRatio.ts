@@ -23,7 +23,7 @@ export const getTextureRatio = (texture: Texture) => {
   return getRatio(height, width);
 };
 
-const multiplyMatrixAndPoint = (matrix: any, point: any) => {
+const multiplyMatrixAndPoint = (matrix: number[], point: number[]) => {
   const c0r0 = matrix[0];
   const c1r0 = matrix[1];
   const c0r1 = matrix[2];

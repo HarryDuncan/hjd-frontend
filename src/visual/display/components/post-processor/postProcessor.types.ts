@@ -1,12 +1,11 @@
 import { Camera } from "three";
+import { POST_PROCESSOR_PASSES } from "./postProcessor.consts";
 
 export type PostProcessorCamera = Camera & {
   aspect: number;
 };
 
-export enum PostProcessorPasses {
-  BLOOM = "bloom",
-}
+export type PostProcessorPasses = keyof typeof POST_PROCESSOR_PASSES;
 
 export type Effects = {
   effectType: PostProcessorPasses;

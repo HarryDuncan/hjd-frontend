@@ -17,6 +17,4 @@ export type SceneData = {
   sceneComponents: Object3D[];
   lights: LightConfigs[];
   sceneProperties: SceneProperties;
-  // TODO -type
-  interactionComponents?: any;
 };
