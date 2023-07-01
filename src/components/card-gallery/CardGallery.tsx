@@ -64,7 +64,7 @@ const useLoadMoreOnScroll = (
     }
   }, []);
   useEffect(() => {
-    //add eventlistener to window
+    // add eventlistener to window
     window.addEventListener("scroll", onScroll, { passive: true });
     // remove event on unmount to prevent a memory leak with the cleanup
     return () => {

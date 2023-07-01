@@ -1,13 +1,14 @@
 import { Footer } from "components/footer/Footer";
 import { DynamicNavigation } from "components/navigation/DynamicNavigation";
 import { PageContainer } from "components/styled-components/Containers";
+import { ReactNode } from "react";
 
 export default function Layout({
   children,
   topPadding = true,
   isError = false,
 }: {
-  children: any;
+  children: ReactNode;
   isError?: boolean;
   topPadding?: boolean;
 }) {
@@ -15,11 +16,8 @@ export default function Layout({
     <>
       <DynamicNavigation />
       <PageContainer $topPadding={topPadding} className="page-container">
-        {isError ? (
-          <>Oops we are having an issue with our servers</>
-        ) : (
-          <>{children}</>
-        )}
+        {isError ?? <p>Oops we are having an issue with our servers</p>}
+        {children}
         <Footer />
       </PageContainer>
     </>

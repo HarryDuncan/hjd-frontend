@@ -44,7 +44,7 @@ export const ViewItemContainer = styled.div`
     padding-bottom: 1rem;
   }
 `;
-export const ViewItemDetailsContainer = styled.div<{}>`
+export const ViewItemDetailsContainer = styled.div`
   margin: 0 auto;
   text-align: center;
   width: 50%;

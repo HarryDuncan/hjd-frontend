@@ -9,7 +9,8 @@
     "prettier",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -24,6 +25,8 @@
   "rules": {
     "import/no-unresolved": "off",
     "quotes": "off",
+    "import/no-cycle": "warn",
+    "no-lone-blocks": "warn",
     "import/prefer-default-export": "off",
     "linebreak-style": "off",
     "import/extensions": "off",
@@ -51,9 +54,10 @@
     "arrow-body-style": "off",
     "max-len": "off",
     "no-new": "off",
-    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-    "react/react-in-jsx-scope": "off",
-    "import/namespace": "off"
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ]
   },
   "globals": {
     "React": true,

@@ -1,6 +1,6 @@
 import { OverlayDiv } from "components/styled-components/Containers";
 import { ContentText, MainTitle } from "components/styled-components/Text";
-import { DynamicInteractiveScene } from "components/visual-components/DynamicInteractiveScene";
+import { DynamicInteractiveScene } from "components/visual-components/DynamicVisualComponent";
 import { useGetCampaign } from "hooks/campaigns/useGetCampaign";
 
 import { Campaign } from "models/campaigns/types";

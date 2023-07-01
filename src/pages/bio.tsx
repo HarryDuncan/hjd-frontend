@@ -27,7 +27,7 @@ const Bio: NextPage = () => {
       <BioPage>
         {images.map((image, index) => (
           <BioSection
-            key={`section-${index}`}
+            key={`section-${image.id}`}
             image={image}
             text={text[index]}
             index={index}
