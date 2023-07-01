@@ -1,10 +1,7 @@
 import { OverlayDiv } from "components/styled-components/Containers";
 import { ContentText, MainTitle } from "components/styled-components/Text";
-import { DynamicInteractiveScene } from "components/visual-components/DynamicVisualComponent";
 import { useGetCampaign } from "hooks/campaigns/useGetCampaign";
-
 import { Campaign } from "models/campaigns/types";
-import { InteractiveSceneParams } from "visual/visual-components/interactive-scene/interactiveScene.types";
 
 import {
   CampaignContentContainer,
@@ -22,9 +19,7 @@ const CampaignDetails = () => {
 
   return (
     <CampaignContentContainer>
-      {sceneData && (
-        <DynamicInteractiveScene {...(sceneData as InteractiveSceneParams)} />
-      )}
+      {sceneData && <div />}
 
       <DescriptionContainer $height={height} $width={width}>
         <OverlayDiv />
