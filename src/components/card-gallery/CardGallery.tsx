@@ -47,22 +47,23 @@ const useLoadMoreOnScroll = (
   loadMoreProps?: LoadMoreProps
 ): {
   displayedItems: CardDetails[];
-  scrollableContainerRef: MutableRefObject<any>;
+  scrollableContainerRef: MutableRefObject<HTMLDivElement | null>;
 } => {
-  const scrollableContainerRef = useRef();
+  const scrollableContainerRef = useRef(null);
   const [itemsDisplayed, setItemsDisplayed] = useState<number>(
     loadMoreProps?.initialLoadSize ?? items.length
   );
   const [scrollBreakPoint, setScrollBreakPoint] = useState<number>(200);
-  const onScroll = useCallback((_event: any) => {
-    const { pageYOffset } = window;
-    if (pageYOffset > scrollBreakPoint) {
-      setScrollBreakPoint(scrollBreakPoint + 200);
-      setItemsDisplayed(
-        itemsDisplayed + Number(loadMoreProps?.loadMoreSize ?? 0)
-      );
-    }
-  }, []);
+  const onScroll = useCallback(
+    (_event: Event) => {
+      const { pageYOffset } = window;
+      if (pageYOffset > scrollBreakPoint) {
+        setScrollBreakPoint((s) => s + 200);
+        setItemsDisplayed((i) => i + Number(loadMoreProps?.loadMoreSize ?? 0));
+      }
+    },
+    [setScrollBreakPoint, setItemsDisplayed]
+  );
   useEffect(() => {
     // add eventlistener to window
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -70,7 +71,7 @@ const useLoadMoreOnScroll = (
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  }, [onScroll]);
 
   return {
     displayedItems: items.slice(0, itemsDisplayed),

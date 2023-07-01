@@ -3,7 +3,7 @@ import { EVENT_BIND_TYPES } from "./consts";
 
 export interface EventConfig {
   eventKey: string;
-  eventFunction: (scene: Scene, event: any) => void;
+  eventFunction: (scene: Scene, event: Event) => void;
   sceneIdentifer?: string;
 }
 

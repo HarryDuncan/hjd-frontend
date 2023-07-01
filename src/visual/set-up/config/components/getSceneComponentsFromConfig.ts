@@ -3,12 +3,10 @@ import {
   MarchingCubesElement,
 } from "visual/display/scene-elements/components";
 import { Cube } from "visual/display/scene-elements/components/Cube";
-import { SphericalBackground } from "visual/display/scene-elements/components/SphericalBackground";
 import {
   COMPONENT_TYPES,
   MarchingCubesProps,
   MirrorProps,
-  SphericalBackgroundProps,
   PlaneProps,
   CubeProps,
 } from "visual/display/scene-elements/components/threeJsComponents.types";
@@ -43,17 +41,6 @@ export const getSceneComponents = (
       case COMPONENT_TYPES.MIRROR: {
         const { geometry, position } = componentProps as MirrorProps;
         return Mirror({ id, geometry, position });
-      }
-      case COMPONENT_TYPES.SPHERICAL_BACKGROUND: {
-        const { position, radius, rotation, material } =
-          componentProps as SphericalBackgroundProps;
-        return SphericalBackground({
-          id,
-          position,
-          radius,
-          rotation,
-          material,
-        });
       }
       case COMPONENT_TYPES.PLANE: {
         const { material, position, size } = componentProps as PlaneProps;

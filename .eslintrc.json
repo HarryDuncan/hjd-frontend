@@ -26,7 +26,6 @@
   "rules": {
     "import/no-unresolved": "off",
     "quotes": "off",
-    "@typescript-eslint/no-inferrable-types": "error",
     "import/no-cycle": "warn",
     "no-lone-blocks": "warn",
     "import/prefer-default-export": "off",
@@ -43,7 +42,6 @@
     "no-tabs": "off",
     "react/require-default-props": "off",
     "consistent-return": "off",
-    "@typescript-eslint/ban-ts-comment": "warn",
     "no-shadow": "warn",
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "function-paren-newline": "off",
@@ -56,6 +54,7 @@
     "arrow-body-style": "off",
     "max-len": "off",
     "no-new": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       { "argsIgnorePattern": "^_" }

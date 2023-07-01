@@ -41,7 +41,7 @@ const HomeSceneContent = () => {
       animations: animationConfig as CustomAnimationConfig[],
       events: [],
     };
-  }, [configData, areAssetsInitialized, initializedAssets]);
+  }, [configData, sceneData]);
 
   return sceneData !== null ? (
     <DynamicScene {...sceneParameters} sceneData={sceneData as SceneData} />

@@ -4,7 +4,7 @@ import { importShader } from "./importShader";
 
 export const configureShaders = (
   shaderConfig: ShaderConfig,
-  uniforms: any,
+  uniforms: Record<string, unknown>,
   assets?: Asset[]
 ) => {
   const { shaderId, assetMapping } = shaderConfig;
@@ -18,7 +18,7 @@ export const configureShaders = (
 };
 
 const mapAssets = (
-  uniforms: any,
+  uniforms: Record<string, unknown>,
   assetMapping: AssetMap[],
   assets: Asset[]
 ) => {
