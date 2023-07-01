@@ -47,5 +47,5 @@ export interface UniformDefinition {
   uniformName: string;
   uniformType: UniformTypes;
   type?: string;
-  value?;
+  value?: any;
 }

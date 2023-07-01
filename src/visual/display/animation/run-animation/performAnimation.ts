@@ -1,14 +1,14 @@
-import { MathUtils } from "three";
+import { MathUtils, Object3D } from "three";
 import {
   AnimationProperties,
   AnimationType,
+  ObjectUpdateProperty,
   // FallAnimationConfig,
   RotationAnimationConfig,
   SpinAnimationConfig,
   TraversalAnimationConfig,
   TrigonometricAnimationConfig,
 } from "../animation.types";
-
 import {
   ANIMATION_TYPES,
   OBJECT_UPDATE_PROPERTY,
@@ -20,20 +20,19 @@ import { updateObject } from "../animation-functions/update-object/updateObject"
 import { spinMeshAlongAxis } from "../animation-functions/rotation/spinMeshAlongAxis";
 import { fall } from "../animation-functions/fall";
 import { easeOut } from "visual/display/utils";
+import { MeshObject } from "visual/set-up/config/mesh/mesh.types";
 
 export const performAnimation = (
   animationType: AnimationType,
-  object,
-  progress,
+  object: MeshObject | Object3D,
+  progress: number,
   animationConfig: AnimationProperties
 ) => {
   switch (animationType) {
     case ANIMATION_TYPES.TRAVERSE:
       {
-        const {
-          curve,
-          animationDurationMilis,
-        } = animationConfig as TraversalAnimationConfig;
+        const { curve, animationDurationMilis } =
+          animationConfig as TraversalAnimationConfig;
         if (curve) {
           const currentProg = easeOut(progress / animationDurationMilis) * 100;
           const { x, y, z } = traverseThroughtArray(
@@ -46,28 +45,29 @@ export const performAnimation = (
       break;
     case ANIMATION_TYPES.ROTATE:
       {
-        const {
-          animationDurationMilis,
-          rotationAxis,
-        } = animationConfig as RotationAnimationConfig;
+        const { animationDurationMilis, rotationAxis } =
+          animationConfig as RotationAnimationConfig;
         const rotation = MathUtils.degToRad(
           easeOut(progress / animationDurationMilis) * 360
         );
-        rotateMeshAlongAxis(object, rotationAxis, rotation);
+        rotateMeshAlongAxis(object as MeshObject, rotationAxis, rotation);
       }
       break;
     case ANIMATION_TYPES.TRIG:
       {
-        const {
-          trigFunctionType,
-        } = animationConfig as TrigonometricAnimationConfig;
+        const { trigFunctionType } =
+          animationConfig as TrigonometricAnimationConfig;
         const updatedValue = updateTimeStamp(progress, trigFunctionType);
-        updateObject(object, updatedValue, OBJECT_UPDATE_PROPERTY.POSITION);
+        updateObject(
+          object,
+          updatedValue,
+          OBJECT_UPDATE_PROPERTY.POSITION as ObjectUpdateProperty
+        );
       }
       break;
     case ANIMATION_TYPES.FALL:
       //  const {} = animationConfig as FallAnimationConfig;
-      fall(object, progress);
+      fall(object as MeshObject, progress);
       break;
     case ANIMATION_TYPES.SPIN:
     default: {

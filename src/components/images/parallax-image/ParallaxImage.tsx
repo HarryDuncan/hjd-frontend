@@ -1,8 +1,8 @@
 import { MainTitle } from "components/styled-components/Text";
 import { ReactNode } from "react";
 import { ImageHover } from "../image-hover";
-import { ImageHoverConfig } from "../image-hover/ImageHover";
 import { ParallaxImageContainer } from "./styledComponents";
+import { ImageHoverConfig } from "../image-hover/imageHover.types";
 
 interface ParallaxImageProps {
   imageUrl: string;

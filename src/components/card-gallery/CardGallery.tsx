@@ -54,7 +54,7 @@ const useLoadMoreOnScroll = (
     loadMoreProps?.initialLoadSize ?? items.length
   );
   const [scrollBreakPoint, setScrollBreakPoint] = useState<number>(200);
-  const onScroll = useCallback((_event) => {
+  const onScroll = useCallback((_event: any) => {
     const { pageYOffset } = window;
     if (pageYOffset > scrollBreakPoint) {
       setScrollBreakPoint(scrollBreakPoint + 200);
@@ -68,7 +68,7 @@ const useLoadMoreOnScroll = (
     window.addEventListener("scroll", onScroll, { passive: true });
     // remove event on unmount to prevent a memory leak with the cleanup
     return () => {
-      window.removeEventListener("scroll", onScroll, { passive: true });
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 

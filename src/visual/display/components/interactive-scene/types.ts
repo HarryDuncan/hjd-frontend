@@ -8,6 +8,7 @@ export type SceneProperties = {
   backgroundColor: string;
   backgroundUrl: string;
   background?: Texture;
+  videoBackground?: string;
 };
 
 export type SceneData = {

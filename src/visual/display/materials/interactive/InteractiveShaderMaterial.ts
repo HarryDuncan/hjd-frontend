@@ -15,7 +15,7 @@ type ShaderMaterialInteractionEvent = {
 export default class InteractiveShaderMaterial extends ShaderMaterial {
   clock: Clock;
 
-  constructor(uniforms, vertexShader, fragmentShader) {
+  constructor(uniforms: any, vertexShader: string, fragmentShader: string) {
     super({
       uniforms,
       vertexShader,
