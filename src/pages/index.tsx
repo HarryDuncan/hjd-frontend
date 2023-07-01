@@ -5,7 +5,8 @@ import type { NextPage } from "next";
 import { useMemo } from "react";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
 import { CustomAnimationConfig } from "visual/display/animation/animation.types";
-import { InteractiveScene } from "visual/display/components/interactive-scene";
+import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
+import { SceneData } from "visual/display/components/interactive-scene/types";
 import { animateMarchingCube } from "visual/display/scene-elements/components/marching-cubes/marchingCubeAnimation";
 import { useSceneData } from "visual/set-up/config/useSceneData";
 
@@ -42,13 +43,9 @@ const HomeSceneContent = () => {
     };
   }, [configData, areAssetsInitialized, initializedAssets]);
 
-  return (
-    <DynamicScene
-      assets={initializedAssets}
-      visualComponentConfig={undefined}
-      {...sceneParameters}
-    />
-  );
+  return sceneData !== null ? (
+    <DynamicScene {...sceneParameters} sceneData={sceneData as SceneData} />
+  ) : null;
 };
 
 export default Home;

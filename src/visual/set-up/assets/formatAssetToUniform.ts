@@ -1,4 +1,6 @@
-export const formatAssetToUniform = (assets, uniforms) => {
+import { Asset } from "./asset.types";
+
+export const formatAssetToUniform = (assets: Asset[], uniforms: any) => {
   assets.forEach((asset) => {
     if (uniforms[asset.name] && asset.data) {
       uniforms[asset.name].value = asset.data;

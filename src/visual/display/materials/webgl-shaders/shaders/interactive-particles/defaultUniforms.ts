@@ -1,6 +1,6 @@
 import { Vector2, Vector3, Vector4 } from "three";
 
-export const defaultUniforms = (uniformConfig) => {
+export const defaultUniforms = (uniformConfig: any) => {
   uniformConfig.uTextureSize.value = new Vector2(640, 480);
   uniformConfig.uPosition.value = new Vector2(-1.5, 1);
   if (uniformConfig.uRotation) {

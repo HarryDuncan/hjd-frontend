@@ -2,7 +2,7 @@ import { Material, Texture } from "three";
 import { getMaterial } from "visual/display/materials/getMaterial";
 import { MaterialType } from "visual/display/materials/materials.types";
 import { hasCommonValues } from "visual/display/utils/hasCommonElement";
-import { Asset, ASSET_TAG } from "./use-assets/types";
+import { Asset, ASSET_TAG } from "./asset.types";
 
 export const textureMaterialFromAsset = (assets: Asset[]) =>
   sortMaterialsFromAssets(assets).flatMap((asset: Asset) => {

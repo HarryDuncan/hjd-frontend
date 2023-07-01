@@ -4,6 +4,7 @@
     "es2021": true
   },
   "extends": [
+    "eslint:recommended",
     "next/core-web-vitals",
     "airbnb",
     "prettier",
@@ -25,6 +26,7 @@
   "rules": {
     "import/no-unresolved": "off",
     "quotes": "off",
+    "@typescript-eslint/no-inferrable-types": "error",
     "import/no-cycle": "warn",
     "no-lone-blocks": "warn",
     "import/prefer-default-export": "off",

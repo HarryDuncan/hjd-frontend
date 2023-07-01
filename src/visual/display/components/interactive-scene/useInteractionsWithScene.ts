@@ -15,7 +15,7 @@ export const useInteractionsWithScene = (
   );
   return useCallback(
     (scene: InteractiveScene) => {
-      scene.addInteractionEvents(sceneInteractionEvents);
+      scene.addInteractionEvents(sceneInteractionEvents as SceneInteraction[]);
     },
     [interactionEvents]
   );

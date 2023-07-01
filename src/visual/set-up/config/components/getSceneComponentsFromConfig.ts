@@ -1,5 +1,4 @@
 import {
-  TextComponent,
   Mirror,
   MarchingCubesElement,
 } from "visual/display/scene-elements/components";
@@ -8,7 +7,6 @@ import { SphericalBackground } from "visual/display/scene-elements/components/Sp
 import {
   COMPONENT_TYPES,
   MarchingCubesProps,
-  TextProps,
   MirrorProps,
   SphericalBackgroundProps,
   PlaneProps,
@@ -23,39 +21,32 @@ export const getSceneComponents = (
   componentConfigs.flatMap(({ id, componentType, componentProps }) => {
     switch (componentType) {
       case COMPONENT_TYPES.MARCHING_CUBES: {
-        const {
-          resolution,
-          material,
-          position,
-        } = componentProps as MarchingCubesProps;
+        const { resolution, material, position } =
+          componentProps as MarchingCubesProps;
         return MarchingCubesElement({ id, resolution, material, position });
       }
-      case COMPONENT_TYPES.TEXT: {
-        const {
-          fontUrl,
-          text,
-          material,
-          position,
-        } = componentProps as TextProps;
-        return TextComponent({
-          id,
-          text,
-          fontUrl,
-          material,
-          position,
-        });
-      }
+      // case COMPONENT_TYPES.TEXT: {
+      //   const {
+      //     fontUrl,
+      //     text,
+      //     material,
+      //     position,
+      //   } = componentProps as TextProps;
+      //   return TextComponent({
+      //     id,
+      //     text,
+      //     fontUrl,
+      //     material,
+      //     position,
+      //   });
+      // }
       case COMPONENT_TYPES.MIRROR: {
         const { geometry, position } = componentProps as MirrorProps;
         return Mirror({ id, geometry, position });
       }
       case COMPONENT_TYPES.SPHERICAL_BACKGROUND: {
-        const {
-          position,
-          radius,
-          rotation,
-          material,
-        } = componentProps as SphericalBackgroundProps;
+        const { position, radius, rotation, material } =
+          componentProps as SphericalBackgroundProps;
         return SphericalBackground({
           id,
           position,

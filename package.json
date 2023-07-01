@@ -30,8 +30,7 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.5",
     "three": "^0.143.0",
-    "three-subdivide": "^1.1.2",
-    "troika-three-text": "^0.48.0-unicode.1"
+    "three-subdivide": "^1.1.2"
   },
   "devDependencies": {
     "@testing-library/react": "^12.1.4",

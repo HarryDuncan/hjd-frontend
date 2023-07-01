@@ -19,7 +19,7 @@ export const SphericalBackground = ({
   return sphere;
 };
 
-const setRotation = (object, rotation) => {
+const setRotation = (object: any, rotation: any) => {
   const { x, y, z } = rotation;
   object.rotation.set(x, y, z);
 };
