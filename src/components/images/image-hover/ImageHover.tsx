@@ -37,6 +37,7 @@ export const ImageHover = ({
     timeLine.current = hoverTimelineCb(refs);
   }, [refs, hoverTimelineCb]);
 
+  const imageSrc = `${process.env.NEXT_PUBLIC_CONTENT_ROOT}${imageUrl}`;
   return (
     <HoverImageContainer
       onMouseOver={onMouseEnter}
@@ -49,7 +50,7 @@ export const ImageHover = ({
           <ImageWrap key={key}>
             <DefaultImage
               aria-label={title}
-              $backgroundImgUrl={imageUrl}
+              $backgroundImgUrl={imageSrc}
               $imageProps={hoverImageConfig.default}
               ref={refs[index]}
             />
@@ -58,7 +59,7 @@ export const ImageHover = ({
           <DefaultImage
             key={key}
             aria-label={title}
-            $backgroundImgUrl={imageUrl}
+            $backgroundImgUrl={imageSrc}
             $imageProps={hoverImageConfig.default}
             ref={refs[index]}
           />

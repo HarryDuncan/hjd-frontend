@@ -4,11 +4,8 @@ import { useFetchConfig } from "visual/set-up/config/useFetchConfig";
 import { SceneConfig } from "visual/set-up/config/config.types";
 
 export const useSceneConfigAndAssets = (configId: string) => {
-  const selectedSceneFilePath = configId ?? "";
-  const sceneConfigData = useFetchConfig(
-    `visual-config/${selectedSceneFilePath}.json`
-  );
-
+  const selectedSceneFilePath = `visual-config/${configId}.json` ?? "";
+  const sceneConfigData = useFetchConfig(selectedSceneFilePath);
   const configData = useSelectedConfig(sceneConfigData);
   const { areAssetsInitialized, initializedAssets } = useAssets(
     configData.assets ?? []
@@ -18,7 +15,7 @@ export const useSceneConfigAndAssets = (configId: string) => {
 };
 
 const useSelectedConfig = (sceneConfigData: SceneConfig[]) => {
-  const index = 3;
+  const index = 0;
   return useMemo(() => {
     const selectedScene = sceneConfigData[index];
     if (selectedScene) {

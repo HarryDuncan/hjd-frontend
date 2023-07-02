@@ -12,7 +12,7 @@ export const StaticImage = ({
     <ImageContainer>
       <StyledImage
         alt={imageTitle}
-        src={imageUrl}
+        src={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}${imageUrl}`}
         layout="fill"
         objectFit="contain"
       />

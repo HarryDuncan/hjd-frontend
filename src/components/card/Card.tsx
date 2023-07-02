@@ -22,7 +22,10 @@ export const Card = ({ cardDetails, onClick }: CardProps) => {
   return (
     <CardWrapper onClick={cardClicked}>
       {cardDetails.imageUrl && (
-        <CardImage src={cardDetails.imageUrl} alt={cardDetails.title} />
+        <CardImage
+          src={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}${cardDetails.imageUrl}`}
+          alt={cardDetails.title}
+        />
       )}
       {cardDetails.footer ? (
         cardDetails.footer
