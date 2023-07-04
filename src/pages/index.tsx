@@ -20,8 +20,9 @@ const Home: NextPage = () => {
 };
 
 const HomeSceneContent = () => {
+  const configId = "home-scene";
   const { areAssetsInitialized, initializedAssets, configData } =
-    useSceneConfigAndAssets("home-scene");
+    useSceneConfigAndAssets(configId);
   const sceneData = useSceneData(
     configData,
     initializedAssets,
