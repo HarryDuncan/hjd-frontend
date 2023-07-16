@@ -37,8 +37,6 @@ const SceneNode = ({
     camera
   );
 
-  useEffect(() => () => pause(), [pause]);
-
   const initializeSceneWithData = useCallback(() => {
     if (scene) {
       meshes?.forEach((mesh) => scene.add(mesh));
@@ -71,7 +69,10 @@ const SceneNode = ({
 
   useEffect(() => {
     initializeSceneWithData();
-  }, [initializeSceneWithData]);
+    return () => {
+      pause();
+    };
+  }, [initializeSceneWithData, pause]);
 
   return (
     <RootContainer containerRef={container} sceneProperties={sceneProperties} />
