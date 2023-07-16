@@ -13,6 +13,8 @@ export const ImageContainer = styled.div`
     height: 100%;
     margin-left: 0%;
     min-height: 70vh;
+    max-height: 70vh;
+    margin-top: 1.5em;
   }
 `;
 export const StyledImage = styled(Image)`

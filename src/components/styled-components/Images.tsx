@@ -26,12 +26,16 @@ const ViewItemIcon = styled.img`
     animation-timing-function: ease-in-out;
     -webkit-animation: ${onMouseOver} 500ms 1 forwards;
   }
+  @media only screen and (max-width: ${({ theme }) =>
+    theme.breakpoints.mobile}px) {
+    height: 2rem;
 `;
 const ScrollIcon = styled(ViewItemIcon)`
   top: 55%;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    top: 42%;
+    top: 85vh;
+    height: 2rem;
   }
 `;
 
@@ -48,10 +52,10 @@ export const Exit = styled(ViewItemIcon)`
   top: 4rem;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
-    top: 8vh;
+    top: 4rem;
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    top: ${NAV_HEIGHT};
+    top: ${NAV_HEIGHT} + 2rem;
   }
 `;

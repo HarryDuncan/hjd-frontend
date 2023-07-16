@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useMeasure } from "react-use";
+import { useMeasure, useWindowScroll } from "react-use";
 import { UseMeasureRef } from "react-use/lib/useMeasure";
 
 export interface LoadMoreProps {
@@ -62,24 +62,13 @@ const useLoadMoreOnScroll = (
   const [itemsDisplayed, setItemsDisplayed] = useState<number>(
     loadMoreProps?.initialLoadSize ?? items.length
   );
+  const { y } = useWindowScroll();
 
-  const onScroll = useCallback(
-    (_event: Event) => {
-      const { pageYOffset } = window;
-      if (pageYOffset >= height) {
-        setItemsDisplayed((i) => i + Number(loadMoreProps?.loadMoreSize ?? 0));
-      }
-    },
-    [loadMoreProps, height]
-  );
   useEffect(() => {
-    // add eventlistener to window
-    window.addEventListener("scroll", onScroll, { passive: true });
-    // remove event on unmount to prevent a memory leak with the cleanup
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, [onScroll]);
+    if (y >= height - 200) {
+      setItemsDisplayed((i) => i + Number(loadMoreProps?.loadMoreSize ?? 0));
+    }
+  }, [y]);
 
   return {
     displayedItems: items.slice(0, itemsDisplayed),
