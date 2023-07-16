@@ -1,19 +1,19 @@
 import { gql } from "@apollo/client";
 import { client } from "network/ApolloClient";
 
-export const getArt = async () => {
+export const getPaintings = async () => {
   const query = gql`
-    query art {
-      art @rest(type: "art", path: "/art") {
+    query paintings {
+      paintings @rest(type: "Paintings", path: "/art/paintings") {
         paintings
       }
     }
   `;
   return client.query({ query }).then((response) => {
     const {
-      data: { art },
+      data: { paintings },
       loading,
     } = response;
-    return { art, loading };
+    return { paintings, loading };
   });
 };

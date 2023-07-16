@@ -12,8 +12,8 @@ export type Painting = {
   dimensions: string;
 };
 
-export type FetchArtResponse = FetchResponse & {
-  art: {
+export type FetchPaintingsResponse = FetchResponse & {
+  paintings: {
     paintings: Painting[];
   };
 };

@@ -8,19 +8,20 @@ interface TextScrollerProps {
 export const TextScroller = ({ text }: TextScrollerProps) => {
   const [animating, setAnimating] = useState(true);
 
+  const textData = text
+    .repeat(100)
+    .split("")
+    .map((char, index) => ({ char, id: index }));
   return (
     <TextScrollerContainer
       $isAnimating={animating}
       onAnimationEnd={() => setAnimating(false)}
     >
-      {text
-        .repeat(100)
-        .split("")
-        .map((char) => (
-          <TextScrollerText key={`text-${char}`} $isLight>
-            {char}
-          </TextScrollerText>
-        ))}
+      {textData.map(({ char, id }) => (
+        <TextScrollerText key={`text-${id}`} $isLight>
+          {char}
+        </TextScrollerText>
+      ))}
     </TextScrollerContainer>
   );
 };

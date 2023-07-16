@@ -4,7 +4,7 @@ import { client } from "network/ApolloClient";
 export const getShopData = async () => {
   const query = gql`
     query content {
-      shopData @rest(type: "shopData", path: "/store") {
+      shopData @rest(type: "shopData", path: "/shop/products") {
         products
         productVariations
         shippingZones

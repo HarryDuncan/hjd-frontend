@@ -22,7 +22,7 @@ import { TextScroller } from "components/text-scroller/TextScroller";
 
 const Art: NextPage = () => {
   const {
-    art: { paintings },
+    paintings: { paintings },
     isError,
   } = useArtData();
   const paintingGalleryItems = usePaintingsInGallery(paintings);

@@ -4,7 +4,7 @@ import { gql } from "@apollo/client";
 export const getContent = async () => {
   const query = gql`
     query content {
-      content @rest(type: "content", path: "/content") {
+      content @rest(type: "content", path: "/content/site-content") {
         textContent
         imageContent
       }
