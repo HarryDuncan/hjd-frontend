@@ -21,10 +21,10 @@ const ViewItemIcon = styled.img`
   cursor: pointer;
   z-index: 2;
   animation-timing-function: ease-in-out;
-  -webkit-animation: ${onMouseOut} 500ms 1 forwards;
+  -webkit-animation: ${onMouseOut} 500ms  forwards;
   &:hover {
     animation-timing-function: ease-in-out;
-    -webkit-animation: ${onMouseOver} 500ms 1 forwards;
+    -webkit-animation: ${onMouseOver} 500ms  forwards;
   }
   @media only screen and (max-width: ${({ theme }) =>
     theme.breakpoints.mobile}px) {
@@ -34,7 +34,7 @@ const ScrollIcon = styled(ViewItemIcon)`
   top: 55%;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    top: 85vh;
+    top: 39rem;
     height: 2rem;
   }
 `;

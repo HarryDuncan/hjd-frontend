@@ -26,8 +26,7 @@ const SceneNode = ({
   } = useSetUpScene(threeJs);
 
   const initializedLights = useLights(lights);
-  const scene = useInteractiveScene([], sceneFunctions);
-  useEvents(scene, events);
+  const scene = useInteractiveScene([], sceneFunctions, events);
 
   const { update, pause } = useThreadWithPostProcessor(
     postProcessor,

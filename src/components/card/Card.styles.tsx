@@ -25,6 +25,11 @@ const showTitle = keyframes`
 }
 `;
 
+export const ConfigurableCardWrapper = styled.div`
+  position: relative;
+  height: auto;
+  background-color: black;
+`;
 export const CardWrapper = styled.div`
   box-sizing: inherit;
   display: inline-block;

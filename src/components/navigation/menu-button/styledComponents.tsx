@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 export const Line = styled.div`
   width: 50px;
-  height: 10px;
+  height: 8px;
   display: block;
 `;
 
@@ -23,7 +23,7 @@ export const MenuButtonContainer = styled.div<{
     margin: 0.3rem 0.5rem;
   }
   ${Line} {
-    margin: 5px auto;
+    margin: 6px auto;
     background: ${({
       theme: {
         colors: { gradients },
@@ -80,28 +80,3 @@ export const inactiveTwo = keyframes`
     transform: translateY(0) rotate(0);
   }
 }`;
-
-// .hamburger {
-//   margin: 0.5rem 0.5rem;
-// }
-
-// .hamburger:hover {
-//   cursor: pointer;
-// }
-
-// /* ONE */
-
-// #hamburger-1.is-active .line:nth-child(2) {
-//   opacity: 0;
-// }
-
-// #hamburger-1.is-active .line:nth-child(1) {
-
-// }
-
-// #hamburger-1.is-active .line:nth-child(3) {
-//   -webkit-transform: translateY(-12px) rotate(-45deg);
-//   -ms-transform: translateY(-12px) rotate(-45deg);
-//   -o-transform: translateY(-12px) rotate(-45deg);
-//   transform: translateY(-12px) rotate(-45deg);
-// }

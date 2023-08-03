@@ -41,16 +41,19 @@ export const ViewItemContainer = styled.div`
       theme.breakpoints.tablet}px) {
     flex-direction: column;
     height: auto;
+    min-height: calc(100vh - ${NAV_HEIGHT});
     padding-bottom: 1rem;
+    justify-content: flex-start;
   }
 `;
 export const ViewItemDetailsContainer = styled.div`
-  margin: 0 auto;
   text-align: center;
   width: 50%;
+  margin: 0 3.5rem;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     width: 100%;
+    margin: 0 auto;
   }
 `;
 export const ContentContainer = styled.div`

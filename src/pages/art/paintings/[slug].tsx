@@ -38,22 +38,21 @@ const PaintingDetails = () => {
           onClick={() => changePainting(Direction.FORWARD)}
         />
         <MainTitle $isLight={false}>{painting.title}</MainTitle>
-        <ContentContainer>
-          <ContentText>{painting.description}</ContentText>
-          <br />
-          <br />
-          {painting.medium && <ContentText>{painting.medium}</ContentText>}
-          <br />
-          <br />
-          {painting.yearCompleted && (
-            <ContentText>Completed in {painting.yearCompleted}</ContentText>
-          )}
-          <br />
-          <br />
-          {painting.dimensions && (
-            <ContentText>{painting.dimensions}</ContentText>
-          )}
-        </ContentContainer>
+
+        <ContentText>{painting.description}</ContentText>
+        <br />
+        <br />
+        {painting.medium && <ContentText>{painting.medium}</ContentText>}
+        <br />
+        <br />
+        {painting.yearCompleted && (
+          <ContentText>Completed in {painting.yearCompleted}</ContentText>
+        )}
+        <br />
+        <br />
+        {painting.dimensions && (
+          <ContentText>{painting.dimensions}</ContentText>
+        )}
       </ViewItemDetailsContainer>
     </ViewItemLayout>
   );

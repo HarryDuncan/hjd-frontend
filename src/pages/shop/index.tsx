@@ -8,7 +8,11 @@ import {
   BANNER_IMAGE_HOVER_CONFIG,
   MAIN_GALLERY_TOP_OFFSET,
 } from "constants/ui.constants";
-import { SHOP_IMAGES, SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
+import {
+  SHOP_IMAGES,
+  SHOP_IMAGE_URL_ROOT,
+  SHOP_LOAD_MORE,
+} from "constants/shop.constants";
 import { useShopData } from "hooks/shop/useShopData";
 import { useProductsWithVariations } from "hooks/shop/useProductsWithVariations";
 import { useMemo } from "react";
@@ -20,6 +24,7 @@ const Shop: NextPage = () => {
   const productGalleryItems = useProductsInGallery();
   const { images } = useContentForPage({ imageSelection: SHOP_IMAGES });
   const handleRouting = useHandleRouting("shop/products/");
+
   return (
     <DynamicLayout>
       <ParallaxImage
@@ -34,6 +39,7 @@ const Shop: NextPage = () => {
         <DynamicCardGallery
           items={productGalleryItems}
           onClick={handleRouting}
+          loadMoreProps={SHOP_LOAD_MORE}
         />
       </InnerContainer>
     </DynamicLayout>
