@@ -19,11 +19,14 @@ export const TextContainer = styled.div`
 export const BioContentContainer = styled.div<{ $index: number }>`
   display: flex;
   flex-direction: ${({ $index }) => ($index % 2 === 0 ? "row" : "row-reverse")};
+  z-index: 5;
+  position: absolute;
 `;
 
 export const BioPage = styled.div`
   width: 100%;
   margin: 0 auto;
+  overflow: hidden;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     width: 100%;

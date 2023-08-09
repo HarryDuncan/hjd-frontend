@@ -42,14 +42,7 @@ const Tech: NextPage = () => {
 };
 
 const useLongScroll = () => {
-  const [height, setHeight] = useState<number>(0);
-  const [measureRef, { height: divHeight }] = useMeasure();
-
-  useEffect(() => {
-    if (divHeight !== 0) {
-      setHeight(divHeight);
-    }
-  }, [divHeight, setHeight]);
+  const [measureRef, { height }] = useMeasure();
   return { measureRef, height };
 };
 

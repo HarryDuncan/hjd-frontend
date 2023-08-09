@@ -28,6 +28,7 @@ export const TechHome = ({ contentHeight }: TechHomeProps) => {
     areAssetsInitialized
   );
   const sceneParameters = useMemo(() => {
+    if (!configData) return null;
     const { animationConfig } = configData;
     return {
       sceneFunctions: {
@@ -42,7 +43,7 @@ export const TechHome = ({ contentHeight }: TechHomeProps) => {
     };
   }, [configData, sceneData, onScroll]);
 
-  return sceneData !== null ? (
+  return sceneData !== null && sceneParameters !== null ? (
     <DynamicScene {...sceneParameters} sceneData={sceneData as SceneData} />
   ) : null;
 };

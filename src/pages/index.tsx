@@ -29,8 +29,8 @@ const HomeSceneContent = () => {
     areAssetsInitialized
   );
   const sceneParameters = useMemo(() => {
+    if (!configData) return null;
     const { animationConfig } = configData;
-
     return {
       sceneFunctions: {
         onTimeUpdate: (scene: InteractiveScene) => {
@@ -44,7 +44,7 @@ const HomeSceneContent = () => {
     };
   }, [configData, sceneData]);
 
-  return sceneData !== null ? (
+  return sceneData !== null && sceneParameters !== null ? (
     <DynamicScene {...sceneParameters} sceneData={sceneData as SceneData} />
   ) : null;
 };

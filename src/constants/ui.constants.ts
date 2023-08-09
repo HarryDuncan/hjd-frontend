@@ -1,6 +1,5 @@
 // Offset for gallery items so they are under the parallax image
 export const MAIN_GALLERY_TOP_OFFSET = 150;
-
 export const SCROLL_LEFT = "/assets/icons/Left.svg";
 export const SCROLL_RIGHT = "/assets/icons/Right.svg";
 export const EXIT = "/assets/icons/close.svg";

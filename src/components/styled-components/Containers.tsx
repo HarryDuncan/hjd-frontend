@@ -10,7 +10,7 @@ export const PageContainer = styled.div<{ $topPadding: boolean }>`
   top: 0;
   left: 0;
   background-color: ${({ theme }) => theme.colors.mono.background};
-  padding: ${({ $topPadding }) => `${$topPadding ? "5rem" : 0} 0rem`};
+  padding: ${({ $topPadding }) => `${$topPadding ? "4rem" : 0} 0rem`};
   display: flex;
   flex-direction: column;
   overflow-x: hidden;

@@ -16,6 +16,7 @@ export const NavItem = styled.li`
   align-content: right;
   float: right;
   margin-left: 1em;
+  margin-top: 0.6rem;
   cursor: pointer;
   position: relative;
 `;
@@ -45,7 +46,8 @@ export const NavItemLink = styled.div<{
     display: block;
     width: 100%;
     height: 1px;
-    bottom: 0.2rem;
+    bottom: 0.7rem;
+    z-index: -1;
     left: 0;
     background-color: ${({ $isLight }) => ($isLight ? "#fff" : "#000")};
     transform: ${({ $isActive }) => ($isActive ? `scaleX(1)` : `scaleX(0)`)};

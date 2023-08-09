@@ -3,9 +3,16 @@ import { TextScrollerContainer, TextScrollerText } from "./TextScroller.styles";
 
 interface TextScrollerProps {
   text: string;
+  textPosition?: string;
 }
-
-export const TextScroller = ({ text }: TextScrollerProps) => {
+export const TEXT_POSITIONS = {
+  START: "start",
+  CENTER: "center",
+};
+export const TextScroller = ({
+  text,
+  textPosition = TEXT_POSITIONS.CENTER,
+}: TextScrollerProps) => {
   const [animating, setAnimating] = useState(true);
 
   const textData = text
@@ -14,6 +21,7 @@ export const TextScroller = ({ text }: TextScrollerProps) => {
     .map((char, index) => ({ char, id: index }));
   return (
     <TextScrollerContainer
+      $verticalPosition={textPosition}
       $isAnimating={animating}
       onAnimationEnd={() => setAnimating(false)}
     >
