@@ -1,39 +1,51 @@
-import Link from "next/link";
-import React from "react";
-import { useActiveNav } from "../hooks/useActiveNav";
-import { NAV_THEMES, SITE_PAGES } from "../navigation.constants";
-import { NavTheme, PageItem } from "../navigation.types";
-import {
-  NavItem,
-  NavItemLabel,
-  NavItemLink,
-  NavItemList,
-} from "./DesktopNavigation.styles";
+import React, { useRef } from "react";
+import { SITE_PAGES } from "../navigation.constants";
+import { NavTheme } from "../navigation.types";
+import { NavItemList } from "./DesktopNavigation.styles";
+import { LinkItem } from "./LinkItem";
 
 interface DesktopNavProps {
   navTheme: NavTheme;
 }
 
 export const DesktopNav = ({ navTheme }: DesktopNavProps) => {
-  const { handleNavChange, activeNav } = useActiveNav();
-
+  const filterRef = useRef();
   return (
     <NavItemList>
-      {SITE_PAGES.map((page: PageItem, _index: number) => (
-        <NavItem key={page.title}>
-          <NavItemLink
-            $isLight={navTheme === NAV_THEMES.DARK}
-            $isActive={activeNav === page.link}
-            onClick={() => handleNavChange(page.link)}
-          >
-            <Link href={page.link}>
-              <NavItemLabel $isLight={navTheme === NAV_THEMES.DARK}>
-                {page.title}
-              </NavItemLabel>
-            </Link>
-          </NavItemLink>
-        </NavItem>
+      <svg className="hidden">
+        <defs>
+          <filter id="filter-1" ref={filterRef}>
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0"
+              numOctaves="1"
+              result="warp"
+            />
+            <feOffset dx="-90" result="warpOffset" />
+            <feDisplacementMap
+              xChannelSelector="R"
+              yChannelSelector="G"
+              scale="30"
+              in="SourceGraphic"
+              in2="warpOffset"
+            />
+          </filter>
+        </defs>
+      </svg>
+      {SITE_PAGES.map(({ title, link }) => (
+        <LinkItem
+          key={`${title}`}
+          title={title}
+          link={link}
+          navTheme={navTheme}
+          filterRef={filterRef}
+          filterId="#filter-1"
+        />
       ))}
     </NavItemList>
   );
 };
+
+// {SITE_PAGES.map((page: PageItem, _index: number) => (
+
+// ))}

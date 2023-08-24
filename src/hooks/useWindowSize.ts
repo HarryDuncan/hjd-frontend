@@ -5,6 +5,7 @@ import { useWindowState } from "visual/compat/window-state/windowStateProvider";
 export const WINDOW_SCREEN_TYPE = {
   WIDE_SCREEN: "WIDE_SCREEN",
   DESKTOP: "DESKTOP",
+  LAPTOP: "LAPTOP",
   TABLET: "TABLET",
   MOBILE: "MOBILE",
 };
@@ -25,6 +26,9 @@ export const useWindowScreenType = () => {
     }
     if (width >= breakpoints.desktop) {
       return WINDOW_SCREEN_TYPE.DESKTOP;
+    }
+    if (width >= breakpoints.laptop) {
+      return WINDOW_SCREEN_TYPE.LAPTOP;
     }
     if (width > breakpoints.tablet) {
       return WINDOW_SCREEN_TYPE.TABLET;

@@ -6,6 +6,7 @@ export const ImageContainer = styled.div`
   width: 40%;
   margin-left: 10%;
   position: relative;
+
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     flex-direction: column;
@@ -24,4 +25,8 @@ export const StyledImage = styled(Image)`
   object-fit: contain;
   object-position: top;
   margin-top: 1.5rem;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    margin-top: 0;
+  }
 `;

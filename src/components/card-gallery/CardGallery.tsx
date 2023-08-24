@@ -1,12 +1,6 @@
 import { Card, CardDetails } from "components/card/Card";
 import { CardGalleryContainer } from "./styledComponents";
-import {
-  MutableRefObject,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { MutableRefObject, useEffect, useState } from "react";
 import { useMeasure, useWindowScroll } from "react-use";
 import { UseMeasureRef } from "react-use/lib/useMeasure";
 

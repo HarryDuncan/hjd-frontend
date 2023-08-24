@@ -28,7 +28,6 @@ export const formatGeometry = (
 
     const position = formatPosition(meshConfig);
     const rotation = formatRotation(meshConfig);
-    console.log(meshConfig.geometryConfig);
     const configuredGeometry = configureGeometry(
       geometry.geometry,
       meshConfig.geometryConfig

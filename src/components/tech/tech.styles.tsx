@@ -1,3 +1,4 @@
+import { ScrolledTypographyHeader } from "components/animations/scroll-typography/ScrollTypography.styled";
 import { ConfigurableCardWrapper } from "components/card/Card.styles";
 import styled, { css } from "styled-components";
 
@@ -11,15 +12,26 @@ const galleryStack = css`
   --offset: 1rem;
 `;
 
-const galleryStackEnd = css`
-  opacity: 0;
-`;
-
 export const TechTitleContainer = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
+  ${ScrolledTypographyHeader} {
+    font-size: 5rem;
+    position: absolute;
+    top: 50vh;
+    text-align: center;
+    width: 100%;
+    color: white;
+  }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    ${ScrolledTypographyHeader} {
+      font-size: 2.5rem;
+      top: 30vh;
+    }
+  }
 `;
 export const TechContentContainer = styled.div`
   height: 100vh;

@@ -1,9 +1,8 @@
-import { MainTitle } from "components/styled-components/Text";
+import { ScrollTypography } from "components/animations/scroll-typography/ScrollTypography";
 import { TechTitleContainer } from "./tech.styles";
 
 export const TechTitle = () => (
   <TechTitleContainer>
-    <MainTitle>Harry J Dee</MainTitle>
-    <h3>Creative Technologist & Full Stack Developer</h3>
+    <ScrollTypography text="Creative Technologist and Fullstack Developer" />
   </TechTitleContainer>
 );

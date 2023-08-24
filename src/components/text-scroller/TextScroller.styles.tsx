@@ -11,14 +11,13 @@ const scrollText = keyframes`
 
 export const TextScrollerText = styled.h1<{ $isLight: boolean }>`
   text-transform: uppercase;
-  background: ${({ $isLight, theme }) =>
-    $isLight ? theme.colors.gradients.light : theme.colors.gradients.dark};
-     -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: ${({ $isLight }) => ($isLight ? "white" : "black")};
   font-size: 5rem;
-  font-weight ${({ theme }) => theme.font.weight.light}
-  margin-top: 0;
-
+  font-weight: ${({ theme }) => theme.font.weight.light};
+  
+  @media only screen and (max-width: ${({ theme }) =>
+    theme.breakpoints.mobile}px) {
+    font-size: 4rem;
 `;
 
 export const TextScrollerContainer = styled.div<{

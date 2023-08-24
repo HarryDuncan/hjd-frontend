@@ -20,7 +20,6 @@ export const FooterContainer = styled.div`
 export const FooterCenterText = styled.div`
   font-size: 0.9em;
   text-decoration: none;
-  letter-spacing: 0.2em;
   padding: 2rem 5px;
   position: relative;
   margin: 0 auto;
@@ -32,7 +31,6 @@ export const FooterCenterText = styled.div`
 export const FooterLink = styled.a`
   color: black;
   text-decoration: none;
-  letter-spacing: 0.2em;
   padding: 5px 5px;
   position: relative;
   text-transform: none;

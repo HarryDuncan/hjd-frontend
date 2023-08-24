@@ -4,7 +4,7 @@ export const NavItemList = styled.ul`
   display: flex;
   margin-top: 0rem;
   list-style: none;
-  margin-right: 2.5%;
+  margin-right: 0.5%;
   text-align: center;
   border: none;
 `;
@@ -15,46 +15,40 @@ export const NavItem = styled.li`
   text-decoration: none;
   align-content: right;
   float: right;
-  margin-left: 1em;
-  margin-top: 0.6rem;
+  margin: -0.1rem 0 0 1em;
+
   cursor: pointer;
   position: relative;
+  height: 4rem;
 `;
 
 export const NavItemLabel = styled.span<{ $isLight: boolean }>`
   text-align: right;
   cursor: pointer;
   font-family: "Harryduncan";
-  font-size: 4rem;
-  margin: 0;
-  letter-spacing: 0.2rem;
+  font-size: 5.5rem;
   text-transform: uppercase;
-  width: 0;
-  background: ${({ theme, $isLight }) =>
-    $isLight ? theme.colors.gradients.light : theme.colors.gradients.dark};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: ${({ $isLight }) => ($isLight ? "white" : "black")};
 `;
 
 export const NavItemLink = styled.div<{
   $isLight: boolean;
   $isActive: boolean;
 }>`
-  &:before {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 1px;
-    bottom: 0.7rem;
-    z-index: -1;
-    left: 0;
-    background-color: ${({ $isLight }) => ($isLight ? "#fff" : "#000")};
-    transform: ${({ $isActive }) => ($isActive ? `scaleX(1)` : `scaleX(0)`)};
-    transition: transform 0.3s ease;
+  :hover {
+    .line {
+      opacity: 1;
+    }
   }
-
-  &:hover:before {
-    transform: scaleX(1);
+  .line {
+    outline: 120px solid transparent;
+    opacity: ${({ $isActive }) => ($isActive ? 1.0 : 0.0)};
+    position: absolute;
+    pointer-events: none;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: ${({ $isLight }) => ($isLight ? "white" : "black")};
   }
 `;

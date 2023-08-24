@@ -66,9 +66,14 @@ export const DarkOverlay = styled.div`
 export const SplashImage = styled.img`
   z-index: 100;
   position: absolute;
-  left: calc(50vw - 10rem);
-  width: 20rem;
+  left: calc(50vw - 20rem);
+  width: 40rem;
   top: 20%;
   animation-name: ${fadeIn};
   animation-duration: 0.3s;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    width: 20rem;
+    left: calc(50vw - 10rem);
+  }
 `;

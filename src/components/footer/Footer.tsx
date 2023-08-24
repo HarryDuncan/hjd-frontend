@@ -5,14 +5,14 @@ export const Footer = () => {
   return (
     <FooterContainer>
       <FooterLink href="mailto: harry@harryjdee.com">
-        <ContentText>Get In Touch</ContentText>
+        <ContentText $isLight>Get In Touch</ContentText>
       </FooterLink>
       <FooterLink href="/terms-and-conditions">
-        <ContentText>Terms And Conditions</ContentText>
+        <ContentText $isLight>Terms And Conditions</ContentText>
       </FooterLink>
 
       <FooterCenterText>
-        <ContentText>
+        <ContentText $isLight>
           Harry J Dee acknowledges the traditional custodians of the lands on
           which he works, the Wurundjeri people of the Kulin Nation. We pay our
           respects to Elders past, present and emerging. Harry J Dee

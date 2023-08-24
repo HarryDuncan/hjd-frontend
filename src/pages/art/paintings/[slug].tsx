@@ -1,60 +1,58 @@
 import ViewItemLayout from "components/layout/ViewItemLayout";
-import {
-  ContentContainer,
-  ViewItemDetailsContainer,
-} from "components/styled-components/Containers";
-import {
-  Exit,
-  ScrollLeft,
-  ScrollRight,
-} from "components/styled-components/Images";
+import { ViewItemDetailsContainer } from "components/styled-components/Containers";
 import { ContentText, MainTitle } from "components/styled-components/Text";
 import { ART_ROOT_URL } from "constants/art.constants";
-import { EXIT, SCROLL_LEFT, SCROLL_RIGHT } from "constants/ui.constants";
 import { usePaintingData } from "hooks/art/usePaintingData";
 import { useScrollPaintings } from "hooks/art/useScrollPaintings";
 import { Direction } from "../../../../utils/helpers/moveThroughArray";
 import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
+import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
+import { Icon } from "components/icons/Icons";
+import { IconTypes } from "components/icons/Icons.consts";
 
 const PaintingDetails = () => {
   const { painting } = usePaintingData();
   const changePainting = useScrollPaintings();
   const handleExit = useHandleExit();
+  const [changedDirection, setChangedDirection] = useState<Direction>(
+    Direction.FORWARD
+  );
   if (!painting) return null;
-  return (
-    <ViewItemLayout
-      imageUrl={`${ART_ROOT_URL}${painting?.imageUrl}`}
-      title={painting?.title}
-    >
-      <ViewItemDetailsContainer>
-        <Exit src={EXIT} onClick={handleExit} />
-        <ScrollLeft
-          src={SCROLL_LEFT}
-          onClick={() => changePainting(Direction.REVERSE)}
-        />
-        <ScrollRight
-          src={SCROLL_RIGHT}
-          onClick={() => changePainting(Direction.FORWARD)}
-        />
-        <MainTitle $isLight={false}>{painting.title}</MainTitle>
 
-        <ContentText>{painting.description}</ContentText>
-        <br />
-        <br />
-        {painting.medium && <ContentText>{painting.medium}</ContentText>}
-        <br />
-        <br />
-        {painting.yearCompleted && (
-          <ContentText>Completed in {painting.yearCompleted}</ContentText>
-        )}
-        <br />
-        <br />
-        {painting.dimensions && (
-          <ContentText>{painting.dimensions}</ContentText>
-        )}
-      </ViewItemDetailsContainer>
-    </ViewItemLayout>
+  const onScroll = (direction: Direction) => {
+    setChangedDirection(direction);
+    changePainting(direction);
+  };
+  return (
+    <SlideWithBackgroundTransition direction={changedDirection}>
+      <ViewItemLayout
+        imageUrl={`${ART_ROOT_URL}${painting?.imageUrl}`}
+        title={painting?.title}
+      >
+        <ViewItemDetailsContainer>
+          <Icon onClick={handleExit} type={IconTypes.EXIT} hasGesture />
+          <Icon onClick={onScroll} type={IconTypes.CHEVRON_LEFT} hasGesture />
+          <Icon onClick={onScroll} type={IconTypes.CHEVRON_RIGHT} hasGesture />
+          <MainTitle $isLight={false}>{painting.title}</MainTitle>
+
+          <ContentText>{painting.description}</ContentText>
+          <br />
+          <br />
+          {painting.medium && <ContentText>{painting.medium}</ContentText>}
+          <br />
+          <br />
+          {painting.yearCompleted && (
+            <ContentText>Completed in {painting.yearCompleted}</ContentText>
+          )}
+          <br />
+          <br />
+          {painting.dimensions && (
+            <ContentText>{painting.dimensions}</ContentText>
+          )}
+        </ViewItemDetailsContainer>
+      </ViewItemLayout>
+    </SlideWithBackgroundTransition>
   );
 };
 

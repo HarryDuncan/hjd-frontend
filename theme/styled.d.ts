@@ -43,6 +43,7 @@ declare module "styled-components" {
     breakpoints: {
       wideScreen: 1501;
       desktop: 1280;
+      laptop: 1080;
       tablet: 850;
       mobile: 800;
       smallMobile: 350;

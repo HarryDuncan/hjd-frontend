@@ -11,17 +11,9 @@ import {
 import { useContentForPage } from "hooks/content/useContentForPage";
 import type { NextPage } from "next";
 
-// import {
-//   formatLetter,
-//   letters,
-//   onPageScroll,
-// } from "visual-configs/bio/letters";
-
-// const BIO_LETTERS = ["H", "J", "D"];
 const Bio: NextPage = () => {
   const { text, images } = useBioPageContent();
-  // const bioLetters = useBioLetters();
-  // useCleanupListeners();
+
   return (
     <Layout>
       <BioPage>

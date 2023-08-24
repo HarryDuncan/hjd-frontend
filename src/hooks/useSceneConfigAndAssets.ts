@@ -10,7 +10,7 @@ export const useSceneConfigAndAssets = (configId: string) => {
   const sceneConfigData = useFetchConfig(selectedSceneFilePath);
   const configData = useSelectedConfig(sceneConfigData);
   const { areAssetsInitialized, initializedAssets } = useAssets(
-    configData?.assets ?? []
+    configData?.assets
   );
 
   return { areAssetsInitialized, initializedAssets, configData };

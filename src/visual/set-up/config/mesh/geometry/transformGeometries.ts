@@ -5,7 +5,6 @@ import {
   getVertices,
 } from "./attributes/attribute.functions";
 import { MESH_TRANSFORM } from "../mesh.consts";
-import { normalize } from "path";
 
 export const transformGeometry = (meshTransforms, formattedGeometries) => {
   if (!meshTransforms || !meshTransforms.length) return formattedGeometries;

@@ -1,8 +1,5 @@
 import { DynamicScene } from "components/visual-components/DynamicInteractiveNode";
 import { useSceneConfigAndAssets } from "hooks/useSceneConfigAndAssets";
-import { TECH_ACTIONS } from "models/tech/tech.types";
-import { useTechContex } from "models/tech/techProvider";
-import { TechActions } from "models/tech/techStateReducer";
 import { useCallback, useMemo } from "react";
 import { Scene } from "three";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
@@ -22,6 +19,7 @@ export const TechHome = ({ contentHeight }: TechHomeProps) => {
   const configId = "tech-home";
   const { areAssetsInitialized, initializedAssets, configData } =
     useSceneConfigAndAssets(configId);
+
   const sceneData = useSceneData(
     configData,
     initializedAssets,
@@ -52,6 +50,10 @@ const useOnScrollEventConfig = (contentHeight: number) => {
   const updateOnScroll = useCallback(
     (scene: Scene, event: Event) => {
       //  console.log("asdasd");
+      // const document = event.documentElement.scrollHeight;
+      // console.log(document);
+      console.log(event);
+      console.log(contentHeight);
     },
     [contentHeight]
   );

@@ -1,15 +1,12 @@
 import styled, { keyframes } from "styled-components";
 
 export const CardTitle = styled.h1`
-  background: ${({ theme }) => theme.colors.gradients.light};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color:white;
   opacity: 0;
   position: absolute;
   z-index: 40;
   text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 0.05em;
   font-size: 3em;
   margin-left: 20px;
   top: 0;
@@ -24,11 +21,32 @@ const showTitle = keyframes`
   opacity : 1;
 }
 `;
+export const CardImage = styled.img`
+  object-fit: contain;
+  width: 100%;
+  min-height: 100px;
+  vertical-align: middle;
+  &: hover {
+    filter: brightness(30%);
+    animation-timing-function: ease-in-out;
+    -webkit-animation: showTitle 500ms 1 forwards;
+  }
+`;
 
 export const ConfigurableCardWrapper = styled.div`
   position: relative;
   height: auto;
   background-color: black;
+  width: 15rem;
+  height: 15rem;
+  background: transparent;
+  position: relative;
+  cursor: default;
+  &:hover {
+    ${CardTitle} {
+      animation: ${showTitle} 500ms 1 forwards;
+    }
+  }
 `;
 export const CardWrapper = styled.div`
   box-sizing: inherit;
@@ -55,24 +73,12 @@ export const CardWrapper = styled.div`
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    width: calc(100% - 1rem);
-    margin: 1rem 0.5rem;
+    width: calc(100% - 0.4rem);
+    margin: 0.5rem 0.2rem;
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.smallMobile}px) {
     width: 100%;
-  }
-`;
-
-export const CardImage = styled.img`
-  object-fit: contain;
-  width: 100%;
-  min-height: 100px;
-  vertical-align: middle;
-  &: hover {
-    filter: brightness(30%);
-    animation-timing-function: ease-in-out;
-    -webkit-animation: showTitle 500ms 1 forwards;
   }
 `;
 

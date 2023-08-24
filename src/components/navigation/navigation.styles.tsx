@@ -8,7 +8,7 @@ export const NavigationContainer = styled.div`
   left: 0;
   top: 0;
   z-index: 3;
-  min-height: 4rem;
+  max-height: 4rem;
   display: flex;
   justify-content: space-between;
   clear: both;
@@ -27,35 +27,35 @@ export const NavBackgroundOverlay = styled.div<{ $isOpen?: boolean }>`
   background: ${({ theme }) => theme.colors.gradients.dark};
   opacity: 0.95;
   animation-name: ${({ $isOpen }) => ($isOpen ? growNav : shrinkNav)};
-  animation-duration: 0.3s;
+  animation-duration: 0.1s;
   animation-fill-mode: forwards;
   backdrop-filter: blur(2005px);
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    animation-name: ${({ $isOpen }) =>
+      $isOpen ? growNavMobile : shrinkNavMobile};
+  }
 `;
 
 export const NavTitle = styled.h1<{ $isLight?: boolean }>`
-  margin: 0 2.5%;
+  margin: -0.9rem 0.5%;
   text-transform: uppercase;
-  background: ${({ $isLight, theme }) =>
-    $isLight ? theme.colors.gradients.light : theme.colors.gradients.dark};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 0.2rem;
+  cursor: pointer;
+  color: ${({ $isLight }) => ($isLight ? "white" : "black")};
   text-align: left;
-  font-size: 5rem;
-  font-family: "Harryduncan",
-    @media only screen and
-      (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+  font-size: 7rem;
+  white-space: nowrap;
+  font-weight: ${({ theme }) => theme.font.weight.light};
+  font-family: "Harryduncan";
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
     margin: 0 0 0 0.5rem;
   }
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    font-size: 4.4rem;
-    margin: 0rem 0.5rem;
-  }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.smallMobile}px) {
-    margin: 0rem 0.5rem;
+    font-size: 5rem;
+    margin: -0.6rem 0 0 0;
   }
 `;
 
@@ -66,7 +66,7 @@ export const growNav = keyframes`
   to {
     height: ${NAV_OVERLAY_HEIGHT}
   }
-}`;
+`;
 
 export const shrinkNav = keyframes`
   from {
@@ -77,9 +77,20 @@ export const shrinkNav = keyframes`
   }
 `;
 
-// const SiteDownBar = styled.div`
-//   margin: 0 auto;
-//   margin-top: 1em;
-//   padding: 0.5%;
-//   height: fit-content;
-// `;
+export const growNavMobile = keyframes`
+from {
+  height: 0px;
+}
+to {
+  height: 3rem;
+}
+`;
+
+export const shrinkNavMobile = keyframes`
+  from {
+    height: 3rem;
+  }
+  to {
+    height: 0px;
+  }
+`;

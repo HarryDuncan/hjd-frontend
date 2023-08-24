@@ -7,10 +7,12 @@ export default function Layout({
   children,
   topPadding = true,
   isError = false,
+  hasFooter = true,
 }: {
   children: ReactNode;
   isError?: boolean;
   topPadding?: boolean;
+  hasFooter?: boolean;
 }) {
   return (
     <>
@@ -18,7 +20,7 @@ export default function Layout({
       <PageContainer $topPadding={topPadding} className="page-container">
         {isError ?? <p>Oops we are having an issue with our servers</p>}
         {children}
-        <Footer />
+        {hasFooter ?? <Footer />}
       </PageContainer>
     </>
   );

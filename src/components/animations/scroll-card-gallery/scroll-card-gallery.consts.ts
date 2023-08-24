@@ -1,0 +1,4 @@
+export const CARD_GALLERY_TYPE = {
+  WAVE_LEFT: "WAVE_LEFT",
+  WAVE_RIGHT: "WAVE_RIGHT",
+};

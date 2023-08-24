@@ -1,8 +1,11 @@
 import { ParallaxImageContainer } from "components/images/parallax-image/styledComponents";
-import { NAV_HEIGHT } from "components/navigation/styledComponents";
+import { NAV_HEIGHT } from "components/navigation/navigation.styles";
 import styled from "styled-components";
 
-export const PageContainer = styled.div<{ $topPadding: boolean }>`
+export const PageContainer = styled.div<{
+  $topPadding: boolean;
+  $overflow?: string;
+}>`
   width: 100%;
   min-height: 100%;
   position: absolute;
@@ -14,7 +17,12 @@ export const PageContainer = styled.div<{ $topPadding: boolean }>`
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  overflow-y: ${({ $overflow }) => $overflow ?? "auto"};
   padding-bottom: 0;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    padding: ${({ $topPadding }) => `${$topPadding ? "3rem" : 0} 0 0 0`};
+  }
 `;
 
 export const InnerContainer = styled.div<{ $topOffset?: number }>`
@@ -34,7 +42,7 @@ export const ViewItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: calc(100vh - ${NAV_HEIGHT});
+  height: calc(100vh - 4rem);
   width: 95%;
   margin: 0 2.5%;
   @media only screen and (max-width: ${({ theme }) =>
@@ -59,11 +67,6 @@ export const ViewItemDetailsContainer = styled.div`
 export const ContentContainer = styled.div`
   width: 80%;
   margin: 0 auto;
-`;
-export const FullScreenAnimationContainer = styled.div`
-  position: relative;
-  height: 100%;
-  width: 100%;
 `;
 
 export const OverlayDiv = styled.div`

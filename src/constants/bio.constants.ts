@@ -1,12 +1,12 @@
 export const BIO_PAGE_SECTIONS = [
   "Visual Arts",
   "Creative Technology",
-  "Music and Experiences",
+  "Intersection of technology and humanity",
 ];
 export const IMAGE_CONTENT_SECTIONS = [
   "artist",
   "creative-technologist",
-  "DJ",
+  "tech-and-humanity",
 ] as string[];
 export const BIO_BANNER_SIZE = 1000;
 export const BIO_BANNER_CONFIG = {

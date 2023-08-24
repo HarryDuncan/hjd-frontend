@@ -1,16 +1,7 @@
-import {
-  Box3,
-  BufferAttribute,
-  BufferGeometry,
-  Material,
-  Mesh,
-  Points,
-  Vector3,
-} from "three";
+import { BufferGeometry, Material, Mesh, Points } from "three";
 import {
   MeshConfig,
   MESH_TYPES,
-  MeshAttributeConfig,
 } from "visual/set-up/assets/geometry/geometry.types";
 import { ThreeDPosition } from "visual/display/helpers/three-dimension-space/position/position.types";
 import { CustomMesh } from "../mesh.types";

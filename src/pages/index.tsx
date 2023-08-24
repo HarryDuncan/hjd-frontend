@@ -1,5 +1,7 @@
-import Layout from "components/layout/DefaultLayout";
+import { EnterButton } from "components/home/enter-button/EnterButton";
+import FullScreenLayout from "components/layout/FullScreenLayout";
 import { DynamicScene } from "components/visual-components/DynamicInteractiveNode";
+import { useHandleRouting } from "hooks/useHandleRouting";
 import { useSceneConfigAndAssets } from "hooks/useSceneConfigAndAssets";
 import type { NextPage } from "next";
 import { useMemo } from "react";
@@ -12,10 +14,16 @@ import { useSceneData } from "visual/set-up/config/useSceneData";
 
 const Home: NextPage = () => {
   useSetWindowState();
+
+  const handleRouting = useHandleRouting("bio");
+  const onEnterClick = () => {
+    handleRouting();
+  };
   return (
-    <Layout topPadding={false}>
+    <FullScreenLayout>
+      <EnterButton onClick={onEnterClick} />
       <HomeSceneContent />
-    </Layout>
+    </FullScreenLayout>
   );
 };
 
