@@ -1,10 +1,12 @@
 import { useCallback } from "react";
 import { gsap } from "gsap";
-import { CHAR_ANIMATIONS } from "./scrollTypeography.consts";
+import { CHAR_ANIMATIONS } from "../scrollTypography.consts";
+import { ScrollTypographyConfig } from "../scrollTypography.types";
 
-export const useTypographyAnimations = (animationType: string) => {
+export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
   return useCallback(
     (title, chars) => {
+      const { animationType } = config;
       switch (animationType) {
         case CHAR_ANIMATIONS.FADE_UP:
           gsap.fromTo(
@@ -52,29 +54,6 @@ export const useTypographyAnimations = (animationType: string) => {
             }
           );
           break;
-        case CHAR_ANIMATIONS.TEST:
-          gsap.fromTo(
-            chars,
-            {
-              "will-change": "transform",
-              transformOrigin: "50% 0%",
-              scaleY: 0,
-            },
-            {
-              ease: "back",
-              opacity: 1,
-              scaleY: 1,
-              yPercent: 0,
-              stagger: 0.03,
-              scrollTrigger: {
-                trigger: title,
-                start: "center bottom-=5%",
-                end: "top top-=20%",
-                scrub: true,
-              },
-            }
-          );
-          break;
         case CHAR_ANIMATIONS.MULTI_FLASH:
           gsap.fromTo(
             chars,
@@ -96,15 +75,14 @@ export const useTypographyAnimations = (animationType: string) => {
               stagger: 0.03,
               scrollTrigger: {
                 trigger: title,
-                start: "center bottom+=50%",
-                end: "bottom top+=40%",
+                start: "center bottom+=10%",
+                end: "bottom top+=50%",
                 scrub: true,
               },
             }
           );
           break;
-        case CHAR_ANIMATIONS.FADE_IN_LEFT:
-        default: {
+        case CHAR_ANIMATIONS.FADE_IN_LEFT: {
           chars.forEach((char) =>
             gsap.set(char.parentNode, { perspective: 1000 })
           );
@@ -132,8 +110,11 @@ export const useTypographyAnimations = (animationType: string) => {
             }
           );
         }
+        case CHAR_ANIMATIONS.NONE:
+        default:
+          return null;
       }
     },
-    [animationType]
+    [config]
   );
 };

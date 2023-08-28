@@ -48,23 +48,4 @@ function useBioPageContent() {
   return { text, images };
 }
 
-// const useBioLetters = () =>
-//   useMemo(
-//     () =>
-//       BIO_LETTERS.map((char) => {
-//         const formatSceneData = formatLetter(char);
-//         return { ...letters, formatSceneData };
-//       }),
-//     []
-//   );
-
-// const useCleanupListeners = () => {
-//   useEffect(() => () => {
-//     document.removeEventListener("scroll", (event) =>
-//       onPageScroll(null, event)
-//     );
-
-//     console.log("removed the event listener");
-//   });
-// };
 export default Bio;
