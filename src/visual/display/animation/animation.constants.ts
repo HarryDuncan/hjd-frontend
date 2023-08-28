@@ -12,6 +12,7 @@ export const ANIMATION_FUNCTION_TYPES = {
   CHAIN: "CHAIN",
   ALL: "ALL",
   TARGET: "TARGET",
+  UTIME: "UTIME",
 };
 
 export const ANIMATION_TYPES = {
@@ -20,10 +21,11 @@ export const ANIMATION_TYPES = {
   TRAVERSE: "TRAVERSE",
   TRIG: "TRIG",
   FALL: "FALL",
+  TIME: "TIME",
 };
 
 export const GENERIC_TARGET_IDENTIFIERS = {
   LIGHTS: "LIGHTS",
-  GEOMETRY: "GEOMETRY",
+  MODEL3D: "MODEL3D",
   CAMERA: "CAMERA",
 };

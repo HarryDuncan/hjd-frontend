@@ -1,9 +1,10 @@
 import { BufferGeometry, Group, Object3D, Texture } from "three";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
+import { BoundingBox } from "visual/display/helpers/three-dimension-space/position/position.types";
 import { MATERIAL_TYPES } from "visual/display/materials/materials.constants";
 
 export const ASSET_TYPES = {
-  GEOMETRY: "GEOMETRY",
+  MODEL3D: "MODEL3D",
   TEXTURE: "TEXTURE",
   IMAGE: "IMAGE",
   VIDEO: "VIDEO",
@@ -21,6 +22,10 @@ export type LoadedObjChild = { geometry: BufferGeometry; name: string };
 export type LoadedGroup = Group & { children: LoadedObjChild[] };
 export type AssetData = Model | Texture | HTMLImageElement | LoadedGroup;
 
+export interface AssetMetaData {
+  vertexCount: number;
+  boundingBox: BoundingBox;
+}
 export type AssetTag = keyof typeof ASSET_TAG;
 export type Asset = {
   id: string;
@@ -29,4 +34,5 @@ export type Asset = {
   assetType: AssetType;
   data?: AssetData;
   assetTag?: AssetTag[];
+  metaData?: AssetMetaData;
 };

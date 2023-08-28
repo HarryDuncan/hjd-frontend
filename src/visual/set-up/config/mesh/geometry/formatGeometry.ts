@@ -8,15 +8,15 @@ import {
   GeometryConfig,
   MESH_TYPES,
 } from "visual/set-up/assets/geometry/geometry.types";
-import { DEFAULT_GEOMETRY_CONFIG } from "visual/set-up/assets/assets.constants";
+import { DEFAULT_MODEL3D_CONFIG } from "visual/set-up/assets/assets.constants";
 import { MeshComponentConfig } from "../../config.types";
-import { getAssetGeometry } from "visual/set-up/assets/geometry/getAssetGeometry";
+import { getAssetGeometries } from "visual/set-up/config/mesh/geometry/getAssetGeometries";
 
 export const formatGeometry = (
   loadedAssets: Asset[],
   meshComponentConfigs: MeshComponentConfig[]
 ): FormattedGeometry[] => {
-  const geometries = getAssetGeometry(loadedAssets);
+  const geometries = getAssetGeometries(loadedAssets);
   return meshComponentConfigs.flatMap((meshConfig) => {
     const geometry = getGeometryForMeshConfig(
       geometries,
@@ -46,7 +46,7 @@ export const formatGeometry = (
 
 export const configureGeometry = (
   geometry: BufferGeometry,
-  geometryConfig: GeometryConfig = DEFAULT_GEOMETRY_CONFIG
+  geometryConfig: GeometryConfig = DEFAULT_MODEL3D_CONFIG
 ) => {
   const formattedGeometry = geometry.clone();
   const { scale, centerMesh } = geometryConfig;

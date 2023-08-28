@@ -6,6 +6,7 @@ import { useSceneConfigAndAssets } from "hooks/useSceneConfigAndAssets";
 import type { NextPage } from "next";
 import { useMemo } from "react";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
+import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
 import { CustomAnimationConfig } from "visual/display/animation/animation.types";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
 import { SceneData } from "visual/display/components/interactive-scene/types";
@@ -42,7 +43,7 @@ const HomeSceneContent = () => {
     return {
       sceneFunctions: {
         onTimeUpdate: (scene: InteractiveScene) => {
-          animateMarchingCube(scene);
+          startSceneElementAnimations(scene);
         },
       },
       interactionEvents: [],
