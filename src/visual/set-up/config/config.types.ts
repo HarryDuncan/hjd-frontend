@@ -86,6 +86,7 @@ export type ScenePropertiesConfig = {
   viewHeight?: string;
   backgroundColor?: string;
   backgroundUrl?: string;
+  position?: string;
 };
 export type SceneConfig = {
   assets?: Asset[];

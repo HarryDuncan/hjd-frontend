@@ -5,7 +5,6 @@ import {
   TransitionEffectContainer,
 } from "./Transitions.styled";
 import { Direction } from "../../../../utils/helpers/moveThroughArray";
-import TextScrollerPage from "components/text-scroller/TextScrollerPage/TextScrollerPage";
 
 const TRANSITION_DURATION = 0.4;
 const TRANSITION_DELAY = 0.3;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CircleButton = styled.button`
-  z-index: 9;
+  z-index: 15;
   bottom: 10vh;
   position: fixed;
   grid-area: 1 / 1 / -1 / -1;
@@ -10,7 +10,7 @@ export const CircleButton = styled.button`
   color: #fff;
   font-size: 2rem;
 
-  background: none;
+  background: transparent;
   border: 0;
   padding: 0;
   margin: 0;
@@ -22,7 +22,6 @@ export const CircleButton = styled.button`
   cursor: pointer;
   font-family: ivymode, sans-serif;
   font-weight: 200;
-  z-index: 1;
   width: 300px;
   height: 300px;
   display: grid;

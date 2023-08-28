@@ -1,6 +1,9 @@
 import { ButtonText, CircleButton } from "./EnterButton.styles";
 
-export const EnterButton = ({ onClick }) => {
+interface EnterButtonProps {
+  onClick: () => void;
+}
+export const EnterButton = ({ onClick }: EnterButtonProps) => {
   return (
     <CircleButton onClick={onClick}>
       <ButtonText>Enter</ButtonText>

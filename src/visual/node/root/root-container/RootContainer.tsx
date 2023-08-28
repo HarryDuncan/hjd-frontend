@@ -16,10 +16,12 @@ export const RootContainer = ({
   sceneProperties,
   layers = [],
 }: IRootContainerProps) => {
+  console.log(sceneProperties);
   return (
     <>
       <Layers layers={layers} />
       <Root
+        $position={sceneProperties.position}
         $height={sceneProperties.viewHeight}
         $width={sceneProperties.viewWidth}
         $fixed={sceneProperties.fixed}
