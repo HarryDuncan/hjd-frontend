@@ -11,6 +11,7 @@ export const TextContainer = styled.div`
   color: white;
   text-align: center;
   pointer-events: none;
+
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     width: 95%;
@@ -41,6 +42,7 @@ export const BioContentContainer = styled.div<{ $index: number }>`
     position: relative;
     text-align: center;
   }
+
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     width: 100%;

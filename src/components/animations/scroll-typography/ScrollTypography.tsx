@@ -5,21 +5,24 @@ import {
   ScrolledTypographyHeader,
   ScrolledTypographyText,
 } from "./ScrollTypography.styled";
-import { CHAR_ANIMATIONS, TEXT_TYPE } from "./scrollTypeography.consts";
-import { useTypographyAnimations } from "./useTypeograhpyAnimations";
+import { DEFAULT_CONFIG, TEXT_TYPE } from "./scrollTypography.consts";
+import { useTypographyAnimations } from "./typography-animations/useTypeograhpyAnimations";
+import { ScrollTypographyConfig } from "./scrollTypography.types";
 
 interface ScrollTypographyProps {
   text: string;
   textType?: string;
+  config?: ScrollTypographyConfig;
 }
 
 export const ScrollTypography = ({
   text,
   textType = "HEADER",
+  config = DEFAULT_CONFIG as ScrollTypographyConfig,
 }: ScrollTypographyProps) => {
   const scrollTextRef = useRef();
   gsap.registerPlugin(ScrollTrigger);
-  const setAnimation = useTypographyAnimations(CHAR_ANIMATIONS.MULTI_FLASH);
+  const setAnimation = useTypographyAnimations(config);
   useEffect(() => {
     if (scrollTextRef.current) {
       const chars = scrollTextRef.current.childNodes;
