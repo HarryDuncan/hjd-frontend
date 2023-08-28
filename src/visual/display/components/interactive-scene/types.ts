@@ -3,12 +3,14 @@ import { LightConfigs } from "visual/display/scene-elements/lights/lights.types"
 import { ThreeJsParams } from "visual/display/hooks/use-three-js/types";
 
 export type SceneProperties = {
+  position: string;
   viewWidth: string;
   viewHeight: string;
   backgroundColor: string;
   backgroundUrl: string;
   background?: Texture;
   videoBackground?: string;
+  fixed?: boolean;
 };
 
 export type SceneData = {

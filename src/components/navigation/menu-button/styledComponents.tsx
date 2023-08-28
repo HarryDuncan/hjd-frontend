@@ -1,9 +1,14 @@
 import styled, { keyframes } from "styled-components";
 
 export const Line = styled.div`
-  width: 50px;
-  height: 10px;
+  width: 5rem;
+  height: 1rem;
   display: block;
+  @media only screen and (max-width: ${({ theme: { breakpoints } }) =>
+      breakpoints.mobile}px) {
+    width: 3.5rem;
+    height: 0.65rem;
+  }
 `;
 
 export const MenuButtonContainer = styled.div<{
@@ -16,20 +21,11 @@ export const MenuButtonContainer = styled.div<{
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
-  margin: 0.3rem 2.5%;
+  margin: 0.1rem 0.5%;
 
-  @media only screen and (max-width: ${({ theme: { breakpoints } }) =>
-      breakpoints.mobile}px) {
-    margin: 0.3rem 0.5rem;
-  }
   ${Line} {
-    margin: 5px auto;
-    background: ${({
-      theme: {
-        colors: { gradients },
-      },
-      $isLight,
-    }) => ($isLight ? gradients.dark : gradients.light)};
+    margin: 0 0 0.3rem 0;
+    background-color: ${({ $isLight }) => ($isLight ? "black" : "white")};
   }
   & :first-child {
     animation-name: ${({ $isActive }) => ($isActive ? activeOne : inactiveOne)};
@@ -44,6 +40,10 @@ export const MenuButtonContainer = styled.div<{
     animation-duration: 0.3s;
     animation-fill-mode: forwards;
   }
+  @media only screen and (max-width: ${({ theme: { breakpoints } }) =>
+      breakpoints.mobile}px) {
+    margin: 0.2rem 0.65rem;
+  }
 `;
 
 export const activeOne = keyframes`
@@ -51,13 +51,15 @@ export const activeOne = keyframes`
    
   }
   to {
-    transform: translateY(18px) rotate(45deg);
+    transform: translateY(1rem) rotate(45deg);
+    margin:0;
+    width: 3rem;
   }
 }`;
 
 export const inactiveOne = keyframes`
  from {
-    transform: translateY(18px) rotate(45deg);
+    transform: translateY(1rem) rotate(45deg);
   }
   to {
     transform: translateY(0) rotate(0);
@@ -68,40 +70,17 @@ export const activeTwo = keyframes`
    
   }
   to {
-    transform: translateY(-12px) rotate(-45deg);
+    transform: translateY(-0.7rem) rotate(-45deg);
+    margin: 0;
+    width: 3rem;
   }
 }`;
 
 export const inactiveTwo = keyframes`
  from {
-    transform: translateY(-20px) rotate(-45deg);
+    transform: translateY(-0.7rem) rotate(-45deg);
   }
   to {
     transform: translateY(0) rotate(0);
   }
 }`;
-
-// .hamburger {
-//   margin: 0.5rem 0.5rem;
-// }
-
-// .hamburger:hover {
-//   cursor: pointer;
-// }
-
-// /* ONE */
-
-// #hamburger-1.is-active .line:nth-child(2) {
-//   opacity: 0;
-// }
-
-// #hamburger-1.is-active .line:nth-child(1) {
-
-// }
-
-// #hamburger-1.is-active .line:nth-child(3) {
-//   -webkit-transform: translateY(-12px) rotate(-45deg);
-//   -ms-transform: translateY(-12px) rotate(-45deg);
-//   -o-transform: translateY(-12px) rotate(-45deg);
-//   transform: translateY(-12px) rotate(-45deg);
-// }

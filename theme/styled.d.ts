@@ -24,13 +24,7 @@ declare module "styled-components" {
                 rgba(219, 219, 219, 1) 50%,
                 rgba(255, 255, 255, 1) 100%
               );`;
-        dark: `linear-gradient(
-                157deg,
-                rgba(96, 96, 96, 1) 0%,
-                rgba(74, 74, 74, 1) 0%,
-                rgba(57, 57, 57, 1) 0%,
-                rgba(27, 27, 27, 1) 100%
-              );`;
+        dark: `linear-gradient(157deg, rgba(82,82,82,1) 0%, rgba(77,70,70,1) 100%);`;
       };
     };
     font: {
@@ -49,6 +43,7 @@ declare module "styled-components" {
     breakpoints: {
       wideScreen: 1501;
       desktop: 1280;
+      laptop: 1080;
       tablet: 850;
       mobile: 800;
       smallMobile: 350;

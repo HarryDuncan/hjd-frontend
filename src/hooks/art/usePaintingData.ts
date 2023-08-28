@@ -1,15 +1,18 @@
 import { useParams } from "hooks/useParams";
-import { FetchArtResponse } from "models/art/types";
+import { FetchPaintingsResponse } from "models/art/types";
+
 import { useQuery } from "react-query";
-import { getArt } from "services/art/getArt";
+import { getPaintings } from "services/art/getPaintings";
 
 export const usePaintingData = () => {
   const paintingSlug = useParams("slug");
 
-  const artData = useQuery<FetchArtResponse>(["art-items"], () => getArt());
+  const artData = useQuery<FetchPaintingsResponse>(["painting-items"], () =>
+    getPaintings()
+  );
   if (!artData?.data) return { painting: null, loading: true };
 
-  const painting = artData?.data.art.paintings.find(
+  const painting = artData?.data.paintings.paintings.find(
     ({ slug }) => slug === paintingSlug
   );
 

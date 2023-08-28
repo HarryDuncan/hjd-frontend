@@ -16,13 +16,13 @@ import {
   BANNER_IMAGE_HOVER_CONFIG,
   MAIN_GALLERY_TOP_OFFSET,
 } from "constants/ui.constants";
-import { SkeletonCard } from "components/loading/skeleton/SkeletonCard";
 import { DynamicLayout } from "components/layout/DynamicLayout";
 import { TextScroller } from "components/text-scroller/TextScroller";
+import SoftFadeTransition from "components/animations/page-transitions/SoftFadeTransition";
 
 const Art: NextPage = () => {
   const {
-    art: { paintings },
+    paintings: { paintings },
     isError,
   } = useArtData();
   const paintingGalleryItems = usePaintingsInGallery(paintings);
@@ -32,7 +32,7 @@ const Art: NextPage = () => {
 
   const handleRouting = useHandleRouting("art/paintings/");
   return (
-    <Suspense fallback={SkeletonCard}>
+    <SoftFadeTransition>
       <DynamicLayout isError={isError}>
         <ParallaxImage
           hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
@@ -50,7 +50,7 @@ const Art: NextPage = () => {
           />
         </InnerContainer>
       </DynamicLayout>
-    </Suspense>
+    </SoftFadeTransition>
   );
 };
 

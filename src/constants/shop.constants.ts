@@ -11,3 +11,8 @@ export const SHOP_BANNER_CONFIG = {
     positionPercentage: { x: 20, y: 20 },
   },
 };
+
+export const SHOP_LOAD_MORE = {
+  initialLoadSize: 6,
+  loadMoreSize: 6,
+};

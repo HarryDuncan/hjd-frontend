@@ -1,29 +1,40 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTheme } from "styled-components";
+import { useWindowState } from "visual/compat/window-state/windowStateProvider";
 
 export const WINDOW_SCREEN_TYPE = {
-  WIDE_SCREEN: "wideScreen",
-  DESKTOP: "desktop",
-  TABLET: "tablet",
-  MOBILE: "mobile",
+  WIDE_SCREEN: "WIDE_SCREEN",
+  DESKTOP: "DESKTOP",
+  LAPTOP: "LAPTOP",
+  TABLET: "TABLET",
+  MOBILE: "MOBILE",
 };
 
 type WindowScreen = keyof typeof WINDOW_SCREEN_TYPE;
 
 export const useWindowScreenType = () => {
   const { breakpoints } = useTheme();
+  const {
+    state: {
+      windowSize: { width },
+    },
+  } = useWindowState();
+
   return useCallback(() => {
-    if (document.documentElement.clientWidth >= breakpoints.wideScreen) {
+    if (width >= breakpoints.wideScreen) {
       return WINDOW_SCREEN_TYPE.WIDE_SCREEN;
     }
-    if (document.documentElement.clientWidth > breakpoints.desktop) {
+    if (width >= breakpoints.desktop) {
       return WINDOW_SCREEN_TYPE.DESKTOP;
     }
-    if (document.documentElement.clientWidth > breakpoints.tablet) {
+    if (width >= breakpoints.laptop) {
+      return WINDOW_SCREEN_TYPE.LAPTOP;
+    }
+    if (width > breakpoints.tablet) {
       return WINDOW_SCREEN_TYPE.TABLET;
     }
     return WINDOW_SCREEN_TYPE.MOBILE;
-  }, [breakpoints]);
+  }, [breakpoints, width]);
 };
 
 export const useWindowSize = () => {

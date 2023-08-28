@@ -10,15 +10,18 @@ export const useSceneConfigAndAssets = (configId: string) => {
   const sceneConfigData = useFetchConfig(selectedSceneFilePath);
   const configData = useSelectedConfig(sceneConfigData);
   const { areAssetsInitialized, initializedAssets } = useAssets(
-    configData.assets ?? []
+    configData?.assets
   );
 
   return { areAssetsInitialized, initializedAssets, configData };
 };
 
-const useSelectedConfig = (sceneConfigData: SceneConfig[]) => {
+const useSelectedConfig = (
+  sceneConfigData: SceneConfig[] | null | undefined
+) => {
   const index = 0;
   return useMemo(() => {
+    if (!sceneConfigData) return undefined;
     const selectedScene = sceneConfigData[index];
     if (selectedScene) {
       return selectedScene;

@@ -1,4 +1,4 @@
-import { NAV_HEIGHT } from "components/navigation/styledComponents";
+import { NAV_HEIGHT } from "components/navigation/navigation.styles";
 import styled from "styled-components";
 
 export const LinkTreeContainer = styled.div`

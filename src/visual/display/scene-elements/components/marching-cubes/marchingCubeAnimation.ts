@@ -8,9 +8,10 @@ export const animateMarchingCube = (scene: InteractiveScene) => {
   if (!marchingCube.length) {
     return;
   }
+
   const cube = marchingCube[0];
   // @ts-ignore
-  updateCubes(cube, time, 50);
+  updateCubes(cube, time, 15);
 };
 
 export const updateCubes = (

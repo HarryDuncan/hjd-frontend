@@ -8,7 +8,7 @@ import { GeometryConfig } from "../assets/geometry/geometry.types";
 import { CameraConfig } from "visual/set-up/config/three-js/use-camera/camera.types";
 import {
   ComponentProps,
-  ThreeJsComponentType,
+  SceneElementType,
 } from "visual/display/scene-elements/components/threeJsComponents.types";
 
 export type RandomizationConfig = {
@@ -23,23 +23,58 @@ export type RandomizationConfig = {
 
 export type SceneComponentConfig = {
   id: string;
-  componentType: ThreeJsComponentType;
+  componentType: SceneElementType;
   componentProps: ComponentProps;
-  materialConfig?: MaterialConfig;
+  materialId?: string;
 };
 export type MeshComponentConfig = {
   id: string;
   geometryId?: string;
+  materialId?: string;
   rotation?: Partial<ThreeDPosition>;
   position?: Partial<ThreeDPosition>;
-  materialConfig: MaterialConfig;
   randomizationConfig?: RandomizationConfig;
   geometryConfig?: GeometryConfig;
   groupId?: string;
+  meshType: string;
 };
 
 export type ControlConfig = {
-  hasOrbitControls: boolean;
+  autoRotate: boolean;
+  autoRotateSpeed: number;
+  dampingFactor: number;
+  enabled: boolean;
+  enableDamping: boolean;
+  enablePan: boolean;
+  enableRotate: boolean;
+  enableZoom: boolean;
+  keyPanSpeed: number;
+  keys: {
+    LEFT: string;
+    UP: string;
+    RIGHT: string;
+    BOTTOM: string;
+  };
+  maxAzimuthAngle: number;
+  maxDistance: number;
+  maxPolarAngle: number;
+  maxZoom: number;
+  minAzimuthAngle: number;
+  minDistance: number;
+  minPolarAngle: number;
+  minZoom: number;
+  mouseButtons: {
+    LEFT: number;
+    MIDDLE: number;
+    RIGHT: number;
+  };
+
+  rotateSpeed: number;
+  screenSpacePanning: boolean;
+  touches: {
+    ONE: number;
+    TWO: number;
+  };
 };
 export type ThreeJSConfig = {
   camera?: CameraConfig;
@@ -51,10 +86,12 @@ export type ScenePropertiesConfig = {
   viewHeight?: string;
   backgroundColor?: string;
   backgroundUrl?: string;
+  position?: string;
 };
 export type SceneConfig = {
   assets?: Asset[];
   meshComponentConfigs: MeshComponentConfig[];
+  meshTransforms?: any;
   globalMaterialConfigs: MaterialConfig[];
   animationConfig: CustomAnimationConfig[];
   lightConfig: LightConfigs[];

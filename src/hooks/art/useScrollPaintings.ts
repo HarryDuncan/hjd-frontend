@@ -9,7 +9,7 @@ import { useArtData } from "./useArtData";
 
 export const useScrollPaintings = () => {
   const {
-    art: { paintings },
+    paintings: { paintings },
   } = useArtData();
 
   const handleRouting = useHandleRouting("");

@@ -21,6 +21,10 @@ export const useThreadWithPostProcessor = (
     }
     postProcessor.current?.render(clock.getDelta());
     currentFrameRef.current = requestAnimationFrame(update);
+
+    return () => {
+      cancelAnimationFrame(currentFrameRef.current);
+    };
   }, [
     currentFrameRef,
     postProcessor,

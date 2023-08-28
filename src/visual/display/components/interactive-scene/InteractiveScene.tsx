@@ -1,4 +1,5 @@
 import {
+  EventConfig,
   InteractionConfig,
   InteractionEvent,
 } from "interaction/interactions.types";
@@ -6,7 +7,6 @@ import { Clock, Scene } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { AnimationManager } from "visual/display/animation/animation-manager/AnimationManager";
 import { CustomAnimationConfig } from "visual/display/animation/animation.types";
-import { EventConfig } from "visual/display/hooks/use-events/events.types";
 
 export type InteractiveSceneFunctions = {
   onTimeUpdate: (material: InteractiveScene) => void;
@@ -26,13 +26,20 @@ export class InteractiveScene extends Scene {
 
   orbitControls: OrbitControls | null;
 
-  constructor(sceneFunctions: InteractiveSceneFunctions) {
+  eventsSet: boolean;
+
+  constructor(
+    sceneFunctions: InteractiveSceneFunctions,
+    eventConfig: EventConfig[]
+  ) {
     super();
     this.sceneFunctions = sceneFunctions;
     this.clock = new Clock();
     this.bindMainFunctionFunctions();
+    this.addEvents(eventConfig);
     this.orbitControls = null;
     this.animationManager = new AnimationManager();
+    this.eventsSet = false;
   }
 
   bindMainFunctionFunctions() {
@@ -51,8 +58,30 @@ export class InteractiveScene extends Scene {
   }
 
   addEvents(eventConfig: EventConfig[]) {
-    eventConfig.forEach(({ eventKey, eventFunction }) => {
-      document.addEventListener(eventKey, (e) => eventFunction(this, e));
+    if (!this.eventsSet) {
+      eventConfig.forEach(({ eventKey, eventFunction }) => {
+        switch (eventKey) {
+          case "scroll":
+            this.addOnScrollListener(eventFunction);
+        }
+        const existingListener = window[eventKey];
+        window.removeEventListener(eventKey, existingListener);
+
+        window.addEventListener(eventKey, (e) => {
+          const s = window.scrollY;
+          const event = { ...e, s };
+          eventFunction(this, event);
+        });
+      });
+      this.eventsSet = true;
+    }
+  }
+
+  addOnScrollListener(eventFunction) {
+    window.addEventListener("scroll", (e) => {
+      const { scrollY } = window;
+      const event = { ...e, scrollY };
+      eventFunction(this, event);
     });
   }
 

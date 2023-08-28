@@ -6,13 +6,15 @@ export const ImageContainer = styled.div`
   width: 40%;
   margin-left: 10%;
   position: relative;
+
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     flex-direction: column;
     width: 100%;
     height: 100%;
     margin-left: 0%;
-    min-height: 70vh;
+    min-height: 30rem;
+    max-height: 30rem;
   }
 `;
 export const StyledImage = styled(Image)`
@@ -20,4 +22,11 @@ export const StyledImage = styled(Image)`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  object-fit: contain;
+  object-position: top;
+  margin-top: 1.5rem;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    margin-top: 0;
+  }
 `;

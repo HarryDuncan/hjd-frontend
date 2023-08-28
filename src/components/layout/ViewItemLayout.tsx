@@ -10,7 +10,7 @@ interface ViewItemProps {
 }
 export default function ViewItem({ imageUrl, title, children }: ViewItemProps) {
   return (
-    <Layout>
+    <Layout hasFooter={false}>
       <ViewItemContainer>
         <StaticImage imageUrl={imageUrl} imageTitle={title} />
         {children}

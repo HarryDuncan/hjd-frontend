@@ -18,6 +18,10 @@ export const NavItemContainer = styled.div<{
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
   margin-top: ${NAV_OVERLAY_HEIGHT};
+  @media only screen and (max-width: ${({ theme: { breakpoints } }) =>
+      breakpoints.mobile}px) {
+    margin-top: 3rem;
+  }
 `;
 
 const growNav = keyframes`
@@ -43,17 +47,12 @@ export const MobileText = styled.span<{ $isLight: boolean }>`
   font-family: "Harryduncan";
   text-transform: uppercase;
   padding-right: 0.5rem;
-  background: ${({
-    $isLight,
-    theme: {
-      colors: {
-        gradients: { dark, light },
-      },
-    },
-  }) => ($isLight ? light : dark)};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 4.5rem;
+  color: ${({ $isLight }) => ($isLight ? "white" : "black")};
+  font-size: 7rem;
+  margin-right: 2.5%;
+  a {
+    color: ${({ $isLight }) => ($isLight ? "white" : "black")};
+  }
   @media only screen and (max-width: ${({ theme: { breakpoints } }) =>
       breakpoints.tablet}px) {
     margin: 0.5rem;

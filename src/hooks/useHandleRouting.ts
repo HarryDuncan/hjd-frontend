@@ -4,7 +4,7 @@ import { useCallback } from "react";
 export const useHandleRouting = (urlParam: string) => {
   const router = useRouter();
   return useCallback(
-    (itemId: number | string) => {
+    (itemId: number | string = "") => {
       router.push(`${urlParam}${itemId}`);
     },
     [urlParam, router]
