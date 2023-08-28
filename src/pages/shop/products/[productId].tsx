@@ -33,6 +33,7 @@ const ProductDetails = () => {
   return (
     <SlideWithBackgroundTransition direction={changedDirection}>
       <ViewItemLayout
+        onScroll={onScroll}
         imageUrl={`${rootUrl}${product?.imageUrl}`}
         title={product?.title}
       >

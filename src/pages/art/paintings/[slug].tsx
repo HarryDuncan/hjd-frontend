@@ -29,6 +29,7 @@ const PaintingDetails = () => {
       <ViewItemLayout
         imageUrl={`${ART_ROOT_URL}${painting?.imageUrl}`}
         title={painting?.title}
+        onScroll={onScroll}
       >
         <ViewItemDetailsContainer>
           <Icon onClick={handleExit} type={IconTypes.EXIT} hasGesture />

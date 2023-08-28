@@ -46,6 +46,10 @@ export const CircleButton = styled.button`
     transform: translate3d(0, 50%, 0);
     transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
   }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    bottom: 2vh;
+  }
 `;
 export const ButtonText = styled.h2`
   line-height: 1;
@@ -56,6 +60,5 @@ export const ButtonText = styled.h2`
   color: black;
   text-transform: uppercase;
   font-size: 5rem;
+  z-index: 5;
 `;
-
-export const CircleSVG = styled.svg``;
