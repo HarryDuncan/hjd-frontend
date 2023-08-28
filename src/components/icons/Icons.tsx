@@ -23,7 +23,7 @@ const ExitIcon = ({ onClick }: ExitIconProps) => {
   const { position, mobile } = EXIT_POSITIONS;
   return (
     <IconContainer $position={position} $mobilePosition={mobile}>
-      <HoverImage src={EXIT} onClick={onClick} />
+      <HoverImage alt="exit" src={EXIT} onClick={onClick} />
     </IconContainer>
   );
 };
@@ -59,9 +59,7 @@ const ScrollRightIcon = ({ onClick }: ScrollIconProps) => {
 const getIcon = (type: IconTypes, onClick: OnIconClick) => {
   switch (type) {
     case IconTypes.EXIT:
-      return (
-        <ExitIcon alt={"scroll-left"} onClick={onClick as OnClickFunction} />
-      );
+      return <ExitIcon onClick={onClick as OnClickFunction} />;
     case IconTypes.CHEVRON_LEFT:
       return <ScrollLeftIcon onClick={onClick} />;
     case IconTypes.CHEVRON_RIGHT:

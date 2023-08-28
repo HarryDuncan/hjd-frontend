@@ -53,6 +53,11 @@ export const ViewItemContainer = styled.div`
     padding-bottom: 1rem;
     justify-content: flex-start;
   }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    width: 100%;
+    margin: 0;
+  }
 `;
 export const ViewItemDetailsContainer = styled.div`
   text-align: center;

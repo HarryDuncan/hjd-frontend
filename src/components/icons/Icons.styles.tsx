@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { IconPosition } from "./Icons.types";
-import { HoverImage } from "components/animations/gesture-animations/hover/HoverImage";
 
 export const IconContainer = styled.div<{
   $position: IconPosition;
@@ -15,6 +14,8 @@ export const IconContainer = styled.div<{
   height: fit-content;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
+    position: ${({ $mobilePosition }) =>
+      $mobilePosition?.positionType ?? "absolute"};
     top: ${({ $mobilePosition }) => $mobilePosition?.top};
     left: ${({ $mobilePosition }) => $mobilePosition?.left};
     right: ${({ $mobilePosition }) => $mobilePosition?.right};
@@ -27,7 +28,7 @@ export const IconContainer = styled.div<{
     z-index: 2;
     @media only screen and (max-width: ${({ theme }) =>
         theme.breakpoints.mobile}px) {
-      height: 2rem;
+      height: 1.5rem;
     }
   }
 `;
