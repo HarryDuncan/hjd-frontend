@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
-export const HoverGesture = ({ children }) => {
+interface HoverGestureProps {
+  children: ReactNode;
+}
+export const HoverGesture = ({ children }: HoverGestureProps) => {
   return (
     <motion.div
       whileHover={{

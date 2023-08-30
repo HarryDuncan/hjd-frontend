@@ -14,6 +14,6 @@ export const getTechData = async () => {
       loading,
       data: { techData },
     } = response;
-    return { techData: techData, loading };
+    return { techData, loading };
   });
 };

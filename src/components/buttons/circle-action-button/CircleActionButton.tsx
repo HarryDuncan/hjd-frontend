@@ -1,12 +1,13 @@
-import { ButtonText, CircleButton } from "./EnterButton.styles";
+import { ButtonText, CircleButton } from "./circleActionButton.styled";
 
-interface EnterButtonProps {
+interface CircleButtonProps {
   onClick: () => void;
+  buttonText: string;
 }
-export const EnterButton = ({ onClick }: EnterButtonProps) => {
+export const CircleActionButton = ({ onClick }: CircleButtonProps) => {
   return (
     <CircleButton onClick={onClick}>
-      <ButtonText>Enter</ButtonText>
+      <ButtonText>{ButtonText}</ButtonText>
       <svg className="circle-svg" viewBox="0 0 100 100">
         <defs>
           <radialGradient id="enter-gradient" x1="0%" y1="0%" x2="100%" y2="0%">

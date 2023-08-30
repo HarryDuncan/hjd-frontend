@@ -4,7 +4,7 @@ import { InnerContainer } from "components/styled-components/Containers";
 import { useArtData } from "hooks/art/useArtData";
 import { Painting } from "models/art/types";
 import type { NextPage } from "next";
-import { Suspense, useMemo } from "react";
+import { useMemo } from "react";
 import { useHandleRouting } from "hooks/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
 import {

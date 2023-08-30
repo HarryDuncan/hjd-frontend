@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Grid, GridWrap } from "./scrollCard.styles";
 import { useScrollCardAnimation } from "./useScrollCardAnimation";
-import { title } from "process";
 import { ConfigurableCard } from "components/card/ConfigurableCard";
 
 export interface ScrollCardItem {
   id: number;
   title: string;
+  imageUrl: string;
 }
 
 interface ScrollCardGalleryProps {
@@ -32,14 +32,14 @@ export const ScrollCardGallery = ({
     }
   }, [gridRef, animateOnScroll, setIt, isSet]);
 
-  const imageUrl = "/images/tech/react.jpg";
+  const imageUrlR = "/images/tech/react.jpg";
   return (
     <Grid ref={gridRef}>
       <GridWrap>
-        {items.map((id) => (
+        {items.map(({ id, title }) => (
           <ConfigurableCard
             key={`${id}-${Math.random()}`}
-            cardDetails={{ imageUrl, title }}
+            cardDetails={{ imageUrl: imageUrlR, title }}
           />
         ))}
       </GridWrap>

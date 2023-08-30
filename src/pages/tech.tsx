@@ -1,7 +1,4 @@
-import {
-  ScrollCardGallery,
-  ScrollCardItem,
-} from "components/animations/scroll-card-gallery/ScrollCardGallery";
+import { ScrollCardGallery } from "components/animations/scroll-card-gallery/ScrollCardGallery";
 import { CARD_GALLERY_TYPE } from "components/animations/scroll-card-gallery/scroll-card-gallery.consts";
 import { LongScroll } from "components/long-scroll/LongScroll";
 import { TechHome } from "components/tech/TechHome";
@@ -26,9 +23,9 @@ const Tech: NextPage = () => {
       <TechHome contentHeight={height} />
       <LongScroll ref={measureRef}>
         <TechTitle />
-        {sortedTechData.map(({ tech: techData }, index) => (
+        {sortedTechData.map(({ techCardItems }, index) => (
           <ScrollCardGallery
-            items={techData}
+            items={techCardItems}
             scrollType={
               index % 2 === 0
                 ? CARD_GALLERY_TYPE.WAVE_LEFT
@@ -49,10 +46,16 @@ const useLongScroll = () => {
 const useSortTechData = (tech: TechContent[]) =>
   useMemo(() => {
     const sections = Object.values(TECH_SECTIONS);
-    console.log(sections);
-    return sections.map((_section) => ({
-      tech,
-    }));
+    return sections.map((section) => {
+      const techCardItems = tech.flatMap(({ id, name, category }) =>
+        category.toUpperCase() === section
+          ? { id, title: name, imageUrl: "" }
+          : []
+      );
+      return {
+        techCardItems,
+      };
+    });
   }, [tech]);
 
 export default Tech;
