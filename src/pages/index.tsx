@@ -28,7 +28,7 @@ const Home: NextPage = () => {
   };
   return (
     <FullScreenLayout>
-      <CircleActionButton onClick={onEnterClick} buttonText={"ENTER"} />
+      <CircleActionButton onClick={onEnterClick} buttonText="ENTER" />
       <svg
         className="overlay"
         width="100%"

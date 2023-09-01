@@ -45,8 +45,8 @@ export const BioContentContainer = styled.div<{ $index: number }>`
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    width: 100%;
-    left: 0;
+    width: calc(100% - 0.5rem);
+    left: 0.25rem;
     ${ScrolledTypographyHeader} {
       font-size: 5rem;
     }

@@ -14,3 +14,9 @@ export const CHAR_ANIMATIONS = {
 export const DEFAULT_CONFIG = {
   animationType: CHAR_ANIMATIONS.MULTI_FLASH,
 };
+
+export const SECTIONS = {
+  BOTTOM: "BOTTOM",
+  TOP: "TOP",
+  CENTER: "CENTER",
+};

@@ -1,5 +1,3 @@
-import { ScrollCardGallery } from "components/animations/scroll-card-gallery/ScrollCardGallery";
-import { CARD_GALLERY_TYPE } from "components/animations/scroll-card-gallery/scrollCardGallery.consts";
 import { LongScroll } from "components/long-scroll/LongScroll";
 import { TechHome } from "components/tech/TechHome";
 import { TechSection } from "components/tech/TechSection";
@@ -50,7 +48,7 @@ const useLongScroll = () => {
   return { measureRef, height };
 };
 
-const useSectionPositionData = () => {
+const getSectionPositionData = () => {
   const sections = Object.values(TECH_SECTIONS);
   const sectionDataObj = {};
   // add one for the title
@@ -67,7 +65,7 @@ const useSectionPositionData = () => {
 const useSortTechData = (tech: TechContent[]) =>
   useMemo(() => {
     const sections = Object.values(TECH_SECTIONS);
-    const sectionData = useSectionPositionData();
+    const sectionData = getSectionPositionData();
     return sections.map((section) => {
       const techCardItems = tech.flatMap(({ id, name, category }) =>
         category.toUpperCase() === section

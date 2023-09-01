@@ -17,7 +17,7 @@ const Navigation = () => {
   return (
     <NavigationContainer $isLight={navTheme === NAV_THEMES.DARK}>
       <NavBackgroundOverlay $isOpen={navTheme === NAV_THEMES.DARK} />
-      <HoverTitle title={"HARRY J DEE"} onClick={goToLanding} />
+      <HoverTitle title="HARRY J DEE" onClick={goToLanding} />
 
       {LARGE_NAV_WINDOW_SIZES.includes(windowSize) ? (
         <DesktopNav navTheme={navTheme} />

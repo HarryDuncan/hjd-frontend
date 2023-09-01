@@ -15,13 +15,12 @@ const SwipeablePageNavigator = ({
 
   const handleTouchStart = (event: React.TouchEvent) => {
     setTouchStartX(event.touches[0].clientX);
-    console.log("touch-start");
   };
   const handleTouchEnd = (event: React.TouchEvent) => {
     if (touchStartX !== null) {
       const touchEndX = event.changedTouches[0].clientX;
       const deltaX = touchEndX - touchStartX;
-      console.log(deltaX);
+
       if (deltaX > SWIPE_THRESHOLD) {
         onSwipe(Direction.REVERSE);
       } else if (deltaX < -SWIPE_THRESHOLD) {

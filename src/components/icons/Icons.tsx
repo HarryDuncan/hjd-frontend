@@ -7,7 +7,7 @@ import {
   SCROLL_RIGHT_POSITIONS,
 } from "constants/ui.constants";
 import { Direction } from "../../../utils/helpers/moveThroughArray";
-import { Exit, IconContainer, ScrollLeft, ScrollRight } from "./Icons.styles";
+import { IconContainer } from "./Icons.styles";
 import { IconTypes } from "./Icons.consts";
 import {
   ExitIconProps,
@@ -47,11 +47,7 @@ const ScrollRightIcon = ({ onClick }: ScrollIconProps) => {
   const { position, mobile } = SCROLL_RIGHT_POSITIONS;
   return (
     <IconContainer $position={position} $mobilePosition={mobile}>
-      <HoverImage
-        alt={"scroll-right"}
-        src={SCROLL_RIGHT}
-        onClick={onIconClick}
-      />
+      <HoverImage alt="scroll-right" src={SCROLL_RIGHT} onClick={onIconClick} />
     </IconContainer>
   );
 };

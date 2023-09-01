@@ -76,7 +76,7 @@ export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
               scrollTrigger: {
                 trigger: title,
                 start: "center bottom+=10%",
-                end: "bottom top+=50%",
+                end: "top top+=30%",
                 scrub: true,
               },
             }
