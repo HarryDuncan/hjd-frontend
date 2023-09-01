@@ -4,10 +4,13 @@ interface CircleButtonProps {
   onClick: () => void;
   buttonText: string;
 }
-export const CircleActionButton = ({ onClick }: CircleButtonProps) => {
+export const CircleActionButton = ({
+  onClick,
+  buttonText,
+}: CircleButtonProps) => {
   return (
     <CircleButton onClick={onClick}>
-      <ButtonText>{ButtonText}</ButtonText>
+      <ButtonText>{buttonText}</ButtonText>
       <svg className="circle-svg" viewBox="0 0 100 100">
         <defs>
           <radialGradient id="enter-gradient" x1="0%" y1="0%" x2="100%" y2="0%">

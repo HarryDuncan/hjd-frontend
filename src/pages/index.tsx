@@ -1,4 +1,3 @@
-import { EnterButton } from "components/home/enter-button/EnterButton";
 import FullScreenLayout from "components/layout/FullScreenLayout";
 import { DynamicScene } from "components/visual-components/DynamicInteractiveNode";
 import { useHandleRouting } from "hooks/useHandleRouting";
@@ -12,30 +11,31 @@ import { InteractiveScene } from "visual/display/components/interactive-scene/In
 import { SceneData } from "visual/display/components/interactive-scene/types";
 import { useSceneData } from "visual/set-up/config/useSceneData";
 import { gsap } from "gsap";
+import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
 
 const ROUTING_DELAY = 1500;
 const Home: NextPage = () => {
   useSetWindowState();
   const handleRouting = useHandleRouting("bio");
-  const gridRef = useRef();
-  const a = useOnClickAnimation();
+  const gridRef = useRef<SVGPathElement | null>(null);
+  const onClickAnimation = useOnClickAnimation();
 
   const onEnterClick = () => {
-    a(gridRef.current);
+    onClickAnimation(gridRef.current);
     setTimeout(() => {
       handleRouting();
     }, ROUTING_DELAY);
   };
   return (
     <FullScreenLayout>
-      <EnterButton onClick={onEnterClick} />
+      <CircleActionButton onClick={onEnterClick} buttonText={"ENTER"} />
       <svg
         className="overlay"
         width="100%"
         height="100%"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
-        style={{ zIndex: 10 }}
+        style={{ zIndex: 10, position: "absolute", bottom: 0 }}
       >
         <path
           ref={gridRef}
@@ -50,11 +50,10 @@ const Home: NextPage = () => {
 };
 
 const useOnClickAnimation = () => {
-  return useCallback((overlayPath) => {
+  return useCallback((overlayPath: SVGPathElement | null) => {
+    if (!overlayPath) return;
     gsap
-      .timeline({
-        onComplete: () => {},
-      })
+      .timeline({})
       .set(overlayPath, {
         attr: { d: "M 0 100 V 100 Q 50 100 100 100 V 100 z" },
       })
@@ -71,7 +70,6 @@ const useOnClickAnimation = () => {
         duration: 0.3,
         ease: "power2",
         attr: { d: "M 0 100 V 0 Q 50 0 100 0 V 100 z" },
-        onComplete: () => {},
       });
   }, []);
 };
