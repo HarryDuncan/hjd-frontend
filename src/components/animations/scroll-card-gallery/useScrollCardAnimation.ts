@@ -1,11 +1,19 @@
 import { useCallback } from "react";
-import { CARD_GALLERY_TYPE } from "./scroll-card-gallery.consts";
+import { CARD_GALLERY_TYPE } from "./scrollCardGallery.consts";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const GRID_GAP = "8rem";
 const ROTATION_X = 50;
+const DEFAULT_CONFIG = {
+  gridGap: "8rem",
+  gridColumns: 3,
+  gridWidth: "50%",
+  start: "top bottom+=5%",
+  end: "top bottom+=5%",
+};
 export const useScrollCardAnimation = (scrollType) => {
+  const config = DEFAULT_CONFIG;
   gsap.registerPlugin(ScrollTrigger);
   return useCallback(
     (grid) => {
@@ -25,12 +33,11 @@ export const useScrollCardAnimation = (scrollType) => {
       switch (scrollType) {
         case CARD_GALLERY_TYPE.WAVE_LEFT:
           grid.style.setProperty("--grid-width", "50%");
-          grid.style.setProperty("--perspective", "50000px");
           grid.style.setProperty("--grid-item-ratio", "0.8");
           grid.style.setProperty("--grid-columns", "3");
           grid.style.setProperty("--grid-gap", GRID_GAP);
           timeline.set(gridWrap, {
-            transformOrigin: "0% 50%",
+            transformOrigin: "0% 20%",
             rotationY: 30,
             xPercent: -45,
           });
@@ -80,14 +87,13 @@ export const useScrollCardAnimation = (scrollType) => {
         case CARD_GALLERY_TYPE.WAVE_RIGHT:
         default:
           grid.style.setProperty("--grid-width", "50%");
-          grid.style.setProperty("--perspective", "-5000px");
           grid.style.setProperty("--grid-item-ratio", "0.8");
           grid.style.setProperty("--grid-columns", "3");
           grid.style.setProperty("--grid-gap", GRID_GAP);
           timeline.set(gridWrap, {
             transformOrigin: "0% 50%",
             rotationY: -30,
-            xPercent: 75,
+            xPercent: 65,
           });
           if (gridItems) {
             timeline
@@ -132,6 +138,6 @@ export const useScrollCardAnimation = (scrollType) => {
           break;
       }
     },
-    [scrollType]
+    [scrollType, config]
   );
 };

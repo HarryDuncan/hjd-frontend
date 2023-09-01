@@ -35,6 +35,7 @@ export const CardImage = styled.img`
 
 export const ConfigurableCardWrapper = styled.div`
   position: relative;
+  overflow: hidden;
   height: auto;
   background-color: black;
   width: 15rem;

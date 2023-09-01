@@ -1,5 +1,5 @@
 // Remaking a better verison of a card - just don't to refactor for the galleries
-import { CardImage, CardTitle, ConfigurableCardWrapper } from "./Card.styles";
+import { CardImage, CardTitle, ConfigurableCardWrapper } from "./Card.styled";
 import { CardFooter } from "./CardFooter";
 
 export interface CardDetails {

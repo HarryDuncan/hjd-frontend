@@ -6,7 +6,6 @@ export const ImageContainer = styled.div`
   width: 40%;
   margin-left: 10%;
   position: relative;
-
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     flex-direction: column;
@@ -14,7 +13,7 @@ export const ImageContainer = styled.div`
     height: 100%;
     margin-left: 0%;
     min-height: 30rem;
-    max-height: 30rem;
+    max-height: 50rem;
   }
 `;
 export const StyledImage = styled(Image)`
@@ -24,7 +23,16 @@ export const StyledImage = styled(Image)`
   background-size: cover;
   object-fit: contain;
   object-position: top;
+  margin: 0 auto;
   margin-top: 1.5rem;
+  height: auto !important;
+  width: auto !important;
+  max-width: 50rem;
+  max-height: 50rem;
+
+  -webkit-box-shadow: 15px 15px 16px #ccc;
+  -moz-box-shadow: 15px 15px 16px #ccc;
+  box-shadow: 15px 15px 16px #ccc;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     margin-top: 0;

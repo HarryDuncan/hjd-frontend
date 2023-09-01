@@ -5,13 +5,17 @@ export const importShader = (
   shaderId: string,
   vertexShaderId: string | undefined,
   fragmentShaderId: string | undefined
-) => {
+): {
+  fragmentShader: string;
+  vertexShader: string;
+  setUpDefaultUniforms: (() => any) | null;
+} => {
   try {
     // @ts-ignore - not ideal but will replace with build shader
     const {
       fragmentShader: defaultFragmentShader,
       vertexShader,
-      defaultUniforms,
+      defaultUniforms: setUpDefaultUniforms,
     } = Shaders[shaderId];
     if (vertexShaderId) {
       // todo -import vertex shader
@@ -21,14 +25,17 @@ export const importShader = (
       fragmentShaderId
     );
 
-    return { fragmentShader, vertexShader, defaultUniforms };
+    return { fragmentShader, vertexShader, setUpDefaultUniforms };
   } catch {
     console.error(`${shaderId} not a valid shader`);
-    return { fragmentShader: "", vertexShader: "", defaultUniforms: {} };
+    return { fragmentShader: "", vertexShader: "", setUpDefaultUniforms: null };
   }
 };
 
-const getFragmentShader = (defaultFragmentShader, fragmentShaderId) => {
+const getFragmentShader = (
+  defaultFragmentShader: string,
+  fragmentShaderId: string | undefined
+) => {
   if (fragmentShaderId) {
     const { fragmentShader } = Shaders[fragmentShaderId];
     return fragmentShader;

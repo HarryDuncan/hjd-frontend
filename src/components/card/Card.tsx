@@ -1,4 +1,4 @@
-import { CardImage, CardTitle, CardWrapper } from "./Card.styles";
+import { CardImage, CardTitle, CardWrapper } from "./Card.styled";
 import { CardFooter } from "./CardFooter";
 
 export interface CardDetails {

@@ -1,4 +1,4 @@
-import { CardFooter } from "components/card/Card.styles";
+import { CardFooter } from "components/card/Card.styled";
 import { Label } from "components/styled-components/Text";
 import { ProductVariations } from "models/shop/types";
 import { Title } from "./ProductCardFooter.styles";

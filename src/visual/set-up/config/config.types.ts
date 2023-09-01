@@ -97,7 +97,7 @@ export type MeshTransformConfig = {
 export type SceneConfig = {
   assets?: Asset[];
   meshComponentConfigs: MeshComponentConfig[];
-  meshTransforms?: MeshTransformConfig;
+  meshTransforms?: MeshTransformConfig[];
   globalMaterialConfigs: MaterialConfig[];
   animationConfig: CustomAnimationConfig[];
   lightConfig: LightConfigs[];

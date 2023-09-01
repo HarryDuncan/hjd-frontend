@@ -9,16 +9,22 @@ export const configureShaders = (
 ) => {
   const { shaderId, fragmentShaderId, vertexShaderId, assetMapping } =
     shaderConfig;
-  const { fragmentShader, vertexShader, defaultUniforms } = importShader(
+  const { fragmentShader, vertexShader, setUpDefaultUniforms } = importShader(
     shaderId,
     vertexShaderId,
     fragmentShaderId
   );
 
-  const configuredUniforms = defaultUniforms(uniforms);
+  const configuredUniforms = configureUniforms(uniforms, setUpDefaultUniforms);
   mapAssets(configuredUniforms, assetMapping ?? [], assets ?? []);
   // TODO - return default shaders and log that the shader ids didn't work
   return { fragmentShader, vertexShader, configuredUniforms };
+};
+const configureUniforms = (uniforms, setUpDefaultUniforms) => {
+  if (setUpDefaultUniforms) {
+    return setUpDefaultUniforms(uniforms);
+  }
+  return uniforms;
 };
 
 const mapAssets = (

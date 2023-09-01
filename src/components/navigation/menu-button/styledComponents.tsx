@@ -70,7 +70,7 @@ export const activeTwo = keyframes`
    
   }
   to {
-    transform: translateY(-0.7rem) rotate(-45deg);
+    transform: translateY(-1.2rem) rotate(-45deg);
     margin: 0;
     width: 3rem;
   }

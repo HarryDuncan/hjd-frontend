@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Grid = styled.div`
   display: grid;
   place-items: center;
-  padding: 2rem;
   width: 100%;
   perspective: var(--perspective);
   height: 100vh;

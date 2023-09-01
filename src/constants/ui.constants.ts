@@ -33,7 +33,7 @@ export const SCROLL_LEFT_POSITIONS = {
   },
   mobile: {
     positionType: "fixed",
-    top: "90vh",
+    top: "36rem",
     left: "0%",
   },
 };
@@ -46,7 +46,7 @@ export const SCROLL_RIGHT_POSITIONS = {
   },
   mobile: {
     positionType: "fixed",
-    top: "90vh",
+    top: "36rem",
     right: "0%",
   },
 };

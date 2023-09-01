@@ -23,6 +23,7 @@ const SCROLL_TYPOGRAPHY_CONFIG = {
 export const BioSection = ({ image, text, index }: BioSectionProps) => {
   const { height, bannerConfig } = useBannerSize();
   const scrollConfig = useScrollConfig(index);
+
   return (
     <InnerContainer $topOffset={0}>
       <ParallaxImage
