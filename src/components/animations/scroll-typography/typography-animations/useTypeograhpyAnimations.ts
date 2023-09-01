@@ -5,7 +5,6 @@ import { ScrollTypographyConfig } from "../scrollTypography.types";
 
 export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
   const formattedTypographyConfig = formatTypographyConfig(config);
-  console.log(formattedTypographyConfig);
   return useCallback(
     (title: HTMLHeadingElement, chars: NodeListOf<ChildNode>) => {
       const { animationType, startTriggerText, endTriggerText } =
