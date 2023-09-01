@@ -1,12 +1,15 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { gsap } from "gsap";
-import { CHAR_ANIMATIONS } from "../scrollTypography.consts";
+import { CHAR_ANIMATIONS, DEFAULT_CONFIG } from "../scrollTypography.consts";
 import { ScrollTypographyConfig } from "../scrollTypography.types";
 
 export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
+  const formattedTypographyConfig = formatTypographyConfig(config);
+  console.log(formattedTypographyConfig);
   return useCallback(
-    (title, chars) => {
-      const { animationType } = config;
+    (title: HTMLHeadingElement, chars: NodeListOf<ChildNode>) => {
+      const { animationType, startTriggerText, endTriggerText } =
+        formattedTypographyConfig;
       switch (animationType) {
         case CHAR_ANIMATIONS.FADE_UP:
           gsap.fromTo(
@@ -75,8 +78,8 @@ export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
               stagger: 0.03,
               scrollTrigger: {
                 trigger: title,
-                start: "center bottom+=10%",
-                end: "top top+=30%",
+                start: `${startTriggerText}`,
+                end: `${endTriggerText}`,
                 scrub: true,
               },
             }
@@ -117,6 +120,21 @@ export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
           return null;
       }
     },
-    [config]
+    [formattedTypographyConfig]
   );
 };
+
+const formatTypographyConfig = (passedConfig: ScrollTypographyConfig) =>
+  useMemo(() => {
+    const typographyConfig = { ...DEFAULT_CONFIG, ...passedConfig };
+    const { animationType, startTrigger, endTrigger } = typographyConfig;
+    return {
+      animationType,
+      startTriggerText: `${startTrigger?.targetSection.toLowerCase()} ${startTrigger?.screenSection.toLowerCase()} +=${
+        startTrigger.percentage
+      }%`,
+      endTriggerText: `${endTrigger?.targetSection.toLowerCase()} ${endTrigger?.screenSection.toLowerCase()} +=${
+        endTrigger.percentage
+      }%`,
+    };
+  }, [passedConfig]);

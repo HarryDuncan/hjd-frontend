@@ -10,13 +10,22 @@ export const CHAR_ANIMATIONS = {
   FADE_UP: "FADE_UP",
   NONE: "NONE",
 };
-
-export const DEFAULT_CONFIG = {
-  animationType: CHAR_ANIMATIONS.MULTI_FLASH,
-};
-
 export const SECTIONS = {
   BOTTOM: "BOTTOM",
   TOP: "TOP",
   CENTER: "CENTER",
+};
+
+export const DEFAULT_CONFIG = {
+  animationType: CHAR_ANIMATIONS.MULTI_FLASH,
+  startTrigger: {
+    targetSection: SECTIONS.CENTER,
+    screenSection: SECTIONS.BOTTOM,
+    percentage: 10,
+  },
+  endTrigger: {
+    targetSection: SECTIONS.CENTER,
+    screenSection: SECTIONS.CENTER,
+    percentage: 10,
+  },
 };

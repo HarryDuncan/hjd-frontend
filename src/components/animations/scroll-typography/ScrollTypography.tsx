@@ -20,7 +20,7 @@ export const ScrollTypography = ({
   textType = "HEADER",
   config = DEFAULT_CONFIG as ScrollTypographyConfig,
 }: ScrollTypographyProps) => {
-  const scrollTextRef = useRef();
+  const scrollTextRef = useRef<HTMLHeadingElement | null>(null);
   gsap.registerPlugin(ScrollTrigger);
   const setAnimation = useTypographyAnimations(config);
   useEffect(() => {
