@@ -1,5 +1,5 @@
 import { CardFooter } from "components/card/Card.styled";
-import { Label } from "components/styled-components/Text";
+import { Label } from "components/text/Text";
 import { ProductVariations } from "models/shop/types";
 import { Title } from "./ProductCardFooter.styles";
 

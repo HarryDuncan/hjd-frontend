@@ -1,5 +1,5 @@
 import { ParallaxImage } from "components/images";
-import { InnerContainer } from "components/styled-components/Containers";
+import { InnerContainer } from "components/containers/Containers";
 import { ImageContent, TextContent } from "models/content/content.types";
 import { BioContentContainer } from "./Bio.styles";
 import { BIO_BANNER_CONFIG } from "constants/bio.constants";

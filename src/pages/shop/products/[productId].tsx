@@ -3,12 +3,8 @@ import { useProductData } from "hooks/shop/useProductData";
 import { Direction } from "../../../../utils/helpers/moveThroughArray";
 import { useScrollProducts } from "hooks/shop/useScrollProducts";
 import { useCallback, useState } from "react";
-import { ViewItemDetailsContainer } from "components/styled-components/Containers";
-import {
-  ContentSubText,
-  ContentText,
-  MainTitle,
-} from "components/styled-components/Text";
+import { ViewItemDetailsContainer } from "components/containers/Containers";
+import { ContentSubText, ContentText, MainTitle } from "components/text/Text";
 import { useRouter } from "next/router";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
 import { Icon } from "components/icons/Icons";

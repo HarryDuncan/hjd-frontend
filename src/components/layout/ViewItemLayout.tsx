@@ -1,5 +1,5 @@
 import { StaticImage } from "components/images";
-import { ViewItemContainer } from "components/styled-components/Containers";
+import { ViewItemContainer } from "components/containers/Containers";
 import Layout from "./DefaultLayout";
 import { ReactNode } from "react";
 import SwipeablePageNavigator from "components/mobile/SwipeableNavigator";

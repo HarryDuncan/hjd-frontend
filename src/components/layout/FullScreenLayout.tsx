@@ -1,5 +1,5 @@
 import { DynamicInvisibleNavigation } from "components/navigation/invisible-navigation/DynamicInvisibleNavigation";
-import { PageContainer } from "components/styled-components/Containers";
+import { PageContainer } from "components/containers/Containers";
 import { ReactNode } from "react";
 
 export default function FullScreenLayout({

@@ -1,6 +1,6 @@
 import ViewItemLayout from "components/layout/ViewItemLayout";
-import { ViewItemDetailsContainer } from "components/styled-components/Containers";
-import { ContentText, MainTitle } from "components/styled-components/Text";
+import { ViewItemDetailsContainer } from "components/containers/Containers";
+import { ContentText, MainTitle } from "components/text/Text";
 import { ART_ROOT_URL } from "constants/art.constants";
 import { usePaintingData } from "hooks/art/usePaintingData";
 import { useScrollPaintings } from "hooks/art/useScrollPaintings";

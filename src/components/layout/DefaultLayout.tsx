@@ -1,6 +1,6 @@
 import { Footer } from "components/footer/Footer";
 import { DynamicNavigation } from "components/navigation/DynamicNavigation";
-import { PageContainer } from "components/styled-components/Containers";
+import { PageContainer } from "components/containers/Containers";
 import { ReactNode, useEffect, useRef } from "react";
 
 export default function Layout({
@@ -16,7 +16,6 @@ export default function Layout({
 }) {
   const targetRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
-    console.log(targetRef);
     const handleScroll = () => {
       if (targetRef.current) {
         // Calculate the scroll position of the target div relative to the parent div

@@ -1,4 +1,4 @@
-import { MainTitle } from "components/styled-components/Text";
+import { MainTitle } from "components/text/Text";
 import styled from "styled-components";
 
 export const ParallaxImageContainer = styled.div<{ $height?: number }>`

@@ -1,5 +1,5 @@
-import { OverlayDiv } from "components/styled-components/Containers";
-import { ContentText, MainTitle } from "components/styled-components/Text";
+import { OverlayDiv } from "components/containers/Containers";
+import { ContentText, MainTitle } from "components/text/Text";
 import { useGetCampaign } from "hooks/campaigns/useGetCampaign";
 import { Campaign } from "models/campaigns/types";
 

@@ -1,6 +1,6 @@
 import { DynamicCardGallery } from "components/card-gallery/DynamicGallery";
 import { ParallaxImage } from "components/images/parallax-image/ParallaxImage";
-import { InnerContainer } from "components/styled-components/Containers";
+import { InnerContainer } from "components/containers/Containers";
 import { useArtData } from "hooks/art/useArtData";
 import { Painting } from "models/art/types";
 import type { NextPage } from "next";

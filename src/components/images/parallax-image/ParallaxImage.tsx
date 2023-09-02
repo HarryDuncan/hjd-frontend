@@ -1,4 +1,4 @@
-import { MainTitle } from "components/styled-components/Text";
+import { MainTitle } from "components/text/Text";
 import { ReactNode } from "react";
 import { ImageHover } from "../image-hover";
 import { ParallaxImageContainer } from "./styledComponents";
