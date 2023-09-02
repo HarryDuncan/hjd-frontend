@@ -1,4 +1,4 @@
-import { useParams } from "hooks/useParams";
+import { useParams } from "hooks/routing/useParams";
 import { FetchCampaignResponse } from "models/campaigns/types";
 import { useQuery } from "react-query";
 import { getCampaigns } from "services/campaigns/campaigns";

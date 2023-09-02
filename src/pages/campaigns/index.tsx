@@ -5,7 +5,7 @@ import { useCampaignData } from "hooks/campaigns/useCampaignData";
 import { ParallaxImage } from "components/images";
 import { InnerContainer } from "components/containers/Containers";
 import { DynamicCardGallery } from "components/card-gallery/DynamicGallery";
-import { useHandleRouting } from "hooks/useHandleRouting";
+import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
 import {
   BANNER_IMAGE_HOVER_CONFIG,

@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useTheme } from "styled-components";
 import { useWindowState } from "visual/compat/window-state/windowStateProvider";
 
-export const WINDOW_SCREEN_TYPE = {
+export const WINDOW_TYPE = {
   WIDE_SCREEN: "WIDE_SCREEN",
   DESKTOP: "DESKTOP",
   LAPTOP: "LAPTOP",
@@ -10,7 +10,7 @@ export const WINDOW_SCREEN_TYPE = {
   MOBILE: "MOBILE",
 };
 
-type WindowScreen = keyof typeof WINDOW_SCREEN_TYPE;
+type ScreenType = keyof typeof WINDOW_TYPE;
 
 export const useWindowScreenType = () => {
   const { breakpoints } = useTheme();
@@ -22,30 +22,30 @@ export const useWindowScreenType = () => {
 
   return useCallback(() => {
     if (width >= breakpoints.wideScreen) {
-      return WINDOW_SCREEN_TYPE.WIDE_SCREEN;
+      return WINDOW_TYPE.WIDE_SCREEN;
     }
     if (width >= breakpoints.desktop) {
-      return WINDOW_SCREEN_TYPE.DESKTOP;
+      return WINDOW_TYPE.DESKTOP;
     }
     if (width >= breakpoints.laptop) {
-      return WINDOW_SCREEN_TYPE.LAPTOP;
+      return WINDOW_TYPE.LAPTOP;
     }
     if (width > breakpoints.tablet) {
-      return WINDOW_SCREEN_TYPE.TABLET;
+      return WINDOW_TYPE.TABLET;
     }
-    return WINDOW_SCREEN_TYPE.MOBILE;
+    return WINDOW_TYPE.MOBILE;
   }, [breakpoints, width]);
 };
 
 export const useWindowSize = () => {
-  const [windowSize, updateWindowSize] = useState<WindowScreen>("DESKTOP");
+  const [windowSize, updateWindowSize] = useState<ScreenType>("DESKTOP");
   const getScreenSize = useWindowScreenType();
   useEffect(() => {
     // Handler to call on window resize
     function handleResize() {
       // Set window width/height to state
       const screenSize = getScreenSize();
-      updateWindowSize(screenSize as WindowScreen);
+      updateWindowSize(screenSize as ScreenType);
     }
     // Add event listener
     window.addEventListener("resize", handleResize);

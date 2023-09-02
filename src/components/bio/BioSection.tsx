@@ -3,7 +3,7 @@ import { InnerContainer } from "components/containers/Containers";
 import { ImageContent, TextContent } from "models/content/content.types";
 import { BioContentContainer } from "./Bio.styles";
 import { BIO_BANNER_CONFIG } from "constants/bio.constants";
-import useDeviceSize from "hooks/useDeviceSize";
+import useDeviceSize from "hooks/client-hooks/useDeviceSize";
 import { ScrollTypography } from "components/animations/scroll/scroll-typography/ScrollTypography";
 import {
   CHAR_ANIMATIONS,

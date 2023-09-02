@@ -1,4 +1,4 @@
-import { useWindowSize } from "hooks/useWindowSize";
+import { useWindowSize } from "hooks/client-hooks/useWindowSize";
 import React, { useCallback } from "react";
 import { DesktopNav } from "./desktop/DesktopNavigation";
 import { MobileNavigation } from "./mobile/MobileNavigation";
@@ -7,7 +7,7 @@ import { NavBackgroundOverlay, NavigationContainer } from "./navigation.styles";
 import { useIsNavDark } from "./hooks/useIsNavDark";
 import { useIsNavTop } from "./hooks/useIsNavTop";
 import { NavTheme } from "./navigation.types";
-import { useHandleRouting } from "hooks/useHandleRouting";
+import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { HoverTitle } from "components/animations/gesture-animations/hover/HoverTitle";
 
 const Navigation = () => {

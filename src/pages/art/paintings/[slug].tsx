@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
 import { Icon, IconTypes } from "components/icons/Icons";
-import { useIdleTimer } from "hooks/useIdleTimer";
+import { useIdleTimer } from "hooks/client-hooks/useIdleTimer";
 import { IDLE_TIMER } from "constants/ui.constants";
 
 const PaintingDetails = () => {

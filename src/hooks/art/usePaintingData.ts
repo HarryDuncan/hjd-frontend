@@ -1,4 +1,4 @@
-import { useParams } from "hooks/useParams";
+import { useParams } from "hooks/routing/useParams";
 import { FetchPaintingsResponse } from "models/art/types";
 
 import { useQuery } from "react-query";

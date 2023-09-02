@@ -94,6 +94,23 @@ export type MeshTransformConfig = {
   type: MeshTransformType;
   transformedMeshIds: string[];
 };
+
+export type ScreenSizeAdjustmentConfig = {
+  screenType: ScreenType;
+  meshComponentConfigs?: Partial<MeshComponentConfig>[];
+  threeJsConfigs: Partial<ThreeJSConfig>;
+};
+
+export const SCREEN_TYPE = {
+  WIDE_SCREEN: "WIDE_SCREEN",
+  DESKTOP: "DESKTOP",
+  LAPTOP: "LAPTOP",
+  TABLET: "TABLET",
+  MOBILE: "MOBILE",
+};
+
+export type ScreenType = keyof typeof SCREEN_TYPE;
+
 export type SceneConfig = {
   assets?: Asset[];
   meshComponentConfigs: MeshComponentConfig[];
@@ -105,4 +122,5 @@ export type SceneConfig = {
   interactionConfig?: InteractionConfig[];
   threeJsConfig: ThreeJSConfig;
   scenePropertiesConfig: ScenePropertiesConfig;
+  screenSizeAdjustments?: ScreenSizeAdjustmentConfig[];
 };

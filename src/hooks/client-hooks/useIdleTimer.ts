@@ -1,16 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 
 const DEFAULT_TIME = 10000;
 export const useIdleTimer = (timeMiliSeconds = DEFAULT_TIME) => {
   const [isIdle, setIsIdle] = useState(false);
 
-  const idleTimer = setTimeout(() => {
-    setIsIdle(true);
-  }, timeMiliSeconds);
+  const idleTimer = useMemo(
+    () =>
+      setTimeout(() => {
+        setIsIdle(true);
+      }, timeMiliSeconds),
+    [timeMiliSeconds]
+  );
 
-  const resetIdleTimer = () => {
+  const resetIdleTimer = useCallback(() => {
     clearTimeout(idleTimer);
-  };
+  }, [idleTimer]);
 
   const handleUserActivity = () => {
     setIsIdle(false);
@@ -28,7 +32,7 @@ export const useIdleTimer = (timeMiliSeconds = DEFAULT_TIME) => {
       window.removeEventListener("keydown", handleUserActivity);
       clearTimeout(idleTimer);
     };
-  }, [timeMiliSeconds, handleUserActivity]);
+  }, [timeMiliSeconds, handleUserActivity, resetIdleTimer, idleTimer]);
 
   return { isIdle };
 };

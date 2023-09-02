@@ -27,7 +27,6 @@ export const useOrbitControls = (
       // @ts-ignore
       controls[controlKey] = configValue;
     });
-    console.log(controls);
     return controls;
   }, [renderer, camera, config]);
 };

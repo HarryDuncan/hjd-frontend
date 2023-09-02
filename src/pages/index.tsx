@@ -1,7 +1,7 @@
 import FullScreenLayout from "components/layout/FullScreenLayout";
 import { DynamicScene } from "components/visual-components/DynamicInteractiveNode";
-import { useHandleRouting } from "hooks/useHandleRouting";
-import { useSceneConfigAndAssets } from "hooks/useSceneConfigAndAssets";
+import { useHandleRouting } from "hooks/routing/useHandleRouting";
+import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
 import type { NextPage } from "next";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
