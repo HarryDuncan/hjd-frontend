@@ -11,9 +11,10 @@ export class AnimationManager {
 
   cameraElementAnimations: CustomAnimationConfig[];
 
-  constructor() {
+  constructor(animationConfig: CustomAnimationConfig[]) {
     this.sceneElementAnimations = [];
     this.cameraElementAnimations = [];
+    this.initializeAnimations(animationConfig);
   }
 
   initializeAnimations(animations: CustomAnimationConfig[]) {
@@ -43,13 +44,11 @@ export class AnimationManager {
     if (!animation) {
       console.warn(`animation: ${animationId} has not been initialized`);
     } else if (animation?.isRunning === false) {
-      const {
-        animationConfig,
-        targetIdentifier,
-        animationFunctionType,
-      } = animation;
+      const { animationConfig, targetIdentifier, animationFunctionType } =
+        animation;
       const initializedAnimationConfig = setUpAnimationConfig(animationConfig);
       animation.isRunning = true;
+      console.log(animationId);
       runAnimation(
         scene,
         animationFunctionType,
