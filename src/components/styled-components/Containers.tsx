@@ -67,6 +67,11 @@ export const ViewItemDetailsContainer = styled.div`
       theme.breakpoints.tablet}px) {
     width: 100%;
     margin: 0 auto;
+    position: relative;
+  }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    position: relative;
   }
 `;
 export const ContentContainer = styled.div`

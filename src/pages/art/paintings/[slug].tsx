@@ -10,6 +10,8 @@ import { useCallback, useState } from "react";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
 import { Icon } from "components/icons/Icons";
 import { IconTypes } from "components/icons/Icons.consts";
+import { useIdleTimer } from "hooks/useIdleTimer";
+import { IDLE_TIMER } from "constants/ui.constants";
 
 const PaintingDetails = () => {
   const { painting } = usePaintingData();
@@ -18,23 +20,36 @@ const PaintingDetails = () => {
   const [changedDirection, setChangedDirection] = useState<Direction>(
     Direction.FORWARD
   );
+  const { isIdle } = useIdleTimer(IDLE_TIMER);
   if (!painting) return null;
 
-  const onScroll = (direction: Direction) => {
+  const onChangeItem = (direction: Direction) => {
     setChangedDirection(direction);
     changePainting(direction);
   };
+
   return (
     <SlideWithBackgroundTransition direction={changedDirection}>
       <ViewItemLayout
         imageUrl={`${ART_ROOT_URL}${painting?.imageUrl}`}
         title={painting?.title}
-        onScroll={onScroll}
+        onChangeItem={onChangeItem}
       >
         <ViewItemDetailsContainer>
-          <Icon onClick={handleExit} type={IconTypes.EXIT} hasGesture />
-          <Icon onClick={onScroll} type={IconTypes.CHEVRON_LEFT} hasGesture />
-          <Icon onClick={onScroll} type={IconTypes.CHEVRON_RIGHT} hasGesture />
+          {!isIdle && (
+            <Icon onClick={handleExit} type={IconTypes.EXIT} hasGesture />
+          )}
+
+          <Icon
+            onClick={onChangeItem}
+            type={IconTypes.CHEVRON_LEFT}
+            hasGesture
+          />
+          <Icon
+            onClick={onChangeItem}
+            type={IconTypes.CHEVRON_RIGHT}
+            hasGesture
+          />
           <MainTitle $isLight={false}>{painting.title}</MainTitle>
 
           <ContentText>{painting.description}</ContentText>

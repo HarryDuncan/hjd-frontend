@@ -13,6 +13,9 @@ export const IconContainer = styled.div<{
   width: fit-content;
   height: fit-content;
   @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
+  }
+  @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     position: ${({ $mobilePosition }) =>
       $mobilePosition?.positionType ?? "absolute"};

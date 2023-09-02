@@ -32,8 +32,8 @@ export const SCROLL_LEFT_POSITIONS = {
     left: "3%",
   },
   mobile: {
-    positionType: "fixed",
-    top: "36rem",
+    positionType: "absolute",
+    top: "22%",
     left: "0%",
   },
 };
@@ -45,8 +45,8 @@ export const SCROLL_RIGHT_POSITIONS = {
     right: "3%",
   },
   mobile: {
-    positionType: "fixed",
-    top: "36rem",
+    positionType: "absolute",
+    top: "22%",
     right: "0%",
   },
 };
@@ -58,7 +58,9 @@ export const EXIT_POSITIONS = {
   },
   mobile: {
     positionType: "absolute",
-    top: "4rem",
-    right: "3%",
+    top: "2%",
+    right: "0%",
   },
 };
+
+export const IDLE_TIMER = 20000;

@@ -8,18 +8,18 @@ import { Direction } from "../../../utils/helpers/moveThroughArray";
 interface ViewItemProps {
   title: string;
   imageUrl: string;
-  onScroll: (direction: Direction) => void;
+  onChangeItem: (direction: Direction) => void;
   children: ReactNode;
 }
 export default function ViewItem({
   imageUrl,
   title,
-  onScroll,
+  onChangeItem,
   children,
 }: ViewItemProps) {
   return (
     <Layout hasFooter={false}>
-      <SwipeablePageNavigator onSwipe={onScroll}>
+      <SwipeablePageNavigator onSwipe={onChangeItem}>
         <ViewItemContainer>
           <StaticImage imageUrl={imageUrl} imageTitle={title} />
           {children}

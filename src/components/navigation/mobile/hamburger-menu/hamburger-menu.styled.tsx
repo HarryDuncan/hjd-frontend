@@ -9,8 +9,8 @@ export const HamburgerMenuContainer = styled.div`
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    margin-top: -1rem;
-    margin-left: -2.5rem;
+    margin-top: -1.5rem;
+    margin-right: -1.5rem;
     .top {
       stroke-dasharray: 40 121;
     }
@@ -33,8 +33,7 @@ export const HamburgerMenuContainer = styled.div`
     fill: none;
     transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
     stroke: #000;
-    stroke-width: 5.5;
-    stroke-linecap: round;
+    stroke-width: 10;
   }
   .menu-light {
     path {
