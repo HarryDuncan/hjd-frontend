@@ -4,7 +4,7 @@ import { CHAR_ANIMATIONS, DEFAULT_CONFIG } from "../scrollTypography.consts";
 import { ScrollTypographyConfig } from "../scrollTypography.types";
 
 export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
-  const formattedTypographyConfig = formatTypographyConfig(config);
+  const formattedTypographyConfig = useFormatTypographyConfig(config);
   return useCallback(
     (title: HTMLHeadingElement, chars: NodeListOf<ChildNode>) => {
       const { animationType, startTriggerText, endTriggerText } =
@@ -85,34 +85,33 @@ export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
           );
           break;
         case CHAR_ANIMATIONS.FADE_IN_LEFT:
-          {
-            chars.forEach((char) =>
-              gsap.set(char.parentNode, { perspective: 1000 })
-            );
-            gsap.fromTo(
-              chars,
-              {
-                "will-change": "opacity, transform",
-                transformOrigin: "50% 0%",
-                opacity: 0,
-                rotationX: -90,
-                z: -200,
+          chars.forEach((char) =>
+            gsap.set(char.parentNode, { perspective: 1000 })
+          );
+          gsap.fromTo(
+            chars,
+            {
+              "will-change": "opacity, transform",
+              transformOrigin: "50% 0%",
+              opacity: 0,
+              rotationX: -90,
+              z: -200,
+            },
+            {
+              ease: "power1",
+              opacity: 1,
+              stagger: 0.05,
+              rotationX: 0,
+              z: 0,
+              scrollTrigger: {
+                trigger: title,
+                start: "center bottom",
+                end: "bottom top+=20%",
+                scrub: true,
               },
-              {
-                ease: "power1",
-                opacity: 1,
-                stagger: 0.05,
-                rotationX: 0,
-                z: 0,
-                scrollTrigger: {
-                  trigger: title,
-                  start: "center bottom",
-                  end: "bottom top+=20%",
-                  scrub: true,
-                },
-              }
-            );
-          }
+            }
+          );
+
           break;
         case CHAR_ANIMATIONS.NONE:
         default:
@@ -123,7 +122,7 @@ export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
   );
 };
 
-const formatTypographyConfig = (passedConfig: ScrollTypographyConfig) =>
+const useFormatTypographyConfig = (passedConfig: ScrollTypographyConfig) =>
   useMemo(() => {
     const typographyConfig = { ...DEFAULT_CONFIG, ...passedConfig };
     const { animationType, startTrigger, endTrigger } = typographyConfig;

@@ -8,7 +8,7 @@ export const importShader = (
 ): {
   fragmentShader: string;
   vertexShader: string;
-  setUpDefaultUniforms: (() => any) | null;
+  setUpDefaultUniforms: (() => unknown) | null;
 } => {
   try {
     // @ts-ignore - not ideal but will replace with build shader
@@ -37,6 +37,7 @@ const getFragmentShader = (
   fragmentShaderId: string | undefined
 ) => {
   if (fragmentShaderId) {
+    // @ts-ignore - not ideal but will replace with build shader
     const { fragmentShader } = Shaders[fragmentShaderId];
     return fragmentShader;
   }

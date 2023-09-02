@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useEffect } from "react";
 import { RootContainer } from "../root/root-container";
 import { useInteractiveScene } from "visual/display/components/interactive-scene/useInteractiveScene";
 import { useThreadWithPostProcessor } from "visual/display/hooks/use-thread";

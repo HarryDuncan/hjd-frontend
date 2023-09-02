@@ -1,4 +1,5 @@
 import { HamburgerMenuContainer } from "./hamburger-menu.styled";
+
 interface HamburgerMenuProps {
   onClick: () => void;
   isLight: boolean;

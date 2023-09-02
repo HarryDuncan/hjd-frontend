@@ -28,7 +28,7 @@ export const useIdleTimer = (timeMiliSeconds = DEFAULT_TIME) => {
       window.removeEventListener("keydown", handleUserActivity);
       clearTimeout(idleTimer);
     };
-  }, [timeMiliSeconds]);
+  }, [timeMiliSeconds, handleUserActivity]);
 
   return { isIdle };
 };

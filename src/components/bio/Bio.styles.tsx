@@ -1,7 +1,7 @@
 import {
   ScrolledTypographyHeader,
   ScrolledTypographyText,
-} from "components/animations/scroll-typography/ScrollTypography.styled";
+} from "components/animations/scroll/scroll-typography/ScrollTypography.styled";
 import styled from "styled-components";
 
 export const TextContainer = styled.div`

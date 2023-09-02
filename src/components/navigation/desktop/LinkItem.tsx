@@ -1,5 +1,11 @@
 import { gsap } from "gsap";
-import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import React, {
+  MutableRefObject,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { NavItem, NavItemLabel, NavItemLink } from "./DesktopNavigation.styles";
 import { useActiveNav } from "../hooks/useActiveNav";
 import { NavTheme } from "../navigation.types";
@@ -10,6 +16,7 @@ interface LinkItemProps {
   title: string;
   link: string;
   filterId: string;
+  filterRef: MutableRefObject<HTMLElement | null>;
   navTheme: NavTheme;
 }
 
@@ -17,7 +24,6 @@ interface AnimationOptions {
   text: boolean;
   line: boolean;
   filterId: string;
-  filterRef: any;
 }
 
 export const LinkItem = ({
@@ -36,7 +42,7 @@ export const LinkItem = ({
     [filterId]
   );
 
-  const lineRef = useRef(null);
+  const lineRef = useRef<HTMLDivElement | null>(null);
 
   const timeline = useMemo(
     () =>
@@ -69,7 +75,10 @@ export const LinkItem = ({
       const primitiveValues = { turbulence: 0 };
       const feTurbulance = filter.children[0];
       timeline.eventCallback("onUpdate", () =>
-        feTurbulance.setAttribute("baseFrequency", primitiveValues.turbulence)
+        feTurbulance.setAttribute(
+          "baseFrequency",
+          String(primitiveValues.turbulence)
+        )
       );
       timeline.to(primitiveValues, {
         duration: 0.4,

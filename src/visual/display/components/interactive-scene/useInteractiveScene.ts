@@ -13,8 +13,8 @@ import { setSceneProperties } from "visual/display/helpers/scene/setScenePropert
 
 export const useInteractiveScene = (
   sceneFunction: InteractiveSceneFunctions,
-  eventConfig: EventConfig[] = [],
-  animationConfig: CustomAnimationConfig[] = [],
+  eventConfig: EventConfig[],
+  animationConfig: CustomAnimationConfig[],
   meshes: Object3D[],
   lights: SceneLight[],
   sceneComponents: Object3D[],
@@ -30,7 +30,6 @@ export const useInteractiveScene = (
       scene.addOrbitControls(orbitControls);
       setSceneProperties(sceneProperties, scene);
       setScene(scene);
-      return;
     },
     [setScene, meshes, lights, sceneComponents, orbitControls, sceneProperties]
   );

@@ -1,16 +1,17 @@
-import { ScrollCardGallery } from "components/animations/scroll-card-gallery/ScrollCardGallery";
-import { CARD_GALLERY_TYPE } from "components/animations/scroll-card-gallery/scrollCardGallery.consts";
 import { TechInfoContainer, TechSectionContainer } from "./tech.styles";
-import { ScrollTypography } from "components/animations/scroll-typography/ScrollTypography";
+import { ScrollTypography } from "components/animations/scroll/scroll-typography/ScrollTypography";
 import {
   CHAR_ANIMATIONS,
   TEXT_TYPE,
-} from "components/animations/scroll-typography/scrollTypography.consts";
+} from "components/animations/scroll/scroll-typography/scrollTypography.consts";
+import { ScrollTypographyConfig } from "components/animations/scroll/scroll-typography/scrollTypography.types";
+import { ScrollCardGallery } from "components/animations/scroll/scroll-card-gallery/ScrollCardGallery";
+import { CARD_GALLERY_TYPE } from "components/animations/scroll/scroll-card-gallery/scrollCardGallery.consts";
+
 const SCROLL_TYPOGRAPHY_CONFIG = {
   animationType: CHAR_ANIMATIONS.MULTI_FLASH,
 };
 interface TechSectionProps {
-  section: string;
   sectionTitle: string;
   sectionText: string;
   techCardItems: {
@@ -21,15 +22,17 @@ interface TechSectionProps {
   index: number;
   sectionData;
 }
+
 export const TechSection = ({
-  section,
   sectionTitle,
   sectionText,
   techCardItems,
   index,
   sectionData,
 }: TechSectionProps) => {
-  const scrollConfig = { ...SCROLL_TYPOGRAPHY_CONFIG };
+  const scrollConfig = {
+    ...SCROLL_TYPOGRAPHY_CONFIG,
+  } as ScrollTypographyConfig;
   const scrollType =
     index % 2 === 0
       ? CARD_GALLERY_TYPE.WAVE_LEFT

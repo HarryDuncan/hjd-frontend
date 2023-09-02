@@ -5,7 +5,6 @@ import {
   TransitionEffectContainer,
 } from "./Transitions.styled";
 import { Direction } from "../../../../utils/helpers/moveThroughArray";
-import { ReactNode } from "react";
 import { PageTransitionProps } from "./pageTransitions.types";
 
 const TRANSITION_DURATION = 0.4;

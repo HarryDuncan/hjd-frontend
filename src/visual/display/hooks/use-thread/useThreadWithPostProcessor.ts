@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useCallback, useEffect, useRef } from "react";
+import { MutableRefObject, useCallback, useEffect, useRef } from "react";
 import { Camera, Clock, WebGLRenderer } from "three";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
 import PostProcessor from "visual/display/components/post-processor/PostProcessor";

@@ -1,13 +1,13 @@
-import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
 import { shaderAnimationLoop } from "../../animation-functions/animation-loop/shaderAnimationLoop";
+import { AnimatedScene } from "../../animation.types";
 
 export const updateUTime = (
-  scene: InteractiveScene,
+  scene: AnimatedScene,
   animationProperties,
   animatedObjects
 ) => {
   let startTime: number;
-  let uTime: number = 0;
+  let uTime = 0;
   const { animationDurationMilis } = animationProperties;
   const duration = animationDurationMilis / 1000;
   function step(timestamp: number) {

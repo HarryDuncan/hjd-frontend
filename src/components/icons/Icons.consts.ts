@@ -1,5 +1,0 @@
-export enum IconTypes {
-  EXIT = "EXIT",
-  CHEVRON_LEFT = "CHEVRON_LEFT",
-  CHEVRON_RIGHT = "CHEVRON_RIGHT",
-}

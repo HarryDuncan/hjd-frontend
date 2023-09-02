@@ -1,8 +1,6 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useEffect } from "react";
 import { RootContainer } from "../root/root-container";
 import { useInteractiveScene } from "visual/display/components/interactive-scene/useInteractiveScene";
-import PostProcessor from "visual/display/components/post-processor/PostProcessor";
-import { setSceneProperties } from "visual/display/helpers/scene/setSceneProperties";
 import { useThreadWithPostProcessor } from "visual/display/hooks/use-thread";
 import { useSetUpScene } from "visual/display/hooks/scene-data/useSetUpScene";
 import { InteractiveNodeProps } from "./interactiveNode.types";
