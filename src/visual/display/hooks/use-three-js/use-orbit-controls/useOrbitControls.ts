@@ -18,13 +18,16 @@ export const useOrbitControls = (
       MIDDLE: MOUSE.DOLLY,
       RIGHT: MOUSE.PAN,
     };
+
     controls.screenSpacePanning = false;
+    controls.enablePan = false;
     Object.keys(config).forEach((key) => {
       const controlKey = key as keyof OrbitControls;
       const configValue = config[key as keyof ControlConfig];
       // @ts-ignore
       controls[controlKey] = configValue;
     });
+    console.log(controls);
     return controls;
   }, [renderer, camera, config]);
 };

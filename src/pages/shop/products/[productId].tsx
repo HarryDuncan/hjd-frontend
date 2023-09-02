@@ -7,8 +7,7 @@ import { ViewItemDetailsContainer } from "components/containers/Containers";
 import { ContentSubText, ContentText, MainTitle } from "components/text/Text";
 import { useRouter } from "next/router";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
-import { Icon } from "components/icons/Icons";
-import { IconTypes } from "components/icons/Icons.consts";
+import { Icon, IconTypes } from "components/icons/Icons";
 
 const rootUrl = "/images/shop/";
 const ProductDetails = () => {
@@ -22,21 +21,29 @@ const ProductDetails = () => {
 
   if (!product) return null;
   const { title, description } = product;
-  const onScroll = (direction: Direction) => {
+  const onChangeItem = (direction: Direction) => {
     setChangedDirection(direction);
     changeProduct(direction);
   };
   return (
     <SlideWithBackgroundTransition direction={changedDirection}>
       <ViewItemLayout
-        onScroll={onScroll}
+        onChangeItem={onChangeItem}
         imageUrl={`${rootUrl}${product?.imageUrl}`}
         title={product?.title}
       >
         <ViewItemDetailsContainer>
           <Icon onClick={handleExit} type={IconTypes.EXIT} hasGesture />
-          <Icon onClick={onScroll} type={IconTypes.CHEVRON_LEFT} hasGesture />
-          <Icon onClick={onScroll} type={IconTypes.CHEVRON_RIGHT} hasGesture />
+          <Icon
+            onClick={onChangeItem}
+            type={IconTypes.CHEVRON_LEFT}
+            hasGesture
+          />
+          <Icon
+            onClick={onChangeItem}
+            type={IconTypes.CHEVRON_RIGHT}
+            hasGesture
+          />
           <MainTitle $isLight={false}>{title}</MainTitle>
           <ContentText>{description}</ContentText>
           <br />
