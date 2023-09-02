@@ -5,6 +5,7 @@ import {
   TransitionEffectContainer,
 } from "./Transitions.styled";
 import { Direction } from "../../../../utils/helpers/moveThroughArray";
+import { PageTransitionProps } from "./pageTransitions.types";
 
 const TRANSITION_DURATION = 0.4;
 const TRANSITION_DELAY = 0.3;
@@ -65,8 +66,14 @@ const variants = {
     },
   },
 };
+type BackgroundTransitionProps = PageTransitionProps & {
+  direction: Direction;
+};
 
-const SlideWithBackgroundTransition = ({ children, direction }) => {
+const SlideWithBackgroundTransition = ({
+  children,
+  direction,
+}: BackgroundTransitionProps) => {
   const { asPath } = useRouter();
   const shouldReduceMotion = useReducedMotion();
   const backgroundImage = `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/images/content/banner1.jpg`;

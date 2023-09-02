@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import { SoftFadeContainer } from "./Transitions.styled";
+import { PageTransitionProps } from "./pageTransitions.types";
 
 const variants = {
   fadeIn: {
@@ -29,11 +30,7 @@ const variants = {
   },
 };
 
-/*
- * Read the blog post here:
- * https://letsbuildui.dev/articles/animated-page-transitions-in-nextjs
- */
-const SoftFadeTransition = ({ children }) => {
+const SoftFadeTransition = ({ children }: PageTransitionProps) => {
   const { asPath } = useRouter();
 
   return (

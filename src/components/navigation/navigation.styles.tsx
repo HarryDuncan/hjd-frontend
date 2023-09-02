@@ -3,7 +3,7 @@ import { NAV_OVERLAY_HEIGHT } from "./navigation.constants";
 
 export const NAV_HEIGHT = "8vh";
 
-export const NavigationContainer = styled.div`
+export const NavigationContainer = styled.div<{ $isLight?: boolean }>`
   margin: 0 auto;
   left: 0;
   top: 0;
@@ -16,6 +16,24 @@ export const NavigationContainer = styled.div`
   width: 100%;
   a {
     text-decoration: none;
+  }
+
+  h1 {
+    margin: -1rem 0.5%;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: ${({ $isLight }) => ($isLight ? "white" : "black")};
+    text-align: left;
+    font-size: 7rem;
+    white-space: nowrap;
+    font-weight: ${({ theme }) => theme.font.weight.light};
+    font-family: "Harryduncan";
+
+    @media only screen and (max-width: ${({ theme }) =>
+        theme.breakpoints.mobile}px) {
+      font-size: 5rem;
+      margin: -0.6rem 0 0 0;
+    }
   }
 `;
 
@@ -34,28 +52,6 @@ export const NavBackgroundOverlay = styled.div<{ $isOpen?: boolean }>`
       theme.breakpoints.mobile}px) {
     animation-name: ${({ $isOpen }) =>
       $isOpen ? growNavMobile : shrinkNavMobile};
-  }
-`;
-
-export const NavTitle = styled.h1<{ $isLight?: boolean }>`
-  margin: -0.9rem 0.5%;
-  text-transform: uppercase;
-  cursor: pointer;
-  color: ${({ $isLight }) => ($isLight ? "white" : "black")};
-  text-align: left;
-  font-size: 7rem;
-  white-space: nowrap;
-  font-weight: ${({ theme }) => theme.font.weight.light};
-  font-family: "Harryduncan";
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
-    margin: 0 0 0 0.5rem;
-  }
-
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}px) {
-    font-size: 5rem;
-    margin: -0.6rem 0 0 0;
   }
 `;
 

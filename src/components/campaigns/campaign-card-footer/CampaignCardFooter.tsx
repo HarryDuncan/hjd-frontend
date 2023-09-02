@@ -1,4 +1,4 @@
-import { CardFooter } from "components/card/Card.styles";
+import { CardFooter } from "components/card/Card.styled";
 import { Title } from "components/shop/product-card-footer/ProductCardFooter.styles";
 
 interface CampaignCardFooterProps {

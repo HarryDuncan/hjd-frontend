@@ -7,8 +7,7 @@ import {
   SCROLL_RIGHT_POSITIONS,
 } from "constants/ui.constants";
 import { Direction } from "../../../utils/helpers/moveThroughArray";
-import { Exit, IconContainer, ScrollLeft, ScrollRight } from "./Icons.styles";
-import { IconTypes } from "./Icons.consts";
+import { IconContainer } from "./Icons.styles";
 import {
   ExitIconProps,
   IconProps,
@@ -16,8 +15,13 @@ import {
   OnIconClick,
   ScrollIconProps,
 } from "./Icons.types";
-
 import { HoverImage } from "components/animations/gesture-animations/hover/HoverImage";
+
+export enum IconTypes {
+  EXIT = "EXIT",
+  CHEVRON_LEFT = "CHEVRON_LEFT",
+  CHEVRON_RIGHT = "CHEVRON_RIGHT",
+}
 
 const ExitIcon = ({ onClick }: ExitIconProps) => {
   const { position, mobile } = EXIT_POSITIONS;
@@ -47,11 +51,7 @@ const ScrollRightIcon = ({ onClick }: ScrollIconProps) => {
   const { position, mobile } = SCROLL_RIGHT_POSITIONS;
   return (
     <IconContainer $position={position} $mobilePosition={mobile}>
-      <HoverImage
-        alt={"scroll-right"}
-        src={SCROLL_RIGHT}
-        onClick={onIconClick}
-      />
+      <HoverImage alt="scroll-right" src={SCROLL_RIGHT} onClick={onIconClick} />
     </IconContainer>
   );
 };

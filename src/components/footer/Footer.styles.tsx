@@ -1,4 +1,4 @@
-import { ContentText } from "components/styled-components/Text";
+import { ContentText } from "components/text/Text";
 import styled from "styled-components";
 
 export const FooterContainer = styled.div`

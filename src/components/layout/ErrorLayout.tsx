@@ -1,6 +1,6 @@
 import { Footer } from "components/footer/Footer";
 import { DynamicNavigation } from "components/navigation/DynamicNavigation";
-import { PageContainer } from "components/styled-components/Containers";
+import { PageContainer } from "components/containers/Containers";
 
 export default function Layout({
   topPadding = true,

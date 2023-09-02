@@ -1,10 +1,6 @@
-import {
-  ScrollCardGallery,
-  ScrollCardItem,
-} from "components/animations/scroll-card-gallery/ScrollCardGallery";
-import { CARD_GALLERY_TYPE } from "components/animations/scroll-card-gallery/scroll-card-gallery.consts";
 import { LongScroll } from "components/long-scroll/LongScroll";
 import { TechHome } from "components/tech/TechHome";
+import { TechSection } from "components/tech/TechSection";
 import { TechTitle } from "components/tech/TechTitle";
 import { TECH_SECTIONS } from "constants/tech.constants";
 import { useTechData } from "hooks/tech/useTechContent";
@@ -21,21 +17,27 @@ const Tech: NextPage = () => {
   const sortedTechData = useSortTechData(tech ?? []);
   const { height, measureRef } = useLongScroll();
   useSetWindowState();
+
   return (
     <>
       <TechHome contentHeight={height} />
       <LongScroll ref={measureRef}>
         <TechTitle />
-        {sortedTechData.map(({ tech: techData }, index) => (
-          <ScrollCardGallery
-            items={techData}
-            scrollType={
-              index % 2 === 0
-                ? CARD_GALLERY_TYPE.WAVE_LEFT
-                : CARD_GALLERY_TYPE.WAVE_RIGHT
-            }
-          />
-        ))}
+        {sortedTechData.map(
+          (
+            { techCardItems, section, sectionText, sectionTitle, sectionData },
+            index
+          ) => (
+            <TechSection
+              techCardItems={techCardItems}
+              section={section}
+              sectionTitle={sectionTitle}
+              sectionText={sectionText}
+              index={index}
+              sectionData={sectionData}
+            />
+          )
+        )}
       </LongScroll>
     </>
   );
@@ -46,13 +48,39 @@ const useLongScroll = () => {
   return { measureRef, height };
 };
 
+const getSectionPositionData = () => {
+  const sections = Object.values(TECH_SECTIONS);
+  const sectionDataObj = {};
+  // add one for the title
+  const totalSectionCount = sections.length + 1;
+  const sectionPercentage = 100 / totalSectionCount;
+  sections.forEach((section, index) => {
+    const start = Math.floor((index + 1) * sectionPercentage + 1);
+    const end = Math.floor((index + 2) * sectionPercentage);
+    sectionDataObj[section] = { start, end };
+  });
+  return sectionDataObj;
+};
+
 const useSortTechData = (tech: TechContent[]) =>
   useMemo(() => {
     const sections = Object.values(TECH_SECTIONS);
-    console.log(sections);
-    return sections.map((_section) => ({
-      tech,
-    }));
+    const sectionData = getSectionPositionData();
+    return sections.map((section) => {
+      const techCardItems = tech.flatMap(({ id, name, category }) =>
+        category.toUpperCase() === section
+          ? { id, title: name, imageUrl: "" }
+          : []
+      );
+      return {
+        section,
+        sectionData: sectionData[section],
+        sectionTitle: "Frontend",
+        sectionText:
+          'this is  Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload Warning: Each child in a list should have a unique "key" prop. See https://reactjs.org/link/warning-keys for more information.',
+        techCardItems,
+      };
+    });
   }, [tech]);
 
 export default Tech;

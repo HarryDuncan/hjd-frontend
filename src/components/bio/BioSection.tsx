@@ -1,14 +1,14 @@
 import { ParallaxImage } from "components/images";
-import { InnerContainer } from "components/styled-components/Containers";
+import { InnerContainer } from "components/containers/Containers";
 import { ImageContent, TextContent } from "models/content/content.types";
 import { BioContentContainer } from "./Bio.styles";
 import { BIO_BANNER_CONFIG } from "constants/bio.constants";
 import useDeviceSize from "hooks/useDeviceSize";
-import { ScrollTypography } from "components/animations/scroll-typography/ScrollTypography";
+import { ScrollTypography } from "components/animations/scroll/scroll-typography/ScrollTypography";
 import {
   CHAR_ANIMATIONS,
   TEXT_TYPE,
-} from "components/animations/scroll-typography/scrollTypography.consts";
+} from "components/animations/scroll/scroll-typography/scrollTypography.consts";
 import { useMemo } from "react";
 
 interface BioSectionProps {
@@ -23,6 +23,7 @@ const SCROLL_TYPOGRAPHY_CONFIG = {
 export const BioSection = ({ image, text, index }: BioSectionProps) => {
   const { height, bannerConfig } = useBannerSize();
   const scrollConfig = useScrollConfig(index);
+
   return (
     <InnerContainer $topOffset={0}>
       <ParallaxImage

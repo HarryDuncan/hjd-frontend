@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import Layout from "components/layout/DefaultLayout";
 import { useCampaignData } from "hooks/campaigns/useCampaignData";
 import { ParallaxImage } from "components/images";
-import { InnerContainer } from "components/styled-components/Containers";
+import { InnerContainer } from "components/containers/Containers";
 import { DynamicCardGallery } from "components/card-gallery/DynamicGallery";
 import { useHandleRouting } from "hooks/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";

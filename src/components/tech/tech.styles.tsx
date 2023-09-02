@@ -1,16 +1,8 @@
-import { ScrolledTypographyHeader } from "components/animations/scroll-typography/ScrollTypography.styled";
-import { ConfigurableCardWrapper } from "components/card/Card.styles";
-import styled, { css } from "styled-components";
-
-const galleryStack = css`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  align-items: center;
-  justify-content: start;
-  gap: 2rem;
-  padding: 2rem;
-  --offset: 1rem;
-`;
+import {
+  ScrolledTypographyHeader,
+  ScrolledTypographyText,
+} from "components/animations/scroll/scroll-typography/ScrollTypography.styled";
+import styled from "styled-components";
 
 export const TechTitleContainer = styled.div`
   height: 100vh;
@@ -33,29 +25,29 @@ export const TechTitleContainer = styled.div`
     }
   }
 `;
-export const TechContentContainer = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
 
-export const TechCardBar = styled.div.attrs((props) => ({
-  style: {
-    justifyContent: props.$justify,
-    transform: `translateX(${100 - props.$translate * 100}vw)`,
-  },
-}))`
-  display: flex;
-  flex-direction: row;
-  min-width: 100vw;
-  overflow-x: auto;
+export const TechSectionContainer = styled.div``;
 
-  ${galleryStack}
-  ${ConfigurableCardWrapper} {
-    height: 25vh;
-    width: 35vw;
-    margin: 1em;
+const OFFSET = 3;
+export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
+  top: 0;
+  z-index: 5;
+  position: absolute;
+  top: ${({ $top }) => $top + OFFSET}%;
+  left: ${({ $isLeft }) => ($isLeft === true ? "60%" : "10%")};
+  width: 30%;
+  ${ScrolledTypographyHeader} {
+    color: white;
+    margin: 0 auto;
+    text-align: center;
+  }
+  ${ScrolledTypographyText} {
+    color: white;
+    font-family: arial;
+    font-size: 1.5rem;
+    font-weight: 600;
+    white-space: pre-wrap;
+    position: relative;
+    text-align: center;
   }
 `;

@@ -1,4 +1,4 @@
-import { Vector3 } from "three";
+import { Clock, Scene, Vector3 } from "three";
 import {
   ANIMATION_FUNCTION_TYPES,
   ANIMATION_TYPES,
@@ -6,6 +6,11 @@ import {
   TRIG_FUNCTION_TYPES,
 } from "./animation.constants";
 import { Axis } from "../helpers/three-dimension-space/position/position.types";
+
+// to avoid dependency cycle
+export type AnimatedScene = Scene & {
+  clock: Clock;
+};
 
 export type CustomAnimationConfig = {
   animationId: string;

@@ -3,29 +3,21 @@ import React, { useCallback } from "react";
 import { DesktopNav } from "./desktop/DesktopNavigation";
 import { MobileNavigation } from "./mobile/MobileNavigation";
 import { LARGE_NAV_WINDOW_SIZES, NAV_THEMES } from "./navigation.constants";
-import {
-  NavBackgroundOverlay,
-  NavigationContainer,
-  NavTitle,
-} from "./navigation.styles";
+import { NavBackgroundOverlay, NavigationContainer } from "./navigation.styles";
 import { useIsNavDark } from "./hooks/useIsNavDark";
 import { useIsNavTop } from "./hooks/useIsNavTop";
 import { NavTheme } from "./navigation.types";
 import { useHandleRouting } from "hooks/useHandleRouting";
-import { HoverGesture } from "components/animations/gesture-animations/hover";
+import { HoverTitle } from "components/animations/gesture-animations/hover/HoverTitle";
 
 const Navigation = () => {
   const windowSize = useWindowSize();
   const navTheme = useNavTheme();
   const goToLanding = useGoToLanding();
   return (
-    <NavigationContainer>
+    <NavigationContainer $isLight={navTheme === NAV_THEMES.DARK}>
       <NavBackgroundOverlay $isOpen={navTheme === NAV_THEMES.DARK} />
-      <HoverGesture>
-        <NavTitle onClick={goToLanding} $isLight={navTheme === NAV_THEMES.DARK}>
-          HARRY J DEE
-        </NavTitle>
-      </HoverGesture>
+      <HoverTitle title="HARRY J DEE" onClick={goToLanding} />
 
       {LARGE_NAV_WINDOW_SIZES.includes(windowSize) ? (
         <DesktopNav navTheme={navTheme} />

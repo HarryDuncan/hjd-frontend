@@ -1,5 +1,5 @@
 import { StaticImage } from "components/images";
-import { ViewItemContainer } from "components/styled-components/Containers";
+import { ViewItemContainer } from "components/containers/Containers";
 import Layout from "./DefaultLayout";
 import { ReactNode } from "react";
 import SwipeablePageNavigator from "components/mobile/SwipeableNavigator";
@@ -8,18 +8,18 @@ import { Direction } from "../../../utils/helpers/moveThroughArray";
 interface ViewItemProps {
   title: string;
   imageUrl: string;
-  onScroll: (direction: Direction) => void;
+  onChangeItem: (direction: Direction) => void;
   children: ReactNode;
 }
 export default function ViewItem({
   imageUrl,
   title,
-  onScroll,
+  onChangeItem,
   children,
 }: ViewItemProps) {
   return (
     <Layout hasFooter={false}>
-      <SwipeablePageNavigator onSwipe={onScroll}>
+      <SwipeablePageNavigator onSwipe={onChangeItem}>
         <ViewItemContainer>
           <StaticImage imageUrl={imageUrl} imageTitle={title} />
           {children}

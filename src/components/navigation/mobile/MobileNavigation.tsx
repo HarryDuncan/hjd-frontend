@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { MenuButton } from "../menu-button/MenuButton";
 import { NavTheme, PageItem } from "../navigation.types";
 import { MobileText, NavItemContainer } from "./MobileNavigation.styles";
 import Link from "next/link";
 import { NAV_THEMES, SITE_PAGES } from "../navigation.constants";
+import { HamburgerMenu } from "./hamburger-menu/HamburgerMenu";
 
 interface MobileNavigationProps {
   navTheme: NavTheme;
@@ -23,7 +23,7 @@ export const MobileNavigation = ({ navTheme }: MobileNavigationProps) => {
 
   return (
     <>
-      <MenuButton
+      <HamburgerMenu
         onClick={handleMobileMenuClick}
         isOpen={isMenuOpen}
         isLight={navTheme === NAV_THEMES.LIGHT}

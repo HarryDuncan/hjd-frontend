@@ -1,6 +1,6 @@
 import Layout from "components/layout/DefaultLayout";
-import { ViewItemDetailsContainer } from "components/styled-components/Containers";
-import { ContentText, MainTitle } from "components/styled-components/Text";
+import { ViewItemDetailsContainer } from "components/containers/Containers";
+import { ContentText, MainTitle } from "components/text/Text";
 
 const TermsAndConditions = () => {
   return (

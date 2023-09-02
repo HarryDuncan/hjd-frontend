@@ -9,6 +9,7 @@ export interface IconProps {
   type: IconTypes;
   onClick: OnIconClick;
   hasGesture: boolean;
+  ref?;
 }
 
 export interface ScrollIconProps {
@@ -17,6 +18,7 @@ export interface ScrollIconProps {
 
 export interface ExitIconProps {
   onClick: OnClickFunction;
+  ref?;
 }
 
 export type IconPosition = {

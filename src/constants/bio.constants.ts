@@ -1,7 +1,7 @@
 export const BIO_PAGE_SECTIONS = [
   "Visual Arts",
   "Creative Technology",
-  "Intersection of technology and humanity",
+  "Humanity and Technology",
 ];
 export const IMAGE_CONTENT_SECTIONS = [
   "artist",

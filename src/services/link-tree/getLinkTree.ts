@@ -4,7 +4,7 @@ import { client } from "network/ApolloClient";
 export const getLinkTree = async () => {
   const query = gql`
     query linkTree {
-      linkTree @rest(type: "link", path: "/content/link-tree") {
+      links @rest(type: "link", path: "/content/link-tree") {
         links
       }
     }
@@ -12,7 +12,7 @@ export const getLinkTree = async () => {
   return client.query({ query }).then((response) => {
     const {
       data: {
-        linkTree: { links },
+        links: { links },
       },
       loading,
     } = response;
