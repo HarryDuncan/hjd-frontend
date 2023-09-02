@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useAssets } from "visual/set-up/assets/use-assets/useAssets";
+import { useAssets } from "visual/set-up/assets/useAssets";
 import { useFetchConfig } from "visual/set-up/config/useFetchConfig";
 import { SceneConfig } from "visual/set-up/config/config.types";
 

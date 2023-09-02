@@ -13,54 +13,35 @@ export const InteractiveNode = ({
   events,
   sceneData: { threeJs, lights, meshes, sceneComponents, sceneProperties },
 }: InteractiveNodeProps) => {
-  const {
-    currentFrameRef,
-    clock,
-    postProcessor,
-    renderer,
-    camera,
-    container,
-    orbitControls,
-  } = useSetUpScene(threeJs);
+  const { currentFrameRef, clock, renderer, camera, container, orbitControls } =
+    useSetUpScene(threeJs);
 
-  const sceneElements = useMemo(
-    () => ({
-      meshes,
-      lights,
-      sceneComponents,
-      orbitControls,
-    }),
-    [meshes, lights, sceneComponents, orbitControls]
-  );
   const scene = useInteractiveScene(
-    [],
     sceneFunctions,
     events,
     animations,
-    sceneElements
+    meshes,
+    lights,
+    sceneComponents,
+    orbitControls,
+    sceneProperties
   );
-  const { update, pause } = useThreadWithPostProcessor(
-    postProcessor,
+
+  const { update, pause, postProcessor } = useThreadWithPostProcessor(
     currentFrameRef,
     clock,
     scene,
-    camera
+    camera,
+    renderer
   );
 
-  useEffect(() => () => pause(), [pause]);
-
   const initializeSceneWithData = useCallback(() => {
-    if (scene && camera && renderer) {
-      setSceneProperties(sceneProperties, scene);
-      postProcessor.current = new PostProcessor({
-        renderer,
-        scene,
-        camera,
-        passes: [],
-      });
+    if (postProcessor.current) {
       update();
     }
-  }, [scene, update, postProcessor, renderer, camera, sceneProperties]);
+  }, [update, postProcessor]);
+
+  useEffect(() => () => pause(), [pause]);
 
   useEffect(() => {
     initializeSceneWithData();

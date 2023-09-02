@@ -35,7 +35,6 @@ export const TechSection = ({
       ? CARD_GALLERY_TYPE.WAVE_LEFT
       : CARD_GALLERY_TYPE.WAVE_RIGHT;
 
-  console.log(sectionData);
   const isLeft = index % 2 === 0;
   return (
     <TechSectionContainer>

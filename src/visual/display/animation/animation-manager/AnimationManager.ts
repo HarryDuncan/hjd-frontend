@@ -48,7 +48,6 @@ export class AnimationManager {
         animation;
       const initializedAnimationConfig = setUpAnimationConfig(animationConfig);
       animation.isRunning = true;
-      console.log(animationId);
       runAnimation(
         scene,
         animationFunctionType,
