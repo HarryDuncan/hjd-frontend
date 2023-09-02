@@ -3,7 +3,7 @@ import { DynamicScene } from "components/visual-components/DynamicInteractiveNod
 import { useHandleRouting } from "hooks/useHandleRouting";
 import { useSceneConfigAndAssets } from "hooks/useSceneConfigAndAssets";
 import type { NextPage } from "next";
-import { useCallback, useMemo, useRef } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
 import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
 import { CustomAnimationConfig } from "visual/display/animation/animation.types";
@@ -12,30 +12,44 @@ import { SceneData } from "visual/display/components/interactive-scene/types";
 import { useSceneData } from "visual/set-up/config/useSceneData";
 import { gsap } from "gsap";
 import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
+import { useFadeOut } from "components/animations/gsap-timelines/useFadeOut";
 
 const ROUTING_DELAY = 1500;
 const Home: NextPage = () => {
   useSetWindowState();
   const handleRouting = useHandleRouting("bio");
   const gridRef = useRef<SVGPathElement | null>(null);
+  const buttonRef = useRef<HTMLElement | null>(null);
   const onClickAnimation = useOnClickAnimation();
-
+  const [onEnterClicked, setOnEnterClicked] = useState<boolean>(false);
+  const fadeOut = useFadeOut();
   const onEnterClick = () => {
+    setOnEnterClicked(true);
     onClickAnimation(gridRef.current);
+    fadeOut(buttonRef.current);
     setTimeout(() => {
       handleRouting();
     }, ROUTING_DELAY);
   };
   return (
     <FullScreenLayout>
-      <CircleActionButton onClick={onEnterClick} buttonText="ENTER" />
+      <CircleActionButton
+        ref={buttonRef}
+        onClick={onEnterClick}
+        buttonText="ENTER"
+      />
       <svg
         className="overlay"
         width="100%"
         height="100%"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
-        style={{ zIndex: 10, position: "absolute", bottom: 0 }}
+        style={{
+          zIndex: 10,
+          position: "absolute",
+          bottom: 0,
+          display: onEnterClicked ? "block" : "none",
+        }}
       >
         <path
           ref={gridRef}
