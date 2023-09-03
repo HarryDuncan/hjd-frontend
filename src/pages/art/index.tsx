@@ -5,7 +5,7 @@ import { useArtData } from "hooks/art/useArtData";
 import { Painting } from "models/art/types";
 import type { NextPage } from "next";
 import { useMemo } from "react";
-import { useHandleRouting } from "hooks/useHandleRouting";
+import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
 import {
   ART_GALLERY_LOAD_MORE,

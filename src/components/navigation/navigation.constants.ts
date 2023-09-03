@@ -1,4 +1,4 @@
-import { WINDOW_SCREEN_TYPE } from "hooks/useWindowSize";
+import { WINDOW_TYPE } from "hooks/client-hooks/useWindowSize";
 
 export const SITE_PAGES = [
   { title: "Bio", link: "/bio" },
@@ -7,9 +7,9 @@ export const SITE_PAGES = [
 ];
 
 export const LARGE_NAV_WINDOW_SIZES = [
-  WINDOW_SCREEN_TYPE.DESKTOP,
-  WINDOW_SCREEN_TYPE.LAPTOP,
-  WINDOW_SCREEN_TYPE.WIDE_SCREEN,
+  WINDOW_TYPE.DESKTOP,
+  WINDOW_TYPE.LAPTOP,
+  WINDOW_TYPE.WIDE_SCREEN,
 ];
 
 export const NAV_THEMES = {

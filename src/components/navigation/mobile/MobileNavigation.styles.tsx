@@ -5,7 +5,7 @@ export const NavItemContainer = styled.div<{
   $isOpen: boolean;
   $isLight: boolean;
 }>`
-  width: 100vw;
+  width: 0vw;
   height: 100vh;
   background: ${({ $isLight, theme }) =>
     $isLight ? theme.colors.mono.background : theme.colors.gradients.dark};
@@ -29,13 +29,13 @@ const growNav = keyframes`
     width: 0px;
   }
   to {
-    width: 100%;
+    width: 100vw;
   }
 }`;
 
 const shrinkNav = keyframes`
   from {
-  width: 100%;
+  width: 100vw;
   }
   to {
     width: 0px;

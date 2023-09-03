@@ -1,5 +1,5 @@
-import { useHandleRouting } from "hooks/useHandleRouting";
-import { useParams } from "hooks/useParams";
+import { useHandleRouting } from "hooks/routing/useHandleRouting";
+import { useParams } from "hooks/routing/useParams";
 import { useCallback } from "react";
 import {
   Direction,

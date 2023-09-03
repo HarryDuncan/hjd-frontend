@@ -10,7 +10,7 @@ import { NavItem, NavItemLabel, NavItemLink } from "./DesktopNavigation.styles";
 import { useActiveNav } from "../hooks/useActiveNav";
 import { NavTheme } from "../navigation.types";
 import { NAV_THEMES } from "../navigation.constants";
-import { useHandleRouting } from "hooks/useHandleRouting";
+import { useHandleRouting } from "hooks/routing/useHandleRouting";
 
 interface LinkItemProps {
   title: string;

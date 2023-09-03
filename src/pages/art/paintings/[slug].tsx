@@ -8,9 +8,8 @@ import { Direction } from "../../../../utils/helpers/moveThroughArray";
 import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
-import { Icon } from "components/icons/Icons";
-import { IconTypes } from "components/icons/Icons.consts";
-import { useIdleTimer } from "hooks/useIdleTimer";
+import { Icon, IconTypes } from "components/icons/Icons";
+import { useIdleTimer } from "hooks/client-hooks/useIdleTimer";
 import { IDLE_TIMER } from "constants/ui.constants";
 
 const PaintingDetails = () => {

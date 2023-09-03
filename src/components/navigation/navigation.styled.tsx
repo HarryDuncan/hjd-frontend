@@ -8,16 +8,20 @@ export const NavigationContainer = styled.div<{ $isLight?: boolean }>`
   left: 0;
   top: 0;
   z-index: 3;
-  max-height: 4rem;
+  height: 4rem;
   display: flex;
   justify-content: space-between;
   clear: both;
   position: fixed;
+  overflow: hidden;
   width: 100%;
   a {
     text-decoration: none;
   }
-
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    height: 3rem;
+  }
   h1 {
     margin: -1rem 0.5%;
     text-transform: uppercase;

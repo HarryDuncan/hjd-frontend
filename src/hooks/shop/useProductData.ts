@@ -1,4 +1,4 @@
-import { useParams } from "hooks/useParams";
+import { useParams } from "hooks/routing/useParams";
 import { ReturnedShopData } from "models/shop/types";
 import { useQuery } from "react-query";
 import { getShopData } from "services/shop/getShopData";

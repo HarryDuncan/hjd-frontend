@@ -1,4 +1,4 @@
-import { Camera, Scene } from "three";
+import { Camera } from "three";
 import { AnimatedScene, CustomAnimationConfig } from "../animation.types";
 import { runAnimation } from "../run-animation/runAnimation";
 import { setUpAnimationConfig } from "./setUpAnimationConfig";

@@ -2,14 +2,13 @@ import styled from "styled-components";
 
 export const TransitionEffectContainer = styled.div`
   display: block;
-  position: fixed;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  overflow: auto;
+  overflow: hidden;
 `;
 
 export const BackgroundLayer = styled.div<{

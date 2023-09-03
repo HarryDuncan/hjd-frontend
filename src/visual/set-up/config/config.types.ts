@@ -11,6 +11,7 @@ import {
   SceneElementType,
 } from "visual/display/scene-elements/components/threeJsComponents.types";
 import { MESH_TRANSFORM } from "./mesh/mesh.consts";
+import { ScreenType } from "visual/compat/window-state/types";
 
 export type RandomizationConfig = {
   instanceCount: number;
@@ -94,6 +95,13 @@ export type MeshTransformConfig = {
   type: MeshTransformType;
   transformedMeshIds: string[];
 };
+
+export type ScreenSizeAdjustmentConfig = {
+  screenType: ScreenType;
+  meshComponentConfigs?: Partial<MeshComponentConfig>[];
+  threeJsConfig: Partial<ThreeJSConfig>;
+};
+
 export type SceneConfig = {
   assets?: Asset[];
   meshComponentConfigs: MeshComponentConfig[];
@@ -105,4 +113,5 @@ export type SceneConfig = {
   interactionConfig?: InteractionConfig[];
   threeJsConfig: ThreeJSConfig;
   scenePropertiesConfig: ScenePropertiesConfig;
+  screenSizeAdjustments?: ScreenSizeAdjustmentConfig[];
 };

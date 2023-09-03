@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { getIsServerRunning } from "services/getIsServerRunning";
-import { useHandleRouting } from "./useHandleRouting";
+import { useHandleRouting } from "./routing/useHandleRouting";
 import { useEffect, useMemo } from "react";
 
 export const useIsServerRunning = () => {

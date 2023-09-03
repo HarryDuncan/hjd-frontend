@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { DynamicCardGallery } from "components/card-gallery/DynamicGallery";
 import { ParallaxImage } from "components/images/parallax-image/ParallaxImage";
 import { InnerContainer } from "components/containers/Containers";
-import { useHandleRouting } from "hooks/useHandleRouting";
+import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
 import {
   BANNER_IMAGE_HOVER_CONFIG,

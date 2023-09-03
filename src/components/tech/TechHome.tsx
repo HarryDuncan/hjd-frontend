@@ -1,5 +1,5 @@
 import { DynamicScene } from "components/visual-components/DynamicInteractiveNode";
-import { useSceneConfigAndAssets } from "hooks/useSceneConfigAndAssets";
+import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
 import { useCallback, useMemo } from "react";
 import { Scene } from "three";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
