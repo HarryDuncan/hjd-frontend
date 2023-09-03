@@ -3,6 +3,7 @@ import { TechHome } from "components/tech/TechHome";
 import { TechSection } from "components/tech/TechSection";
 import { TechTitle } from "components/tech/TechTitle";
 import { TECH_SECTIONS } from "constants/tech.constants";
+import { useContentForPage } from "hooks/content/useContentForPage";
 import { useTechData } from "hooks/tech/useTechContent";
 import { TechContent } from "models/tech/tech.types";
 import { NextPage } from "next";
@@ -62,25 +63,39 @@ const getSectionPositionData = () => {
   return sectionDataObj;
 };
 
-const useSortTechData = (tech: TechContent[]) =>
-  useMemo(() => {
+const useTextContent = () => {
+  const textSelection = Object.keys(TECH_SECTIONS);
+  const { text } = useContentForPage({
+    textSelection,
+  });
+
+  return text;
+};
+
+const useSortTechData = (tech: TechContent[]) => {
+  const textData = useTextContent();
+  return useMemo(() => {
     const sections = Object.values(TECH_SECTIONS);
     const sectionData = getSectionPositionData();
+
     return sections.map((section) => {
       const techCardItems = tech.flatMap(({ id, name, category }) =>
-        category.toUpperCase() === section
+        category && category.toUpperCase() === section
           ? { id, title: name, imageUrl: "" }
           : []
       );
+      const { content, title } =
+        textData.find(({ title }) => title === section) ?? {};
+
       return {
         section,
         sectionData: sectionData[section],
-        sectionTitle: "Frontend",
-        sectionText:
-          'this is  Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload Warning: Each child in a list should have a unique "key" prop. See https://reactjs.org/link/warning-keys for more information.',
+        sectionTitle: section,
+        sectionText: content ?? "",
         techCardItems,
       };
     });
-  }, [tech]);
+  }, [tech, textData]);
+};
 
 export default Tech;
