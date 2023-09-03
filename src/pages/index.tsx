@@ -97,6 +97,7 @@ const HomeSceneContent = () => {
     initializedAssets,
     areAssetsInitialized
   );
+
   const sceneParameters = useMemo(() => {
     if (!configData) return null;
     const { animationConfig } = configData;
