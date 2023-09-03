@@ -50,10 +50,11 @@ export const THEME: DefaultTheme = {
     },
   },
   breakpoints: {
-    wideScreen: 1501,
+    wideScreen: 1500,
     desktop: 1280,
+    laptop: 1080,
     tablet: 850,
-    mobile: 800,
+    mobile: 600,
     smallMobile: 350,
   },
 };

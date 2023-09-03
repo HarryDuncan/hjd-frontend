@@ -1,9 +1,9 @@
 import { StaticImage } from "components/images";
 import { ViewItemContainer } from "components/containers/Containers";
-import Layout from "./DefaultLayout";
 import { ReactNode } from "react";
 import SwipeablePageNavigator from "components/mobile/SwipeableNavigator";
 import { Direction } from "../../../utils/helpers/moveThroughArray";
+import TransitionFriendlyLayout from "./Layout";
 
 interface ViewItemProps {
   title: string;
@@ -18,13 +18,13 @@ export default function ViewItem({
   children,
 }: ViewItemProps) {
   return (
-    <Layout hasFooter={false}>
+    <TransitionFriendlyLayout hasFooter={false}>
       <SwipeablePageNavigator onSwipe={onChangeItem}>
         <ViewItemContainer>
           <StaticImage imageUrl={imageUrl} imageTitle={title} />
           {children}
         </ViewItemContainer>
       </SwipeablePageNavigator>
-    </Layout>
+    </TransitionFriendlyLayout>
   );
 }

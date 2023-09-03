@@ -1,14 +1,18 @@
 import { ParallaxImageContainer } from "components/images/parallax-image/styledComponents";
-import { NAV_HEIGHT } from "components/navigation/navigation.styles";
+import { NAV_HEIGHT } from "components/navigation/navigation.styled";
 import styled from "styled-components";
+
+export const LayoutContainer = styled.div`
+  position: relative;
+  height: auto;
+`;
 
 export const PageContainer = styled.div<{
   $topPadding: boolean;
   $overflow?: string;
 }>`
   width: 100%;
-  min-height: 100%;
-  position: absolute;
+  min-height: calc(100vh - 3rem);
   margin: 0;
   top: 0;
   left: 0;
@@ -42,7 +46,7 @@ export const ViewItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: calc(100vh - 4rem);
+
   width: 95%;
   margin: 0 2.5%;
   @media only screen and (max-width: ${({ theme }) =>

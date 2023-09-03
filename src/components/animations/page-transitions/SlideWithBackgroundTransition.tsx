@@ -6,6 +6,7 @@ import {
 } from "./Transitions.styled";
 import { Direction } from "../../../../utils/helpers/moveThroughArray";
 import { PageTransitionProps } from "./pageTransitions.types";
+import { useRef } from "react";
 
 const TRANSITION_DURATION = 0.4;
 const TRANSITION_DELAY = 0.3;
@@ -37,6 +38,13 @@ const variants = {
   scaleUp: {
     scale: 1,
     y: 0,
+    transition: {
+      duration: TRANSITION_DURATION,
+      delay: TRANSITION_DELAY,
+    },
+  },
+  resetToInitial: {
+    transform: "none",
     transition: {
       duration: TRANSITION_DURATION,
       delay: TRANSITION_DELAY,
@@ -77,13 +85,23 @@ const SlideWithBackgroundTransition = ({
   const { asPath } = useRouter();
   const shouldReduceMotion = useReducedMotion();
   const backgroundImage = `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/images/content/banner1.jpg`;
+  const divRef = useRef<HTMLElement | null>(null);
+  const handleAnimationComplete = () => {
+    if (divRef.current) {
+      setTimeout(() => {
+        divRef.current.style.transform = "none";
+      }, 1500);
+    }
+  };
   return (
     <TransitionEffectContainer>
       <BackgroundLayer $backgroundImage={backgroundImage} />
       <AnimatePresence initial={false} mode="wait">
         <motion.div
+          ref={divRef}
+          className="animation-wrapper"
           key={asPath}
-          variants={!shouldReduceMotion ? variants : null}
+          variants={!shouldReduceMotion ? variants : {}}
           initial={direction === Direction.FORWARD ? "inRight" : "inLeft"}
           animate={["center", "scaleUp"]}
           exit={[
@@ -92,6 +110,7 @@ const SlideWithBackgroundTransition = ({
               ? "outScrollRight"
               : "outScrollLeft",
           ]}
+          onAnimationComplete={handleAnimationComplete}
         >
           {children}
         </motion.div>

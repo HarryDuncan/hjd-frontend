@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { Direction } from "../../../utils/helpers/moveThroughArray";
+import { SwipeableNavigatorContainer } from "./mobile.styled";
 
 interface SwipeablePageNavigatorProps {
   onSwipe: (direction: Direction) => void;
@@ -31,17 +32,12 @@ const SwipeablePageNavigator = ({
   };
 
   return (
-    <div
+    <SwipeableNavigatorContainer
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-      }}
     >
       {children}
-    </div>
+    </SwipeableNavigatorContainer>
   );
 };
 

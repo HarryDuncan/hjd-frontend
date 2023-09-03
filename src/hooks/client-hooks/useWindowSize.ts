@@ -8,6 +8,7 @@ export const WINDOW_TYPE = {
   LAPTOP: "LAPTOP",
   TABLET: "TABLET",
   MOBILE: "MOBILE",
+  SMALL_MOBILE: "SMALL_MOBILE",
 };
 
 type ScreenType = keyof typeof WINDOW_TYPE;
@@ -21,19 +22,22 @@ export const useWindowScreenType = () => {
   } = useWindowState();
 
   return useCallback(() => {
-    if (width >= breakpoints.wideScreen) {
+    if (width > breakpoints.desktop) {
       return WINDOW_TYPE.WIDE_SCREEN;
     }
-    if (width >= breakpoints.desktop) {
+    if (width > breakpoints.laptop) {
       return WINDOW_TYPE.DESKTOP;
     }
-    if (width >= breakpoints.laptop) {
+    if (width > breakpoints.tablet) {
       return WINDOW_TYPE.LAPTOP;
     }
-    if (width > breakpoints.tablet) {
+    if (width >= breakpoints.mobile) {
       return WINDOW_TYPE.TABLET;
     }
-    return WINDOW_TYPE.MOBILE;
+    if (width >= breakpoints.smallMobile) {
+      return WINDOW_TYPE.MOBILE;
+    }
+    return WINDOW_TYPE.SMALL_MOBILE;
   }, [breakpoints, width]);
 };
 

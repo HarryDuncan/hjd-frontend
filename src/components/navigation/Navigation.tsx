@@ -3,7 +3,7 @@ import React, { useCallback } from "react";
 import { DesktopNav } from "./desktop/DesktopNavigation";
 import { MobileNavigation } from "./mobile/MobileNavigation";
 import { LARGE_NAV_WINDOW_SIZES, NAV_THEMES } from "./navigation.constants";
-import { NavBackgroundOverlay, NavigationContainer } from "./navigation.styles";
+import { NavBackgroundOverlay, NavigationContainer } from "./navigation.styled";
 import { useIsNavDark } from "./hooks/useIsNavDark";
 import { useIsNavTop } from "./hooks/useIsNavTop";
 import { NavTheme } from "./navigation.types";
