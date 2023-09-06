@@ -32,14 +32,13 @@ export const ScrollCardGallery = ({
     }
   }, [gridRef, animateOnScroll, setIt, isSet]);
 
-  const imageUrlR = "/images/tech/react.jpg";
   return (
     <Grid ref={gridRef}>
       <GridWrap>
-        {items.map(({ id, title }) => (
+        {items.map(({ id, title, imageUrl }) => (
           <ConfigurableCard
             key={`${id}-${Math.random()}`}
-            cardDetails={{ imageUrl: imageUrlR, title }}
+            cardDetails={{ imageUrl, title }}
           />
         ))}
       </GridWrap>

@@ -30,6 +30,7 @@ const Tech: NextPage = () => {
             index
           ) => (
             <TechSection
+              key={`tech-section-${section}`}
               techCardItems={techCardItems}
               section={section}
               sectionTitle={sectionTitle}
@@ -79,13 +80,16 @@ const useSortTechData = (tech: TechContent[]) => {
     const sectionData = getSectionPositionData();
 
     return sections.map((section) => {
-      const techCardItems = tech.flatMap(({ id, name, category }) =>
+      const techCardItems = tech.flatMap(({ id, name, category, image }) =>
         category && category.toUpperCase() === section
-          ? { id, title: name, imageUrl: "" }
+          ? {
+              id,
+              title: name,
+              imageUrl: `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/images/tech/${image}`,
+            }
           : []
       );
-      const { content, title } =
-        textData.find(({ title }) => title === section) ?? {};
+      const { content } = textData.find(({ title }) => title === section) ?? {};
 
       return {
         section,

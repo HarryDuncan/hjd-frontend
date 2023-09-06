@@ -41,7 +41,7 @@ export interface MaterialConfig {
   id: string;
   materialType: MaterialType;
   materialProps: MaterialConfigProps;
-  blendingConfig: BlendingConfig;
+  blendingConfig: Record<string, unknown>;
 }
 
 export interface BlendingConfig {}

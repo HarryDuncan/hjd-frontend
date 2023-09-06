@@ -4,7 +4,7 @@ import {
   LayoutContainer,
   PageContainer,
 } from "components/containers/Containers";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode } from "react";
 
 export default function TransitionFriendlyLayout({
   children,

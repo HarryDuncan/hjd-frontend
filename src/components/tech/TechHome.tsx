@@ -52,8 +52,8 @@ const useOnScrollEventConfig = (contentHeight: number) => {
       //  console.log("asdasd");
       // const document = event.documentElement.scrollHeight;
       // console.log(document);
-      console.log(event);
-      console.log(contentHeight);
+      // console.log(event);
+      // console.log(contentHeight);
     },
     [contentHeight]
   );

@@ -22,15 +22,18 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-const AppContent = ({ Component, pageProps }) => {
+const AppContent = ({ Component, pageProps }: Partial<AppProps>) => {
   const isSplashShowing = useSplash();
   useIsServerRunning();
-  return (
-    <>
-      <Splash isVisible={isSplashShowing} />
-      <Component {...pageProps} />
-    </>
-  );
+  if (Component) {
+    return (
+      <>
+        <Splash isVisible={isSplashShowing} />
+        <Component {...pageProps} />
+      </>
+    );
+  }
+  return null;
 };
 
 export default MyApp;

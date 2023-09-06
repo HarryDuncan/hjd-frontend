@@ -12,18 +12,33 @@ export const CircleActionButton = forwardRef(
         <ButtonText>{buttonText}</ButtonText>
         <svg className="circle-svg" viewBox="0 0 100 100">
           <defs>
-            <radialGradient
-              id="enter-gradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%"
-            >
-              <stop offset="0%" stopColor="rgba(255,255,255,0.7)" />
-              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-            </radialGradient>
+            <defs>
+              <radialGradient
+                id="enter-gradient"
+                cx="50%"
+                cy="50%"
+                r="50%"
+                fx="50%"
+                fy="50%"
+              >
+                <stop offset="0%" style={{ stopColor: "rgba(96,96,96,0.7)" }} />
+                <stop
+                  offset="25%"
+                  style={{ stopColor: "rgba(74,74,74,0.7)" }}
+                />
+                <stop
+                  offset="50%"
+                  style={{ stopColor: "rgba(57,57,57,0.7)" }}
+                />
+                <stop
+                  offset="100%"
+                  style={{ stopColor: "rgba(27,27,27,0.7)" }}
+                />
+              </radialGradient>
+            </defs>
           </defs>
           <circle
+            stroke="white"
             vectorEffect="non-scaling-stroke"
             cx="50"
             cy="50"

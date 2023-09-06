@@ -16,12 +16,11 @@ export const useIdleTimer = (timeMiliSeconds = DEFAULT_TIME) => {
     clearTimeout(idleTimer);
   }, [idleTimer]);
 
-  const handleUserActivity = () => {
-    setIsIdle(false);
-    resetIdleTimer();
-  };
-
   useEffect(() => {
+    const handleUserActivity = () => {
+      setIsIdle(false);
+      resetIdleTimer();
+    };
     window.addEventListener("mousemove", handleUserActivity);
     window.addEventListener("keydown", handleUserActivity);
 
@@ -32,7 +31,7 @@ export const useIdleTimer = (timeMiliSeconds = DEFAULT_TIME) => {
       window.removeEventListener("keydown", handleUserActivity);
       clearTimeout(idleTimer);
     };
-  }, [timeMiliSeconds, handleUserActivity, resetIdleTimer, idleTimer]);
+  }, [timeMiliSeconds, resetIdleTimer, idleTimer]);
 
   return { isIdle };
 };
