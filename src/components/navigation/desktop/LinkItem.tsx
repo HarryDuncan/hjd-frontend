@@ -16,7 +16,7 @@ interface LinkItemProps {
   title: string;
   link: string;
   filterId: string;
-  filterRef: MutableRefObject<HTMLElement | null>;
+  filterRef: MutableRefObject<SVGFilterElement | null>;
   navTheme: NavTheme;
 }
 

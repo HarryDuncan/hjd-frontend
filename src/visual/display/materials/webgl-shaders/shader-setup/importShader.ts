@@ -1,4 +1,5 @@
 /* eslint import/namespace: ['error', { allowComputed: true }] */
+import { MaterialUniform } from "visual/set-up/config/material/materials.types";
 import * as Shaders from "../shaders";
 
 export const importShader = (
@@ -8,14 +9,14 @@ export const importShader = (
 ): {
   fragmentShader: string;
   vertexShader: string;
-  setUpDefaultUniforms: (() => unknown) | null;
+  setUpDefaultUniforms: ((uniforms: MaterialUniform) => MaterialUniform) | null;
 } => {
   try {
-    // @ts-ignore - not ideal but will replace with build shader
     const {
       fragmentShader: defaultFragmentShader,
       vertexShader,
       defaultUniforms: setUpDefaultUniforms,
+      // @ts-ignore - not ideal but will replace with build shader
     } = Shaders[shaderId];
     if (vertexShaderId) {
       // todo -import vertex shader

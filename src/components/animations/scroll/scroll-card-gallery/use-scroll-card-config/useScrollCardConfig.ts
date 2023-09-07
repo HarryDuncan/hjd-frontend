@@ -7,7 +7,10 @@ export const useScrollCardConfig = (
   configProps: Partial<ScrollGalleryConfig>
 ) =>
   useMemo(() => {
-    const scrollCardConfig = { ...DEFAULT_CONFIG, ...configProps };
+    const scrollCardConfig = {
+      ...DEFAULT_CONFIG,
+      ...configProps,
+    } as ScrollGalleryConfig;
     const { startTrigger, endTrigger } = scrollCardConfig;
     const { startTriggerText, endTriggerText } = formatStartAndEndTriggers(
       startTrigger,

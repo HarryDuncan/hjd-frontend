@@ -48,7 +48,7 @@ export const TechHome = ({ contentHeight }: TechHomeProps) => {
 
 const useOnScrollEventConfig = (contentHeight: number) => {
   const updateOnScroll = useCallback(
-    (scene: Scene, event: Event) => {
+    (_scene: Scene, _event: Event) => {
       //  console.log("asdasd");
       // const document = event.documentElement.scrollHeight;
       // console.log(document);

@@ -1,7 +1,7 @@
 import { CustomAnimationConfig } from "visual/display/animation/animation.types";
 import { LightConfigs } from "visual/display/scene-elements/lights/lights.types";
 import { ThreeDPosition } from "visual/display/helpers/three-dimension-space/position/position.types";
-import { MaterialConfig } from "visual/display/materials/materials.types";
+import { MaterialConfig } from "visual/set-up/config/material/materials.types";
 import { InteractionConfig } from "interaction/interactions.types";
 import { Asset } from "visual/set-up/assets/asset.types";
 import { GeometryConfig } from "../assets/geometry/geometry.types";

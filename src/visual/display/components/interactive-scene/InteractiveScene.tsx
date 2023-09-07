@@ -74,7 +74,7 @@ export class InteractiveScene extends Scene {
     }
   }
 
-  addOnScrollListener(eventFunction) {
+  addOnScrollListener(eventFunction: (scene: Scene, event: Event) => void) {
     window.addEventListener("scroll", (e) => {
       const { scrollY } = window;
       const event = { ...e, scrollY };

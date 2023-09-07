@@ -7,7 +7,7 @@ import { useContentForPage } from "hooks/content/useContentForPage";
 import { useTechData } from "hooks/tech/useTechContent";
 import { TechContent } from "models/tech/tech.types";
 import { NextPage } from "next";
-import { useMemo } from "react";
+import { Ref, useMemo } from "react";
 import { useMeasure } from "react-use";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
 
@@ -22,7 +22,7 @@ const Tech: NextPage = () => {
   return (
     <>
       <TechHome contentHeight={height} />
-      <LongScroll ref={measureRef}>
+      <LongScroll ref={measureRef as Ref<HTMLDivElement>}>
         <TechTitle />
         {sortedTechData.map(
           (

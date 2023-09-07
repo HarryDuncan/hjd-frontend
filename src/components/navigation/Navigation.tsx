@@ -4,7 +4,6 @@ import { DesktopNav } from "./desktop/DesktopNavigation";
 import { MobileNavigation } from "./mobile/MobileNavigation";
 import { LARGE_NAV_WINDOW_SIZES, NAV_THEMES } from "./navigation.constants";
 import { NavBackgroundOverlay, NavigationContainer } from "./navigation.styled";
-import { useIsNavDark } from "./hooks/useIsNavDark";
 import { useIsNavTop } from "./hooks/useIsNavTop";
 import { NavTheme } from "./navigation.types";
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
@@ -29,10 +28,8 @@ const Navigation = () => {
 };
 
 const useNavTheme = () => {
-  const isNavDark = useIsNavDark();
   const isNavTop = useIsNavTop();
-  const navTheme =
-    isNavDark || (!isNavDark && !isNavTop) ? NAV_THEMES.DARK : NAV_THEMES.LIGHT;
+  const navTheme = !isNavTop ? NAV_THEMES.DARK : NAV_THEMES.LIGHT;
   return navTheme as NavTheme;
 };
 

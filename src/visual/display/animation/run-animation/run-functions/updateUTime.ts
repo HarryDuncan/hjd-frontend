@@ -1,10 +1,11 @@
+import { ShaderMeshObject } from "visual/set-up/config/mesh/mesh.types";
 import { shaderAnimationLoop } from "../../animation-functions/animation-loop/shaderAnimationLoop";
-import { AnimatedScene } from "../../animation.types";
+import { AnimatedScene, AnimationProperties } from "../../animation.types";
 
 export const updateUTime = (
   scene: AnimatedScene,
-  animationProperties,
-  animatedObjects
+  animationProperties: AnimationProperties,
+  animatedObjects: ShaderMeshObject[]
 ) => {
   let startTime: number;
   let uTime = 0;

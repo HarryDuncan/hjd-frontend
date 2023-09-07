@@ -8,6 +8,7 @@ import { animateAll } from "./run-functions/animateAll";
 import { getSceneElementByName } from "visual/display/helpers/scene/getSceneElementByName";
 import { updateUTime } from "./run-functions/updateUTime";
 import { chainAnimation } from "./run-functions/chainAnimation";
+import { ShaderMeshObject } from "visual/set-up/config/mesh/mesh.types";
 
 export const runAnimation = (
   scene: AnimatedScene,
@@ -28,7 +29,11 @@ export const runAnimation = (
       chainAnimation(initializedAnimationConfig, animatedObjects);
       break;
     case ANIMATION_FUNCTION_TYPES.UTIME:
-      updateUTime(scene, initializedAnimationConfig, animatedObjects);
+      updateUTime(
+        scene,
+        initializedAnimationConfig.animationProperties,
+        animatedObjects as ShaderMeshObject[]
+      );
       break;
     case ANIMATION_FUNCTION_TYPES.ALL:
     default:

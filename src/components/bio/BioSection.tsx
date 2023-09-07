@@ -10,6 +10,7 @@ import {
   TEXT_TYPE,
 } from "components/animations/scroll/scroll-typography/scrollTypography.consts";
 import { useMemo } from "react";
+import { ScrollTypographyConfig } from "components/animations/scroll/scroll-typography/scrollTypography.types";
 
 interface BioSectionProps {
   image: ImageContent;
@@ -53,11 +54,11 @@ const useBannerSize = () => {
   return { height, bannerConfig };
 };
 
-const useScrollConfig = (index: number) =>
+const useScrollConfig = (index: number): ScrollTypographyConfig =>
   useMemo(() => {
     const scrollConfig = { ...SCROLL_TYPOGRAPHY_CONFIG };
     if (index === 0) {
       scrollConfig.animationType = CHAR_ANIMATIONS.NONE;
     }
-    return scrollConfig;
+    return scrollConfig as ScrollTypographyConfig;
   }, [index]);

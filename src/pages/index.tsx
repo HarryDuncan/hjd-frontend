@@ -18,19 +18,29 @@ const ROUTING_DELAY = 1500;
 const Home: NextPage = () => {
   useSetWindowState();
   const handleRouting = useHandleRouting("bio");
-  const gridRef = useRef<SVGPathElement | null>(null);
+  const enterTransitionRef = useRef<SVGPathElement | null>(null);
   const buttonRef = useRef<HTMLElement | null>(null);
   const onClickAnimation = useOnClickAnimation();
   const [onEnterClicked, setOnEnterClicked] = useState<boolean>(false);
   const fadeOut = useFadeOut();
-  const onEnterClick = () => {
+
+  const onEnterClick = useCallback(() => {
     setOnEnterClicked(true);
-    onClickAnimation(gridRef.current);
-    fadeOut(buttonRef.current);
+    onClickAnimation(enterTransitionRef.current);
+    if (buttonRef.current) {
+      fadeOut(buttonRef.current);
+    }
+
     setTimeout(() => {
       handleRouting();
     }, ROUTING_DELAY);
-  };
+  }, [
+    buttonRef,
+    onClickAnimation,
+    setOnEnterClicked,
+    handleRouting,
+    enterTransitionRef,
+  ]);
   return (
     <FullScreenLayout>
       <CircleActionButton
@@ -52,7 +62,7 @@ const Home: NextPage = () => {
         }}
       >
         <path
-          ref={gridRef}
+          ref={enterTransitionRef}
           className="overlay__path"
           vectorEffect="non-scaling-stroke"
           d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
