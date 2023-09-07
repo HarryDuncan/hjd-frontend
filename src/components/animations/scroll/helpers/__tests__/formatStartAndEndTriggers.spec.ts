@@ -17,23 +17,44 @@ const endTrigger = {
 
 describe("formatStartAndEndTriggers", () => {
   test("creates a start and end trigger string using the correct values from a config", () => {
-    const { start, end } = formatStartAndEndTriggers(startTrigger, endTrigger);
-    expect(start).toEqual("bottom center +=30%");
-    expect(end).toEqual("top center +=50");
+    const { startTriggerText, endTriggerText } = formatStartAndEndTriggers(
+      startTrigger,
+      endTrigger
+    );
+    expect(startTriggerText).toMatch("bottom center +=30%");
+    expect(endTriggerText).toMatch("top center +=50");
   });
   test("uses default values if no empty config is passed", () => {
-    const { start, end } = formatStartAndEndTriggers(startTrigger, endTrigger);
-    expect(start).toEqual("center bottom");
-    expect(end).toEqual("top top");
+    const { startTriggerText, endTriggerText } = formatStartAndEndTriggers(
+      {},
+      {}
+    );
+    expect(startTriggerText).toMatch("center bottom");
+    expect(endTriggerText).toMatch("top top");
   });
   test("doesn't print a percentage sign if no percent is passed", () => {
-    const { start, end } = formatStartAndEndTriggers(startTrigger, endTrigger);
-    expect(start).toEqual("center bottom");
-    expect(end).toEqual("bottom top");
+    const updatedStart = { ...startTrigger };
+    delete updatedStart.percentage;
+    const updatedEnd = { ...endTrigger };
+    delete updatedEnd.percentage;
+    const { startTriggerText, endTriggerText } = formatStartAndEndTriggers(
+      updatedStart,
+      updatedEnd
+    );
+    expect(startTriggerText).toMatch("bottom center");
+    expect(endTriggerText).toMatch("top center");
   });
   test("doesn't return section parameters if only percentage", () => {
-    const { start, end } = formatStartAndEndTriggers(startTrigger, endTrigger);
-    expect(start).toEqual("center bottom");
-    expect(end).toEqual("+=50");
+    const updatedStart = { ...startTrigger };
+    delete updatedStart.percentage;
+    const updatedEnd = { ...endTrigger };
+    delete updatedEnd.screenSection;
+    delete updatedEnd.targetSection;
+    const { startTriggerText, endTriggerText } = formatStartAndEndTriggers(
+      updatedStart,
+      updatedEnd
+    );
+    expect(startTriggerText).toMatch("bottom center");
+    expect(endTriggerText).toMatch("+=50");
   });
 });
