@@ -1,7 +1,6 @@
-import { useGsapScroll } from "components/animations/scroll/useGsapScroll";
 import { LongScroll } from "components/long-scroll/LongScroll";
 import { TechHome } from "components/tech/TechHome";
-import { TechSection } from "components/tech/TechSection";
+import { TechSection } from "components/tech/tech-section/TechSection";
 import { TechTitle } from "components/tech/TechTitle";
 import { TECH_SECTIONS } from "constants/tech.constants";
 import { useContentForPage } from "hooks/content/useContentForPage";
@@ -33,7 +32,6 @@ const Tech: NextPage = () => {
             <TechSection
               key={`tech-section-${section}`}
               techCardItems={techCardItems}
-              section={section}
               sectionTitle={sectionTitle}
               sectionText={sectionText}
               index={index}
@@ -53,8 +51,7 @@ const useLongScroll = () => {
 
 const getSectionPositionData = () => {
   const sections = Object.values(TECH_SECTIONS);
-  const sectionDataObj = {};
-  // add one for the title
+  const sectionDataObj: Record<string, { start: number; end: number }> = {};
   const totalSectionCount = sections.length + 1;
   const sectionPercentage = 100 / totalSectionCount;
   sections.forEach((section, index) => {

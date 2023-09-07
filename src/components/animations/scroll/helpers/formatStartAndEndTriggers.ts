@@ -42,4 +42,4 @@ const formatTrigger = (
 };
 
 const formatPercentage = (percentage: number | undefined) =>
-  !!percentage ? ` +=${percentage}%` : "";
+  percentage !== undefined ? ` +=${percentage}%` : "";

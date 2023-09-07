@@ -19,7 +19,6 @@ export const ScrollTypography = ({
   config = DEFAULT_CONFIG as ScrollTypographyConfig,
 }: ScrollTypographyProps) => {
   const scrollTextRef = useRef<HTMLHeadingElement | null>(null);
-
   const setAnimation = useTypographyAnimations(config);
   useEffect(() => {
     if (scrollTextRef.current) {

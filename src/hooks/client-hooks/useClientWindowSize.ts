@@ -41,7 +41,7 @@ export const useWindowScreenType = () => {
   }, [breakpoints, width]);
 };
 
-export const useWindowSize = () => {
+export const useClientWindowSize = () => {
   const [windowSize, updateWindowSize] = useState<ScreenType>("DESKTOP");
   const getScreenSize = useWindowScreenType();
   useEffect(() => {

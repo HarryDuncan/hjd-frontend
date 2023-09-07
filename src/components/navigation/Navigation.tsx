@@ -1,4 +1,4 @@
-import { useWindowSize } from "hooks/client-hooks/useWindowSize";
+import { useClientWindowSize } from "hooks/client-hooks/useClientWindowSize";
 import React, { useCallback } from "react";
 import { DesktopNav } from "./desktop/DesktopNavigation";
 import { MobileNavigation } from "./mobile/MobileNavigation";
@@ -11,7 +11,7 @@ import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { HoverTitle } from "components/animations/gesture-animations/hover/HoverTitle";
 
 const Navigation = () => {
-  const windowSize = useWindowSize();
+  const windowSize = useClientWindowSize();
   const navTheme = useNavTheme();
   const goToLanding = useGoToLanding();
   return (
