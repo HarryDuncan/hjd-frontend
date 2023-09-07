@@ -2,9 +2,13 @@ import { useCallback, useMemo } from "react";
 import { gsap } from "gsap";
 import { CHAR_ANIMATIONS, DEFAULT_CONFIG } from "../scrollTypography.consts";
 import { ScrollTypographyConfig } from "../scrollTypography.types";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
+export const useTypographyAnimations = (
+  config: Partial<ScrollTypographyConfig>
+) => {
   const formattedTypographyConfig = useFormatTypographyConfig(config);
+  gsap.registerPlugin(ScrollTrigger);
   return useCallback(
     (title: HTMLHeadingElement, chars: NodeListOf<ChildNode>) => {
       const { animationType, startTriggerText, endTriggerText } =
@@ -122,7 +126,9 @@ export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
   );
 };
 
-const useFormatTypographyConfig = (passedConfig: ScrollTypographyConfig) =>
+const useFormatTypographyConfig = (
+  passedConfig: Partial<ScrollTypographyConfig>
+) =>
   useMemo(() => {
     const typographyConfig = { ...DEFAULT_CONFIG, ...passedConfig };
     const { animationType, startTrigger, endTrigger } = typographyConfig;

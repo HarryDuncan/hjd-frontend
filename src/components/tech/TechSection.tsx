@@ -6,7 +6,13 @@ import {
 } from "components/animations/scroll/scroll-typography/scrollTypography.consts";
 import { ScrollTypographyConfig } from "components/animations/scroll/scroll-typography/scrollTypography.types";
 import { ScrollCardGallery } from "components/animations/scroll/scroll-card-gallery/ScrollCardGallery";
-import { CARD_GALLERY_TYPE } from "components/animations/scroll/scroll-card-gallery/scrollCardGallery.consts";
+import { CARD_ANIMATION_TYPE } from "components/animations/scroll/scroll-card-gallery/scrollCardGallery.consts";
+import {
+  WINDOW_TYPE,
+  useWindowScreenType,
+  useWindowSize,
+} from "hooks/client-hooks/useWindowSize";
+import { useMemo } from "react";
 
 const SCROLL_TYPOGRAPHY_CONFIG = {
   animationType: CHAR_ANIMATIONS.MULTI_FLASH,
@@ -35,13 +41,18 @@ export const TechSection = ({
   } as ScrollTypographyConfig;
   const scrollType =
     index % 2 === 0
-      ? CARD_GALLERY_TYPE.WAVE_LEFT
-      : CARD_GALLERY_TYPE.WAVE_RIGHT;
+      ? CARD_ANIMATION_TYPE.WAVE_LEFT
+      : CARD_ANIMATION_TYPE.WAVE_RIGHT;
 
   const isLeft = index % 2 === 0;
+  const scrollCardConfig = useScrollCardConfig();
   return (
     <TechSectionContainer>
-      <ScrollCardGallery items={techCardItems} scrollType={scrollType} />
+      <ScrollCardGallery
+        items={techCardItems}
+        scrollType={scrollType}
+        config={scrollCardConfig}
+      />
       <TechInfoContainer $top={sectionData.start} $isLeft={isLeft}>
         <ScrollTypography text={sectionTitle} />
         <ScrollTypography
@@ -52,4 +63,36 @@ export const TechSection = ({
       </TechInfoContainer>
     </TechSectionContainer>
   );
+};
+
+const useScrollCardConfig = () => {
+  const windowScreenType = useWindowSize();
+  return useMemo(() => {
+    switch (windowScreenType) {
+      case WINDOW_TYPE.MOBILE:
+        return {
+          gridGap: "4rem",
+          gridColumns: 2,
+          gridWidth: "100%",
+          start: "top bottom+=5%",
+          end: "top bottom+=5%",
+        };
+      case WINDOW_TYPE.TABLET:
+      default:
+        return {};
+    }
+  }, [windowScreenType]);
+};
+
+const useScrollTypographyConfig = () => {
+  const windowScreenType = useWindowSize();
+  return useMemo(() => {
+    switch (windowScreenType) {
+      case WINDOW_TYPE.MOBILE:
+        return {};
+      case WINDOW_TYPE.TABLET:
+      default:
+        return {};
+    }
+  }, [windowScreenType]);
 };

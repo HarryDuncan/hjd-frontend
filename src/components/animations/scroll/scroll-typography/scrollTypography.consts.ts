@@ -1,3 +1,5 @@
+import { SECTIONS } from "../scroll.consts";
+
 export const TEXT_TYPE = {
   HEADER: "HEADER",
   TEXT: "TEXT",
@@ -9,11 +11,6 @@ export const CHAR_ANIMATIONS = {
   MULTI_FLASH: "MULTI_FLASH",
   FADE_UP: "FADE_UP",
   NONE: "NONE",
-};
-export const SECTIONS = {
-  BOTTOM: "BOTTOM",
-  TOP: "TOP",
-  CENTER: "CENTER",
 };
 
 export const DEFAULT_CONFIG = {

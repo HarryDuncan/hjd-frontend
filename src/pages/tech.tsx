@@ -1,3 +1,4 @@
+import { useGsapScroll } from "components/animations/scroll/useGsapScroll";
 import { LongScroll } from "components/long-scroll/LongScroll";
 import { TechHome } from "components/tech/TechHome";
 import { TechSection } from "components/tech/TechSection";

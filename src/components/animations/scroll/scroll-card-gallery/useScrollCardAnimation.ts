@@ -1,22 +1,24 @@
-import { useCallback } from "react";
-import { CARD_GALLERY_TYPE } from "./scrollCardGallery.consts";
+import { useCallback, useMemo } from "react";
+import {
+  CARD_ANIMATION_TYPE,
+  DEFAULT_CONFIG,
+  ROTATION_X,
+} from "./scrollCardGallery.consts";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import {
+  CardAnimationType,
+  ScrollGalleryConfig,
+} from "./scrollCardGallery.types";
 
-const GRID_GAP = "8rem";
-const ROTATION_X = 50;
-const DEFAULT_CONFIG = {
-  gridGap: "8rem",
-  gridColumns: 3,
-  gridWidth: "50%",
-  start: "top bottom+=5%",
-  end: "top bottom+=5%",
-};
-export const useScrollCardAnimation = (scrollType) => {
-  const config = DEFAULT_CONFIG;
+export const useScrollCardAnimation = (
+  cardAnimationType: CardAnimationType,
+  config: Partial<ScrollGalleryConfig> = {}
+) => {
+  const scrollConfig = useConfig(config);
   gsap.registerPlugin(ScrollTrigger);
   return useCallback(
-    (grid) => {
+    (grid: HTMLDivElement) => {
       const gridWrap = grid.childNodes;
       const gridItems = gridWrap[0].childNodes;
       if (!gridWrap || !gridItems) return;
@@ -30,12 +32,14 @@ export const useScrollCardAnimation = (scrollType) => {
           scrub: true,
         },
       });
-      switch (scrollType) {
-        case CARD_GALLERY_TYPE.WAVE_LEFT:
-          grid.style.setProperty("--grid-width", "50%");
-          grid.style.setProperty("--grid-item-ratio", "0.8");
-          grid.style.setProperty("--grid-columns", "3");
-          grid.style.setProperty("--grid-gap", GRID_GAP);
+
+      const { gridColumns, gridGap, gridWidth } = scrollConfig;
+      grid.style.setProperty("--grid-width", gridWidth);
+      grid.style.setProperty("--grid-item-ratio", "0.8");
+      grid.style.setProperty("--grid-columns", `${gridColumns}`);
+      grid.style.setProperty("--grid-gap", gridGap);
+      switch (cardAnimationType) {
+        case CARD_ANIMATION_TYPE.WAVE_LEFT:
           timeline.set(gridWrap, {
             transformOrigin: "0% 20%",
             rotationY: 30,
@@ -84,12 +88,8 @@ export const useScrollCardAnimation = (scrollType) => {
           }
 
           break;
-        case CARD_GALLERY_TYPE.WAVE_RIGHT:
+        case CARD_ANIMATION_TYPE.WAVE_RIGHT:
         default:
-          grid.style.setProperty("--grid-width", "50%");
-          grid.style.setProperty("--grid-item-ratio", "0.8");
-          grid.style.setProperty("--grid-columns", "3");
-          grid.style.setProperty("--grid-gap", GRID_GAP);
           timeline.set(gridWrap, {
             transformOrigin: "0% 50%",
             rotationY: -30,
@@ -138,6 +138,9 @@ export const useScrollCardAnimation = (scrollType) => {
           break;
       }
     },
-    [scrollType, config]
+    [cardAnimationType, scrollConfig]
   );
 };
+
+const useConfig = (configProps: Partial<ScrollGalleryConfig>) =>
+  useMemo(() => ({ ...DEFAULT_CONFIG, ...configProps }), [configProps]);
