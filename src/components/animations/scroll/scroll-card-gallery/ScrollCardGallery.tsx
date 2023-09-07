@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Grid, GridWrap } from "./scrollCard.styles";
-import { useScrollCardAnimation } from "./useScrollCardAnimation";
+import { useScrollCardAnimation } from "./use-scroll-card-animation/useScrollCardAnimation";
 import { ConfigurableCard } from "components/card/ConfigurableCard";
 import {
   CardAnimationType,

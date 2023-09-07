@@ -1,39 +1,37 @@
-import { useCallback, useMemo } from "react";
-import {
-  CARD_ANIMATION_TYPE,
-  DEFAULT_CONFIG,
-  ROTATION_X,
-} from "./scrollCardGallery.consts";
+import { useCallback } from "react";
+import { CARD_ANIMATION_TYPE, ROTATION_X } from "../scrollCardGallery.consts";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import {
   CardAnimationType,
   ScrollGalleryConfig,
-} from "./scrollCardGallery.types";
+} from "../scrollCardGallery.types";
+import { useScrollCardConfig } from "../use-scroll-card-config/useScrollCardConfig";
 
 export const useScrollCardAnimation = (
   cardAnimationType: CardAnimationType,
   config: Partial<ScrollGalleryConfig> = {}
 ) => {
-  const scrollConfig = useConfig(config);
+  const { scrollCardConfig, startTriggerText, endTriggerText } =
+    useScrollCardConfig(config);
   gsap.registerPlugin(ScrollTrigger);
   return useCallback(
     (grid: HTMLDivElement) => {
       const gridWrap = grid.childNodes;
       const gridItems = gridWrap[0].childNodes;
       if (!gridWrap || !gridItems) return;
-      // Define GSAP timeline with ScrollTrigger
+
       const timeline = gsap.timeline({
         defaults: { ease: "none" },
         scrollTrigger: {
           trigger: grid,
-          start: "top bottom+=5%",
-          end: "bottom top-=5%",
+          start: startTriggerText,
+          end: endTriggerText,
           scrub: true,
         },
       });
 
-      const { gridColumns, gridGap, gridWidth } = scrollConfig;
+      const { gridColumns, gridGap, gridWidth } = scrollCardConfig;
       grid.style.setProperty("--grid-width", gridWidth);
       grid.style.setProperty("--grid-item-ratio", "0.8");
       grid.style.setProperty("--grid-columns", `${gridColumns}`);
@@ -138,9 +136,6 @@ export const useScrollCardAnimation = (
           break;
       }
     },
-    [cardAnimationType, scrollConfig]
+    [cardAnimationType, scrollCardConfig, startTriggerText, endTriggerText]
   );
 };
-
-const useConfig = (configProps: Partial<ScrollGalleryConfig>) =>
-  useMemo(() => ({ ...DEFAULT_CONFIG, ...configProps }), [configProps]);

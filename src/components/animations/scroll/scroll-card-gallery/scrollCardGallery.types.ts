@@ -6,6 +6,6 @@ export type ScrollGalleryConfig = {
   gridGap: string;
   gridColumns: 3;
   gridWidth: string;
-  start: ScrollTriggerConfig;
-  end: "top bottom+=5%";
+  startTrigger?: ScrollTriggerConfig;
+  endTrigger?: ScrollTriggerConfig;
 };

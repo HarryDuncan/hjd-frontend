@@ -6,8 +6,8 @@ import {
 import { ScrollTriggerConfig } from "../scroll.types";
 
 export const formatStartAndEndTriggers = (
-  startTrigger: Partial<ScrollTriggerConfig>,
-  endTrigger: Partial<ScrollTriggerConfig>
+  startTrigger: Partial<ScrollTriggerConfig> = {},
+  endTrigger: Partial<ScrollTriggerConfig> = {}
 ) => {
   return {
     startTriggerText: formatTrigger(startTrigger, TRIGGER_TYPES.START),
