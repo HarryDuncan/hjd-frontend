@@ -1,6 +1,6 @@
-import { SECTIONS } from "./scroll.consts";
+import { SCROLL_TRIGGER_SECTIONS } from "./scroll.consts";
 
-export type ScrollTriggerSection = keyof typeof SECTIONS;
+export type ScrollTriggerSection = keyof typeof SCROLL_TRIGGER_SECTIONS;
 
 export type ScrollTriggerConfig = {
   targetSection: ScrollTriggerSection;

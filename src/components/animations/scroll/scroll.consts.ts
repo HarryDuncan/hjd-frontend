@@ -1,4 +1,4 @@
-export const SECTIONS = {
+export const SCROLL_TRIGGER_SECTIONS = {
   BOTTOM: "BOTTOM",
   TOP: "TOP",
   CENTER: "CENTER",
