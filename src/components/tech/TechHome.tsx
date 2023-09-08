@@ -3,6 +3,7 @@ import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
 import { useCallback, useMemo } from "react";
 import { Scene } from "three";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
+import { updateUniformByKey } from "visual/display/animation/animation-functions/uniforms/updateUniformByKey";
 import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
 import { CustomAnimationConfig } from "visual/display/animation/animation.types";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
@@ -49,12 +50,15 @@ export const TechHome = ({ contentHeight }: TechHomeProps) => {
 
 const useOnScrollEventConfig = (contentHeight: number) => {
   const updateOnScroll = useCallback(
-    (_scene: Scene, _event: Event) => {
-      //  console.log("asdasd");
-      // const document = event.documentElement.scrollHeight;
-      // console.log(document);
-      // console.log(event);
-      // console.log(contentHeight);
+    (scene: Scene, event: Event) => {
+      const { scrollY } = event;
+      const scrollPercentage = (scrollY / contentHeight) * 30;
+      updateUniformByKey(
+        scene as InteractiveScene,
+        "geometry",
+        "uProgress",
+        scrollPercentage
+      );
     },
     [contentHeight]
   );
