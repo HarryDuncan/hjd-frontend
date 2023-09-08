@@ -2,6 +2,7 @@ import {
   AnimatedScene,
   AnimationConfig,
   AnimationFunctionType,
+  AnimationProperties,
 } from "../animation.types";
 import { ANIMATION_FUNCTION_TYPES } from "../animation.constants";
 import { animateAll } from "./run-functions/animateAll";
@@ -14,7 +15,7 @@ export const runAnimation = (
   scene: AnimatedScene,
   animationFunctionType: AnimationFunctionType,
   targetIdentifier: string,
-  initializedAnimationConfig: AnimationConfig,
+  animationProperties: AnimationProperties,
   animationId: string
 ) => {
   const animatedObjects = getSceneElementByName(scene, targetIdentifier);
@@ -26,17 +27,17 @@ export const runAnimation = (
   }
   switch (animationFunctionType) {
     case ANIMATION_FUNCTION_TYPES.CHAIN:
-      chainAnimation(initializedAnimationConfig, animatedObjects);
+      chainAnimation(animationProperties, animatedObjects);
       break;
     case ANIMATION_FUNCTION_TYPES.UTIME:
       updateUTime(
         scene,
-        initializedAnimationConfig.animationProperties,
+        animationProperties,
         animatedObjects as ShaderMeshObject[]
       );
       break;
     case ANIMATION_FUNCTION_TYPES.ALL:
     default:
-      animateAll(initializedAnimationConfig, animatedObjects);
+      animateAll(animationProperties, animatedObjects);
   }
 };

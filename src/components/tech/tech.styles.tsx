@@ -16,6 +16,7 @@ export const TechTitleContainer = styled.div`
     text-align: center;
     width: 100%;
     color: white;
+    font-weight: ${({ theme }) => theme.font.weight.light};
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {

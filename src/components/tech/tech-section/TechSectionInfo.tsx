@@ -27,15 +27,16 @@ export const TechSectionInfo = ({
 }: TechSectionInfoProps) => {
   const isLeft = index % 2 === 0;
   const scrollConfig = useScrollTypographyConfig();
-
   return (
     <TechInfoContainer $top={sectionData.start} $isLeft={isLeft}>
       <ScrollTypography text={sectionTitle} />
-      <ScrollTypography
-        text={sectionText}
-        textType={TEXT_TYPE.TEXT}
-        config={scrollConfig}
-      />
+      {sectionText.length && (
+        <ScrollTypography
+          text={sectionText}
+          textType={TEXT_TYPE.TEXT}
+          config={scrollConfig}
+        />
+      )}
     </TechInfoContainer>
   );
 };
@@ -46,14 +47,14 @@ const useScrollTypographyConfig = (): ScrollTypographyConfig => {
     const DEFAULT_CONFIG = {
       animationType: CHAR_ANIMATIONS.MULTI_FLASH,
       startTrigger: {
-        targetSection: SCROLL_TRIGGER_SECTIONS.CENTER,
+        targetSection: SCROLL_TRIGGER_SECTIONS.TOP,
         screenSection: SCROLL_TRIGGER_SECTIONS.BOTTOM,
         percentage: 10,
       },
       endTrigger: {
-        targetSection: SCROLL_TRIGGER_SECTIONS.CENTER,
+        targetSection: SCROLL_TRIGGER_SECTIONS.BOTTOM,
         screenSection: SCROLL_TRIGGER_SECTIONS.CENTER,
-        percentage: 10,
+        percentage: 90,
       },
     };
     switch (windowScreenType) {

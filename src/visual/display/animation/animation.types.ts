@@ -16,11 +16,12 @@ export type CustomAnimationConfig = {
   animationId: string;
   animationFunctionType: AnimationFunctionType;
   targetIdentifier: string;
-  animationConfig: AnimationConfig;
+  animationProperties: AnimationProperties;
   isRunning?: boolean;
 };
 
 export interface AnimationPropertiesConfig {
+  animationType: AnimationType;
   animationDurationMilis: number;
   repeatAnimation: boolean;
   animationPauseMilis: number;
@@ -60,8 +61,3 @@ export type AnimationProperties =
   | TrigonometricAnimationConfig;
 
 export type AnimationType = keyof typeof ANIMATION_TYPES;
-
-export interface AnimationConfig {
-  animationType: AnimationType;
-  animationProperties: AnimationProperties;
-}

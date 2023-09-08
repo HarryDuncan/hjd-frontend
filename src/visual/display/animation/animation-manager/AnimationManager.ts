@@ -43,15 +43,15 @@ export class AnimationManager {
     if (!animation) {
       console.warn(`animation: ${animationId} has not been initialized`);
     } else if (animation?.isRunning === false) {
-      const { animationConfig, targetIdentifier, animationFunctionType } =
+      const { animationProperties, targetIdentifier, animationFunctionType } =
         animation;
-      const initializedAnimationConfig = setUpAnimationConfig(animationConfig);
+      const initializedProperties = setUpAnimationConfig(animationProperties);
       animation.isRunning = true;
       runAnimation(
         scene,
         animationFunctionType,
         targetIdentifier,
-        initializedAnimationConfig,
+        initializedProperties,
         animationId
       );
     }
