@@ -27,7 +27,7 @@ export const BackgroundLayer = styled.div<{
   background-repeat: no-repeat;
   background-position: center center;
   z-index: -1;
-  filter: blur(3px) brightness(30%);
+  filter: brightness(90%);
 `;
 export const SoftFadeContainer = styled.div`
   overflow: "hidden";

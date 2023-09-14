@@ -3,12 +3,11 @@ import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
 import { useCallback, useMemo } from "react";
 import { Scene } from "three";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
-import { updateUniformByKey } from "visual/display/animation/animation-functions/uniforms/updateUniformByKey";
+import { updateUniformByKey } from "visual/display/animation/animation-functions/shader-animations/uniforms/updateUniformByKey";
 import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
-import { CustomAnimationConfig } from "visual/display/animation/animation.types";
+import { AnimationConfig } from "visual/display/animation/animation.types";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
-import { SceneData } from "visual/display/components/interactive-scene/types";
-import { animateMarchingCube } from "visual/display/scene-elements/components/marching-cubes/marchingCubeAnimation";
+import { SceneData } from "visual/set-up/config/config.types";
 import { useSceneData } from "visual/set-up/config/useSceneData";
 
 interface TechHomeProps {
@@ -38,7 +37,7 @@ export const TechHome = ({ contentHeight }: TechHomeProps) => {
       },
       interactionEvents: [],
       sceneData,
-      animations: animationConfig as CustomAnimationConfig[],
+      animations: animationConfig as AnimationConfig[],
       events: [onScroll],
     };
   }, [configData, sceneData, onScroll]);

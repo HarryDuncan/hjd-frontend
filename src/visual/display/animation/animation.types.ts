@@ -6,13 +6,14 @@ import {
   TRIG_FUNCTION_TYPES,
 } from "./animation.constants";
 import { Axis } from "../helpers/three-dimension-space/position/position.types";
+import { AnimationLoopConfigItem } from "./animation-functions/shader-animations/animation-loop/animationloop.types";
 
 // to avoid dependency cycle
 export type AnimatedScene = Scene & {
   clock: Clock;
 };
 
-export type CustomAnimationConfig = {
+export type AnimationConfig = {
   animationId: string;
   animationFunctionType: AnimationFunctionType;
   targetIdentifier: string;
@@ -42,6 +43,11 @@ export interface TraversalAnimationConfig extends AnimationPropertiesConfig {
   curve?: Vector3[];
 }
 
+export interface ShaderAnimationConfig extends AnimationPropertiesConfig {
+  snapOnPause?: boolean;
+  animationLoopConfig: AnimationLoopConfigItem[];
+}
+
 export type FallAnimationConfig = AnimationPropertiesConfig;
 
 export type TrigFunctionType = keyof typeof TRIG_FUNCTION_TYPES;
@@ -58,6 +64,7 @@ export type AnimationProperties =
   | RotationAnimationConfig
   | SpinAnimationConfig
   | TraversalAnimationConfig
-  | TrigonometricAnimationConfig;
+  | TrigonometricAnimationConfig
+  | ShaderAnimationConfig;
 
 export type AnimationType = keyof typeof ANIMATION_TYPES;

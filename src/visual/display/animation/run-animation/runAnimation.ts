@@ -1,23 +1,25 @@
 import {
   AnimatedScene,
   AnimationConfig,
-  AnimationFunctionType,
-  AnimationProperties,
+  ShaderAnimationConfig,
 } from "../animation.types";
 import { ANIMATION_FUNCTION_TYPES } from "../animation.constants";
 import { animateAll } from "./run-functions/animateAll";
 import { getSceneElementByName } from "visual/display/helpers/scene/getSceneElementByName";
-import { updateUTime } from "./run-functions/updateUTime";
 import { chainAnimation } from "./run-functions/chainAnimation";
 import { ShaderMeshObject } from "visual/set-up/config/mesh/mesh.types";
+import { runShaderAnimations } from "../animation-functions/shader-animations/runShaderAnimations";
 
 export const runAnimation = (
   scene: AnimatedScene,
-  animationFunctionType: AnimationFunctionType,
-  targetIdentifier: string,
-  animationProperties: AnimationProperties,
+  animationConfig: AnimationConfig,
   animationId: string
 ) => {
+  const {
+    targetIdentifier,
+    animationFunctionType,
+    animationProperties,
+  } = animationConfig;
   const animatedObjects = getSceneElementByName(scene, targetIdentifier);
   if (!animatedObjects.length) {
     console.warn(
@@ -30,9 +32,9 @@ export const runAnimation = (
       chainAnimation(animationProperties, animatedObjects);
       break;
     case ANIMATION_FUNCTION_TYPES.UTIME:
-      updateUTime(
+      runShaderAnimations(
         scene,
-        animationProperties,
+        animationProperties as ShaderAnimationConfig,
         animatedObjects as ShaderMeshObject[]
       );
       break;

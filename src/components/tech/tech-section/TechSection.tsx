@@ -22,6 +22,7 @@ interface TechSectionProps {
   }[];
   index: number;
   sectionData: { start: number; end: number };
+  loadData: boolean;
 }
 
 export const TechSection = ({
@@ -30,6 +31,7 @@ export const TechSection = ({
   techCardItems,
   index,
   sectionData,
+  loadData,
 }: TechSectionProps) => {
   const scrollType =
     index % 2 === 0
@@ -39,17 +41,21 @@ export const TechSection = ({
   const scrollCardConfig = useScrollCardConfig();
   return (
     <TechSectionContainer>
-      <ScrollCardGallery
-        items={techCardItems}
-        scrollType={scrollType as CardAnimationType}
-        config={scrollCardConfig}
-      />
-      <TechSectionInfo
-        sectionTitle={sectionTitle}
-        sectionText={sectionText}
-        sectionData={sectionData}
-        index={index}
-      />
+      {loadData && (
+        <>
+          <ScrollCardGallery
+            items={techCardItems}
+            scrollType={scrollType as CardAnimationType}
+            config={scrollCardConfig}
+          />
+          <TechSectionInfo
+            sectionTitle={sectionTitle}
+            sectionText={sectionText}
+            sectionData={sectionData}
+            index={index}
+          />
+        </>
+      )}
     </TechSectionContainer>
   );
 };

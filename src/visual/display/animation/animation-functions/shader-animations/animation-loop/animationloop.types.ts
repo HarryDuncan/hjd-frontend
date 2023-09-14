@@ -1,8 +1,11 @@
 import { ANIMATION_LOOP_TYPES } from "./animationLoop.consts";
 
 export type AnimationLoopType = keyof typeof ANIMATION_LOOP_TYPES;
-export interface AnimationLoopConfig {
+export interface AnimationLoopConfigItem {
   loopType: AnimationLoopType;
-  duration: number;
+  uniform: string;
+  duration?: number;
   steepness?: number;
+  toMaterial?: string;
+  loopLimit?: number;
 }

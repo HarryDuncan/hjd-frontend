@@ -27,7 +27,9 @@ export const TechTitleContainer = styled.div`
   }
 `;
 
-export const TechSectionContainer = styled.div``;
+export const TechSectionContainer = styled.div`
+  min-height: 100vh;
+`;
 
 const OFFSET = 3;
 export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
