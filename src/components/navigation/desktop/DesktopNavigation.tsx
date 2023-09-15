@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { SITE_PAGES } from "../navigation.constants";
+import { SITE_PAGES } from "../navigation.consts";
 import { NavTheme } from "../navigation.types";
 import { NavItemList } from "./DesktopNavigation.styles";
 import { LinkItem } from "./LinkItem";

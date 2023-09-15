@@ -1,4 +1,4 @@
-import { NAV_THEMES } from "./navigation.constants";
+import { NAV_THEMES } from "./navigation.consts";
 
 export type PageItem = {
   title: string;

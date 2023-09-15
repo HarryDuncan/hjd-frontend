@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { NAV_OVERLAY_HEIGHT } from "../navigation.constants";
+import { NAV_OVERLAY_HEIGHT } from "../navigation.consts";
 
 export const NavItemContainer = styled.div<{
   $isOpen: boolean;
