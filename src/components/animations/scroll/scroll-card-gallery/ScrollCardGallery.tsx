@@ -39,10 +39,7 @@ export const ScrollCardGallery = ({
     <Grid ref={gridRef}>
       <GridWrap>
         {items.map(({ id, title, imageUrl }) => (
-          <ConfigurableCard
-            key={`${id}-${Math.random()}`}
-            cardDetails={{ imageUrl, title }}
-          />
+          <ConfigurableCard key={`${id}`} cardDetails={{ imageUrl, title }} />
         ))}
       </GridWrap>
     </Grid>
