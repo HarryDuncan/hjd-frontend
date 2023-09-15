@@ -2,60 +2,19 @@ import { useCallback, useMemo } from "react";
 import { gsap } from "gsap";
 import { CHAR_ANIMATIONS, DEFAULT_CONFIG } from "../scrollTypography.consts";
 import { ScrollTypographyConfig } from "../scrollTypography.types";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { formatStartAndEndTriggers } from "../../helpers/formatStartAndEndTriggers";
 
-export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
+export const useTypographyAnimations = (
+  config: Partial<ScrollTypographyConfig>
+) => {
   const formattedTypographyConfig = useFormatTypographyConfig(config);
+  gsap.registerPlugin(ScrollTrigger);
   return useCallback(
     (title: HTMLHeadingElement, chars: NodeListOf<ChildNode>) => {
       const { animationType, startTriggerText, endTriggerText } =
         formattedTypographyConfig;
       switch (animationType) {
-        case CHAR_ANIMATIONS.FADE_UP:
-          gsap.fromTo(
-            chars,
-            {
-              "will-change": "opacity, transform",
-              opacity: 0,
-            },
-            {
-              ease: "power4",
-              opacity: 1,
-              scale: 1,
-              rotation: 0,
-              stagger: 0.4,
-              scrollTrigger: {
-                trigger: title,
-                start: "center+=10% bottom",
-                end: "+=30%",
-                scrub: true,
-              },
-            }
-          );
-          break;
-        case CHAR_ANIMATIONS.FLASH_IN:
-          gsap.fromTo(
-            chars,
-            {
-              "will-change": "opacity, transform",
-              opacity: 0,
-              scale: 0.6,
-              rotationZ: () => gsap.utils.random(-20, 20),
-            },
-            {
-              ease: "power4",
-              opacity: 1,
-              scale: 1,
-              rotation: 0,
-              stagger: 0.4,
-              scrollTrigger: {
-                trigger: title,
-                start: "center+=20% bottom",
-                end: "+=50%",
-                scrub: true,
-              },
-            }
-          );
-          break;
         case CHAR_ANIMATIONS.MULTI_FLASH:
           gsap.fromTo(
             chars,
@@ -122,17 +81,22 @@ export const useTypographyAnimations = (config: ScrollTypographyConfig) => {
   );
 };
 
-const useFormatTypographyConfig = (passedConfig: ScrollTypographyConfig) =>
+const useFormatTypographyConfig = (
+  passedConfig: Partial<ScrollTypographyConfig>
+) =>
   useMemo(() => {
-    const typographyConfig = { ...DEFAULT_CONFIG, ...passedConfig };
+    const typographyConfig = {
+      ...DEFAULT_CONFIG,
+      ...passedConfig,
+    } as ScrollTypographyConfig;
     const { animationType, startTrigger, endTrigger } = typographyConfig;
+    const { startTriggerText, endTriggerText } = formatStartAndEndTriggers(
+      startTrigger,
+      endTrigger
+    );
     return {
       animationType,
-      startTriggerText: `${startTrigger?.targetSection.toLowerCase()} ${startTrigger?.screenSection.toLowerCase()} +=${
-        startTrigger.percentage
-      }%`,
-      endTriggerText: `${endTrigger?.targetSection.toLowerCase()} ${endTrigger?.screenSection.toLowerCase()} +=${
-        endTrigger.percentage
-      }%`,
+      startTriggerText,
+      endTriggerText,
     };
   }, [passedConfig]);

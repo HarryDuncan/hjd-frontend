@@ -11,17 +11,12 @@ import { IconContainer } from "./Icons.styles";
 import {
   ExitIconProps,
   IconProps,
+  IconTypes,
   OnClickFunction,
   OnIconClick,
   ScrollIconProps,
 } from "./Icons.types";
 import { HoverImage } from "components/animations/gesture-animations/hover/HoverImage";
-
-export enum IconTypes {
-  EXIT = "EXIT",
-  CHEVRON_LEFT = "CHEVRON_LEFT",
-  CHEVRON_RIGHT = "CHEVRON_RIGHT",
-}
 
 const ExitIcon = ({ onClick }: ExitIconProps) => {
   const { position, mobile } = EXIT_POSITIONS;

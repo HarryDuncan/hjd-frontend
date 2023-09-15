@@ -28,7 +28,7 @@ export const BANNER_IMAGE_HOVER_CONFIG_MOBILE = {
 export const SCROLL_LEFT_POSITIONS = {
   position: {
     positionType: "absolute",
-    top: "55%",
+    top: "205%",
     left: "3%",
   },
   mobile: {
@@ -41,7 +41,7 @@ export const SCROLL_LEFT_POSITIONS = {
 export const SCROLL_RIGHT_POSITIONS = {
   position: {
     positionType: "absolute",
-    top: "55%",
+    top: "205%",
     right: "3%",
   },
   mobile: {
@@ -53,7 +53,7 @@ export const SCROLL_RIGHT_POSITIONS = {
 export const EXIT_POSITIONS = {
   position: {
     positionType: "absolute",
-    top: "6rem",
+    top: "2rem",
     right: "3%",
   },
   mobile: {

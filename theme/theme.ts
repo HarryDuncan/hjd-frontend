@@ -27,13 +27,7 @@ export const THEME: DefaultTheme = {
                 rgba(219, 219, 219, 1) 50%,
                 rgba(255, 255, 255, 1) 100%
               );`,
-      dark: `linear-gradient(
-                157deg,
-                rgba(96, 96, 96, 1) 0%,
-                rgba(74, 74, 74, 1) 0%,
-                rgba(57, 57, 57, 1) 0%,
-                rgba(27, 27, 27, 1) 100%
-              );`,
+      dark: `linear-gradient(157deg,rgba(96, 96, 96, 1) 0%,rgba(74, 74, 74, 1) 0%,rgba(57, 57, 57, 1) 0%,rgba(27, 27, 27, 1) 100%);`,
     },
   },
   font: {

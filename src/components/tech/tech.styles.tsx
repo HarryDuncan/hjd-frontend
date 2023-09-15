@@ -16,6 +16,7 @@ export const TechTitleContainer = styled.div`
     text-align: center;
     width: 100%;
     color: white;
+    font-weight: ${({ theme }) => theme.font.weight.light};
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
@@ -26,7 +27,9 @@ export const TechTitleContainer = styled.div`
   }
 `;
 
-export const TechSectionContainer = styled.div``;
+export const TechSectionContainer = styled.div`
+  min-height: 100vh;
+`;
 
 const OFFSET = 3;
 export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
@@ -40,6 +43,7 @@ export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
     color: white;
     margin: 0 auto;
     text-align: center;
+    font-weight: ${({ theme }) => theme.font.weight.light};
   }
   ${ScrolledTypographyText} {
     color: white;
@@ -49,5 +53,19 @@ export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
     white-space: pre-wrap;
     position: relative;
     text-align: center;
+  }
+
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
+    top: ${({ $top }) => $top}%;
+    left: 1%;
+    width: 98%;
+
+    ${ScrolledTypographyHeader} {
+      font-size: 3rem;
+    }
+    ${ScrolledTypographyText} {
+      font-size: 1rem;
+    }
   }
 `;

@@ -19,6 +19,7 @@ export const LinkTreeContainer = styled.div`
 `;
 
 export const LinkTreeItem = styled.div`
+  z-index: 4;
   & a {
     text-decoration: none;
   }

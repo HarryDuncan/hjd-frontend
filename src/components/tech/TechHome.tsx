@@ -3,10 +3,11 @@ import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
 import { useCallback, useMemo } from "react";
 import { Scene } from "three";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
-import { CustomAnimationConfig } from "visual/display/animation/animation.types";
+import { updateUniformByKey } from "visual/display/animation/animation-functions/shader-animations/uniforms/updateUniformByKey";
+import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
+import { AnimationConfig } from "visual/display/animation/animation.types";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
-import { SceneData } from "visual/display/components/interactive-scene/types";
-import { animateMarchingCube } from "visual/display/scene-elements/components/marching-cubes/marchingCubeAnimation";
+import { SceneData } from "visual/set-up/config/config.types";
 import { useSceneData } from "visual/set-up/config/useSceneData";
 
 interface TechHomeProps {
@@ -31,12 +32,12 @@ export const TechHome = ({ contentHeight }: TechHomeProps) => {
     return {
       sceneFunctions: {
         onTimeUpdate: (scene: InteractiveScene) => {
-          animateMarchingCube(scene);
+          startSceneElementAnimations(scene);
         },
       },
       interactionEvents: [],
       sceneData,
-      animations: animationConfig as CustomAnimationConfig[],
+      animations: animationConfig as AnimationConfig[],
       events: [onScroll],
     };
   }, [configData, sceneData, onScroll]);
@@ -49,11 +50,14 @@ export const TechHome = ({ contentHeight }: TechHomeProps) => {
 const useOnScrollEventConfig = (contentHeight: number) => {
   const updateOnScroll = useCallback(
     (scene: Scene, event: Event) => {
-      //  console.log("asdasd");
-      // const document = event.documentElement.scrollHeight;
-      // console.log(document);
-      console.log(event);
-      console.log(contentHeight);
+      const { scrollY } = event as Event & { scrollY: number };
+      const scrollPercentage = (scrollY / contentHeight) * 30;
+      updateUniformByKey(
+        scene as InteractiveScene,
+        "geometry",
+        "uProgress",
+        scrollPercentage
+      );
     },
     [contentHeight]
   );

@@ -57,7 +57,7 @@ export const ButtonText = styled.h2`
   grid-area: 1 / 1 / -1 / -1;
   display: block;
   padding: 0 0.5rem;
-  color: black;
+  color: white;
   text-transform: uppercase;
   font-size: 5rem;
   z-index: 5;

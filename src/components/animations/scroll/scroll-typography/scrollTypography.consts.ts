@@ -1,3 +1,5 @@
+import { SCROLL_TRIGGER_SECTIONS } from "../scroll.consts";
+
 export const TEXT_TYPE = {
   HEADER: "HEADER",
   TEXT: "TEXT",
@@ -10,22 +12,17 @@ export const CHAR_ANIMATIONS = {
   FADE_UP: "FADE_UP",
   NONE: "NONE",
 };
-export const SECTIONS = {
-  BOTTOM: "BOTTOM",
-  TOP: "TOP",
-  CENTER: "CENTER",
-};
 
 export const DEFAULT_CONFIG = {
   animationType: CHAR_ANIMATIONS.MULTI_FLASH,
   startTrigger: {
-    targetSection: SECTIONS.CENTER,
-    screenSection: SECTIONS.BOTTOM,
+    targetSection: SCROLL_TRIGGER_SECTIONS.CENTER,
+    screenSection: SCROLL_TRIGGER_SECTIONS.BOTTOM,
     percentage: 10,
   },
   endTrigger: {
-    targetSection: SECTIONS.CENTER,
-    screenSection: SECTIONS.CENTER,
+    targetSection: SCROLL_TRIGGER_SECTIONS.CENTER,
+    screenSection: SCROLL_TRIGGER_SECTIONS.CENTER,
     percentage: 10,
   },
 };

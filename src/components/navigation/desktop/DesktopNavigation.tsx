@@ -9,7 +9,7 @@ interface DesktopNavProps {
 }
 
 export const DesktopNav = ({ navTheme }: DesktopNavProps) => {
-  const filterRef = useRef();
+  const filterRef = useRef<SVGFilterElement | null>(null);
   return (
     <NavItemList>
       <svg className="hidden">

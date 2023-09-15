@@ -6,31 +6,41 @@ import type { NextPage } from "next";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
 import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
-import { CustomAnimationConfig } from "visual/display/animation/animation.types";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
-import { SceneData } from "visual/display/components/interactive-scene/types";
 import { useSceneData } from "visual/set-up/config/useSceneData";
 import { gsap } from "gsap";
 import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
 import { useFadeOut } from "components/animations/gsap-timelines/useFadeOut";
+import { AnimationConfig } from "visual/display/animation/animation.types";
+import { SceneData } from "visual/set-up/config/config.types";
 
 const ROUTING_DELAY = 1500;
 const Home: NextPage = () => {
   useSetWindowState();
   const handleRouting = useHandleRouting("bio");
-  const gridRef = useRef<SVGPathElement | null>(null);
+  const enterTransitionRef = useRef<SVGPathElement | null>(null);
   const buttonRef = useRef<HTMLElement | null>(null);
   const onClickAnimation = useOnClickAnimation();
   const [onEnterClicked, setOnEnterClicked] = useState<boolean>(false);
   const fadeOut = useFadeOut();
-  const onEnterClick = () => {
+
+  const onEnterClick = useCallback(() => {
     setOnEnterClicked(true);
-    onClickAnimation(gridRef.current);
-    fadeOut(buttonRef.current);
+    onClickAnimation(enterTransitionRef.current);
+    if (buttonRef.current) {
+      fadeOut(buttonRef.current);
+    }
+
     setTimeout(() => {
       handleRouting();
     }, ROUTING_DELAY);
-  };
+  }, [
+    buttonRef,
+    onClickAnimation,
+    setOnEnterClicked,
+    handleRouting,
+    enterTransitionRef,
+  ]);
   return (
     <FullScreenLayout>
       <CircleActionButton
@@ -52,7 +62,7 @@ const Home: NextPage = () => {
         }}
       >
         <path
-          ref={gridRef}
+          ref={enterTransitionRef}
           className="overlay__path"
           vectorEffect="non-scaling-stroke"
           d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
@@ -109,7 +119,7 @@ const HomeSceneContent = () => {
       },
       interactionEvents: [],
       sceneData,
-      animations: animationConfig as CustomAnimationConfig[],
+      animations: animationConfig as AnimationConfig[],
       events: [],
     };
   }, [configData, sceneData]);

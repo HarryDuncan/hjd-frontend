@@ -6,10 +6,12 @@ import {
 import { Clock, Scene } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { AnimationManager } from "visual/display/animation/animation-manager/AnimationManager";
-import { CustomAnimationConfig } from "visual/display/animation/animation.types";
+import { AnimationConfig } from "visual/display/animation/animation.types";
+import { ENGINE_EVENTS } from "visual/display/engine/engine.consts";
 
 export type InteractiveSceneFunctions = {
-  onTimeUpdate: (material: InteractiveScene) => void;
+  onTimeUpdate?: (scene: InteractiveScene) => void;
+  onTriggeredUpdate?: (scene: InteractiveScene) => void;
 };
 
 export type SceneInteraction = InteractionConfig & SceneInteractionEvent;
@@ -26,27 +28,38 @@ export class InteractiveScene extends Scene {
 
   orbitControls: OrbitControls | null;
 
+  guid: string;
+
   eventsSet: boolean;
 
   constructor(
     sceneFunctions: InteractiveSceneFunctions,
     eventConfig: EventConfig[],
-    animationConfig: CustomAnimationConfig[]
+    animationConfig: AnimationConfig[]
   ) {
     super();
+    this.guid = "";
     this.sceneFunctions = sceneFunctions;
     this.clock = new Clock();
-    this.bindMainFunctionFunctions();
+    this.bindExecutionFunctions();
     this.addEvents(eventConfig);
     this.orbitControls = null;
     this.animationManager = new AnimationManager(animationConfig);
     this.eventsSet = false;
   }
 
-  bindMainFunctionFunctions() {
-    document.addEventListener("scene:update", () =>
-      this.sceneFunctions.onTimeUpdate(this)
-    );
+  bindExecutionFunctions() {
+    const { onTimeUpdate, onTriggeredUpdate } = this.sceneFunctions;
+    if (onTimeUpdate) {
+      document.addEventListener(ENGINE_EVENTS.UPDATE_SCENE, () =>
+        onTimeUpdate(this)
+      );
+    }
+    if (onTriggeredUpdate) {
+      document.addEventListener(ENGINE_EVENTS.TIGGERED_UPDATE, () =>
+        onTriggeredUpdate(this)
+      );
+    }
   }
 
   addInteractionEvents(interactionEvents: SceneInteraction[]) {
@@ -74,7 +87,7 @@ export class InteractiveScene extends Scene {
     }
   }
 
-  addOnScrollListener(eventFunction) {
+  addOnScrollListener(eventFunction: (scene: Scene, event: Event) => void) {
     window.addEventListener("scroll", (e) => {
       const { scrollY } = window;
       const event = { ...e, scrollY };
@@ -82,7 +95,7 @@ export class InteractiveScene extends Scene {
     });
   }
 
-  addAnimations(animations: CustomAnimationConfig[]) {
+  addAnimations(animations: AnimationConfig[]) {
     this.animationManager.initializeAnimations(animations);
   }
 

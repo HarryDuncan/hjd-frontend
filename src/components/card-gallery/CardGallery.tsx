@@ -62,7 +62,7 @@ const useLoadMoreOnScroll = (
     if (y >= height - 200) {
       setItemsDisplayed((i) => i + Number(loadMoreProps?.loadMoreSize ?? 0));
     }
-  }, [y]);
+  }, [y, height, loadMoreProps]);
 
   return {
     displayedItems: items.slice(0, itemsDisplayed),

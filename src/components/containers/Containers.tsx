@@ -1,5 +1,6 @@
 import { ParallaxImageContainer } from "components/images/parallax-image/styledComponents";
 import { NAV_HEIGHT } from "components/navigation/navigation.styled";
+import { MainTitle } from "components/text/Text";
 import styled from "styled-components";
 
 export const LayoutContainer = styled.div`
@@ -67,6 +68,12 @@ export const ViewItemDetailsContainer = styled.div`
   text-align: center;
   width: 50%;
   margin: 0 3.5rem;
+  ${MainTitle} {
+    @media only screen and (max-width: ${({ theme }) =>
+        theme.breakpoints.mobile}px) {
+      font-size: 3rem;
+    }
+  }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     width: 100%;

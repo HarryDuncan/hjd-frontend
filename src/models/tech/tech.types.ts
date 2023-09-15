@@ -4,6 +4,7 @@ export interface TechContent {
   blurb: string;
   skill: number;
   category: string;
+  image: string;
 }
 
 export interface ReturnedTechData {

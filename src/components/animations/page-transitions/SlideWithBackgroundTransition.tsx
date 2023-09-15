@@ -6,7 +6,7 @@ import {
 } from "./Transitions.styled";
 import { Direction } from "../../../../utils/helpers/moveThroughArray";
 import { PageTransitionProps } from "./pageTransitions.types";
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 
 const TRANSITION_DURATION = 0.4;
 const TRANSITION_DELAY = 0.3;
@@ -85,14 +85,14 @@ const SlideWithBackgroundTransition = ({
   const { asPath } = useRouter();
   const shouldReduceMotion = useReducedMotion();
   const backgroundImage = `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/images/content/banner1.jpg`;
-  const divRef = useRef<HTMLElement | null>(null);
-  const handleAnimationComplete = () => {
-    if (divRef.current) {
-      setTimeout(() => {
+  const divRef = useRef<HTMLDivElement | null>(null);
+  const handleAnimationComplete = useCallback(() => {
+    setTimeout(() => {
+      if (divRef.current !== null) {
         divRef.current.style.transform = "none";
-      }, 1500);
-    }
-  };
+      }
+    }, 1500);
+  }, [divRef]);
   return (
     <TransitionEffectContainer>
       <BackgroundLayer $backgroundImage={backgroundImage} />

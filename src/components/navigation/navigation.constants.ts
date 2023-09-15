@@ -1,4 +1,4 @@
-import { WINDOW_TYPE } from "hooks/client-hooks/useWindowSize";
+import { WINDOW_TYPE } from "hooks/client-hooks/useClientWindowSize";
 
 export const SITE_PAGES = [
   { title: "Bio", link: "/bio" },

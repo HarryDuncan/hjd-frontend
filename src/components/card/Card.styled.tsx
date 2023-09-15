@@ -48,6 +48,11 @@ export const ConfigurableCardWrapper = styled.div`
       animation: ${showTitle} 500ms 1 forwards;
     }
   }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
+    width: 8rem;
+    height: 8rem;
+  }
 `;
 export const CardWrapper = styled.div`
   box-sizing: inherit;

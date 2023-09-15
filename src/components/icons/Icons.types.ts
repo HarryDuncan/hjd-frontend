@@ -1,15 +1,19 @@
 import { Direction } from "../../../utils/helpers/moveThroughArray";
-import { IconTypes } from "./Icons.consts";
 
 export type OnScrollFunction = (direction: Direction) => void;
 export type OnClickFunction = () => void;
 export type OnIconClick = OnScrollFunction | OnClickFunction;
 
+export enum IconTypes {
+  EXIT = "EXIT",
+  CHEVRON_LEFT = "CHEVRON_LEFT",
+  CHEVRON_RIGHT = "CHEVRON_RIGHT",
+}
+
 export interface IconProps {
   type: IconTypes;
   onClick: OnIconClick;
   hasGesture: boolean;
-  ref?;
 }
 
 export interface ScrollIconProps {
@@ -18,7 +22,6 @@ export interface ScrollIconProps {
 
 export interface ExitIconProps {
   onClick: OnClickFunction;
-  ref?;
 }
 
 export type IconPosition = {
