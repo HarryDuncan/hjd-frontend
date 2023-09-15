@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { NAV_OVERLAY_HEIGHT } from "./navigation.constants";
+import { NAV_OVERLAY_HEIGHT } from "./navigation.consts";
 
 export const NAV_HEIGHT = "8vh";
 
@@ -49,7 +49,7 @@ export const NavBackgroundOverlay = styled.div<{ $isOpen?: boolean }>`
   background: ${({ theme }) => theme.colors.gradients.dark};
   opacity: 0.95;
   animation-name: ${({ $isOpen }) => ($isOpen ? growNav : shrinkNav)};
-  animation-duration: 0.1s;
+  animation-duration: 0.6s;
   animation-fill-mode: forwards;
   backdrop-filter: blur(2005px);
   @media only screen and (max-width: ${({ theme }) =>

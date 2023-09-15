@@ -9,7 +9,7 @@ import React, {
 import { NavItem, NavItemLabel, NavItemLink } from "./DesktopNavigation.styles";
 import { useActiveNav } from "../hooks/useActiveNav";
 import { NavTheme } from "../navigation.types";
-import { NAV_THEMES } from "../navigation.constants";
+import { NAV_THEMES } from "../navigation.consts";
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
 
 interface LinkItemProps {
