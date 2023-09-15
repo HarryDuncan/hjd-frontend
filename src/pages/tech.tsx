@@ -113,7 +113,8 @@ const initialState = Object.keys(TECH_SECTIONS).reduce(
 );
 
 const useLoadSectionsOnScroll = (scrollContainerHeight: number) => {
-  const [sectionLoadingData, setSectionLoadingData] = useState(initialState);
+  const [sectionLoadingData, setSectionLoadingData] =
+    useState<Record<string, boolean>>(initialState);
   const scrollY = useOnScroll();
   useEffect(() => {
     const { sectionData, totalSectionCount } = getSectionPositionData();

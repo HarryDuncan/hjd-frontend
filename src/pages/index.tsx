@@ -6,13 +6,13 @@ import type { NextPage } from "next";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
 import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
-import { CustomAnimationConfig } from "visual/display/animation/animation.types";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
-import { SceneData } from "visual/display/components/interactive-scene/types";
 import { useSceneData } from "visual/set-up/config/useSceneData";
 import { gsap } from "gsap";
 import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
 import { useFadeOut } from "components/animations/gsap-timelines/useFadeOut";
+import { AnimationConfig } from "visual/display/animation/animation.types";
+import { SceneData } from "visual/set-up/config/config.types";
 
 const ROUTING_DELAY = 1500;
 const Home: NextPage = () => {
@@ -119,7 +119,7 @@ const HomeSceneContent = () => {
       },
       interactionEvents: [],
       sceneData,
-      animations: animationConfig as CustomAnimationConfig[],
+      animations: animationConfig as AnimationConfig[],
       events: [],
     };
   }, [configData, sceneData]);

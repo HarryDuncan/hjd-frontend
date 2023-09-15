@@ -5,9 +5,7 @@ import { useLinkTree } from "hooks/content/useLinkTree";
 import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
 import { useMemo } from "react";
 import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
-import { CustomAnimationConfig } from "visual/display/animation/animation.types";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
-import { SceneData } from "visual/display/components/interactive-scene/types";
 import { useSceneData } from "visual/set-up/config/useSceneData";
 
 const Link = () => {
@@ -40,13 +38,13 @@ const LinkTreeContent = () => {
       },
       interactionEvents: [],
       sceneData,
-      animations: animationConfig as CustomAnimationConfig[],
+      animations: animationConfig,
       events: [],
     };
   }, [configData, sceneData]);
 
   return sceneData !== null && sceneParameters !== null ? (
-    <DynamicScene {...sceneParameters} sceneData={sceneData as SceneData} />
+    <DynamicScene {...sceneParameters} sceneData={sceneData} />
   ) : null;
 };
 

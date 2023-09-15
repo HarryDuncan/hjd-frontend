@@ -50,7 +50,7 @@ export const TechHome = ({ contentHeight }: TechHomeProps) => {
 const useOnScrollEventConfig = (contentHeight: number) => {
   const updateOnScroll = useCallback(
     (scene: Scene, event: Event) => {
-      const { scrollY } = event;
+      const { scrollY } = event as Event & { scrollY: number };
       const scrollPercentage = (scrollY / contentHeight) * 30;
       updateUniformByKey(
         scene as InteractiveScene,

@@ -7,7 +7,8 @@ import { ViewItemDetailsContainer } from "components/containers/Containers";
 import { ContentSubText, ContentText, MainTitle } from "components/text/Text";
 import { useRouter } from "next/router";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
-import { Icon, IconTypes } from "components/icons/Icons";
+import { Icon } from "components/icons/Icons";
+import { IconTypes } from "components/icons/Icons.types";
 
 const rootUrl = "/images/shop/";
 const ProductDetails = () => {
