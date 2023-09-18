@@ -1,9 +1,9 @@
+import { useMemo } from "react";
 import FullScreenLayout from "components/layout/FullScreenLayout";
-import { LinkTree } from "components/link-tree/LinkTree";
+import { LinkTree } from "views/link-tree/LinkTree";
 import { DynamicScene } from "components/visual-components/DynamicInteractiveNode";
 import { useLinkTree } from "hooks/content/useLinkTree";
 import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
-import { useMemo } from "react";
 import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
 import { useSceneData } from "visual/set-up/config/useSceneData";
