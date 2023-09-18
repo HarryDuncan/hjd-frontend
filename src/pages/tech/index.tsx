@@ -24,7 +24,7 @@ const Tech: NextPage = () => {
   useLoadPageOnTop();
   const sectionLoadingStatus = useLoadSectionsOnScroll(height);
   return (
-    <FullScreenLayout>
+    <FullScreenLayout showNav={false}>
       <TechHome contentHeight={height} />
       <LongScroll ref={measureRef as Ref<HTMLDivElement>}>
         <TechTitle />

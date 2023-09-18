@@ -4,8 +4,10 @@ import { ReactNode } from "react";
 
 export default function FullScreenLayout({
   children,
+  showNav = true,
 }: {
   children: ReactNode;
+  showNav?: boolean;
 }) {
   return (
     <PageContainer
@@ -13,7 +15,7 @@ export default function FullScreenLayout({
       $overflow="hidden"
       className="page-container"
     >
-      <DynamicInvisibleNavigation />
+      {showNav && <DynamicInvisibleNavigation />}
       {children}
     </PageContainer>
   );
