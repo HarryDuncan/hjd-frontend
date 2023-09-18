@@ -5,3 +5,5 @@ export const TECH_SECTIONS = {
   CICD: "CICD",
   FAVOURITES: "FAVOURITES",
 };
+
+export const TECH_IMAGE_PATH = "/images/tech/";

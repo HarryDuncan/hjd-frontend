@@ -6,7 +6,7 @@ import Layout from "components/layout/DefaultLayout";
 import {
   BIO_PAGE_SECTIONS,
   IMAGE_CONTENT_SECTIONS,
-} from "constants/bio.constants";
+} from "views/bio/bio.constants";
 
 import { useContentForPage } from "hooks/content/useContentForPage";
 import type { NextPage } from "next";

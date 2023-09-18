@@ -54,7 +54,7 @@ export default class MyDocument extends Document {
           />
           <link
             rel="preload"
-            href={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}fonts/Harryduncan.otf`}
+            href={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}/fonts/Harryduncan.otf`}
             as="font"
             crossOrigin=""
             type="font/otf"

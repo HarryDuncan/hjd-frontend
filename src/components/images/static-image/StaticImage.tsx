@@ -24,12 +24,17 @@ export const StaticImage = ({
     setImageDimensions({ height, width });
     setIsImageLoaded(true);
   };
+  const imageLoader = ({ src }: { src: string }) => {
+    return `${process.env.NEXT_PUBLIC_CONTENT_ROOT}${src}`;
+  };
+
   return (
     <ImageContainer $height={imageDimensions?.height}>
       {!isImageLoaded && <LoadingSvg />}
       <StyledImage
+        loader={imageLoader}
         alt={imageTitle}
-        src={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}${imageUrl}`}
+        src={imageUrl}
         fill
         onLoadingComplete={onLoadingComplete}
       />
