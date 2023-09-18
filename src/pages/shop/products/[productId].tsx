@@ -1,6 +1,5 @@
 import ViewItemLayout from "components/layout/ViewItemLayout";
 import { useProductData } from "hooks/shop/useProductData";
-import { Direction } from "../../../../utils/helpers/moveThroughArray";
 import { useScrollProducts } from "hooks/shop/useScrollProducts";
 import { useCallback, useState } from "react";
 import { ViewItemDetailsContainer } from "components/containers/Containers";
@@ -9,6 +8,7 @@ import { useRouter } from "next/router";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
 import { Icon } from "components/icons/Icons";
 import { IconTypes } from "components/icons/Icons.types";
+import { Direction } from "utils/moveThroughArray";
 
 const rootUrl = "/images/shop/";
 const ProductDetails = () => {

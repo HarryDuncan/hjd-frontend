@@ -4,9 +4,10 @@ import {
   BackgroundLayer,
   TransitionEffectContainer,
 } from "./Transitions.styled";
-import { Direction } from "../../../../utils/helpers/moveThroughArray";
+
 import { PageTransitionProps } from "./pageTransitions.types";
 import { useCallback, useRef } from "react";
+import { Direction } from "utils/moveThroughArray";
 
 const TRANSITION_DURATION = 0.4;
 const TRANSITION_DELAY = 0.3;

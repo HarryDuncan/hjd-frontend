@@ -1,4 +1,4 @@
-import { Direction } from "../../../utils/helpers/moveThroughArray";
+import { Direction } from "utils/moveThroughArray";
 
 export type OnScrollFunction = (direction: Direction) => void;
 export type OnClickFunction = () => void;

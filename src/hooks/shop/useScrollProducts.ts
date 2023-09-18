@@ -1,11 +1,8 @@
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useParams } from "hooks/routing/useParams";
 import { useCallback } from "react";
-import {
-  Direction,
-  moveThroughArray,
-} from "../../../utils/helpers/moveThroughArray";
 import { useShopData } from "./useShopData";
+import { Direction, moveThroughArray } from "utils/moveThroughArray";
 
 export const useScrollProducts = () => {
   const {
