@@ -6,7 +6,6 @@ import {
   SCROLL_RIGHT,
   SCROLL_RIGHT_POSITIONS,
 } from "constants/ui.constants";
-import { Direction } from "../../../utils/helpers/moveThroughArray";
 import { IconContainer } from "./Icons.styles";
 import {
   ExitIconProps,
@@ -17,6 +16,7 @@ import {
   ScrollIconProps,
 } from "./Icons.types";
 import { HoverImage } from "components/animations/gesture-animations/hover/HoverImage";
+import { Direction } from "utils/moveThroughArray";
 
 const ExitIcon = ({ onClick }: ExitIconProps) => {
   const { position, mobile } = EXIT_POSITIONS;

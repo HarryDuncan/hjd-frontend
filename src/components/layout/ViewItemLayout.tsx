@@ -2,8 +2,8 @@ import { StaticImage } from "components/images";
 import { ViewItemContainer } from "components/containers/Containers";
 import { ReactNode } from "react";
 import SwipeablePageNavigator from "components/mobile/SwipeableNavigator";
-import { Direction } from "../../../utils/helpers/moveThroughArray";
 import TransitionFriendlyLayout from "./Layout";
+import { Direction } from "utils/moveThroughArray";
 
 interface ViewItemProps {
   title: string;

@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
-import { Direction } from "../../../utils/helpers/moveThroughArray";
 import { SwipeableNavigatorContainer } from "./mobile.styled";
+import { Direction } from "utils/moveThroughArray";
 
 interface SwipeablePageNavigatorProps {
   onSwipe: (direction: Direction) => void;

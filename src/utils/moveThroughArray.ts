@@ -1,15 +1,14 @@
-export const DIRECTION = {
-  FORWARD: "forward",
-  REVERSE: "reverse",
-};
+export enum Direction {
+  FORWARD = "forward",
+  REVERSE = "reverse",
+}
 
-export type Direction = keyof typeof DIRECTION;
 export function moveThroughArray<T>(
   array: Array<T>,
   index: number,
-  direction: Direction = DIRECTION.FORWARD as Direction
+  direction: Direction = Direction.FORWARD
 ): { item: T; newIndex: number } {
-  const step = direction === DIRECTION.FORWARD ? 1 : -1;
+  const step = direction === Direction.FORWARD ? 1 : -1;
   const newIndex = index + step;
   if (newIndex > array.length - 1) {
     return { item: array[0], newIndex: 0 };

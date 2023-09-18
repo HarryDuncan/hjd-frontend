@@ -4,7 +4,6 @@ import { ContentText, MainTitle } from "components/text/Text";
 import { ART_ROOT_URL } from "constants/art.constants";
 import { usePaintingData } from "hooks/art/usePaintingData";
 import { useScrollPaintings } from "hooks/art/useScrollPaintings";
-import { Direction } from "../../../../utils/helpers/moveThroughArray";
 import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
@@ -12,6 +11,7 @@ import { Icon } from "components/icons/Icons";
 import { useIdleTimer } from "hooks/client-hooks/useIdleTimer";
 import { IDLE_TIMER } from "constants/ui.constants";
 import { IconTypes } from "components/icons/Icons.types";
+import { Direction } from "utils/moveThroughArray";
 
 const PaintingDetails = () => {
   const { painting } = usePaintingData();
