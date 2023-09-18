@@ -1,6 +1,6 @@
 import { LongScroll } from "components/long-scroll/LongScroll";
 import { TechSection } from "views/tech/tech-section/TechSection";
-import { TECH_SECTIONS } from "constants/tech.constants";
+import { TECH_IMAGE_PATH, TECH_SECTIONS } from "views/tech/tech.constants";
 import { useContentForPage } from "hooks/content/useContentForPage";
 import { useTechData } from "hooks/tech/useTechContent";
 import { TechContent } from "models/tech/tech.types";
@@ -87,7 +87,7 @@ const useSortTechData = (tech: TechContent[]) => {
           ? {
               id,
               title: name,
-              imageUrl: `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/images/tech/${image}`,
+              imageUrl: `${TECH_IMAGE_PATH}${image}`,
             }
           : []
       );
