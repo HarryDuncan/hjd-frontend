@@ -12,18 +12,19 @@ import { useLoadPageOnTop } from "hooks/client-hooks/useLoadPageOnTop";
 import { useOnScroll } from "hooks/client-hooks/useOnScroll";
 import { TechHome } from "views/tech/TechHome";
 import { TechTitle } from "views/tech/TechTitle";
+import FullScreenLayout from "components/layout/FullScreenLayout";
 
 const Tech: NextPage = () => {
   const {
     techData: { tech },
   } = useTechData();
-  const sortedTechData = useSortTechData(tech ?? []);
+  const sortedTechData = useSortTechData(tech);
   const { height, measureRef } = useLongScroll();
   useSetWindowState();
   useLoadPageOnTop();
   const sectionLoadingStatus = useLoadSectionsOnScroll(height);
   return (
-    <>
+    <FullScreenLayout>
       <TechHome contentHeight={height} />
       <LongScroll ref={measureRef as Ref<HTMLDivElement>}>
         <TechTitle />
@@ -44,7 +45,7 @@ const Tech: NextPage = () => {
           )
         )}
       </LongScroll>
-    </>
+    </FullScreenLayout>
   );
 };
 
@@ -54,11 +55,10 @@ const useLongScroll = () => {
 };
 
 const getSectionPositionData = () => {
-  const sections = Object.values(TECH_SECTIONS);
   const sectionData: Record<string, { start: number; end: number }> = {};
-  const totalSectionCount = sections.length + 1;
+  const totalSectionCount = TECH_SECTIONS.length + 1;
   const sectionPercentage = 100 / totalSectionCount;
-  sections.forEach((section, index) => {
+  TECH_SECTIONS.forEach((section, index) => {
     const start = Math.floor((index + 1) * sectionPercentage + 1);
     const end = Math.floor((index + 2) * sectionPercentage);
     sectionData[section] = { start, end };
@@ -66,22 +66,13 @@ const getSectionPositionData = () => {
   return { sectionData, totalSectionCount };
 };
 
-const useTextContent = () => {
-  const textSelection = Object.keys(TECH_SECTIONS);
-  const { text } = useContentForPage({
-    textSelection,
-  });
-
-  return text;
-};
-
 const useSortTechData = (tech: TechContent[]) => {
-  const textData = useTextContent();
+  const { text } = useContentForPage({
+    textSelection: TECH_SECTIONS,
+  });
   return useMemo(() => {
-    const sections = Object.values(TECH_SECTIONS);
     const { sectionData } = getSectionPositionData();
-
-    return sections.map((section) => {
+    return TECH_SECTIONS.map((section) => {
       const techCardItems = tech.flatMap(({ id, name, category, image }) =>
         category && category.toUpperCase() === section
           ? {
@@ -91,7 +82,7 @@ const useSortTechData = (tech: TechContent[]) => {
             }
           : []
       );
-      const { content } = textData.find(({ title }) => title === section) ?? {};
+      const { content } = text.find(({ title }) => title === section) ?? {};
 
       return {
         section,
@@ -101,10 +92,10 @@ const useSortTechData = (tech: TechContent[]) => {
         techCardItems,
       };
     });
-  }, [tech, textData]);
+  }, [tech, text]);
 };
 
-const initialState = Object.keys(TECH_SECTIONS).reduce(
+const initialState = TECH_SECTIONS.reduce(
   (previous, section) => ({
     ...previous,
     [section]: false,
@@ -115,31 +106,35 @@ const initialState = Object.keys(TECH_SECTIONS).reduce(
 const useLoadSectionsOnScroll = (scrollContainerHeight: number) => {
   const [sectionLoadingData, setSectionLoadingData] =
     useState<Record<string, boolean>>(initialState);
+  const [prevScrollY, setPrevScrollY] = useState<number>(0);
   const scrollY = useOnScroll();
   useEffect(() => {
-    const { sectionData, totalSectionCount } = getSectionPositionData();
-    const updatedSectionData = Object.keys(sectionLoadingData).reduce(
-      (previous, key) => {
-        if (!sectionLoadingData[key]) {
-          const sectionHeight = scrollContainerHeight / totalSectionCount;
-          const sectionStart =
-            (sectionData[key].start * scrollContainerHeight) / 100;
-          if (scrollY > sectionStart - sectionHeight) {
-            return {
-              ...previous,
-              [key]: true,
-            };
+    if (scrollY > prevScrollY + 10) {
+      const { sectionData, totalSectionCount } = getSectionPositionData();
+      const updatedSectionData = Object.keys(sectionLoadingData).reduce(
+        (previous, key) => {
+          if (!sectionLoadingData[key]) {
+            const sectionHeight = scrollContainerHeight / totalSectionCount;
+            const sectionStart =
+              (sectionData[key].start * scrollContainerHeight) / 100;
+            if (scrollY > sectionStart - sectionHeight) {
+              return {
+                ...previous,
+                [key]: true,
+              };
+            }
           }
-        }
-        return {
-          ...previous,
-          [key]: sectionLoadingData[key],
-        };
-      },
-      {}
-    );
-    setSectionLoadingData(updatedSectionData);
-  }, [sectionLoadingData, scrollY]);
+          return {
+            ...previous,
+            [key]: sectionLoadingData[key],
+          };
+        },
+        {}
+      );
+      setPrevScrollY(scrollY);
+      setSectionLoadingData(updatedSectionData);
+    }
+  }, [sectionLoadingData, scrollY, prevScrollY]);
 
   return sectionLoadingData;
 };

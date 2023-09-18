@@ -6,5 +6,6 @@ export const useTechData = () => {
   const techData = useQuery<ReturnedTechData>(["tech-data"], () =>
     getTechData()
   );
+
   return techData?.data ?? { techData: { tech: [] }, loading: true };
 };

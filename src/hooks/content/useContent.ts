@@ -10,5 +10,6 @@ export const useContent = (): SiteContent => {
   const contentData = useQuery<SiteContent>(["site-content"], () =>
     getContent()
   );
+
   return contentData.data ?? { imageContent: [], textContent: [] };
 };

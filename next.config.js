@@ -7,7 +7,35 @@ module.exports = {
     styledComponents: true,
   },
   async headers() {
-    return [];
+    return [
+      {
+        source: `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/fonts/Harryduncan.otf`,
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/fonts/Harryduncan.woff2`,
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/fonts/Harryduncan.woff`,
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ];
   },
 };
 // const nextConfig = {};
