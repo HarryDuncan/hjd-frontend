@@ -1,7 +1,5 @@
 import { LongScroll } from "components/long-scroll/LongScroll";
-import { TechHome } from "components/tech/TechHome";
-import { TechSection } from "components/tech/tech-section/TechSection";
-import { TechTitle } from "components/tech/TechTitle";
+import { TechSection } from "views/tech/tech-section/TechSection";
 import { TECH_SECTIONS } from "constants/tech.constants";
 import { useContentForPage } from "hooks/content/useContentForPage";
 import { useTechData } from "hooks/tech/useTechContent";
@@ -12,6 +10,8 @@ import { useMeasure } from "react-use";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
 import { useLoadPageOnTop } from "hooks/client-hooks/useLoadPageOnTop";
 import { useOnScroll } from "hooks/client-hooks/useOnScroll";
+import { TechHome } from "views/tech/TechHome";
+import { TechTitle } from "views/tech/TechTitle";
 
 const Tech: NextPage = () => {
   const {
