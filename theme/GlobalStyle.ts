@@ -19,6 +19,7 @@ export const GlobalStyle = createGlobalStyle`
   font-family: "Harryduncan";
   font-style: normal;
   font-weight: 100;
+  src: url(/fonts/Harryduncan.woff), format("woff");
   src: url(/fonts/Harryduncan.woff2), format("woff2");
   src: url("/fonts/Harryduncan.eot");
   src: url("/fonts/Harryduncan.otf") format("opentype");

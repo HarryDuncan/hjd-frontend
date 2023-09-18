@@ -11,6 +11,11 @@ export const getContent = async () => {
     }
   `;
   return client.query({ query }).then((response) => {
-    return response.data.content;
+    const {
+      data: {
+        content: { imageContent, textContent },
+      },
+    } = response;
+    return { imageContent, textContent };
   });
 };
