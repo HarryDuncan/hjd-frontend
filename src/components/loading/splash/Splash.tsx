@@ -15,9 +15,13 @@ export const Splash = ({ isVisible }: SplashProps) => {
     <SplashContainer>
       <Overlay />
       <DarkOverlay>
-        <SplashImage src="/logo-light.svg" />
+        <SplashImage
+          src={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}logo-light.svg`}
+        />
       </DarkOverlay>
-      <SplashImage src="/logo-dark.svg" />
+      <SplashImage
+        src={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}logo-dark.svg`}
+      />
     </SplashContainer>
   );
 };

@@ -42,7 +42,7 @@ export const ImageHover = ({
     <HoverImageContainer
       onMouseOver={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      $backgroundImgUrl={imageUrl}
+      $backgroundImgUrl={imageSrc}
       $imageProps={hoverImageConfig.final}
     >
       {Array.from(Array(REPETITIONS).keys()).map((key, index) =>

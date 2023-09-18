@@ -40,21 +40,21 @@ export default class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href="/fonts/Harryduncan.woff2"
+            href={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}/fonts/Harryduncan.woff2`}
             as="font"
             crossOrigin=""
             type="font/woff2"
           />
           <link
             rel="preload"
-            href="/fonts/Harryduncan.woff"
+            href={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}/fonts/Harryduncan.woff`}
             as="font"
             crossOrigin=""
             type="font/woff"
           />
           <link
             rel="preload"
-            href="/fonts/Harryduncan.otf"
+            href={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}fonts/Harryduncan.otf`}
             as="font"
             crossOrigin=""
             type="font/otf"
