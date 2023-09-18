@@ -1,5 +1,5 @@
-import { BioPage } from "components/bio/Bio.styles";
-import { BioSection } from "components/bio/BioSection";
+import { BioPage } from "views/bio/Bio.styles";
+import { BioSection } from "views/bio/BioSection";
 
 import Layout from "components/layout/DefaultLayout";
 
