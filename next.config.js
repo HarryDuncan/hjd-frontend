@@ -7,17 +7,7 @@ module.exports = {
     styledComponents: true,
   },
   async headers() {
-    return [
-      {
-        source: "/fonts/Harryduncan.otf",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-    ];
+    return [];
   },
 };
 // const nextConfig = {};

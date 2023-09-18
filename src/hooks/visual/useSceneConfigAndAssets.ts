@@ -5,7 +5,7 @@ import { SceneConfig } from "visual/set-up/config/config.types";
 
 export const useSceneConfigAndAssets = (configId: string) => {
   const selectedSceneFilePath =
-    `${process.env.NEXT_PUBLIC_CONTENT_ROOT}visual-config/${configId}.json` ??
+    `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/visual-config/${configId}.json` ??
     "";
   const sceneConfigData = useFetchConfig(selectedSceneFilePath);
   const configData = useSelectedConfig(sceneConfigData);
