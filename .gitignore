@@ -20,7 +20,9 @@
 # misc
 .DS_Store
 *.pem
-/public
+/public/assets
+/public/images
+/public/visual-config
 # debug
 npm-debug.log*
 yarn-debug.log*

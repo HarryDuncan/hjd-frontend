@@ -20,10 +20,7 @@ export const GlobalStyle = createGlobalStyle`
   font-style: normal;
   font-weight: 100;
   src: url(/fonts/Harryduncan.woff), format("woff");
-  src: url(assets/fonts/Harryduncan.woff2), format("woff2");
-  src: url(assets/fonts/Harryduncan.eot);
-  src: url(assets/fonts/Harryduncan.otf) format("opentype");
-  src: url(assets/fonts/Harryduncan.ttf) format("truetype"); /* Safari, Android, iOS */
+  src: url(/fonts/Harryduncan.woff2), format("woff2"); 
 }
   body {
     margin: 0;
