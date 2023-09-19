@@ -40,7 +40,7 @@ export default class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href={`/fonts/Harryduncan.woff2`}
+            href="/fonts/Harryduncan.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"

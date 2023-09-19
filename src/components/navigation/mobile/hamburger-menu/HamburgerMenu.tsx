@@ -18,7 +18,7 @@ export const HamburgerMenu = ({
       <svg
         className={`ham hamRotate ${isActive} ${showAsLight}`}
         viewBox="0 0 100 100"
-        width="125"
+        width="90"
         onClick={onClick}
       >
         <path
