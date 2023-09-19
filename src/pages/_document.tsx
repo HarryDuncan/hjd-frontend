@@ -37,29 +37,7 @@ export default class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <Html>
-        <Head>
-          <link
-            rel="preload"
-            href={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}/fonts/Harryduncan.woff2`}
-            as="font"
-            crossOrigin=""
-            type="font/woff2"
-          />
-          <link
-            rel="preload"
-            href={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}/fonts/Harryduncan.woff`}
-            as="font"
-            crossOrigin=""
-            type="font/woff"
-          />
-          <link
-            rel="preload"
-            href={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}/fonts/Harryduncan.otf`}
-            as="font"
-            crossOrigin=""
-            type="font/otf"
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

@@ -75,6 +75,7 @@ export const CardWrapper = styled.div`
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     width: 40%;
+    margin: 5%;
   }
 
   @media only screen and (max-width: ${({ theme }) =>

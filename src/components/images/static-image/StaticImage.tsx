@@ -36,6 +36,7 @@ export const StaticImage = ({
         alt={imageTitle}
         src={imageUrl}
         fill
+        unoptimized
         onLoadingComplete={onLoadingComplete}
       />
     </ImageContainer>

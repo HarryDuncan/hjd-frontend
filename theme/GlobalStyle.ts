@@ -19,11 +19,11 @@ export const GlobalStyle = createGlobalStyle`
   font-family: "Harryduncan";
   font-style: normal;
   font-weight: 100;
-  src: url(/fonts/Harryduncan.woff), format("woff");
-  src: url(/fonts/Harryduncan.woff2), format("woff2");
-  src: url("/fonts/Harryduncan.eot");
-  src: url("/fonts/Harryduncan.otf") format("opentype");
-  src: url(/fonts/Harryduncan.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url(assets/fonts/Harryduncan.woff), format("woff");
+  src: url(assets/fonts/Harryduncan.woff2), format("woff2");
+  src: url("assets/fonts/Harryduncan.eot");
+  src: url("assets/fonts/Harryduncan.otf") format("opentype");
+  src: url(assets/fonts/Harryduncan.ttf") format("truetype"); /* Safari, Android, iOS */
 }
   body {
     margin: 0;

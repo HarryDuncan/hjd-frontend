@@ -31,6 +31,11 @@ export const SCROLL_LEFT_POSITIONS = {
     top: "205%",
     left: "3%",
   },
+  tablet: {
+    positionType: "absolute",
+    top: "205%",
+    right: "3%",
+  },
   mobile: {
     positionType: "absolute",
     top: "22%",
@@ -40,6 +45,11 @@ export const SCROLL_LEFT_POSITIONS = {
 
 export const SCROLL_RIGHT_POSITIONS = {
   position: {
+    positionType: "absolute",
+    top: "205%",
+    right: "3%",
+  },
+  tablet: {
     positionType: "absolute",
     top: "205%",
     right: "3%",
@@ -54,6 +64,11 @@ export const EXIT_POSITIONS = {
   position: {
     positionType: "absolute",
     top: "2rem",
+    right: "3%",
+  },
+  tablet: {
+    positionType: "absolute",
+    top: "205%",
     right: "3%",
   },
   mobile: {
