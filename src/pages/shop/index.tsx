@@ -18,7 +18,6 @@ import { useProductsWithVariations } from "hooks/shop/useProductsWithVariations"
 import { useMemo } from "react";
 import { DynamicLayout } from "components/layout/DynamicLayout";
 import { TextScroller } from "components/text-scroller/TextScroller";
-import { ProductCardFooter } from "views/shop/product-card-footer";
 
 const Shop: NextPage = () => {
   const productGalleryItems = useProductsInGallery();

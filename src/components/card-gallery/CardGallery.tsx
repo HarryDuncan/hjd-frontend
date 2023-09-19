@@ -1,8 +1,9 @@
 import { Card, CardDetails } from "components/card/Card";
 import { CardGalleryContainer } from "./styledComponents";
-import { MutableRefObject, useEffect, useState } from "react";
-import { useMeasure, useWindowScroll } from "react-use";
-import { UseMeasureRef } from "react-use/lib/useMeasure";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { useOnScroll } from "hooks/client-hooks/useOnScroll";
+import useDeviceSize from "hooks/client-hooks/useDeviceSize";
+import { LOAD_MORE_OFFSET } from "constants/ui.constants";
 
 export interface LoadMoreProps {
   initialLoadSize: number;
@@ -50,23 +51,24 @@ const useLoadMoreOnScroll = (
   loadMoreProps?: LoadMoreProps
 ): {
   displayedItems: CardDetails[];
-  scrollableContainerRef: UseMeasureRef<Element>;
+  scrollableContainerRef: MutableRefObject<HTMLDivElement | null>;
 } => {
-  const [measureRef, { height }] = useMeasure();
+  const scrollableContainerRef = useRef<HTMLDivElement | null>(null);
   const [itemsDisplayed, setItemsDisplayed] = useState<number>(
     loadMoreProps?.initialLoadSize ?? items.length
   );
-  const { y } = useWindowScroll();
-
+  const { height: clientHeight } = useDeviceSize();
+  const scrollY = useOnScroll();
   useEffect(() => {
-    if (y >= height - 200) {
+    const height = scrollableContainerRef.current?.clientHeight ?? 0;
+    if (height && scrollY >= height - (clientHeight + LOAD_MORE_OFFSET)) {
       setItemsDisplayed((i) => i + Number(loadMoreProps?.loadMoreSize ?? 0));
     }
-  }, [y, height, loadMoreProps]);
+  }, [scrollY, scrollableContainerRef.current, clientHeight, loadMoreProps]);
 
   return {
     displayedItems: items.slice(0, itemsDisplayed),
-    scrollableContainerRef: measureRef,
+    scrollableContainerRef,
   };
 };
 

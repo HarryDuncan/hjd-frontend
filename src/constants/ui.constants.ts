@@ -64,3 +64,4 @@ export const EXIT_POSITIONS = {
 };
 
 export const IDLE_TIMER = 20000;
+export const LOAD_MORE_OFFSET = 200;

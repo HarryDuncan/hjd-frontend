@@ -19,6 +19,7 @@ import {
 import { DynamicLayout } from "components/layout/DynamicLayout";
 import { TextScroller } from "components/text-scroller/TextScroller";
 import SoftFadeTransition from "components/animations/page-transitions/SoftFadeTransition";
+import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
 
 const Art: NextPage = () => {
   const {

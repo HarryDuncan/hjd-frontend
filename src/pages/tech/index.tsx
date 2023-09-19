@@ -5,8 +5,7 @@ import { useContentForPage } from "hooks/content/useContentForPage";
 import { useTechData } from "hooks/tech/useTechContent";
 import { TechContent } from "models/tech/tech.types";
 import { NextPage } from "next";
-import { Ref, useEffect, useMemo, useState } from "react";
-import { useMeasure } from "react-use";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
 import { useLoadPageOnTop } from "hooks/client-hooks/useLoadPageOnTop";
 import { useOnScroll } from "hooks/client-hooks/useOnScroll";
@@ -19,14 +18,14 @@ const Tech: NextPage = () => {
     techData: { tech },
   } = useTechData();
   const sortedTechData = useSortTechData(tech);
-  const { height, measureRef } = useLongScroll();
+  const { height, longScrollRef } = useLongScroll();
   useSetWindowState();
   useLoadPageOnTop();
   const sectionLoadingStatus = useLoadSectionsOnScroll(height);
   return (
     <FullScreenLayout showNav={false}>
       <TechHome contentHeight={height} />
-      <LongScroll ref={measureRef as Ref<HTMLDivElement>}>
+      <LongScroll ref={longScrollRef}>
         <TechTitle />
         {sortedTechData.map(
           (
@@ -50,8 +49,13 @@ const Tech: NextPage = () => {
 };
 
 const useLongScroll = () => {
-  const [measureRef, { height }] = useMeasure();
-  return { measureRef, height };
+  const longScrollRef = useRef<HTMLDivElement | null>(null);
+  const height = useMemo(
+    () => longScrollRef.current?.clientHeight ?? 0,
+    [longScrollRef.current]
+  );
+
+  return { longScrollRef, height };
 };
 
 const getSectionPositionData = () => {
