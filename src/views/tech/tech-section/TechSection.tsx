@@ -118,8 +118,8 @@ const getGridWrapTransform = (
         rotationY: -30,
         xPercent: 65,
       };
-
     case CARD_ANIMATION_TYPE.NONE:
+    default:
       return {};
   }
 };
