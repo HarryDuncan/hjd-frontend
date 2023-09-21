@@ -1,17 +1,7 @@
-import { DynamicCardGallery } from "components/card-gallery/DynamicGallery";
 import { ParallaxImage } from "components/images/parallax-image/ParallaxImage";
-import { InnerContainer } from "components/containers/Containers";
-import { useArtData } from "hooks/art/useArtData";
-import { Painting } from "models/art/types";
 import type { NextPage } from "next";
-import { useMemo } from "react";
-import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
-import {
-  ART_GALLERY_LOAD_MORE,
-  ART_IMAGES,
-  ART_ROOT_URL,
-} from "constants/art.constants";
+import { ART_IMAGES } from "constants/art.constants";
 import {
   BANNER_IMAGE_HOVER_CONFIG,
   MAIN_GALLERY_TOP_OFFSET,
@@ -19,21 +9,16 @@ import {
 import { DynamicLayout } from "components/layout/DynamicLayout";
 import { TextScroller } from "components/text-scroller/TextScroller";
 import SoftFadeTransition from "components/animations/page-transitions/SoftFadeTransition";
+import { PaintingGallery } from "views/art/PaintingGallery";
 
 const Art: NextPage = () => {
-  const {
-    paintings: { paintings },
-    isError,
-  } = useArtData();
-  const paintingGalleryItems = usePaintingsInGallery(paintings);
   const { images } = useContentForPage({
     imageSelection: ART_IMAGES,
   });
 
-  const handleRouting = useHandleRouting("art/paintings/");
   return (
     <SoftFadeTransition>
-      <DynamicLayout isError={isError}>
+      <DynamicLayout>
         <ParallaxImage
           hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
           imageUrl={images[0]?.imageUrl ?? ""}
@@ -42,29 +27,10 @@ const Art: NextPage = () => {
         >
           <TextScroller text=" Original Paintings " />
         </ParallaxImage>
-        <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
-          <DynamicCardGallery
-            items={paintingGalleryItems}
-            onClick={handleRouting}
-            loadMoreProps={ART_GALLERY_LOAD_MORE}
-          />
-        </InnerContainer>
+        <PaintingGallery />
       </DynamicLayout>
     </SoftFadeTransition>
   );
 };
-
-function usePaintingsInGallery(paintings: Painting[]) {
-  return useMemo(
-    () =>
-      paintings.map(({ imageUrl, title, slug }) => ({
-        imageUrl: `${ART_ROOT_URL}${imageUrl}`,
-        title,
-        slug,
-        id: slug,
-      })),
-    [paintings]
-  );
-}
 
 export default Art;
