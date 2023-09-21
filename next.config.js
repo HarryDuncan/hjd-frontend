@@ -9,7 +9,7 @@ module.exports = {
   async headers() {
     return [
       {
-        source: `/assets/fonts/Harryduncan.otf`,
+        source: `/fonts/Harryduncan.otf`,
         headers: [
           {
             key: "Cache-Control",
@@ -18,7 +18,7 @@ module.exports = {
         ],
       },
       {
-        source: `/assets/fonts/Harryduncan.woff2`,
+        source: `/fonts/Harryduncan.woff2`,
         headers: [
           {
             key: "Cache-Control",
@@ -27,7 +27,7 @@ module.exports = {
         ],
       },
       {
-        source: `/assets/fonts/Harryduncan.woff`,
+        source: `/fonts/Harryduncan.woff`,
         headers: [
           {
             key: "Cache-Control",

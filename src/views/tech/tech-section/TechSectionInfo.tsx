@@ -17,6 +17,7 @@ interface TechSectionInfoProps {
   sectionText: string;
   sectionData: { start: number; end: number };
   index: number;
+  isAnimated: boolean;
 }
 
 export const TechSectionInfo = ({
@@ -24,17 +25,19 @@ export const TechSectionInfo = ({
   sectionText,
   sectionData,
   index,
+  isAnimated,
 }: TechSectionInfoProps) => {
   const isLeft = index % 2 === 0;
   const scrollConfig = useScrollTypographyConfig();
   return (
     <TechInfoContainer $top={sectionData.start} $isLeft={isLeft}>
-      <ScrollTypography text={sectionTitle} />
+      <ScrollTypography text={sectionTitle} isAnimated={isAnimated} />
       {sectionText.length && (
         <ScrollTypography
           text={sectionText}
           textType={TEXT_TYPE.TEXT}
           config={scrollConfig}
+          isAnimated={isAnimated}
         />
       )}
     </TechInfoContainer>

@@ -2,10 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Grid, GridWrap } from "./scrollCard.styles";
 import { useScrollCardAnimation } from "./use-scroll-card-animation/useScrollCardAnimation";
 import { ConfigurableCard } from "components/card/ConfigurableCard";
-import {
-  CardAnimationType,
-  ScrollGalleryConfig,
-} from "./scrollCardGallery.types";
+import { ScrollGalleryConfig } from "./scrollCardGallery.types";
 
 export interface ScrollCardItem {
   id: number;
@@ -15,16 +12,14 @@ export interface ScrollCardItem {
 
 interface ScrollCardGalleryProps {
   items: ScrollCardItem[];
-  scrollType: CardAnimationType;
   config: Partial<ScrollGalleryConfig>;
 }
 export const ScrollCardGallery = ({
   items,
-  scrollType,
   config,
 }: ScrollCardGalleryProps) => {
   const gridRef = useRef<HTMLDivElement | null>(null);
-  const animateOnScroll = useScrollCardAnimation(scrollType, config);
+  const animateOnScroll = useScrollCardAnimation(config);
   const [isSet, setIt] = useState<boolean>(false);
   useEffect(() => {
     if (gridRef.current) {

@@ -31,7 +31,7 @@ export const TechSectionContainer = styled.div`
   min-height: 100vh;
 `;
 
-const OFFSET = 3;
+const OFFSET = 2;
 export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
   top: 0;
   z-index: 5;
