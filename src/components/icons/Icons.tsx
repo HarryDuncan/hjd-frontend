@@ -19,9 +19,14 @@ import { HoverImage } from "components/animations/gesture-animations/hover/Hover
 import { Direction } from "utils/moveThroughArray";
 
 const ExitIcon = ({ onClick }: ExitIconProps) => {
-  const { position, mobile } = EXIT_POSITIONS;
+  const { position, mobile, tablet } = EXIT_POSITIONS;
   return (
-    <IconContainer $position={position} $mobilePosition={mobile}>
+    <IconContainer
+      $position={position}
+      $mobilePosition={mobile}
+      $tabletPosition={tablet}
+      className="exit-icon"
+    >
       <HoverImage alt="exit" src={EXIT} onClick={onClick} />
     </IconContainer>
   );
@@ -31,9 +36,14 @@ const ScrollLeftIcon = ({ onClick }: ScrollIconProps) => {
   const onIconClick = () => {
     onClick(Direction.REVERSE);
   };
-  const { position, mobile } = SCROLL_LEFT_POSITIONS;
+  const { position, mobile, tablet } = SCROLL_LEFT_POSITIONS;
   return (
-    <IconContainer $position={position} $mobilePosition={mobile}>
+    <IconContainer
+      $position={position}
+      $mobilePosition={mobile}
+      $tabletPosition={tablet}
+      className="scroll-left"
+    >
       <HoverImage alt="scroll-left" src={SCROLL_LEFT} onClick={onIconClick} />
     </IconContainer>
   );
@@ -43,9 +53,14 @@ const ScrollRightIcon = ({ onClick }: ScrollIconProps) => {
   const onIconClick = () => {
     onClick(Direction.FORWARD);
   };
-  const { position, mobile } = SCROLL_RIGHT_POSITIONS;
+  const { position, mobile, tablet } = SCROLL_RIGHT_POSITIONS;
   return (
-    <IconContainer $position={position} $mobilePosition={mobile}>
+    <IconContainer
+      $position={position}
+      $mobilePosition={mobile}
+      $tabletPosition={tablet}
+      className="scroll-right"
+    >
       <HoverImage alt="scroll-right" src={SCROLL_RIGHT} onClick={onIconClick} />
     </IconContainer>
   );

@@ -10,23 +10,34 @@ import {
 
 import { useContentForPage } from "hooks/content/useContentForPage";
 import type { NextPage } from "next";
+import Head from "next/head";
 
 const Bio: NextPage = () => {
   const { text, images } = useBioPageContent();
 
   return (
-    <Layout>
-      <BioPage>
-        {images.map((image, index) => (
-          <BioSection
-            key={`section-${image.id}`}
-            image={image}
-            text={text[index]}
-            index={index}
-          />
-        ))}
-      </BioPage>
-    </Layout>
+    <>
+      <Head>
+        <title>Bio</title>
+        <meta
+          name="Harry J Dee bio"
+          content="Learn the story and mission of artist and creative technologist Harry J Dee"
+          key="desc"
+        />
+      </Head>
+      <Layout>
+        <BioPage>
+          {images.map((image, index) => (
+            <BioSection
+              key={`section-${image.id}`}
+              image={image}
+              text={text[index]}
+              index={index}
+            />
+          ))}
+        </BioPage>
+      </Layout>
+    </>
   );
 };
 

@@ -1,78 +1,42 @@
 import type { NextPage } from "next";
-import { DynamicCardGallery } from "components/card-gallery/DynamicGallery";
 import { ParallaxImage } from "components/images/parallax-image/ParallaxImage";
-import { InnerContainer } from "components/containers/Containers";
-import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useContentForPage } from "hooks/content/useContentForPage";
 import {
   BANNER_IMAGE_HOVER_CONFIG,
   MAIN_GALLERY_TOP_OFFSET,
 } from "constants/ui.constants";
-import {
-  SHOP_IMAGES,
-  SHOP_IMAGE_URL_ROOT,
-  SHOP_LOAD_MORE,
-} from "constants/shop.constants";
-import { useShopData } from "hooks/shop/useShopData";
-import { useProductsWithVariations } from "hooks/shop/useProductsWithVariations";
-import { useMemo } from "react";
+import { SHOP_IMAGES } from "constants/shop.constants";
 import { DynamicLayout } from "components/layout/DynamicLayout";
 import { TextScroller } from "components/text-scroller/TextScroller";
-import { ProductCardFooter } from "views/shop/product-card-footer";
+
+import Head from "next/head";
+import { ProductGallery } from "views/shop/product-gallery/ProductGallery";
 
 const Shop: NextPage = () => {
-  const productGalleryItems = useProductsInGallery();
   const { images } = useContentForPage({ imageSelection: SHOP_IMAGES });
-  const handleRouting = useHandleRouting("shop/products/");
 
   return (
-    <DynamicLayout>
-      <ParallaxImage
-        hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
-        imageTitle="shop-header"
-        imageUrl={images[0]?.imageUrl ?? ""}
-        imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
-      >
-        <TextScroller text=" Limited Edition " />
-      </ParallaxImage>
-      <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
-        <DynamicCardGallery
-          items={productGalleryItems}
-          onClick={handleRouting}
-          loadMoreProps={SHOP_LOAD_MORE}
+    <>
+      <Head>
+        <title>Shop</title>
+        <meta
+          name="Shop"
+          content="Shop for limited edition or original work by Melbourne based artist Harry J Dee."
+          key="desc"
         />
-      </InnerContainer>
-    </DynamicLayout>
-  );
-};
-
-const useProductsInGallery = () => {
-  const {
-    shopData: { products, productVariations },
-  } = useShopData();
-  const formattedProducts = useProductsWithVariations(
-    products,
-    productVariations
-  );
-
-  return useMemo(
-    () =>
-      formattedProducts.map(
-        ({ title, imageUrl, id, variations, isSoldOut, price }) => ({
-          imageUrl: `${SHOP_IMAGE_URL_ROOT}${imageUrl}`,
-          title,
-          id,
-          footer: (
-            <ProductCardFooter
-              title={title}
-              variations={variations ?? []}
-              price={price}
-              isSoldOut={isSoldOut ?? false}
-            />
-          ),
-        })
-      ),
-    [formattedProducts]
+      </Head>
+      <DynamicLayout>
+        <ParallaxImage
+          hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
+          imageTitle="shop-header"
+          imageUrl={images[0]?.imageUrl ?? ""}
+          imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
+        >
+          <TextScroller text=" Limited Edition " />
+        </ParallaxImage>
+        <ProductGallery />
+      </DynamicLayout>
+    </>
   );
 };
 

@@ -6,6 +6,11 @@ export const ImageContainer = styled.div<{ $height: number | undefined }>`
   width: 40%;
   margin-left: 10%;
   position: relative;
+
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.laptop}px) => {
+    margin: 0 0.5%;
+  }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     flex-direction: column;
@@ -37,7 +42,7 @@ export const StyledImage = styled(Image)`
   -moz-box-shadow: 15px 15px 16px #ccc;
   box-shadow: 15px 15px 16px #ccc;
   @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
+      theme.breakpoints.laptop}px) {
     margin-top: 0;
     max-height: 40rem;
     max-width: 40rem;
@@ -46,5 +51,6 @@ export const StyledImage = styled(Image)`
       theme.breakpoints.mobile}px) {
     margin-top: 0;
     max-height: 40rem;
+    max-width: 100vw;
   }
 `;

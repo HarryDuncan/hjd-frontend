@@ -32,6 +32,7 @@ export const BioContentContainer = styled.div<{ $index: number }>`
     color: white;
     margin: 0 auto;
     text-align: center;
+    font-weight: 100;
   }
   ${ScrolledTypographyText} {
     color: white;

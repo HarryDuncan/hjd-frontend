@@ -12,6 +12,7 @@ import { useIdleTimer } from "hooks/client-hooks/useIdleTimer";
 import { IDLE_TIMER } from "constants/ui.constants";
 import { IconTypes } from "components/icons/Icons.types";
 import { Direction } from "utils/moveThroughArray";
+import Head from "next/head";
 
 const PaintingDetails = () => {
   const { painting } = usePaintingData();
@@ -29,46 +30,55 @@ const PaintingDetails = () => {
   };
 
   return (
-    <SlideWithBackgroundTransition direction={changedDirection}>
-      <ViewItemLayout
-        imageUrl={`${ART_ROOT_URL}${painting?.imageUrl}`}
-        title={painting?.title}
-        onChangeItem={onChangeItem}
-      >
-        <ViewItemDetailsContainer>
-          {!isIdle && (
-            <Icon onClick={handleExit} type={IconTypes.EXIT} hasGesture />
-          )}
+    <>
+      <Head>
+        <title>Art</title>
+        <meta
+          name="Painting"
+          content="View an original painting by Harry J Dee"
+          key="desc"
+        />
+      </Head>
+      <SlideWithBackgroundTransition direction={changedDirection}>
+        <ViewItemLayout
+          imageUrl={`${ART_ROOT_URL}${painting?.imageUrl}`}
+          title={painting?.title}
+          onChangeItem={onChangeItem}
+        >
+          <ViewItemDetailsContainer>
+            {!isIdle && (
+              <Icon onClick={handleExit} type={IconTypes.EXIT} hasGesture />
+            )}
 
-          <Icon
-            onClick={onChangeItem}
-            type={IconTypes.CHEVRON_LEFT}
-            hasGesture
-          />
-          <Icon
-            onClick={onChangeItem}
-            type={IconTypes.CHEVRON_RIGHT}
-            hasGesture
-          />
-          <MainTitle $isLight={false}>{painting.title}</MainTitle>
-
-          <ContentText>{painting.description}</ContentText>
-          <br />
-          <br />
-          {painting.medium && <ContentText>{painting.medium}</ContentText>}
-          <br />
-          <br />
-          {painting.yearCompleted && (
-            <ContentText>Completed in {painting.yearCompleted}</ContentText>
-          )}
-          <br />
-          <br />
-          {painting.dimensions && (
-            <ContentText>{painting.dimensions}</ContentText>
-          )}
-        </ViewItemDetailsContainer>
-      </ViewItemLayout>
-    </SlideWithBackgroundTransition>
+            <Icon
+              onClick={onChangeItem}
+              type={IconTypes.CHEVRON_LEFT}
+              hasGesture
+            />
+            <Icon
+              onClick={onChangeItem}
+              type={IconTypes.CHEVRON_RIGHT}
+              hasGesture
+            />
+            <MainTitle $isLight={false}>{painting.title}</MainTitle>
+            <ContentText>{painting.description}</ContentText>
+            <br />
+            <br />
+            {painting.medium && <ContentText>{painting.medium}</ContentText>}
+            <br />
+            <br />
+            {painting.yearCompleted && (
+              <ContentText>Completed in {painting.yearCompleted}</ContentText>
+            )}
+            <br />
+            <br />
+            {painting.dimensions && (
+              <ContentText>{painting.dimensions}</ContentText>
+            )}
+          </ViewItemDetailsContainer>
+        </ViewItemLayout>
+      </SlideWithBackgroundTransition>
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import { IconPosition } from "./Icons.types";
 
 export const IconContainer = styled.div<{
   $position: IconPosition;
+  $tabletPosition?: IconPosition;
   $mobilePosition?: IconPosition;
 }>`
   position: ${({ $position }) => $position.positionType ?? "absolute"};
@@ -13,7 +14,13 @@ export const IconContainer = styled.div<{
   width: fit-content;
   height: fit-content;
   @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
+      theme.breakpoints.laptop}px) {
+    position: ${({ $tabletPosition }) =>
+      $tabletPosition?.positionType ?? "absolute"};
+    top: ${({ $tabletPosition }) => $tabletPosition?.top};
+    left: ${({ $tabletPosition }) => $tabletPosition?.left};
+    right: ${({ $tabletPosition }) => $tabletPosition?.right};
+    bottom: ${({ $tabletPosition }) => $tabletPosition?.bottom};
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {

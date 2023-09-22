@@ -9,8 +9,8 @@ import SlideWithBackgroundTransition from "components/animations/page-transition
 import { Icon } from "components/icons/Icons";
 import { IconTypes } from "components/icons/Icons.types";
 import { Direction } from "utils/moveThroughArray";
+import { SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
 
-const rootUrl = "/images/shop/";
 const ProductDetails = () => {
   const { product } = useProductData();
 
@@ -30,7 +30,7 @@ const ProductDetails = () => {
     <SlideWithBackgroundTransition direction={changedDirection}>
       <ViewItemLayout
         onChangeItem={onChangeItem}
-        imageUrl={`${rootUrl}${product?.imageUrl}`}
+        imageUrl={`${SHOP_IMAGE_URL_ROOT}${product?.imageUrl}`}
         title={product?.title}
       >
         <ViewItemDetailsContainer>

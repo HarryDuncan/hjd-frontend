@@ -1,13 +1,11 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useRouter } from "next/router";
-import {
-  BackgroundLayer,
-  TransitionEffectContainer,
-} from "./Transitions.styled";
+import { TransitionEffectContainer } from "./Transitions.styled";
 
 import { PageTransitionProps } from "./pageTransitions.types";
 import { useCallback, useRef } from "react";
 import { Direction } from "utils/moveThroughArray";
+import { DefaultScene } from "../scenes/DefaultScene";
 
 const TRANSITION_DURATION = 0.4;
 const TRANSITION_DELAY = 0.3;
@@ -85,7 +83,6 @@ const SlideWithBackgroundTransition = ({
 }: BackgroundTransitionProps) => {
   const { asPath } = useRouter();
   const shouldReduceMotion = useReducedMotion();
-  const backgroundImage = `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/images/content/banner1.jpg`;
   const divRef = useRef<HTMLDivElement | null>(null);
   const handleAnimationComplete = useCallback(() => {
     setTimeout(() => {
@@ -96,7 +93,7 @@ const SlideWithBackgroundTransition = ({
   }, [divRef]);
   return (
     <TransitionEffectContainer>
-      <BackgroundLayer $backgroundImage={backgroundImage} />
+      <DefaultScene />
       <AnimatePresence initial={false} mode="wait">
         <motion.div
           ref={divRef}

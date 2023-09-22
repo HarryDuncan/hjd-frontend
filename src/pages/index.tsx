@@ -13,6 +13,7 @@ import { CircleActionButton } from "components/buttons/circle-action-button/Circ
 import { useFadeOut } from "components/animations/gsap-timelines/useFadeOut";
 import { AnimationConfig } from "visual/display/animation/animation.types";
 import { SceneData } from "visual/set-up/config/config.types";
+import Head from "next/head";
 
 const ROUTING_DELAY = 1500;
 const Home: NextPage = () => {
@@ -42,34 +43,44 @@ const Home: NextPage = () => {
     enterTransitionRef,
   ]);
   return (
-    <FullScreenLayout>
-      <CircleActionButton
-        ref={buttonRef}
-        onClick={onEnterClick}
-        buttonText="ENTER"
-      />
-      <svg
-        className="overlay"
-        width="100%"
-        height="100%"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        style={{
-          zIndex: 10,
-          position: "absolute",
-          bottom: 0,
-          display: onEnterClicked ? "block" : "none",
-        }}
-      >
-        <path
-          ref={enterTransitionRef}
-          className="overlay__path"
-          vectorEffect="non-scaling-stroke"
-          d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
+    <>
+      <Head>
+        <title>Harry J Dee</title>
+        <meta
+          name="Harry J Dee"
+          content="The online virtual headquarters of artist Harry J Dee"
+          key="desc"
         />
-      </svg>
-      <HomeSceneContent />
-    </FullScreenLayout>
+      </Head>
+      <FullScreenLayout>
+        <CircleActionButton
+          ref={buttonRef}
+          onClick={onEnterClick}
+          buttonText="ENTER"
+        />
+        <svg
+          className="overlay"
+          width="100%"
+          height="100%"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          style={{
+            zIndex: 10,
+            position: "absolute",
+            bottom: 0,
+            display: onEnterClicked ? "block" : "none",
+          }}
+        >
+          <path
+            ref={enterTransitionRef}
+            className="overlay__path"
+            vectorEffect="non-scaling-stroke"
+            d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
+          />
+        </svg>
+        <HomeSceneContent />
+      </FullScreenLayout>
+    </>
   );
 };
 

@@ -10,6 +10,7 @@ import { DynamicLayout } from "components/layout/DynamicLayout";
 import { TextScroller } from "components/text-scroller/TextScroller";
 import SoftFadeTransition from "components/animations/page-transitions/SoftFadeTransition";
 import { PaintingGallery } from "views/art/PaintingGallery";
+import Head from "next/head";
 
 const Art: NextPage = () => {
   const { images } = useContentForPage({
@@ -17,19 +18,29 @@ const Art: NextPage = () => {
   });
 
   return (
-    <SoftFadeTransition>
-      <DynamicLayout>
-        <ParallaxImage
-          hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
-          imageUrl={images[0]?.imageUrl ?? ""}
-          imageTitle={images[0]?.title ?? ""}
-          imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
-        >
-          <TextScroller text=" Original Paintings " />
-        </ParallaxImage>
-        <PaintingGallery />
-      </DynamicLayout>
-    </SoftFadeTransition>
+    <>
+      <Head>
+        <title>Art</title>
+        <meta
+          name="art"
+          content="Art, paintings, exhibition and an archive of work by Melbourne based artist Harry J Dee."
+          key="desc"
+        />
+      </Head>
+      <SoftFadeTransition>
+        <DynamicLayout>
+          <ParallaxImage
+            hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
+            imageUrl={images[0]?.imageUrl ?? ""}
+            imageTitle={images[0]?.title ?? ""}
+            imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
+          >
+            <TextScroller text=" Original Paintings " />
+          </ParallaxImage>
+          <PaintingGallery />
+        </DynamicLayout>
+      </SoftFadeTransition>
+    </>
   );
 };
 

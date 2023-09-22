@@ -2,7 +2,7 @@ import { ImageContent, TextContent } from "models/content/content.types";
 import { useMemo } from "react";
 import { useContent } from "./useContent";
 
-const DEFAULT_CONTENT_URL = `/images/content/`;
+const DEFAULT_CONTENT_URL = `/assets/images/content/`;
 export const useContentForPage = ({
   textSelection = [],
   imageSelection = [],

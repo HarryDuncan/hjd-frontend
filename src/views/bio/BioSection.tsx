@@ -48,10 +48,12 @@ export const BioSection = ({ image, text, index }: BioSectionProps) => {
 
 const useBannerSize = () => {
   const { height } = useDeviceSize();
-  const bannerConfig = BIO_BANNER_CONFIG;
-  bannerConfig.default.heightPx = height;
-  bannerConfig.final.heightPx = height;
-  return { height, bannerConfig };
+  return useMemo(() => {
+    const bannerConfig = BIO_BANNER_CONFIG;
+    bannerConfig.default.heightPx = height;
+    bannerConfig.final.heightPx = height;
+    return { height, bannerConfig };
+  }, [height]);
 };
 
 const useScrollConfig = (index: number): ScrollTypographyConfig =>

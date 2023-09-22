@@ -33,8 +33,7 @@ export const TechSection = ({
   sectionData,
   loadData,
 }: TechSectionProps) => {
-  const scrollCardConfig = useScrollCardConfig(index);
-  const isAnimated = false;
+  const { scrollCardConfig, isAnimated } = useScrollCardConfig(index);
   return (
     <TechSectionContainer>
       {loadData && (
@@ -54,7 +53,9 @@ export const TechSection = ({
   );
 };
 
-const useScrollCardConfig = (index: number): Partial<ScrollGalleryConfig> => {
+const useScrollCardConfig = (
+  index: number
+): { scrollCardConfig: Partial<ScrollGalleryConfig>; isAnimated: boolean } => {
   const windowScreenType = useClientWindowSize();
   return useMemo(() => {
     const cardAnimationType = (
@@ -67,7 +68,15 @@ const useScrollCardConfig = (index: number): Partial<ScrollGalleryConfig> => {
       windowScreenType,
       cardAnimationType
     );
-    return { ...config, gridWrapTransform, cardAnimationType };
+    const scrollCardConfig = {
+      ...config,
+      gridWrapTransform,
+      cardAnimationType,
+    };
+    const isAnimated =
+      windowScreenType !== WINDOW_TYPE.MOBILE &&
+      windowScreenType !== WINDOW_TYPE.SMALL_MOBILE;
+    return { isAnimated, scrollCardConfig };
   }, [windowScreenType]);
 };
 

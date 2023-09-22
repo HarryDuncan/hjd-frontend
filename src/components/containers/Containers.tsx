@@ -47,9 +47,14 @@ export const ViewItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   width: 95%;
   margin: 0 2.5%;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.laptop}px) => {
+    width: 98%;
+    margin: 0 1%;
+  }
+
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     flex-direction: column;
@@ -72,8 +77,10 @@ export const ViewItemDetailsContainer = styled.div`
     @media only screen and (max-width: ${({ theme }) =>
         theme.breakpoints.mobile}px) {
       font-size: 3rem;
+      margin: 1.5rem;
     }
   }
+
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     width: 100%;

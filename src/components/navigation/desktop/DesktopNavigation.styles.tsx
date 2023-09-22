@@ -7,7 +7,7 @@ export const NavItemList = styled.ul`
   margin-right: 0.5%;
   text-align: center;
   border: none;
-  width: 50%;
+  max-width: 50%;
 `;
 
 export const NavItem = styled.li`

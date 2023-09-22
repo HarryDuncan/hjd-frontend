@@ -1,4 +1,4 @@
-export const SHOP_IMAGE_URL_ROOT = "/images/shop/";
+export const SHOP_IMAGE_URL_ROOT = "/assets/images/products/";
 export const SHOP_IMAGES = ["banner1"];
 
 export const SHOP_BANNER_CONFIG = {

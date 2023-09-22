@@ -12,6 +12,7 @@ import { useOnScroll } from "hooks/client-hooks/useOnScroll";
 import { TechHome } from "views/tech/TechHome";
 import { TechTitle } from "views/tech/TechTitle";
 import FullScreenLayout from "components/layout/FullScreenLayout";
+import Head from "next/head";
 
 const Tech: NextPage = () => {
   const {
@@ -23,28 +24,44 @@ const Tech: NextPage = () => {
   useLoadPageOnTop();
   const sectionLoadingStatus = useLoadSectionsOnScroll(height);
   return (
-    <FullScreenLayout showNav={false}>
-      <TechHome contentHeight={height} />
-      <LongScroll ref={longScrollRef}>
-        <TechTitle />
-        {sortedTechData.map(
-          (
-            { techCardItems, section, sectionText, sectionTitle, sectionData },
-            index
-          ) => (
-            <TechSection
-              key={`tech-section-${section}`}
-              techCardItems={techCardItems}
-              sectionTitle={sectionTitle}
-              sectionText={sectionText}
-              index={index}
-              sectionData={sectionData}
-              loadData={sectionLoadingStatus[section]}
-            />
-          )
-        )}
-      </LongScroll>
-    </FullScreenLayout>
+    <>
+      <Head>
+        <title>Bio</title>
+        <meta
+          name="Harry J Dee bio"
+          content="Learn the story and mission of artist and creative technologist Harry J Dee"
+          key="desc"
+        />
+      </Head>
+      <FullScreenLayout showNav={false}>
+        <TechHome contentHeight={height} />
+        <LongScroll ref={longScrollRef}>
+          <TechTitle />
+          {sortedTechData.map(
+            (
+              {
+                techCardItems,
+                section,
+                sectionText,
+                sectionTitle,
+                sectionData,
+              },
+              index
+            ) => (
+              <TechSection
+                key={`tech-section-${section}`}
+                techCardItems={techCardItems}
+                sectionTitle={sectionTitle}
+                sectionText={sectionText}
+                index={index}
+                sectionData={sectionData}
+                loadData={sectionLoadingStatus[section]}
+              />
+            )
+          )}
+        </LongScroll>
+      </FullScreenLayout>
+    </>
   );
 };
 
