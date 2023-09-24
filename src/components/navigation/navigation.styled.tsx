@@ -31,7 +31,7 @@ export const NavigationContainer = styled.div<{ $isLight?: boolean }>`
     font-size: 7rem;
     white-space: nowrap;
     font-weight: ${({ theme }) => theme.font.weight.light};
-    font-family: "Harryduncan";
+    font-family: var(--font-hjd);
 
     @media only screen and (max-width: ${({ theme }) =>
         theme.breakpoints.mobile}px) {
