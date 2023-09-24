@@ -6,7 +6,7 @@ import {
 } from "components/containers/Containers";
 import { ReactNode } from "react";
 
-export default function TransitionFriendlyLayout({
+export default function TransitionLayout({
   children,
   topPadding = true,
   isError = false,

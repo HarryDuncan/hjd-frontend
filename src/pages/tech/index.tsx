@@ -11,8 +11,8 @@ import { useLoadPageOnTop } from "hooks/client-hooks/useLoadPageOnTop";
 import { useOnScroll } from "hooks/client-hooks/useOnScroll";
 import { TechHome } from "views/tech/TechHome";
 import { TechTitle } from "views/tech/TechTitle";
-import FullScreenLayout from "components/layout/FullScreenLayout";
 import Head from "next/head";
+import FullScreenLayout from "layout/FullScreenLayout";
 
 const Tech: NextPage = () => {
   const {
@@ -26,10 +26,10 @@ const Tech: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Bio</title>
+        <title>Tech</title>
         <meta
-          name="Harry J Dee bio"
-          content="Learn the story and mission of artist and creative technologist Harry J Dee"
+          name="Harry J Dee Tech"
+          content="The tech stack of software engineer Harry Duncan"
           key="desc"
         />
       </Head>

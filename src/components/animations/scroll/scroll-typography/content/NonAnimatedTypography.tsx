@@ -18,11 +18,7 @@ export const NonAnimatedTypography = ({
       <ScrolledTypographyHeader>
         {text.split("").map((char, index) => {
           const charKey = `${char}-${index}`;
-          return (
-            <span className={`chars-${text}`} key={charKey}>
-              {char}
-            </span>
-          );
+          return <span key={charKey}>{char}</span>;
         })}
       </ScrolledTypographyHeader>
     );
@@ -31,11 +27,7 @@ export const NonAnimatedTypography = ({
     <ScrolledTypographyText>
       {text.split("").map((char, index) => {
         const charKey = `${char}-${index}`;
-        return (
-          <span className={`chars-${text}`} key={charKey}>
-            {char}
-          </span>
-        );
+        return <span key={charKey}>{char}</span>;
       })}
     </ScrolledTypographyText>
   );

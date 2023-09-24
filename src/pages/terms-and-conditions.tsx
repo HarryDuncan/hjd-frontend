@@ -1,11 +1,11 @@
-import Layout from "components/layout/DefaultLayout";
-import { ViewItemDetailsContainer } from "components/containers/Containers";
+import { ViewItemContent } from "components/containers/Containers";
 import { ContentText, MainTitle } from "components/text/Text";
+import Layout from "layout/DefaultLayout";
 
 const TermsAndConditions = () => {
   return (
     <Layout>
-      <ViewItemDetailsContainer>
+      <ViewItemContent>
         <MainTitle $isLight={false}> Terms and Conditions</MainTitle>
         <ContentText>
           Harry J Dee is an online fundraising service and ecommerce store that
@@ -103,7 +103,7 @@ const TermsAndConditions = () => {
           &apos;session&apos; cookies, which are removed from Your computer once
           You leave the Harry J Dee site.
         </ContentText>
-      </ViewItemDetailsContainer>
+      </ViewItemContent>
     </Layout>
   );
 };

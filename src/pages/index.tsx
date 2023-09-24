@@ -1,4 +1,3 @@
-import FullScreenLayout from "components/layout/FullScreenLayout";
 import { DynamicScene } from "components/visual-components/DynamicInteractiveNode";
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
@@ -14,6 +13,7 @@ import { useFadeOut } from "components/animations/gsap-timelines/useFadeOut";
 import { AnimationConfig } from "visual/display/animation/animation.types";
 import { SceneData } from "visual/set-up/config/config.types";
 import Head from "next/head";
+import FullScreenLayout from "layout/FullScreenLayout";
 
 const ROUTING_DELAY = 1500;
 const Home: NextPage = () => {

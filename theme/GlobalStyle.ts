@@ -15,19 +15,13 @@ export const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.colors.mono.background};
 
   }
-@font-face {
-  font-family: "Harryduncan";
-  font-style: normal;
-  font-weight: 100;
-  src: url(/fonts/Harryduncan.woff), format("woff");
-  src: url(/fonts/Harryduncan.woff2), format("woff2"); 
-}
+
   body {
     margin: 0;
   }
   
- h1 { font-family : 'Harryduncan'}
- h2 { font-family : 'Harryduncan'}
+ h1 { font-family :  var(--font-hjd);}
+ h2 { font-family :  var(--font-hjd);}
  
  @media only screen and (max-width: ${({ theme }) =>
    theme.breakpoints.tablet}px) {

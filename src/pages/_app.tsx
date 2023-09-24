@@ -5,19 +5,22 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle, THEME } from "../../theme";
 import { WindowStateProvider } from "visual/compat/window-state/windowStateProvider";
+import RootLayout from "layout/RootLayout";
 
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WindowStateProvider>
-      <ThemeProvider theme={THEME}>
-        <GlobalStyle />
-        <QueryClientProvider client={queryClient}>
-          <AppContent Component={Component} pageProps={pageProps} />
-        </QueryClientProvider>
-      </ThemeProvider>
-    </WindowStateProvider>
+    <RootLayout>
+      <WindowStateProvider>
+        <ThemeProvider theme={THEME}>
+          <GlobalStyle />
+          <QueryClientProvider client={queryClient}>
+            <AppContent Component={Component} pageProps={pageProps} />
+          </QueryClientProvider>
+        </ThemeProvider>
+      </WindowStateProvider>
+    </RootLayout>
   );
 }
 

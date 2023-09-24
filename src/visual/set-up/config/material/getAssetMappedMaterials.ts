@@ -38,24 +38,24 @@ export const getAssetMappedMaterials = (
 
 const formatMaterial = (configItem: MaterialConfig, mappedAsset: Asset) => {
   switch (configItem.materialType) {
-    case MATERIAL_TYPES.ENV_MAP:
+    case MATERIAL_TYPES.ENV_MAP: {
       return getEnvMapMaterial(
         configItem.materialProps as EnvMapMaterialProps,
         mappedAsset
       );
-
-    case MATERIAL_TYPES.VIDEO:
+    }
+    case MATERIAL_TYPES.VIDEO: {
       return getVideoMaterial(
         configItem.materialProps as VideoMaterialProps,
         mappedAsset
       );
-
-    case MATERIAL_TYPES.MATCAP:
+    }
+    case MATERIAL_TYPES.MATCAP: {
       return getMatcapMaterial(
         configItem.materialProps as MatcapMaterialProps,
         mappedAsset
       );
-
+    }
     default:
       return null;
   }

@@ -1,18 +1,13 @@
-import ViewItemLayout from "components/layout/ViewItemLayout";
-import { ViewItemDetailsContainer } from "components/containers/Containers";
-import { ContentText, MainTitle } from "components/text/Text";
+import { ContentText } from "components/text/Text";
 import { ART_ROOT_URL } from "constants/art.constants";
 import { usePaintingData } from "hooks/art/usePaintingData";
 import { useScrollPaintings } from "hooks/art/useScrollPaintings";
 import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
-import { Icon } from "components/icons/Icons";
-import { useIdleTimer } from "hooks/client-hooks/useIdleTimer";
-import { IDLE_TIMER } from "constants/ui.constants";
-import { IconTypes } from "components/icons/Icons.types";
 import { Direction } from "utils/moveThroughArray";
 import Head from "next/head";
+import ViewItemLayout from "layout/view-item-layout/ViewItemLayout";
 
 const PaintingDetails = () => {
   const { painting } = usePaintingData();
@@ -21,7 +16,7 @@ const PaintingDetails = () => {
   const [changedDirection, setChangedDirection] = useState<Direction>(
     Direction.FORWARD
   );
-  const { isIdle } = useIdleTimer(IDLE_TIMER);
+
   if (!painting) return null;
 
   const onChangeItem = (direction: Direction) => {
@@ -44,38 +39,22 @@ const PaintingDetails = () => {
           imageUrl={`${ART_ROOT_URL}${painting?.imageUrl}`}
           title={painting?.title}
           onChangeItem={onChangeItem}
+          handleExit={handleExit}
         >
-          <ViewItemDetailsContainer>
-            {!isIdle && (
-              <Icon onClick={handleExit} type={IconTypes.EXIT} hasGesture />
-            )}
-
-            <Icon
-              onClick={onChangeItem}
-              type={IconTypes.CHEVRON_LEFT}
-              hasGesture
-            />
-            <Icon
-              onClick={onChangeItem}
-              type={IconTypes.CHEVRON_RIGHT}
-              hasGesture
-            />
-            <MainTitle $isLight={false}>{painting.title}</MainTitle>
-            <ContentText>{painting.description}</ContentText>
-            <br />
-            <br />
-            {painting.medium && <ContentText>{painting.medium}</ContentText>}
-            <br />
-            <br />
-            {painting.yearCompleted && (
-              <ContentText>Completed in {painting.yearCompleted}</ContentText>
-            )}
-            <br />
-            <br />
-            {painting.dimensions && (
-              <ContentText>{painting.dimensions}</ContentText>
-            )}
-          </ViewItemDetailsContainer>
+          <ContentText>{painting.description}</ContentText>
+          <br />
+          <br />
+          {painting.medium && <ContentText>{painting.medium}</ContentText>}
+          <br />
+          <br />
+          {painting.yearCompleted && (
+            <ContentText>Completed in {painting.yearCompleted}</ContentText>
+          )}
+          <br />
+          <br />
+          {painting.dimensions && (
+            <ContentText>{painting.dimensions}</ContentText>
+          )}
         </ViewItemLayout>
       </SlideWithBackgroundTransition>
     </>

@@ -16,18 +16,17 @@ export const NavItem = styled.li`
   text-decoration: none;
   align-content: right;
   float: right;
-  margin: -0.1rem 0 0 1em;
-
+  margin: 0rem 0 0 1em;
   cursor: pointer;
   position: relative;
-  height: 4rem;
+  height: 3.8rem;
 `;
 
 export const NavItemLabel = styled.span<{ $isLight: boolean }>`
   text-align: right;
   cursor: pointer;
   font-family: "Harryduncan";
-  font-size: 5.5rem;
+  font-size: 5rem;
   text-transform: uppercase;
   color: ${({ $isLight }) => ($isLight ? "white" : "black")};
 `;

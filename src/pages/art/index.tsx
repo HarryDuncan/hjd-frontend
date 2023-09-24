@@ -6,11 +6,11 @@ import {
   BANNER_IMAGE_HOVER_CONFIG,
   MAIN_GALLERY_TOP_OFFSET,
 } from "constants/ui.constants";
-import { DynamicLayout } from "components/layout/DynamicLayout";
 import { TextScroller } from "components/text-scroller/TextScroller";
 import SoftFadeTransition from "components/animations/page-transitions/SoftFadeTransition";
 import { PaintingGallery } from "views/art/PaintingGallery";
 import Head from "next/head";
+import { DynamicLayout } from "layout/DynamicLayout";
 
 const Art: NextPage = () => {
   const { images } = useContentForPage({

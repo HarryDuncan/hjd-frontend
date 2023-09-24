@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CircleButton = styled.button`
   z-index: 15;
-  bottom: 10vh;
+  bottom: 1vh;
   position: fixed;
   grid-area: 1 / 1 / -1 / -1;
   align-self: center;
@@ -36,6 +36,7 @@ export const CircleButton = styled.button`
     transition: transform 0.3s ease-out;
   }
   h2 {
+    font-weight: 100;
     transition: transform 0.3s ease-out;
   }
   :hover .circle-svg {
@@ -49,6 +50,12 @@ export const CircleButton = styled.button`
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     bottom: 2vh;
+    width: 150px;
+    height: 150px;
+    h2 {
+      font-size: 3rem;
+      transition: transform 0.3s ease-out;
+    }
   }
 `;
 export const ButtonText = styled.h2`

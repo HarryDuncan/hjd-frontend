@@ -1,8 +1,8 @@
-import FullScreenLayout from "components/layout/FullScreenLayout";
 import { LinkTree } from "views/link-tree/LinkTree";
 import { useLinkTree } from "hooks/content/useLinkTree";
 import Head from "next/head";
 import { DefaultScene } from "components/animations/scenes/DefaultScene";
+import FullScreenLayout from "layout/FullScreenLayout";
 
 const Link = () => {
   const { links } = useLinkTree();

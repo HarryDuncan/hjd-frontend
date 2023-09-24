@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import { OrthographicCamera, PerspectiveCamera } from "three";
 import { CAMERA_TYPES, CameraConfig } from "./camera.types";
-import { getPosition } from "visual/set-up/config/utils/position";
 import { useWindowState } from "visual/compat/window-state/windowStateProvider";
 import { DEFAULT_ORTHOGRAPHIC, DEFAULT_PERSPECTIVE } from "./camera.consts";
+import { positionConfigToPosition } from "visual/utils/conversion/conversion";
 
 export const useSetUpCamera = () => {
   const {
@@ -16,7 +16,7 @@ export const useSetUpCamera = () => {
   return useCallback(
     (config?: CameraConfig) => {
       const camera = getCamera(aspect, config);
-      const { x, y, z } = getPosition(config?.position ?? {});
+      const { x, y, z } = positionConfigToPosition(config?.position ?? {});
       camera.position.set(x, y, z);
       return camera;
     },

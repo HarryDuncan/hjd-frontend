@@ -1,4 +1,7 @@
-export const fragmentShader = `const float PI = 3.14159265;
+import { defaultVertex } from "../default/defaultVertex";
+import { defaultUniforms } from "../interactive-particles/defaultUniforms";
+
+const fragmentShader = `const float PI = 3.14159265;
 uniform float uTime;
 uniform vec3 uResolution;
 uniform vec3 uPosition;
@@ -46,3 +49,9 @@ void main( void ){
     gl_FragColor = color;
   }
 `;
+
+export const plasma = {
+  fragmentShader,
+  vertexShader: defaultVertex,
+  defaultUniforms,
+};

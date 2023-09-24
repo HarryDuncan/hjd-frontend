@@ -69,29 +69,7 @@ export const ViewItemContainer = styled.div`
     margin: 0;
   }
 `;
-export const ViewItemDetailsContainer = styled.div`
-  text-align: center;
-  width: 50%;
-  margin: 0 3.5rem;
-  ${MainTitle} {
-    @media only screen and (max-width: ${({ theme }) =>
-        theme.breakpoints.mobile}px) {
-      font-size: 3rem;
-      margin: 1.5rem;
-    }
-  }
 
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-  }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}px) {
-    position: relative;
-  }
-`;
 export const ContentContainer = styled.div`
   width: 80%;
   margin: 0 auto;
@@ -105,3 +83,71 @@ export const OverlayDiv = styled.div`
   background: ${({ theme }) => theme.colors.gradients.dark};
   opacity: 0.65;
 `;
+
+export const ViewItemContent = styled.div`
+  text-align: center;
+  width: 50%;
+  margin: 0 3.5rem;
+  ${MainTitle} {
+    @media only screen and (max-width: ${({ theme }) =>
+        theme.breakpoints.mobile}px) {
+      font-size: 3rem;
+      margin: 1.5rem;
+    }
+  }
+  .exit-icon {
+    position: absolute;
+    top: 2rem;
+    right: 3%;
+  }
+  .scroll-left-icon {
+    position: absolute;
+    top: 205%;
+    left: 3%;
+  }
+
+  .scroll-right-icon {
+    position: absolute;
+    top: 205%;
+    right: 3%;
+  }
+
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    .exit-icon {
+      top: 2%;
+      right: 3%;
+    }
+    .scroll-left-icon {
+      top: 22%;
+      left: 3%;
+    }
+
+    .scroll-right-icon {
+      top: 22%;
+      right: 3%;
+    }
+  }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    position: relative;
+    .exit-icon {
+      top: 2%;
+      right: 3%;
+    }
+    .scroll-left-icon {
+      top: 22%;
+      left: 3%;
+    }
+
+    .scroll-right-icon {
+      top: 22%;
+      right: 3%;
+    }
+  }
+`;
+
+export const ViewItemDetails = styled.div``;

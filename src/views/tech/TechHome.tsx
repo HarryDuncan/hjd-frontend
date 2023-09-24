@@ -51,12 +51,19 @@ const useOnScrollEventConfig = (contentHeight: number) => {
   const updateOnScroll = useCallback(
     (scene: Scene, event: Event) => {
       const { scrollY } = event as Event & { scrollY: number };
-      const scrollPercentage = (scrollY / contentHeight) * 30;
+      const scrollPercentage = scrollY / contentHeight;
       updateUniformByKey(
         scene as InteractiveScene,
-        "geometry",
-        "uProgress",
-        scrollPercentage
+        "hjd-points",
+        "uScroll",
+        scrollPercentage * 30
+      );
+      const opacity = 1 - scrollPercentage * 2;
+      updateUniformByKey(
+        scene as InteractiveScene,
+        "hjd-chrome",
+        "uOpacity",
+        opacity
       );
     },
     [contentHeight]

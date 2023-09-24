@@ -1,3 +1,4 @@
 export const MESH_TRANSFORM = {
   MORPH: "MORPH",
+  ATTRIBUTES: "ATTRIBUTES",
 };

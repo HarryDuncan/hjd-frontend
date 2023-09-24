@@ -6,11 +6,11 @@ import {
   MAIN_GALLERY_TOP_OFFSET,
 } from "constants/ui.constants";
 import { SHOP_IMAGES } from "constants/shop.constants";
-import { DynamicLayout } from "components/layout/DynamicLayout";
 import { TextScroller } from "components/text-scroller/TextScroller";
 
 import Head from "next/head";
 import { ProductGallery } from "views/shop/product-gallery/ProductGallery";
+import { DynamicLayout } from "layout/DynamicLayout";
 
 const Shop: NextPage = () => {
   const { images } = useContentForPage({ imageSelection: SHOP_IMAGES });

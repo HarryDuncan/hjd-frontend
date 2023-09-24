@@ -40,4 +40,8 @@ export const HamburgerMenuContainer = styled.div`
       stroke: #ffffff;
     }
   }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
+    margin: 0.2rem;
+  }
 `;

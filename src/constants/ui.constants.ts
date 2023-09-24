@@ -25,58 +25,5 @@ export const BANNER_IMAGE_HOVER_CONFIG_MOBILE = {
   },
 };
 
-export const SCROLL_LEFT_POSITIONS = {
-  position: {
-    positionType: "absolute",
-    top: "205%",
-    left: "3%",
-  },
-  tablet: {
-    positionType: "absolute",
-    top: "50%",
-    right: "3%",
-  },
-  mobile: {
-    positionType: "absolute",
-    top: "22%",
-    left: "0%",
-  },
-};
-
-export const SCROLL_RIGHT_POSITIONS = {
-  position: {
-    positionType: "absolute",
-    top: "205%",
-    right: "3%",
-  },
-  tablet: {
-    positionType: "absolute",
-    top: "50%",
-    right: "3%",
-  },
-  mobile: {
-    positionType: "absolute",
-    top: "22%",
-    right: "0%",
-  },
-};
-export const EXIT_POSITIONS = {
-  position: {
-    positionType: "absolute",
-    top: "2rem",
-    right: "3%",
-  },
-  tablet: {
-    positionType: "absolute",
-    top: "2%",
-    right: "0%",
-  },
-  mobile: {
-    positionType: "absolute",
-    top: "2%",
-    right: "0%",
-  },
-};
-
 export const IDLE_TIMER = 20000;
 export const LOAD_MORE_OFFSET = 200;

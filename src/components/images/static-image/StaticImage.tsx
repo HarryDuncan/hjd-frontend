@@ -34,7 +34,7 @@ export const StaticImage = ({
       <StyledImage
         loader={imageLoader}
         alt={imageTitle}
-        src={imageUrl}
+        src={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}${imageUrl}`}
         fill
         unoptimized
         onLoadingComplete={onLoadingComplete}

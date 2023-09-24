@@ -1,15 +1,12 @@
-import ViewItemLayout from "components/layout/ViewItemLayout";
 import { useProductData } from "hooks/shop/useProductData";
 import { useScrollProducts } from "hooks/shop/useScrollProducts";
 import { useCallback, useState } from "react";
-import { ViewItemDetailsContainer } from "components/containers/Containers";
-import { ContentSubText, ContentText, MainTitle } from "components/text/Text";
+import { ContentSubText, ContentText } from "components/text/Text";
 import { useRouter } from "next/router";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
-import { Icon } from "components/icons/Icons";
-import { IconTypes } from "components/icons/Icons.types";
 import { Direction } from "utils/moveThroughArray";
 import { SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
+import ViewItemLayout from "layout/view-item-layout/ViewItemLayout";
 
 const ProductDetails = () => {
   const { product } = useProductData();
@@ -21,7 +18,7 @@ const ProductDetails = () => {
   );
 
   if (!product) return null;
-  const { title, description } = product;
+  const { description } = product;
   const onChangeItem = (direction: Direction) => {
     setChangedDirection(direction);
     changeProduct(direction);
@@ -32,24 +29,11 @@ const ProductDetails = () => {
         onChangeItem={onChangeItem}
         imageUrl={`${SHOP_IMAGE_URL_ROOT}${product?.imageUrl}`}
         title={product?.title}
+        handleExit={handleExit}
       >
-        <ViewItemDetailsContainer>
-          <Icon onClick={handleExit} type={IconTypes.EXIT} hasGesture />
-          <Icon
-            onClick={onChangeItem}
-            type={IconTypes.CHEVRON_LEFT}
-            hasGesture
-          />
-          <Icon
-            onClick={onChangeItem}
-            type={IconTypes.CHEVRON_RIGHT}
-            hasGesture
-          />
-          <MainTitle $isLight={false}>{title}</MainTitle>
-          <ContentText>{description}</ContentText>
-          <br />
-          <ContentSubText>Sold Out</ContentSubText>
-        </ViewItemDetailsContainer>
+        <ContentText>{description}</ContentText>
+        <br />
+        <ContentSubText>Sold Out</ContentSubText>
       </ViewItemLayout>
     </SlideWithBackgroundTransition>
   );

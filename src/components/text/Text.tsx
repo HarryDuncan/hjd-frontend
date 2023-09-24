@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainTitle = styled.h1<{ $isLight?: boolean }>`
   text-transform: uppercase;
-  font-size: 5rem;
+  font-size: 4rem;
   margin: 0 auto;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;

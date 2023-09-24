@@ -12,7 +12,6 @@ uniform float uProgress;
 uniform float uOpacity;
 // Common varyings
 varying vec3 v_position;
-varying float vPointId;
 varying vec3 vNormal;
 varying vec3 vViewDirection;
 

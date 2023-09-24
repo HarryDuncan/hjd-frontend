@@ -1,16 +1,13 @@
 import { BioPage } from "views/bio/Bio.styles";
 import { BioSection } from "views/bio/BioSection";
-
-import Layout from "components/layout/DefaultLayout";
-
 import {
   BIO_PAGE_SECTIONS,
   IMAGE_CONTENT_SECTIONS,
 } from "views/bio/bio.constants";
-
 import { useContentForPage } from "hooks/content/useContentForPage";
 import type { NextPage } from "next";
 import Head from "next/head";
+import TransitionLayout from "layout/TransitionLayout";
 
 const Bio: NextPage = () => {
   const { text, images } = useBioPageContent();
@@ -25,7 +22,7 @@ const Bio: NextPage = () => {
           key="desc"
         />
       </Head>
-      <Layout>
+      <TransitionLayout>
         <BioPage>
           {images.map((image, index) => (
             <BioSection
@@ -36,7 +33,7 @@ const Bio: NextPage = () => {
             />
           ))}
         </BioPage>
-      </Layout>
+      </TransitionLayout>
     </>
   );
 };

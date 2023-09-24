@@ -33,6 +33,7 @@ export const BioContentContainer = styled.div<{ $index: number }>`
     margin: 0 auto;
     text-align: center;
     font-weight: 100;
+    font-size: 5rem;
   }
   ${ScrolledTypographyText} {
     color: white;
@@ -46,10 +47,10 @@ export const BioContentContainer = styled.div<{ $index: number }>`
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    width: calc(100% - 0.5rem);
-    left: 0.25rem;
+    width: calc(100% - 4rem);
+    left: 2rem;
     ${ScrolledTypographyHeader} {
-      font-size: 5rem;
+      font-size: 3.5rem;
     }
     ${ScrolledTypographyText} {
       font-size: 1rem;

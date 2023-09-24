@@ -17,12 +17,14 @@ export const TechTitleContainer = styled.div`
     width: 100%;
     color: white;
     font-weight: ${({ theme }) => theme.font.weight.light};
+    width: 80%;
+    left: 10%;
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     ${ScrolledTypographyHeader} {
       font-size: 2.5rem;
-      top: 30vh;
+      top: 40vh;
     }
   }
 `;

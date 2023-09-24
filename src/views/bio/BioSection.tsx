@@ -9,7 +9,7 @@ import {
   CHAR_ANIMATIONS,
   TEXT_TYPE,
 } from "components/animations/scroll/scroll-typography/scrollTypography.consts";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ScrollTypographyConfig } from "components/animations/scroll/scroll-typography/scrollTypography.types";
 
 interface BioSectionProps {
@@ -33,27 +33,37 @@ export const BioSection = ({ image, text, index }: BioSectionProps) => {
         imageUrl={image.imageUrl ?? ""}
         imageHeightPx={height}
       />
-
-      <BioContentContainer $index={index}>
-        <ScrollTypography text={text.title} />
-        <ScrollTypography
-          text={text.content}
-          textType={TEXT_TYPE.TEXT}
-          config={scrollConfig}
-        />
-      </BioContentContainer>
+      {height && (
+        <BioContentContainer $index={index}>
+          <ScrollTypography text={text.title} />
+          <ScrollTypography
+            text={text.content}
+            textType={TEXT_TYPE.TEXT}
+            config={scrollConfig}
+          />
+        </BioContentContainer>
+      )}
     </InnerContainer>
   );
 };
 
 const useBannerSize = () => {
+  const [bioSectionHeight, setHeight] = useState<number>(0);
   const { height } = useDeviceSize();
+  useEffect(() => {
+    if (
+      height !== 0 &&
+      (bioSectionHeight === 0 || Math.abs(height - bioSectionHeight) > 100)
+    ) {
+      setHeight(height);
+    }
+  }, [height]);
   return useMemo(() => {
     const bannerConfig = BIO_BANNER_CONFIG;
-    bannerConfig.default.heightPx = height;
-    bannerConfig.final.heightPx = height;
-    return { height, bannerConfig };
-  }, [height]);
+    bannerConfig.default.heightPx = bioSectionHeight;
+    bannerConfig.final.heightPx = bioSectionHeight;
+    return { height: bioSectionHeight, bannerConfig };
+  }, [bioSectionHeight]);
 };
 
 const useScrollConfig = (index: number): ScrollTypographyConfig =>
