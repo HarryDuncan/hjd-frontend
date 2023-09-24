@@ -25,7 +25,7 @@ export const NavItem = styled.li`
 export const NavItemLabel = styled.span<{ $isLight: boolean }>`
   text-align: right;
   cursor: pointer;
-  font-family: "Harryduncan";
+  font-family: var(--font-hjd);
   font-size: 5rem;
   text-transform: uppercase;
   color: ${({ $isLight }) => ($isLight ? "white" : "black")};

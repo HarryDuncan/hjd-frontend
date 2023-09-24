@@ -44,7 +44,7 @@ const shrinkNav = keyframes`
 export const MobileText = styled.span<{ $isLight: boolean }>`
   text-align: right;
   cursor: pointer;
-  font-family: "Harryduncan";
+  font-family: var(--font-hjd);
   text-transform: uppercase;
   padding-right: 0.5rem;
   color: ${({ $isLight }) => ($isLight ? "white" : "black")};
