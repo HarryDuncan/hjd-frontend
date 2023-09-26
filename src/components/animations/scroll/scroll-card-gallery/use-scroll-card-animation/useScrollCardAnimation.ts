@@ -70,12 +70,12 @@ export const useScrollCardAnimation = (
                 gridItems,
                 {
                   rotationX: -1 * ROTATION_X,
-                  filter: "brightness(0%)",
+                  filter: "brightness(50%)",
                 },
                 {
                   duration: 1,
                   rotationX: ROTATION_X,
-                  filter: "brightness(120%)",
+                  filter: "brightness(150%)",
                   stagger: 0.04,
                 },
                 0
@@ -114,13 +114,12 @@ export const useScrollCardAnimation = (
                 gridItems,
                 {
                   rotationX: -70,
-                  filter: "brightness(0%)",
+                  filter: "brightness(50)",
                 },
                 {
                   duration: 1,
                   rotationX: 70,
-                  filter: "brightness(120%)",
-
+                  filter: "brightness(150%)",
                   stagger: 0.04,
                 },
                 0

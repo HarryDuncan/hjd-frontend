@@ -10,7 +10,7 @@ import { Direction } from "utils/moveThroughArray";
 import { Icon } from "components/icons/Icons";
 import { IconTypes } from "components/icons/Icons.types";
 import { MainTitle } from "components/text/Text";
-import TransitionLayout from "../TransitionLayout";
+import DefaultLayout from "layout/DefaultLayout";
 
 interface ViewItemProps {
   title: string;
@@ -27,7 +27,7 @@ export default function ViewItem({
   children,
 }: ViewItemProps) {
   return (
-    <TransitionLayout hasFooter={false}>
+    <DefaultLayout hasFooter={false}>
       <SwipeablePageNavigator onSwipe={onChangeItem}>
         <ViewItemContainer>
           <StaticImage imageUrl={imageUrl} imageTitle={title} />
@@ -48,6 +48,6 @@ export default function ViewItem({
           </ViewItemContent>
         </ViewItemContainer>
       </SwipeablePageNavigator>
-    </TransitionLayout>
+    </DefaultLayout>
   );
 }

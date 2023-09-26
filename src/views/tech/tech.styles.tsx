@@ -12,7 +12,7 @@ export const TechTitleContainer = styled.div`
   ${ScrolledTypographyHeader} {
     font-size: 5rem;
     position: absolute;
-    top: 50vh;
+    top: 30vh;
     text-align: center;
     width: 100%;
     color: white;
@@ -45,6 +45,7 @@ export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
     color: white;
     margin: 0 auto;
     text-align: center;
+    font-size: 5rem;
     font-weight: ${({ theme }) => theme.font.weight.light};
   }
   ${ScrolledTypographyText} {
@@ -58,11 +59,21 @@ export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
   }
 
   @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
+      theme.breakpoints.laptop}px) {
     top: ${({ $top }) => $top}%;
-    left: 1%;
-    width: 98%;
+    left: 10%;
+    width: 80%;
 
+    ${ScrolledTypographyHeader} {
+      font-size: 5rem;
+    }
+    ${ScrolledTypographyText} {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
     ${ScrolledTypographyHeader} {
       font-size: 3rem;
     }

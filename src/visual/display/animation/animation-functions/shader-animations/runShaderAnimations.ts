@@ -29,6 +29,7 @@ export const runShaderAnimations = (
     animatedObjects.forEach((animatedObject) => {
       animationLoop(animatedObject, shaderTime);
     });
+
     if (
       progress <= animationDurationMilis - 20 ||
       animationDurationMilis === -1

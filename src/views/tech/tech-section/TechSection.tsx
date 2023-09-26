@@ -73,26 +73,37 @@ const useScrollCardConfig = (
       gridWrapTransform,
       cardAnimationType,
     };
-    const isAnimated =
-      windowScreenType !== WINDOW_TYPE.MOBILE &&
-      windowScreenType !== WINDOW_TYPE.SMALL_MOBILE;
+    const isAnimated = false;
     return { isAnimated, scrollCardConfig };
-  }, [windowScreenType]);
+  }, [windowScreenType, index]);
 };
 
 const getScrollConfig = (screenType: string) => {
   switch (screenType) {
+    case WINDOW_TYPE.TABLET:
     case WINDOW_TYPE.MOBILE:
       return {
         gridGap: "1rem",
         gridColumns: 2,
         gridWidth: "100%",
       };
-    case WINDOW_TYPE.TABLET:
+    case WINDOW_TYPE.LAPTOP:
+      return {
+        gridGap: "1rem",
+        gridColumns: 2,
+        gridWidth: "50%",
+      };
+
     default:
       return {};
   }
 };
+const SMALL_SCREEN = [
+  WINDOW_TYPE.MOBILE,
+  WINDOW_TYPE.SMALL_MOBILE,
+  WINDOW_TYPE.LAPTOP,
+  WINDOW_TYPE.TABLET,
+];
 
 const getGridWrapTransform = (
   screenType: string,
@@ -100,7 +111,7 @@ const getGridWrapTransform = (
 ) => {
   switch (cardAnimationType) {
     case CARD_ANIMATION_TYPE.WAVE_LEFT:
-      if (screenType === WINDOW_TYPE.MOBILE) {
+      if (SMALL_SCREEN.includes(screenType)) {
         return {
           transformOrigin: "0% 20%",
           rotationY: 10,
@@ -114,7 +125,7 @@ const getGridWrapTransform = (
         xPercent: -45,
       };
     case CARD_ANIMATION_TYPE.WAVE_RIGHT:
-      if (screenType === WINDOW_TYPE.MOBILE) {
+      if (SMALL_SCREEN.includes(screenType)) {
         return {
           transformOrigin: "0% 20%",
           rotationY: 10,

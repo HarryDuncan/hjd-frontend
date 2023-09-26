@@ -7,7 +7,7 @@ import {
 import { useContentForPage } from "hooks/content/useContentForPage";
 import type { NextPage } from "next";
 import Head from "next/head";
-import TransitionLayout from "layout/TransitionLayout";
+import DefaultLayout from "layout/DefaultLayout";
 
 const Bio: NextPage = () => {
   const { text, images } = useBioPageContent();
@@ -22,7 +22,7 @@ const Bio: NextPage = () => {
           key="desc"
         />
       </Head>
-      <TransitionLayout>
+      <DefaultLayout>
         <BioPage>
           {images.map((image, index) => (
             <BioSection
@@ -33,7 +33,7 @@ const Bio: NextPage = () => {
             />
           ))}
         </BioPage>
-      </TransitionLayout>
+      </DefaultLayout>
     </>
   );
 };

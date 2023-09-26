@@ -1,10 +1,10 @@
 import { ViewItemContent } from "components/containers/Containers";
 import { ContentText, MainTitle } from "components/text/Text";
-import Layout from "layout/DefaultLayout";
+import DefaultLayout from "layout/DefaultLayout";
 
 const TermsAndConditions = () => {
   return (
-    <Layout>
+    <DefaultLayout>
       <ViewItemContent>
         <MainTitle $isLight={false}> Terms and Conditions</MainTitle>
         <ContentText>
@@ -104,7 +104,7 @@ const TermsAndConditions = () => {
           You leave the Harry J Dee site.
         </ContentText>
       </ViewItemContent>
-    </Layout>
+    </DefaultLayout>
   );
 };
 

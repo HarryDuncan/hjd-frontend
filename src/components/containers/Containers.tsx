@@ -51,8 +51,8 @@ export const ViewItemContainer = styled.div`
   margin: 0 2.5%;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.laptop}px) => {
-    width: 98%;
-    margin: 0 1%;
+    width: 100%;
+    margin: 0;
   }
 
   @media only screen and (max-width: ${({ theme }) =>
@@ -88,6 +88,10 @@ export const ViewItemContent = styled.div`
   text-align: center;
   width: 50%;
   margin: 0 3.5rem;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.laptop}px) {
+    width: 35%;
+  }
   ${MainTitle} {
     @media only screen and (max-width: ${({ theme }) =>
         theme.breakpoints.mobile}px) {
@@ -102,13 +106,13 @@ export const ViewItemContent = styled.div`
   }
   .scroll-left-icon {
     position: absolute;
-    top: 205%;
+    top: 50%;
     left: 3%;
   }
 
   .scroll-right-icon {
     position: absolute;
-    top: 205%;
+    top: 50%;
     right: 3%;
   }
 
@@ -150,4 +154,9 @@ export const ViewItemContent = styled.div`
   }
 `;
 
-export const ViewItemDetails = styled.div``;
+export const ViewItemDetails = styled.div`
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    margin: 2rem;
+  }
+`;

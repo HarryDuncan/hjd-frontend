@@ -8,8 +8,8 @@ export const ImageContainer = styled.div<{ $height: number | undefined }>`
   position: relative;
 
   @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.laptop}px) => {
-    margin: 0 0.5%;
+      theme.breakpoints.laptop}px) {
+    margin-left: 5%;
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {

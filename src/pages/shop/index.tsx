@@ -7,10 +7,9 @@ import {
 } from "constants/ui.constants";
 import { SHOP_IMAGES } from "constants/shop.constants";
 import { TextScroller } from "components/text-scroller/TextScroller";
-
 import Head from "next/head";
 import { ProductGallery } from "views/shop/product-gallery/ProductGallery";
-import { DynamicLayout } from "layout/DynamicLayout";
+import DefaultLayout from "layout/DefaultLayout";
 
 const Shop: NextPage = () => {
   const { images } = useContentForPage({ imageSelection: SHOP_IMAGES });
@@ -25,7 +24,7 @@ const Shop: NextPage = () => {
           key="desc"
         />
       </Head>
-      <DynamicLayout>
+      <DefaultLayout>
         <ParallaxImage
           hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
           imageTitle="shop-header"
@@ -35,7 +34,7 @@ const Shop: NextPage = () => {
           <TextScroller text=" Limited Edition " />
         </ParallaxImage>
         <ProductGallery />
-      </DynamicLayout>
+      </DefaultLayout>
     </>
   );
 };

@@ -3,7 +3,7 @@ import { useScrollProducts } from "hooks/shop/useScrollProducts";
 import { useCallback, useState } from "react";
 import { ContentSubText, ContentText } from "components/text/Text";
 import { useRouter } from "next/router";
-import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
+import SlideWithBackgroundTransition from "components/animations/page-transitions/slide-with-background/SlideWithBackgroundTransition";
 import { Direction } from "utils/moveThroughArray";
 import { SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
 import ViewItemLayout from "layout/view-item-layout/ViewItemLayout";

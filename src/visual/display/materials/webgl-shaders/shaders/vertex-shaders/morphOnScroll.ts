@@ -1,7 +1,7 @@
 import { noise3D } from "../../shader-functions/noise/simplex/noise3D";
 
 const vertexShader = `
-
+precision highp float;
   // Common uniforms
 
   uniform vec2 uResolution;

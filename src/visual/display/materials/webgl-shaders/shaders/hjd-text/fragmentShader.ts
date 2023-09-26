@@ -11,7 +11,7 @@ uniform sampler2D uTextureZero;
 uniform float uProgress;
 uniform float uOpacity;
 // Common varyings
-varying vec3 v_position;
+varying vec3 vPosition;
 varying vec3 vNormal;
 varying vec3 vViewDirection;
 
@@ -46,9 +46,9 @@ float diffuseFactor(vec3 normal, vec3 light_direction) {
 */
 void main() {
     // Calculate the new normal vector
-    vec3 new_normal = calculateNormal(v_position);
+    vec3 new_normal = calculateNormal(vPosition);
   
-    vec3 viewDir = normalize(-v_position.xyz);
+    vec3 viewDir = normalize(-vPosition.xyz);
     vec3 x = normalize( vec3( viewDir.z, 0.0, - viewDir.x ) );
     vec3 y = cross( viewDir, x );
 

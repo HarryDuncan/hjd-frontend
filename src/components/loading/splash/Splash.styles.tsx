@@ -51,7 +51,7 @@ export const Overlay = styled.div`
 export const DarkOverlay = styled.div`
   position: absolute;
   z-index: 102;
-  background: black;
+  background: ${({ theme }) => theme.colors.gradients.dark}
   opacity: 1;
   width: 0;
   height: 100%;

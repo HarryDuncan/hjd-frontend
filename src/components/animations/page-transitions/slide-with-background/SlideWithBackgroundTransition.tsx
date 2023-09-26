@@ -1,11 +1,11 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useRouter } from "next/router";
-import { TransitionEffectContainer } from "./Transitions.styled";
+import { TransitionEffectContainer } from "../Transitions.styled";
 
-import { PageTransitionProps } from "./pageTransitions.types";
+import { PageTransitionProps } from "../pageTransitions.types";
 import { useCallback, useRef } from "react";
 import { Direction } from "utils/moveThroughArray";
-import { DefaultScene } from "../scenes/DefaultScene";
+import { DefaultScene } from "../../scenes/DefaultScene";
 
 const TRANSITION_DURATION = 0.4;
 const TRANSITION_DELAY = 0.3;

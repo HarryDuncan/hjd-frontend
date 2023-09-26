@@ -2,6 +2,7 @@ import { Asset } from "visual/set-up/assets/asset.types";
 import { AssetMap, ShaderConfig } from "../shaders.types";
 import { importShader } from "./importShader";
 import { MaterialUniform } from "visual/set-up/config/material/materials.types";
+import { Texture } from "three";
 
 export const configureShaders = (
   shaderConfig: ShaderConfig,
@@ -50,7 +51,7 @@ const mapAssets = (
 const getMappedAsset = (assetMapping: AssetMap, assets: Asset[]) => {
   const mappedAsset = assets.find((asset) => asset.id === assetMapping.assetId);
   if (mappedAsset && mappedAsset.data) {
-    const texture = mappedAsset.data;
+    const texture = mappedAsset.data as Texture;
     return texture;
   }
   console.warn(`no mapped asset found for ${assetMapping.assetId}`);

@@ -4,7 +4,7 @@ import { usePaintingData } from "hooks/art/usePaintingData";
 import { useScrollPaintings } from "hooks/art/useScrollPaintings";
 import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
-import SlideWithBackgroundTransition from "components/animations/page-transitions/SlideWithBackgroundTransition";
+import SlideWithBackgroundTransition from "components/animations/page-transitions/slide-with-background/SlideWithBackgroundTransition";
 import { Direction } from "utils/moveThroughArray";
 import Head from "next/head";
 import ViewItemLayout from "layout/view-item-layout/ViewItemLayout";

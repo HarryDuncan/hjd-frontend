@@ -49,6 +49,12 @@ export const ConfigurableCardWrapper = styled.div`
     }
   }
   @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.laptop}px) {
+    width: 10rem;
+    height: 10rem;
+    margin: 0 auto;
+  }
+  @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     width: 8rem;
     height: 8rem;

@@ -1,6 +1,7 @@
 import { ScreenType } from "visual/compat/window-state/types";
 import { MeshComponentConfig, SceneConfig } from "../config.types";
 import { useMemo } from "react";
+import { GeometryConfig } from "visual/set-up/assets/geometry/geometry.types";
 
 export const useScreenSizeProperties = (
   config: SceneConfig | undefined | null,
@@ -61,6 +62,10 @@ const mergeMeshConfigs = (
           ...(currentMeshConfig.position || {}),
           ...(meshToMerge.position || {}),
         },
+        geometryConfig: {
+          ...(currentMeshConfig.geometryConfig || {}),
+          ...(meshToMerge.geometryConfig || {}),
+        } as GeometryConfig,
       };
 
       mergedMeshConfigs.push(mergedMeshConfig);

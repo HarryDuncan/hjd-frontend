@@ -44,7 +44,7 @@ export const transformGeometry = (
           }
         });
 
-        const pointIds = new Float32Array(maxVertexCount / 3);
+        const pointIds = new Float32Array(maxVertexCount);
         pointIds.forEach((_value, index) => {
           pointIds[index] = Number(index.toFixed(1));
         });
@@ -92,7 +92,7 @@ export const transformGeometry = (
           console.warn("no morph meshes selected check your transform");
           break;
         }
-        const pointIds = new Float32Array(maxVertexCount / 3);
+        const pointIds = new Float32Array(maxVertexCount);
         pointIds.forEach((_value, index) => {
           pointIds[index] = Number(index.toFixed(1));
         });

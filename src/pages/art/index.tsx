@@ -7,10 +7,10 @@ import {
   MAIN_GALLERY_TOP_OFFSET,
 } from "constants/ui.constants";
 import { TextScroller } from "components/text-scroller/TextScroller";
-import SoftFadeTransition from "components/animations/page-transitions/SoftFadeTransition";
 import { PaintingGallery } from "views/art/PaintingGallery";
 import Head from "next/head";
-import { DynamicLayout } from "layout/DynamicLayout";
+import { Suspense } from "react";
+import DefaultLayout from "layout/DefaultLayout";
 
 const Art: NextPage = () => {
   const { images } = useContentForPage({
@@ -27,19 +27,19 @@ const Art: NextPage = () => {
           key="desc"
         />
       </Head>
-      <SoftFadeTransition>
-        <DynamicLayout>
-          <ParallaxImage
-            hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
-            imageUrl={images[0]?.imageUrl ?? ""}
-            imageTitle={images[0]?.title ?? ""}
-            imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
-          >
-            <TextScroller text=" Original Paintings " />
-          </ParallaxImage>
+      <DefaultLayout>
+        <ParallaxImage
+          hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
+          imageUrl={images[0]?.imageUrl ?? ""}
+          imageTitle={images[0]?.title ?? ""}
+          imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
+        >
+          <TextScroller text=" Original Paintings " />
+        </ParallaxImage>
+        <Suspense>
           <PaintingGallery />
-        </DynamicLayout>
-      </SoftFadeTransition>
+        </Suspense>
+      </DefaultLayout>
     </>
   );
 };

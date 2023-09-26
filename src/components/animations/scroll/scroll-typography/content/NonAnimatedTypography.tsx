@@ -16,19 +16,13 @@ export const NonAnimatedTypography = ({
   if (textType === TEXT_TYPE.HEADER) {
     return (
       <ScrolledTypographyHeader>
-        {text.split("").map((char, index) => {
-          const charKey = `${char}-${index}`;
-          return <span key={charKey}>{char}</span>;
-        })}
+        <span>{text}</span>
       </ScrolledTypographyHeader>
     );
   }
   return (
     <ScrolledTypographyText>
-      {text.split("").map((char, index) => {
-        const charKey = `${char}-${index}`;
-        return <span key={charKey}>{char}</span>;
-      })}
+      <span>{text}</span>
     </ScrolledTypographyText>
   );
 };

@@ -1,4 +1,4 @@
-import { defaultVertex } from "../default/defaultVertex";
+import { defaultVertex } from "../default/defaultObjectShader";
 import { defaultUniforms } from "../interactive-particles/defaultUniforms";
 
 const fragmentShader = `const float PI = 3.14159265;

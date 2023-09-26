@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { LinearEncoding, WebGLRenderer } from "three";
+import { SRGBColorSpace, WebGLRenderer } from "three";
 import { useRendererSize } from "../hooks/useRendererSize";
 import { DEFAULT_RENDERER_PARAMS } from "../rendererConstants";
 import { RendererParams } from "../types";
@@ -14,15 +14,17 @@ export const useWebGLRenderer = (
   const { width, height } = useRendererSize(rendererParams);
   return useMemo(() => {
     const renderer = new WebGLRenderer({
-      powerPreference: "high-performance",
       antialias: true,
+      alpha: true,
+      powerPreference: "high-performance",
+      precision: "mediump",
     });
-    renderer.setPixelRatio(devicePixelRatio);
 
+    renderer.setPixelRatio(devicePixelRatio);
     renderer.setSize(width, height);
     renderer.setClearColor(0x112233, 0);
-    renderer.physicallyCorrectLights = true;
-    renderer.outputEncoding = rendererParams.outputEncoding ?? LinearEncoding;
+    renderer.outputColorSpace = rendererParams.outputEncoding ?? SRGBColorSpace;
+
     return renderer;
   }, [rendererParams, width, height, devicePixelRatio]);
 };

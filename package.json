@@ -11,13 +11,11 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "@types/three": "^0.143.0",
     "apollo-link-rest": "^0.9.0-rc.1",
     "framer-motion": "^10.15.1",
     "graphql": "^15.8.0",
     "graphql-anywhere": "^4.2.7",
     "gsap": "^3.10.4",
-    "lodash": "^4.17.21",
     "next": "^13.0.6",
     "qs": "^6.11.2",
     "react": "18.2.0",
@@ -27,6 +25,7 @@
     "three": "^0.156.0"
   },
   "devDependencies": {
+    "@types/three": "^0.156.0",
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.5.4",
     "@types/lodash": "^4.14.182",
