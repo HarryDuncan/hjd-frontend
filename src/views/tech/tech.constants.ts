@@ -6,4 +6,4 @@ export const TECH_SECTIONS = [
   "FAVOURITES",
 ];
 
-export const TECH_IMAGE_PATH = "/images/tech/";
+export const TECH_IMAGE_PATH = "/assets/images/tech/";

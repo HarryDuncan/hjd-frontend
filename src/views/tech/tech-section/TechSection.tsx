@@ -115,7 +115,7 @@ const getGridWrapTransform = (
         return {
           transformOrigin: "0% 20%",
           rotationY: 10,
-          xPercent: -5,
+          xPercent: -10,
           yPercent: 20,
         };
       }
@@ -129,7 +129,7 @@ const getGridWrapTransform = (
         return {
           transformOrigin: "0% 20%",
           rotationY: 10,
-          xPercent: -5,
+          xPercent: -18,
           yPercent: 20,
         };
       }

@@ -1,4 +1,10 @@
-import { MutableRefObject, useCallback, useEffect, useRef } from "react";
+import {
+  MutableRefObject,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Camera, WebGLRenderer } from "three";
 import { Pass } from "three/examples/jsm/postprocessing/Pass";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
@@ -13,7 +19,7 @@ export const useThreadWithPostProcessor = (
   passes: Pass[]
 ) => {
   const postProcessor: MutableRefObject<null | PostProcessor> = useRef(null);
-
+  const [isThreadSet, setIsThreadSet] = useState<boolean>(false);
   const update = useCallback(() => {
     sceneUpdateEvent();
     if (scene) {
@@ -38,7 +44,7 @@ export const useThreadWithPostProcessor = (
   }, [currentFrameRef]);
 
   useEffect(() => {
-    if (scene && camera && renderer && !postProcessor.current) {
+    if (scene && camera && renderer && !postProcessor.current && !isThreadSet) {
       postProcessor.current = new PostProcessor({
         renderer,
         scene,
@@ -46,7 +52,15 @@ export const useThreadWithPostProcessor = (
         passes,
       });
     }
-  }, [scene, camera, renderer, postProcessor, passes]);
+  }, [
+    scene,
+    camera,
+    renderer,
+    postProcessor,
+    passes,
+    isThreadSet,
+    setIsThreadSet,
+  ]);
 
   const initializeSceneWithData = useCallback(() => {
     if (postProcessor.current) {
