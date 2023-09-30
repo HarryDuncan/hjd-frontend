@@ -33,14 +33,14 @@ export const TechSectionContainer = styled.div`
   min-height: 100vh;
 `;
 
-const OFFSET = 7;
+const OFFSET = 5;
 export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
   top: 0;
   z-index: 5;
   position: absolute;
   top: ${({ $top }) => $top + OFFSET}%;
-  left: ${({ $isLeft }) => ($isLeft === true ? "60%" : "10%")};
-  width: 30%;
+  left: ${({ $isLeft }) => ($isLeft === true ? "58%" : "2%")};
+  width: 40%;
   ${ScrolledTypographyHeader} {
     color: white;
     margin: 0 auto;
