@@ -38,8 +38,8 @@ export const ConfigurableCardWrapper = styled.div`
   overflow: hidden;
   height: auto;
   background-color: black;
-  width: 15rem;
-  height: 15rem;
+  width: 13rem;
+  height: 13rem;
   background: transparent;
   position: relative;
   cursor: default;

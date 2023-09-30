@@ -95,7 +95,7 @@ const getScrollConfig = (screenType: string) => {
       };
 
     default:
-      return {};
+      return { gridGap: "3rem" };
   }
 };
 const SMALL_SCREEN = [
@@ -122,7 +122,7 @@ const getGridWrapTransform = (
       return {
         transformOrigin: "0% 20%",
         rotationY: 30,
-        xPercent: -45,
+        xPercent: -65,
       };
     case CARD_ANIMATION_TYPE.WAVE_RIGHT:
       if (SMALL_SCREEN.includes(screenType)) {
@@ -136,7 +136,7 @@ const getGridWrapTransform = (
       return {
         transformOrigin: "0% 50%",
         rotationY: -30,
-        xPercent: 65,
+        xPercent: 80,
       };
     case CARD_ANIMATION_TYPE.NONE:
     default:

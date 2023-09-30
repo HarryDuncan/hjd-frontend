@@ -33,7 +33,7 @@ export const TechSectionContainer = styled.div`
   min-height: 100vh;
 `;
 
-const OFFSET = 2;
+const OFFSET = 7;
 export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
   top: 0;
   z-index: 5;
@@ -60,7 +60,7 @@ export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.laptop}px) {
-    top: ${({ $top }) => $top}%;
+    top: ${({ $top }) => $top + OFFSET / 4}%;
     left: 10%;
     width: 80%;
 
