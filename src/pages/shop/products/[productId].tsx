@@ -7,6 +7,7 @@ import SlideWithBackgroundTransition from "components/animations/page-transition
 import { Direction } from "utils/moveThroughArray";
 import { SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
 import ViewItemLayout from "layout/view-item-layout/ViewItemLayout";
+import { ProductControl } from "views/shop/product-control/ProductControl";
 
 const ProductDetails = () => {
   const { product } = useProductData();
@@ -33,7 +34,7 @@ const ProductDetails = () => {
       >
         <ContentText>{description}</ContentText>
         <br />
-        <ContentSubText>Sold Out</ContentSubText>
+        <ProductControl productData={product} />
       </ViewItemLayout>
     </SlideWithBackgroundTransition>
   );

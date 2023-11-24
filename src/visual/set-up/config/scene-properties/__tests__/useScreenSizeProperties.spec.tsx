@@ -21,7 +21,7 @@ describe("useScreenSizeProperties", () => {
         {
           screenType: "MOBILE",
           threeJsConfig: {
-            camera: { position: { x: 0, y: -10, z: 90 } },
+            camera: { position: { x: 0.5, y: -10, z: 90 } },
           },
         },
       ],
@@ -85,13 +85,11 @@ const MockComponent = ({ mockScreenConfig, screenType }) => {
     mockScreenConfig,
     screenType
   ) as SceneConfig;
-  console.log(config.threeJsConfig);
   if (config) {
     const three = config.threeJsConfig;
     const mesh = config.meshComponentConfigs;
+    console.log(three);
     mockFunction(three);
-    // mockFunction(mesh);
-    // mockFunction(config);
   }
 
   return <div />;

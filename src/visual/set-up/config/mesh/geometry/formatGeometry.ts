@@ -1,5 +1,6 @@
 import { DEFAULT_POSITION } from "visual/consts/threejs";
 import { BufferGeometry, Vector3 } from "three";
+import { cloneDeep } from "lodash";
 import { Asset } from "visual/set-up/assets/asset.types";
 import {
   FormattedGeometry,
@@ -73,11 +74,8 @@ const getGeometryForMeshConfig = (
       geometry names ${geometries.map(({ name }) => name)}`
     );
   }
-  const bufferGeometry = meshGeometry?.geometry.clone();
-  return {
-    ...meshGeometry,
-    geometry: bufferGeometry,
-  };
+  const geometry = cloneDeep(meshGeometry);
+  return geometry;
 };
 
 const formatRotation = (config: MeshComponentConfig) => {

@@ -42,9 +42,7 @@ export const useInteractiveScene = (
       );
       await setUpSceneObjects(scene);
     }
-    if (initializedScene === null) {
-      setUpScene();
-    }
+    setUpScene();
   }, [sceneFunction, eventConfig, animationConfig, setUpSceneObjects]);
 
   return initializedScene;

@@ -14,16 +14,18 @@ export const importShader = (
   try {
     const {
       fragmentShader: defaultFragmentShader,
-      vertexShader: defaultVertexShader,
+      vertexShader,
       defaultUniforms: setUpDefaultUniforms,
       // @ts-ignore - not ideal but will replace with build shader
     } = Shaders[shaderId];
-
+    if (vertexShaderId) {
+      // todo -import vertex shader
+    }
     const fragmentShader = getFragmentShader(
       defaultFragmentShader,
       fragmentShaderId
     );
-    const vertexShader = getVertexShader(defaultVertexShader, vertexShaderId);
+
     return { fragmentShader, vertexShader, setUpDefaultUniforms };
   } catch {
     console.error(`${shaderId} not a valid shader`);
@@ -41,16 +43,4 @@ const getFragmentShader = (
     return fragmentShader;
   }
   return defaultFragmentShader;
-};
-
-const getVertexShader = (
-  defaultVertexShader: string,
-  vertexShaderId: string | undefined
-) => {
-  if (vertexShaderId) {
-    // @ts-ignore - not ideal but will replace with build shader
-    const { vertexShader } = Shaders[vertexShaderId];
-    return vertexShader;
-  }
-  return defaultVertexShader;
 };

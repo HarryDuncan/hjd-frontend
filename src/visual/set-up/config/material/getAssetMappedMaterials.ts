@@ -36,13 +36,14 @@ export const getAssetMappedMaterials = (
     return [];
   });
 
-const formatMaterial = (configItem: MaterialConfig, mappedAsset: Asset) => {
+const formatMaterial = (configItem, mappedAsset) => {
   switch (configItem.materialType) {
     case MATERIAL_TYPES.ENV_MAP: {
-      return getEnvMapMaterial(
+      getEnvMapMaterial(
         configItem.materialProps as EnvMapMaterialProps,
         mappedAsset
       );
+      break;
     }
     case MATERIAL_TYPES.VIDEO: {
       return getVideoMaterial(
@@ -87,6 +88,7 @@ const getVideoMaterial = (
   asset: Asset
 ): Material => {
   materialProps.videoId = asset.id;
+  console.log(asset);
   return getMaterial(
     MATERIAL_TYPES.VIDEO as MaterialType,
     materialProps
