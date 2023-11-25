@@ -15,12 +15,12 @@ export type Action =
   | { type: "REMOVE_FROM_CART"; payload: number }
   | { type: "CHECKOUT" };
 
-type StoreContextType = {
+type ShopContextType = {
   state: AppState;
   dispatch: React.Dispatch<Action>;
 };
 
-const ShopContext = createContext<StoreContextType | undefined>(undefined);
+const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
 const initialState: AppState = {
   cart: [],

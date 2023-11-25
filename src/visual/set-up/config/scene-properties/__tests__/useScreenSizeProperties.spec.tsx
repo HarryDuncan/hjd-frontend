@@ -88,7 +88,6 @@ const MockComponent = ({ mockScreenConfig, screenType }) => {
   if (config) {
     const three = config.threeJsConfig;
     const mesh = config.meshComponentConfigs;
-    console.log(three);
     mockFunction(three);
   }
 

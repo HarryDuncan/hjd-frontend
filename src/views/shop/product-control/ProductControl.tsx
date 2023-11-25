@@ -1,7 +1,7 @@
-import { Button } from "@chakra-ui/react";
 import { ContentSubText } from "components/text/Text";
 import { Product } from "models/shop/types";
 import { useShopContext } from "../shop-context/shop.context";
+import { ActionButton } from "components/buttons/action-button/ActionButton.styled";
 
 export const ProductControl = ({ productData }: { productData: Product }) => {
   const { stock, price } = productData;
@@ -22,9 +22,7 @@ export const ProductControl = ({ productData }: { productData: Product }) => {
   return (
     <>
       {stock && price ? (
-        <Button colorScheme="blackAlpha" onClick={handleAddToCart}>
-          Add To Cart
-        </Button>
+        <ActionButton onClick={handleAddToCart}>Add To Cart</ActionButton>
       ) : (
         <ContentSubText>Sold Out</ContentSubText>
       )}

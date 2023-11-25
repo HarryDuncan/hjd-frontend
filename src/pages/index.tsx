@@ -2,7 +2,7 @@ import { DynamicScene } from "components/visual-components/DynamicInteractiveNod
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
 import type { NextPage } from "next";
-import { useCallback, useMemo, useRef } from "react";
+import { Suspense, useCallback, useMemo, useRef } from "react";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
 import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
@@ -36,7 +36,9 @@ const Home: NextPage = () => {
           onClick={onEnterClick}
           buttonText="ENTER"
         />
-        <HomeSceneContent />
+        <Suspense>
+          <HomeSceneContent />
+        </Suspense>
       </FullScreenLayout>
     </>
   );
