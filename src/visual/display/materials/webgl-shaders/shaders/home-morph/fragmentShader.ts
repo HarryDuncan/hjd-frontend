@@ -4,7 +4,7 @@ export const fragmentShader = `
 uniform vec2 uResolution;
 uniform float uTime;
 uniform sampler2D uMaterial;
-
+uniform float uOpacity;
 // Common varyings
 varying vec3 v_position;
 varying vec3 vNormal;
@@ -70,7 +70,7 @@ void main() {
 
     vec4 col = mix(uMaterialTex,vec4( finalColor, 0.0), 0.0);
     gl_FragColor =  mix(uMaterialTex,col,1.0 );
-
+    gl_FragColor = vec4(gl_FragColor.rgb, gl_FragColor.a * uOpacity);
     
 }
 `;

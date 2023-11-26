@@ -40,7 +40,7 @@ export const CircleButton = styled.button`
     transition: transform 0.3s ease-out;
   }
   :hover .circle-svg {
-    transform: scale3d(1.4, 1.4, 1);
+    transform: scale3d(1.2, 1.2, 1);
     transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
   }
   :hover h2 {
