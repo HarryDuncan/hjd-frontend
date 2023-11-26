@@ -6,7 +6,7 @@ import { ActionButton } from "components/buttons/action-button/ActionButton.styl
 export const ProductControl = ({ productData }: { productData: Product }) => {
   const { stock, price } = productData;
 
-  const { state, dispatch } = useShopContext();
+  const { dispatch } = useShopContext();
 
   const handleAddToCart = () => {
     // Dispatch an action to add a product to the cart

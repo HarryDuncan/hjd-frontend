@@ -3,7 +3,7 @@ import { useSplash } from "components/loading/splash/useSplash";
 import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle, THEME } from "../../theme";
+import { GlobalStyle, THEME } from "theme";
 import { WindowStateProvider } from "visual/compat/window-state/windowStateProvider";
 import RootLayout from "layout/RootLayout";
 import Head from "next/head";
