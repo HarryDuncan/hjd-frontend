@@ -1,3 +1,5 @@
-export const MESH_TRANSFORM = {
-  MORPH: "MORPH",
-};
+export enum MESH_TRANSFORM {
+  MORPH = "MORPH",
+  CUSTOM_ATTRIBUTES = "CUSTOM_ATTRIBUTES",
+  DEFAULT = "DEFAULT",
+}

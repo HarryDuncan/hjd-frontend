@@ -10,7 +10,7 @@ const Checkout = () => {
       <Head>
         <title>Harry J Dee</title>
         <meta
-          name="Harry J Dee"
+          name="Checkout"
           content="The online virtual headquarters of artist Harry J Dee"
           key="desc"
         />

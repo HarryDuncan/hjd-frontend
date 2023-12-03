@@ -48,11 +48,9 @@ export const vertexShader = `
  
     // Save the varyings
     v_position = mv_position.xyz;
-    vNormal = normalize(normalMatrix * new_normal);
-    vUv = vec2(new_position.x, -new_position.y); // or use a different mapping based on your needs
-  
-  
-    
+
+
+    gl_PointSize = max(8.0, min(18.0, 18.0 *  (9.0 / position.z)) );
     
   
     // Vertex shader output

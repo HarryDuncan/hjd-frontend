@@ -4,7 +4,10 @@ import {
   SceneLight,
 } from "visual/display/scene-elements/lights/lights.types";
 import { MaterialConfig } from "visual/set-up/config/material/materials.types";
-import { InteractionConfig } from "interaction/interactions.types";
+import {
+  ExternalInteractionConfig,
+  InteractionConfig,
+} from "interaction/interactions.types";
 import { Asset } from "visual/set-up/assets/asset.types";
 import { GeometryConfig } from "../assets/geometry/geometry.types";
 import { CameraConfig } from "visual/set-up/config/three-js/use-camera/camera.types";
@@ -22,6 +25,7 @@ import {
 } from "three";
 import { RendererParams } from "visual/display/hooks/use-three-js/renderer/types";
 import { Position3d } from "visual/utils/three-dimension-space/position/position.types";
+import { AttributeConfig } from "./mesh/geometry/attributes/set-attributes/setAttributes";
 
 export type RandomizationConfig = {
   instanceCount: number;
@@ -105,6 +109,7 @@ export type MeshTransformType = keyof typeof MESH_TRANSFORM;
 export type MeshTransformConfig = {
   type: MeshTransformType;
   transformedMeshIds: string[];
+  attributeConfig?: AttributeConfig[];
 };
 
 export type ScreenSizeAdjustmentConfig = {
@@ -122,6 +127,7 @@ export type SceneConfig = {
   lightConfig: LightConfigs[];
   sceneComponentConfigs?: SceneComponentConfig[];
   interactionConfig?: InteractionConfig[];
+  externalInteractionConfig?: ExternalInteractionConfig;
   threeJsConfig: ThreeJSConfig;
   scenePropertiesConfig: ScenePropertiesConfig;
   screenSizeAdjustments?: ScreenSizeAdjustmentConfig[];

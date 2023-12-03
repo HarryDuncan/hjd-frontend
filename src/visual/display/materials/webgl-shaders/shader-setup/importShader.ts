@@ -25,7 +25,6 @@ export const importShader = (
       defaultFragmentShader,
       fragmentShaderId
     );
-
     return { fragmentShader, vertexShader, setUpDefaultUniforms };
   } catch {
     console.error(`${shaderId} not a valid shader`);
