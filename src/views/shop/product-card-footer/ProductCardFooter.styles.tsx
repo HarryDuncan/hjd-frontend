@@ -10,6 +10,6 @@ export const Title = styled.h2`
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.05em;
-  font-size: 2em;
+  font-size: ${({ theme }) => theme.font.size.medium};
   font-weight: 300;
 `;

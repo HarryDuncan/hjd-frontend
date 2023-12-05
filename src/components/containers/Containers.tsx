@@ -95,7 +95,7 @@ export const ViewItemContent = styled.div`
   ${MainTitle} {
     @media only screen and (max-width: ${({ theme }) =>
         theme.breakpoints.mobile}px) {
-      font-size: 3rem;
+      font-size: ${({ theme }) => theme.font.size.medium};
       margin: 1.5rem;
     }
   }

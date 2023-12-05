@@ -7,7 +7,7 @@ export const CardTitle = styled.h1`
   z-index: 40;
   text-transform: uppercase;
   text-decoration: none;
-  font-size: 3em;
+  font-size: ${({ theme }) => theme.font.size.xSmall};
   margin-left: 20px;
   top: 0;
   font-weight ${({ theme }) => theme.font.weight.light};

@@ -8,7 +8,7 @@ export const CircleButton = styled.button`
   align-self: center;
   justify-self: center;
   color: #fff;
-  font-size: 2rem;
+  font-size: ${({ theme }) => theme.font.size.medium};
 
   background: transparent;
   border: 0;
@@ -20,7 +20,6 @@ export const CircleButton = styled.button`
     outline: none;
   }
   cursor: pointer;
-  font-family: ivymode, sans-serif;
   font-weight: 200;
   width: 300px;
   height: 300px;
@@ -53,7 +52,7 @@ export const CircleButton = styled.button`
     width: 150px;
     height: 150px;
     h2 {
-      font-size: 3rem;
+      font-size: ${({ theme }) => theme.font.size.medium};
       transition: transform 0.3s ease-out;
     }
   }
@@ -66,6 +65,6 @@ export const ButtonText = styled.h2`
   padding: 0 0.5rem;
   color: white;
   text-transform: uppercase;
-  font-size: 5rem;
+  font-size: ${({ theme }) => theme.font.size.large};
   z-index: 5;
 `;

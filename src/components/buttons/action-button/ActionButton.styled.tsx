@@ -5,7 +5,7 @@ export const ActionButton = styled.button`
   color: white;
   padding: 1rem;
   border-radius: 30px;
-  font-size: large;
+  font-size: ${({ theme }) => theme.font.size.large};
   border: none;
   &:active {
     background-color: ${({ theme }) => theme.colors.mono.lightGray};

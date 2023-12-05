@@ -8,14 +8,13 @@ export const InvisibleNavigationContainer = styled(NavigationContainer)`
     cursor: pointer;
     color: white;
     text-align: left;
-    font-size: 7rem;
+    font-size: ${({ theme }) => theme.font.size.xLarge};
     white-space: nowrap;
     font-weight: ${({ theme }) => theme.font.weight.light};
-    font-family: var(--font-hjd);
-
+    font-family: ${({ theme }) => theme.font.alternative.family};
     @media only screen and (max-width: ${({ theme }) =>
         theme.breakpoints.mobile}px) {
-      font-size: 5rem;
+      font-size: ${({ theme }) => theme.font.size.large};
       margin: -0.6rem 0 0 0;
     }
   }

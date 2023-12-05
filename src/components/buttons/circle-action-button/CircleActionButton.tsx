@@ -24,15 +24,9 @@ export const CircleActionButton = forwardRef(
                 fx="50%"
                 fy="50%"
               >
-                <stop offset="0%" style={{ stopColor: "rgba(96,96,96,0.7)" }} />
-                <stop
-                  offset="25%"
-                  style={{ stopColor: "rgba(74,74,74,0.7)" }}
-                />
-                <stop
-                  offset="50%"
-                  style={{ stopColor: "rgba(57,57,57,0.7)" }}
-                />
+                <stop offset="0%" style={{ stopColor: "rgba(46,46,46,0.7)" }} />
+                <stop offset="25%" style={{ stopColor: "rgba(2,0,26,0.7)" }} />
+                <stop offset="50%" style={{ stopColor: "rgba(2,0,6,0.7)" }} />
                 <stop
                   offset="100%"
                   style={{ stopColor: "rgba(27,27,27,0.7)" }}

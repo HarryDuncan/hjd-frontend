@@ -33,12 +33,12 @@ export const BioContentContainer = styled.div<{ $index: number }>`
     margin: 0 auto;
     text-align: center;
     font-weight: 100;
-    font-size: 5rem;
+    font-size: ${({ theme }) => theme.font.size.large};
   }
   ${ScrolledTypographyText} {
     color: white;
-    font-family: arial;
-    font-size: 1.5rem;
+    font-family: ${({ theme }) => theme.font.default.family};
+    font-size: ${({ theme }) => theme.font.size.small};
     font-weight: 600;
     white-space: pre-wrap;
     position: relative;
@@ -50,10 +50,10 @@ export const BioContentContainer = styled.div<{ $index: number }>`
     width: calc(100% - 4rem);
     left: 2rem;
     ${ScrolledTypographyHeader} {
-      font-size: 3.5rem;
+      font-size: ${({ theme }) => theme.font.size.medium};
     }
     ${ScrolledTypographyText} {
-      font-size: 1rem;
+      font-size: ${({ theme }) => theme.font.size.xSmall};
     }
   }
 `;

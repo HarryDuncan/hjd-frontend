@@ -7,11 +7,11 @@ export const LinkTreeItem = styled.div`
     text-decoration: none;
   }
   ${MainTitle} {
-    font-size: 3rem;
+    font-size: ${({ theme }) => theme.font.size.medium};
     text-decoration: underline;
     @media only screen and (max-width: ${({ theme }) =>
         theme.breakpoints.mobile}px) {
-      font-size: 2.5rem;
+      font-size: ${({ theme }) => theme.font.size.small};
     }
   }
 `;

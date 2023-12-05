@@ -10,7 +10,7 @@ export const TechTitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   ${ScrolledTypographyHeader} {
-    font-size: 5rem;
+    font-size: ${({ theme }) => theme.font.size.large};
     position: absolute;
     top: 30vh;
     text-align: center;
@@ -23,7 +23,7 @@ export const TechTitleContainer = styled.div`
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     ${ScrolledTypographyHeader} {
-      font-size: 2.5rem;
+      font-size: ${({ theme }) => theme.font.size.medium};
       top: 40vh;
     }
   }
@@ -45,13 +45,13 @@ export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
     color: white;
     margin: 0 auto;
     text-align: center;
-    font-size: 5rem;
+    font-size: ${({ theme }) => theme.font.size.large};
     font-weight: ${({ theme }) => theme.font.weight.light};
   }
   ${ScrolledTypographyText} {
     color: white;
-    font-family: arial;
-    font-size: 1.5rem;
+    font-family: ${({ theme }) => theme.font.default.family}
+    font-size: ${({ theme }) => theme.font.size.medium};
     font-weight: 600;
     white-space: pre-wrap;
     position: relative;
@@ -59,26 +59,26 @@ export const TechInfoContainer = styled.div<{ $top: number; $isLeft: boolean }>`
   }
 
   @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.laptop}px) {
+    theme.breakpoints.laptop}px) {
     top: ${({ $top }) => $top + OFFSET / 4}%;
     left: 10%;
     width: 80%;
 
     ${ScrolledTypographyHeader} {
-      font-size: 5rem;
+      font-size: ${({ theme }) => theme.font.size.large};
     }
     ${ScrolledTypographyText} {
-      font-size: 1.5rem;
+      font-size: ${({ theme }) => theme.font.size.small};
     }
   }
 
   @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
+    theme.breakpoints.tablet}px) {
     ${ScrolledTypographyHeader} {
-      font-size: 3rem;
+      font-size: ${({ theme }) => theme.font.size.medium};
     }
     ${ScrolledTypographyText} {
-      font-size: 1rem;
+      font-size: ${({ theme }) => theme.font.size.xSmall};
     }
   }
 `;

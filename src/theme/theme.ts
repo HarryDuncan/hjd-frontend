@@ -27,20 +27,27 @@ export const THEME: DefaultTheme = {
                 rgba(219, 219, 219, 1) 50%,
                 rgba(255, 255, 255, 1) 100%
               );`,
-      dark: `linear-gradient(157deg,rgba(96, 96, 96, 1) 0%,rgba(74, 74, 74, 1) 0%,rgba(57, 57, 57, 1) 0%,rgba(27, 27, 27, 1) 100%);`,
+      dark: `linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,0,0,0.8911939775910365) 100%);`,
     },
   },
   font: {
+    size: {
+      xSmall: "1rem",
+      small: "1.5rem",
+      medium: "3rem",
+      large: "5rem",
+      xLarge: "7rem",
+    },
     weight: {
       light: 200,
       normal: 400,
       bold: 700,
     },
     default: {
-      family: "Inter, Arial, Helvetica, sans-serif",
+      family: "Courier New",
     },
     alternative: {
-      family: '"Source Sans Pro", monospace',
+      family: "var(--font-hjd)",
     },
   },
   breakpoints: {

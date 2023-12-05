@@ -9,10 +9,10 @@ export const CheckoutContentContainer = styled.div`
     width: 100%;
   }
   th {
-    font-family: var(--font-hjd);
+    font-family: ${({ theme }) => theme.font.alternative.family};
     font-weight ${({ theme }) => theme.font.weight.light};
     text-align: left;
-    font-size: 1.5rem;
+    font-size: ${({ theme }) => theme.font.size.medium};
     text-transform : uppercase;
   }
 `;

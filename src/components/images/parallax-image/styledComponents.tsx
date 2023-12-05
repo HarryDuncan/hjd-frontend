@@ -16,7 +16,7 @@ export const ParallaxImageContainer = styled.div<{ $height?: number }>`
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     & ${MainTitle} {
-      font-size: 2.5rem;
+      font-size: ${({ theme }) => theme.font.size.small};
     }
   }
 

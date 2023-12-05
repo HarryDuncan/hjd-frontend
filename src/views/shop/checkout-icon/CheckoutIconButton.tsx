@@ -19,7 +19,6 @@ const CartIcon = styled.div<{ $isDark: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
 `;
 
 const Badge = styled.div`
@@ -31,8 +30,8 @@ const Badge = styled.div`
   border: 2px solid black;
   border-radius: 50%;
   padding: 4px 8px;
-  font-family: var(--font-hjd);
-  font-size: 1.2rem;
+  font-family: ${({ theme }) => theme.font.alternative.family};
+  font-size: ${({ theme }) => theme.font.size.xSmall};
 `;
 
 const CartWithDropdown: React.FC = () => {
