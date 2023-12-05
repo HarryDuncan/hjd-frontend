@@ -1,15 +1,59 @@
 import { ContentText } from "components/text/Text";
-import { FooterCenterText, FooterContainer, FooterLink } from "./Footer.styles";
+import {
+  FooterCenterText,
+  FooterContainer,
+  FooterLink,
+  FooterLinkContainer,
+  FooterLinks,
+} from "./Footer.styles";
+import { SocialLinks } from "components/social-links/SocialLinks";
 
 export const Footer = () => {
   return (
     <FooterContainer>
-      <FooterLink href="mailto: harry@harryjdee.com">
-        <ContentText $isLight>Get In Touch</ContentText>
-      </FooterLink>
-      <FooterLink href="/terms-and-conditions">
-        <ContentText $isLight>Terms And Conditions</ContentText>
-      </FooterLink>
+      <FooterLinkContainer>
+        <svg className="circle-svg" viewBox="0 0 100 100">
+          <defs>
+            <defs>
+              <radialGradient
+                id="enter-gradient"
+                cx="50%"
+                cy="50%"
+                r="50%"
+                fx="50%"
+                fy="50%"
+              >
+                <stop
+                  offset="0%"
+                  style={{ stopColor: "rgba(255,255,255,1)" }}
+                />
+
+                <stop
+                  offset="100%"
+                  style={{ stopColor: "rgba(255,255,255,1)" }}
+                />
+              </radialGradient>
+            </defs>
+          </defs>
+          <circle
+            stroke="white"
+            vectorEffect="non-scaling-stroke"
+            cx="50"
+            cy="50"
+            r="48"
+            fill="url(#enter-gradient)"
+          />
+        </svg>
+        <FooterLinks>
+          <SocialLinks />
+          <FooterLink href="mailto: harry@harryjdee.com">
+            <ContentText $isLight>Get In Touch</ContentText>
+          </FooterLink>
+          <FooterLink href="/terms-and-conditions">
+            <ContentText $isLight>Terms And Conditions</ContentText>
+          </FooterLink>
+        </FooterLinks>
+      </FooterLinkContainer>
 
       <FooterCenterText>
         <ContentText $isLight>
@@ -22,13 +66,3 @@ export const Footer = () => {
     </FooterContainer>
   );
 };
-
-//   <div className="footer-center-home">
-//           <ExternalLinkWidget
-//             links={[
-//               { url: "https://www.instagram.com/harry.j.dee/" },
-//               { url: "https://www.soundcloud.com/harry-j-dee" },
-//             ]}
-//           />
-//           <p>© Harry J Dee All Rights Reserved</p>
-//         </div>
