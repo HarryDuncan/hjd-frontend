@@ -8,7 +8,6 @@ import { useIsNavTop } from "./hooks/useIsNavTop";
 import { NavTheme } from "./navigation.types";
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { HoverTitle } from "components/animations/gesture-animations/hover/HoverTitle";
-import CartWithDropdown from "views/shop/checkout-icon/CheckoutIconButton";
 
 const Navigation = () => {
   const windowSize = useClientWindowSize();
@@ -24,7 +23,6 @@ const Navigation = () => {
       ) : (
         <MobileNavigation navTheme={navTheme} />
       )}
-      <CartWithDropdown />
     </NavigationContainer>
   );
 };

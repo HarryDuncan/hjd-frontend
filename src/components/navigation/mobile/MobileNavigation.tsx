@@ -4,6 +4,7 @@ import { MobileText, NavItemContainer } from "./MobileNavigation.styles";
 import Link from "next/link";
 import { NAV_THEMES, SITE_PAGES } from "../navigation.consts";
 import { HamburgerMenu } from "./hamburger-menu/HamburgerMenu";
+import CartWithDropdown from "views/shop/checkout-icon/CheckoutIconButton";
 
 interface MobileNavigationProps {
   navTheme: NavTheme;
@@ -28,7 +29,7 @@ export const MobileNavigation = ({ navTheme }: MobileNavigationProps) => {
         isOpen={isMenuOpen}
         isLight={navTheme === NAV_THEMES.LIGHT}
       />
-
+      <CartWithDropdown />
       <NavItemContainer
         $isOpen={isMenuOpen}
         $isLight={navTheme === NAV_THEMES.LIGHT}
