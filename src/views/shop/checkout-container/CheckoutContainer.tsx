@@ -1,6 +1,14 @@
 import { useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { useShopContext } from "../shop-context/shop.context";
+import {
+  FloatingCentralContainer,
+  OverlayDiv,
+} from "components/containers/Containers";
+import CartTable from "./CartTable";
+import { CheckoutContentContainer } from "./checkout.styles";
+import { MainTitle } from "components/text/Text";
+import { CheckoutTotal } from "./CheckoutTotal";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? ""
@@ -19,42 +27,22 @@ export default function CheckoutPreview() {
       );
     }
   }, []);
-  const { state } = useShopContext();
 
   return (
-    <form action="/api/checkout_sessions" method="POST">
-      <section>
-        <button type="submit" role="link">
-          Checkout
-        </button>
-      </section>
-      <style jsx>
-        {`
-          section {
-            background: #ffffff;
-            display: flex;
-            flex-direction: column;
-            width: 400px;
-            height: 112px;
-            border-radius: 6px;
-            justify-content: space-between;
-          }
-          button {
-            height: 36px;
-            background: #556cd6;
-            border-radius: 4px;
-            color: white;
-            border: 0;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
-          }
-          button:hover {
-            opacity: 0.8;
-          }
-        `}
-      </style>
-    </form>
+    <FloatingCentralContainer>
+      <OverlayDiv />
+      <CheckoutContentContainer>
+        <MainTitle $isLight={true}>Checkout</MainTitle>
+        <CartTable />
+        <CheckoutTotal />
+        <form action="/api/checkout_sessions" method="POST">
+          <section>
+            <button type="submit" role="link">
+              Checkout
+            </button>
+          </section>
+        </form>
+      </CheckoutContentContainer>
+    </FloatingCentralContainer>
   );
 }

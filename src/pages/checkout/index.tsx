@@ -2,7 +2,6 @@ import Head from "next/head";
 import { DefaultScene } from "components/animations/scenes/DefaultScene";
 import FullScreenLayout from "layout/FullScreenLayout";
 import CheckoutPreview from "views/shop/checkout-container/CheckoutContainer";
-import { LinkTreeContainer } from "views/link-tree/LinkTree.styles";
 
 const Checkout = () => {
   return (
@@ -16,9 +15,7 @@ const Checkout = () => {
         />
       </Head>
       <FullScreenLayout>
-        <LinkTreeContainer>
-          <CheckoutPreview />
-        </LinkTreeContainer>
+        <CheckoutPreview />
         <DefaultScene />
       </FullScreenLayout>
     </>

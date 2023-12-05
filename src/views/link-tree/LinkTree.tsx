@@ -1,13 +1,16 @@
 import { MainTitle } from "components/text/Text";
 import { LinkTreeLink } from "models/link-tree/types";
-import { LinkTreeContainer, LinkTreeItem } from "./LinkTree.styles";
-import { OverlayDiv } from "components/containers/Containers";
+import { LinkTreeItem } from "./LinkTree.styles";
+import {
+  FloatingCentralContainer,
+  OverlayDiv,
+} from "components/containers/Containers";
 
 interface LinkTreeProps {
   links: LinkTreeLink[];
 }
 export const LinkTree = ({ links }: LinkTreeProps) => (
-  <LinkTreeContainer>
+  <FloatingCentralContainer>
     <OverlayDiv />
     {links.map(({ url, title }) => (
       <LinkTreeItem>
@@ -16,5 +19,5 @@ export const LinkTree = ({ links }: LinkTreeProps) => (
         </a>
       </LinkTreeItem>
     ))}
-  </LinkTreeContainer>
+  </FloatingCentralContainer>
 );
