@@ -1,8 +1,8 @@
 import { useIsNavTop } from "components/navigation/hooks/useIsNavTop";
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
-import { useShopContext } from "../shop-context/shop.context";
+import { useShopContext } from "views/shop/shop-context/shop.context";
 
 const CartIconContainer = styled.div`
   position: relative;

@@ -1,9 +1,11 @@
 import Head from "next/head";
 import { DefaultScene } from "components/animations/scenes/DefaultScene";
 import FullScreenLayout from "layout/FullScreenLayout";
-import CheckoutPreview from "views/shop/checkout-container/CheckoutContainer";
+import CheckoutPreview from "views/shop/checkout/checkout-container/CheckoutContainer";
+import { useRedirectOnEmptyCart } from "hooks/shop/useRedirectOnEmptyCheckout";
 
 const Checkout = () => {
+  useRedirectOnEmptyCart();
   return (
     <>
       <Head>

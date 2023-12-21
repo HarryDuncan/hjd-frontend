@@ -3,7 +3,7 @@ import { SITE_PAGES } from "../navigation.consts";
 import { NavTheme } from "../navigation.types";
 import { NavItemList } from "./DesktopNavigation.styles";
 import { LinkItem } from "./LinkItem";
-import CartWithDropdown from "views/shop/checkout-icon/CheckoutIconButton";
+import CartWithDropdown from "views/shop/checkout/checkout-icon/CheckoutIconButton";
 
 interface DesktopNavProps {
   navTheme: NavTheme;

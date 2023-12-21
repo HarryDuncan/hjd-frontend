@@ -16,3 +16,7 @@ export const SHOP_LOAD_MORE = {
   initialLoadSize: 6,
   loadMoreSize: 6,
 };
+
+export const CURRENCIES = {
+  AUD: "aud",
+};

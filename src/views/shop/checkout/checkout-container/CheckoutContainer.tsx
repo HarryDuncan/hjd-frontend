@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { useShopContext } from "../shop-context/shop.context";
 import {
   FloatingCentralContainer,
   OverlayDiv,
 } from "components/containers/Containers";
-import CartTable from "./CartTable";
+import CartTable from "./cart-table/CartTable";
 import { CheckoutContentContainer } from "./checkout.styles";
 import { MainTitle } from "components/text/Text";
-import { CheckoutTotal } from "./CheckoutTotal";
+import { CheckoutTotal } from "./checkout-total/CheckoutTotal";
+import { ActionButton } from "components/buttons/action-button/ActionButton.styled";
+import { ShippingOptions } from "./shipping-options/ShippingOptions";
+import { useShopContext } from "views/shop/shop-context/shop.context";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? ""
@@ -28,18 +30,28 @@ export default function CheckoutPreview() {
     }
   }, []);
 
+  const {
+    state: { cart, shippingTotal },
+  } = useShopContext();
   return (
     <FloatingCentralContainer>
       <OverlayDiv />
       <CheckoutContentContainer>
-        <MainTitle $isLight={true}>Checkout</MainTitle>
+        <MainTitle $isLight={false}>Checkout</MainTitle>
         <CartTable />
+        <ShippingOptions />
         <CheckoutTotal />
         <form action="/api/checkout_sessions" method="POST">
+          <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+          <input
+            type="hidden"
+            name="shippingTotal"
+            value={JSON.stringify(shippingTotal)}
+          />
           <section>
-            <button type="submit" role="link">
+            <ActionButton type="submit" role="link">
               Checkout
-            </button>
+            </ActionButton>
           </section>
         </form>
       </CheckoutContentContainer>

@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
-export const ActionButton = styled.button`
+export const ActionButton = styled.button<{
+  $disabled?: boolean;
+  color?: string;
+}>`
   background-color: black;
   color: white;
   padding: 1rem;
   border-radius: 30px;
-  font-size: ${({ theme }) => theme.font.size.large};
+  cursor: pointer;
+  font-size: ${({ theme }) => theme.font.size.small};
   border: none;
   &:active {
     background-color: ${({ theme }) => theme.colors.mono.lightGray};

@@ -4,7 +4,7 @@ import { MobileText, NavItemContainer } from "./MobileNavigation.styles";
 import Link from "next/link";
 import { NAV_THEMES, SITE_PAGES } from "../navigation.consts";
 import { HamburgerMenu } from "./hamburger-menu/HamburgerMenu";
-import CartWithDropdown from "views/shop/checkout-icon/CheckoutIconButton";
+import CartWithDropdown from "views/shop/checkout/checkout-icon/CheckoutIconButton";
 
 interface MobileNavigationProps {
   navTheme: NavTheme;

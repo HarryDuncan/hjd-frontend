@@ -2,6 +2,7 @@ import { Product } from "models/shop/types";
 
 export type ApiRequest = {
   method: string;
+  body;
 };
 
 export type CheckoutSessionRequest = ApiRequest & {

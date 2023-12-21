@@ -8,10 +8,12 @@ export type CartItem = {
 
 export type AppState = {
   cart: CartItem[];
+  shippingTotal: number;
 };
 
 export type Action =
   | { type: "ADD_TO_CART"; payload: CartItem }
+  | { type: "UPDATE_SHIPPING"; payload: { shippingTotal: number } }
   | { type: "REMOVE_FROM_CART"; payload: number }
   | { type: "CHECKOUT" };
 
@@ -24,6 +26,7 @@ const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
 const initialState: AppState = {
   cart: [],
+  shippingTotal: 0,
 };
 
 const reducer = (state: AppState, action: Action): AppState => {
@@ -32,6 +35,11 @@ const reducer = (state: AppState, action: Action): AppState => {
       return {
         ...state,
         cart: [...state.cart, action.payload],
+      };
+    case "UPDATE_SHIPPING":
+      return {
+        ...state,
+        shippingTotal: action.payload.shippingTotal,
       };
     case "REMOVE_FROM_CART":
       return {
