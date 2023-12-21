@@ -1,5 +1,5 @@
 import { Card, CardDetails } from "components/card/Card";
-import { CardGalleryContainer } from "./styledComponents";
+import { CardGalleryContainer } from "./CardGallery.styles";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { useOnScroll } from "hooks/client-hooks/useOnScroll";
 import useDeviceSize from "hooks/client-hooks/useDeviceSize";

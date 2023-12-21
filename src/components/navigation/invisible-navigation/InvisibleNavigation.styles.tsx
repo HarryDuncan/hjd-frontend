@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavigationContainer } from "../navigation.styled";
+import { NavigationContainer } from "../Navigation.styles";
 
 export const InvisibleNavigationContainer = styled(NavigationContainer)`
   h1 {

@@ -8,7 +8,7 @@ import CartTable from "./cart-table/CartTable";
 import { CheckoutContentContainer } from "./checkout.styles";
 import { MainTitle } from "components/text/Text";
 import { CheckoutTotal } from "./checkout-total/CheckoutTotal";
-import { ActionButton } from "components/buttons/action-button/ActionButton.styled";
+import { ActionButton } from "components/buttons/action-button/ActionButton.styles";
 import { ShippingOptions } from "./shipping-options/ShippingOptions";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 

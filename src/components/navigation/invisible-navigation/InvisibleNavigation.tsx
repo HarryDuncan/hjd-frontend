@@ -1,6 +1,6 @@
 import React from "react";
 import { InvisibleNavigationContainer } from "./InvisibleNavigation.styles";
-import { NavBackgroundOverlay } from "../navigation.styled";
+import { NavBackgroundOverlay } from "../Navigation.styles";
 import { HoverTitle } from "components/animations/gesture-animations/hover/HoverTitle";
 
 const InvisibleNavigation = () => {

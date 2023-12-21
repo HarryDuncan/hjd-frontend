@@ -1,5 +1,5 @@
-import { ParallaxImageContainer } from "components/images/parallax-image/styledComponents";
-import { NAV_HEIGHT } from "components/navigation/navigation.styled";
+import { ParallaxImageContainer } from "components/images/parallax-image/ParallaxImage.styles";
+import { NAV_HEIGHT } from "components/navigation/Navigation.styles";
 import { MainTitle } from "components/text/Text";
 import styled from "styled-components";
 

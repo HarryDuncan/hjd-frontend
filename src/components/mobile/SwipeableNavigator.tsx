@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import { SwipeableNavigatorContainer } from "./mobile.styled";
+import { SwipeableNavigatorContainer } from "./mobile.styles";
 import { Direction } from "utils/moveThroughArray";
 
 interface SwipeablePageNavigatorProps {

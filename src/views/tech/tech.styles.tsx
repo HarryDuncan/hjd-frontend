@@ -1,7 +1,7 @@
 import {
   ScrolledTypographyHeader,
   ScrolledTypographyText,
-} from "components/animations/scroll/scroll-typography/ScrollTypography.styled";
+} from "components/animations/scroll/scroll-typography/ScrollTypography.styles";
 import styled from "styled-components";
 
 export const TechTitleContainer = styled.div`

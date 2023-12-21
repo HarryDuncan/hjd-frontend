@@ -2,7 +2,7 @@ import React from "react";
 import { test, describe, vi, assert } from "vitest";
 import { render } from "@testing-library/react";
 import { ProductControl } from "../ProductControl";
-import { ActionButton } from "components/buttons/action-button/ActionButton.styled";
+import { ActionButton } from "components/buttons/action-button/ActionButton.styles";
 import { ContentSubText } from "components/text/Text";
 import { Product } from "models/shop/types";
 import { WithApp } from "test-utils/WithApp";

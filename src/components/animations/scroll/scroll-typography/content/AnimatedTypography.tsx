@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import {
   ScrolledTypographyHeader,
   ScrolledTypographyText,
-} from "../ScrollTypography.styled";
+} from "../ScrollTypography.styles";
 import { TEXT_TYPE } from "../scrollTypography.consts";
 import { ScrollTypographyConfig } from "../scrollTypography.types";
 import { useTypographyAnimations } from "../typography-animations/useTypeograhpyAnimations";

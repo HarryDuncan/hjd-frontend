@@ -1,4 +1,4 @@
-import { HamburgerMenuContainer } from "./hamburgerMenu.styled";
+import { HamburgerMenuContainer } from "./HamburgerMenu.styles";
 
 interface HamburgerMenuProps {
   onClick: () => void;

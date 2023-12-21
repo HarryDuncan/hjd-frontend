@@ -1,5 +1,5 @@
 import { SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
-import { ActionButton } from "components/buttons/action-button/ActionButton.styled";
+import { ActionButton } from "components/buttons/action-button/ActionButton.styles";
 import Image from "next/image";
 import { CheckoutSection, ItemDetails } from "../checkout.styles";
 import { useShopContext } from "views/shop/shop-context/shop.context";
