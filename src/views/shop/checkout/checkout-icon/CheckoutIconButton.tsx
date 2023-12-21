@@ -9,6 +9,10 @@ const CartIconContainer = styled.div`
   cursor: pointer;
   margin: 0 auto;
   padding: 0.7rem 0.5rem 0.5rem 1rem;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    padding: 0.3rem 0.2rem 0.5rem 0.2rem;
+  }
 `;
 
 const CartIcon = styled.div<{ $isDark: boolean }>`
@@ -19,6 +23,11 @@ const CartIcon = styled.div<{ $isDark: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    height: 38px;
+    width: 38px;
+  }
 `;
 
 const Badge = styled.div`

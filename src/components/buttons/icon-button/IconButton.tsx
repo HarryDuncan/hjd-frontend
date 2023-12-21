@@ -1,17 +1,17 @@
-import { EXIT, SCROLL_LEFT, SCROLL_RIGHT } from "constants/ui.constants";
-import { IconContainer } from "./Icons.styles";
+import { EXIT, SCROLL_LEFT, SCROLL_RIGHT, TRASH } from "constants/ui.constants";
+import { IconContainer } from "./IconButton.styles";
 import {
-  ExitIconProps,
+  DefaultIconProps,
   IconProps,
   IconTypes,
   OnClickFunction,
   OnIconClick,
   ScrollIconProps,
-} from "./Icons.types";
+} from "./IconButton.types";
 import { HoverImage } from "components/animations/gesture-animations/hover/HoverImage";
 import { Direction } from "utils/moveThroughArray";
 
-const ExitIcon = ({ onClick }: ExitIconProps) => {
+const ExitIcon = ({ onClick }: DefaultIconProps) => {
   return (
     <IconContainer className="exit-icon">
       <HoverImage alt="exit" src={EXIT} onClick={onClick} />
@@ -23,7 +23,6 @@ const ScrollLeftIcon = ({ onClick }: ScrollIconProps) => {
   const onIconClick = () => {
     onClick(Direction.REVERSE);
   };
-
   return (
     <IconContainer className="scroll-left-icon">
       <HoverImage alt="scroll-left" src={SCROLL_LEFT} onClick={onIconClick} />
@@ -43,6 +42,11 @@ const ScrollRightIcon = ({ onClick }: ScrollIconProps) => {
   );
 };
 
+const TrashIcon = ({ onClick }: DefaultIconProps) => (
+  <IconContainer className="trash-icon">
+    <HoverImage alt="trash" src={TRASH} onClick={onClick} />
+  </IconContainer>
+);
 const getIcon = (type: IconTypes, onClick: OnIconClick) => {
   switch (type) {
     case IconTypes.EXIT:
@@ -51,13 +55,14 @@ const getIcon = (type: IconTypes, onClick: OnIconClick) => {
       return <ScrollLeftIcon onClick={onClick} />;
     case IconTypes.CHEVRON_RIGHT:
       return <ScrollRightIcon onClick={onClick} />;
+    case IconTypes.TRASH:
+      return <TrashIcon onClick={onClick as OnClickFunction} />;
     default:
       console.warn("no valid icon type");
       return <div />;
   }
 };
-export const Icon = ({ type, onClick }: IconProps) => {
+export const IconButton = ({ type, onClick }: IconProps) => {
   const IconElement = getIcon(type, onClick);
-
   return IconElement;
 };

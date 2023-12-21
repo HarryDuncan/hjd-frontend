@@ -41,6 +41,9 @@ const shrinkNav = keyframes`
     width: 0px;
   }
 `;
+export const MobileMenuItems = styled.div`
+  display: flex;
+`;
 export const MobileText = styled.span<{ $isLight: boolean }>`
   text-align: right;
   cursor: pointer;

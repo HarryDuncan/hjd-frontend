@@ -57,6 +57,8 @@ export const FooterLinkContainer = styled.div`
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    height: 15rem;
+    .circle-svg {
+      height: 15rem;
+    }
   }
 `;

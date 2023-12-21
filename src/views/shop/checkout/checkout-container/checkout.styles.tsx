@@ -38,4 +38,7 @@ export const CheckoutSection = styled.div`
 export const ItemDetails = styled.div`
   display: flex;
   flex-direction: column;
+  p {
+    margin: 0;
+  }
 `;

@@ -3,14 +3,22 @@ import { ActionButton } from "components/buttons/action-button/ActionButton.styl
 import Image from "next/image";
 import { CheckoutSection, ItemDetails } from "../checkout.styles";
 import { useShopContext } from "views/shop/shop-context/shop.context";
+import { IconButton } from "components/buttons/icon-button/IconButton";
+import { IconTypes } from "components/buttons/icon-button/IconButton.types";
 
 const CartTable = () => {
   const {
+    dispatch,
     state: { cart },
   } = useShopContext();
 
   const handleRemoveItem = (productId: number) => {
-    // onRemoveItem(productId);
+    dispatch({
+      type: "REMOVE_FROM_CART",
+      payload: {
+        productId,
+      },
+    });
   };
 
   return (
@@ -35,11 +43,11 @@ const CartTable = () => {
                 </ItemDetails>
               </td>
               <td>
-                <ActionButton
+                <IconButton
+                  hasGesture={true}
+                  type={IconTypes.TRASH}
                   onClick={() => handleRemoveItem(cartItem.product.id)}
-                >
-                  Delete
-                </ActionButton>
+                />
               </td>
             </tr>
           ))}

@@ -33,6 +33,7 @@ export default function CheckoutPreview() {
   const {
     state: { cart, shippingTotal },
   } = useShopContext();
+  const isCheckoutDisabled = shippingTotal === null;
   return (
     <FloatingCentralContainer>
       <OverlayDiv />
@@ -49,7 +50,11 @@ export default function CheckoutPreview() {
             value={JSON.stringify(shippingTotal)}
           />
           <section>
-            <ActionButton type="submit" role="link">
+            <ActionButton
+              disabled={isCheckoutDisabled}
+              type="submit"
+              role="link"
+            >
               Checkout
             </ActionButton>
           </section>

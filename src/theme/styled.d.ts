@@ -32,6 +32,7 @@ declare module "styled-components" {
         xSmall: "1rem";
         small: "1.5rem";
         medium: "3rem";
+        mediumLarge: "4rem";
         large: "5rem";
         xLarge: "7rem";
       };

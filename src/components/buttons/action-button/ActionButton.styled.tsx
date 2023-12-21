@@ -4,6 +4,7 @@ export const ActionButton = styled.button<{
   $disabled?: boolean;
   color?: string;
 }>`
+  disabled: ${({ $disabled }) => $disabled ?? false};
   background-color: black;
   color: white;
   padding: 1rem;

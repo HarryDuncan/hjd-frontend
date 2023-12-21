@@ -8,6 +8,7 @@ export enum IconTypes {
   EXIT = "EXIT",
   CHEVRON_LEFT = "CHEVRON_LEFT",
   CHEVRON_RIGHT = "CHEVRON_RIGHT",
+  TRASH = "TRASH",
 }
 
 export interface IconProps {
@@ -16,12 +17,11 @@ export interface IconProps {
   hasGesture: boolean;
 }
 
+export interface DefaultIconProps {
+  onClick: OnClickFunction;
+}
 export interface ScrollIconProps {
   onClick: OnScrollFunction;
-}
-
-export interface ExitIconProps {
-  onClick: OnClickFunction;
 }
 
 export type IconPosition = {
