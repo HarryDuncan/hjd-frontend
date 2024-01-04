@@ -1,15 +1,16 @@
 import { RootContainer } from "../root/root-container";
 import { useInteractiveScene } from "visual/display/components/interactive-scene/useInteractiveScene";
 import { useThreadWithPostProcessor } from "visual/display/hooks/use-thread";
-import { SceneNodeProps } from "./SceneNode.types";
 import { useThreeJs } from "visual/display/hooks/use-three-js/useThreeJs";
+import { NodeProps } from "../node.types";
 
 const SceneNode = ({
   sceneFunctions,
   animations = [],
+  interactionEvents = [],
   events,
   sceneData: { threeJs, lights, meshes, sceneComponents, sceneProperties },
-}: SceneNodeProps) => {
+}: NodeProps) => {
   const {
     container,
     renderer,
@@ -26,7 +27,8 @@ const SceneNode = ({
     lights,
     sceneComponents,
     orbitControls,
-    sceneProperties
+    sceneProperties,
+    interactionEvents
   );
 
   useThreadWithPostProcessor(currentFrameRef, scene, camera, renderer, []);

@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
-export const ActionButton = styled.button<{
-  $disabled?: boolean;
+export const StyledActionButton = styled.button<{
   color?: string;
 }>`
-  disabled: ${({ $disabled }) => $disabled ?? false};
   background-color: black;
   color: white;
   padding: 1rem;

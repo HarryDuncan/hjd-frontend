@@ -8,9 +8,9 @@ import CartTable from "./cart-table/CartTable";
 import { CheckoutContentContainer } from "./checkout.styles";
 import { MainTitle } from "components/text/Text";
 import { CheckoutTotal } from "./checkout-total/CheckoutTotal";
-import { ActionButton } from "components/buttons/action-button/ActionButton.styles";
 import { ShippingOptions } from "./shipping-options/ShippingOptions";
 import { useShopContext } from "views/shop/shop-context/shop.context";
+import { ActionButton } from "components/buttons/action-button/ActionButton";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? ""
@@ -34,6 +34,7 @@ export default function CheckoutPreview() {
     state: { cart, shippingTotal },
   } = useShopContext();
   const isCheckoutDisabled = shippingTotal === null;
+  const handleSubmit = () => {};
   return (
     <FloatingCentralContainer>
       <OverlayDiv />
@@ -51,12 +52,10 @@ export default function CheckoutPreview() {
           />
           <section>
             <ActionButton
-              disabled={isCheckoutDisabled}
-              type="submit"
-              role="link"
-            >
-              Checkout
-            </ActionButton>
+              isDisabled={isCheckoutDisabled}
+              onClick={handleSubmit}
+              title={" Checkout"}
+            />
           </section>
         </form>
       </CheckoutContentContainer>

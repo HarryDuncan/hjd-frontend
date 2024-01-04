@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const CheckoutContentContainer = styled.div`
   color: black;
+  width:50%;
   background: white;
   border-radius: 5px;
   z-index: 5;

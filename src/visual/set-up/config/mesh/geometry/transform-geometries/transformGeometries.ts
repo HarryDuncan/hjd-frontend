@@ -3,12 +3,10 @@ import { getGeometryAttributes } from "../attributes/attribute.functions";
 import { MESH_TRANSFORM } from "../../mesh.consts";
 import { MeshTransformConfig } from "../../../config.types";
 import { FormattedGeometry } from "visual/set-up/assets/geometry/geometry.types";
-import {
-  AttributeConfig,
-  setAttributes,
-} from "../attributes/set-attributes/setAttributes";
+import { setAttributes } from "../attributes/set-attributes/setAttributes";
 import { DEFAULT_MORPH_ATTRIBUTE_CONFIG } from "./transform.constants";
 import { mergeArraysWithoutDuplicates } from "visual/utils/mergeArraysWithoutDuplicates";
+import { AttributeConfig } from "visual/set-up/config/material/shaders/build-shader/buildShader.types";
 
 export const transformGeometry = (
   meshTransforms: MeshTransformConfig[] | undefined,
@@ -29,12 +27,12 @@ export const transformGeometry = (
               const { vertices } = getGeometryAttributes(morphTarget.geometry);
 
               transformedMeshes[0].geometry.setAttribute(
-                `morphPosition_${index}`,
+                `morphPosition${index - 1}`,
                 new BufferAttribute(vertices, 3)
               );
 
               transformedMeshes[0].geometry.setAttribute(
-                `morphNormal_${index}`,
+                `morphNormal${index - 1}`,
                 new BufferAttribute(vertices, 3)
               );
             }
@@ -47,7 +45,6 @@ export const transformGeometry = (
             transformedMeshes[0].geometry,
             morphAttributeConfig
           );
-
           transformedMeshes[0] = {
             ...transformedMeshes[0],
             geometry: configuredRootGeometry,

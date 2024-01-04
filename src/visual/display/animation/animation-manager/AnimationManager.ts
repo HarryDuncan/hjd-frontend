@@ -59,6 +59,7 @@ export class AnimationManager {
     if (!animation) {
       console.warn(`no camera animations configured`);
     }
+
     if (animation.isRunning === false) {
       const initializedAnimationConfig = setUpAnimationConfig(animation);
       animation.isRunning = true;

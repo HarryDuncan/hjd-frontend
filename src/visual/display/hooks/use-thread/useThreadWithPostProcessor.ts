@@ -13,6 +13,7 @@ export const useThreadWithPostProcessor = (
   passes: Pass[]
 ) => {
   const postProcessor: MutableRefObject<null | PostProcessor> = useRef(null);
+
   const update = useCallback(() => {
     sceneUpdateEvent();
     if (scene) {

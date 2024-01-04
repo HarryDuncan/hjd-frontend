@@ -1,7 +1,22 @@
-import { PropertyType, PropertyValueType } from "../buildShader.types";
+import {
+  ShaderPropertyTypes,
+  ShaderPropertyValueTypes,
+} from "../buildShader.constants";
 
 export const createDeclarationString = (
-  propertyType: PropertyType,
-  valueType: PropertyValueType,
+  propertyType: ShaderPropertyTypes,
+  valueType: ShaderPropertyValueTypes,
   propertyId: string
-) => `${propertyType.toLowerCase()} ${valueType.toLowerCase()} ${propertyId};`;
+) =>
+  `${propertyType.toLowerCase()} ${getValueTypeString(
+    valueType
+  )} ${propertyId};`;
+
+const getValueTypeString = (valueType: ShaderPropertyValueTypes) => {
+  switch (valueType) {
+    case ShaderPropertyValueTypes.SAMPLER2D:
+      return "sampler2D";
+    default:
+      return valueType.toLowerCase();
+  }
+};
