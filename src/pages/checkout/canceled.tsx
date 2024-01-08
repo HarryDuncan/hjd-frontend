@@ -1,4 +1,4 @@
-import { useRedirectOnEmptyCart } from "hooks/shop/useRedirectOnEmptyCheckout";
+import { useRedirectOnEmptyCart } from "views/shop/hooks/useRedirectOnEmptyCheckout";
 import FullScreenLayout from "layout/FullScreenLayout";
 
 const Result = () => {

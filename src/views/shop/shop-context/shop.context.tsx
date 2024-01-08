@@ -4,6 +4,8 @@ import React, { createContext, useReducer, ReactNode, useContext } from "react";
 export type CartItem = {
   product: Product;
   quantity: number;
+  errorMessage?: string;
+  message?: string;
 };
 
 export type AppState = {
@@ -13,6 +15,7 @@ export type AppState = {
 
 export type Action =
   | { type: "ADD_TO_CART"; payload: CartItem }
+  | { type: "UPDATE_CART"; payload: CartItem[] }
   | { type: "UPDATE_SHIPPING"; payload: { shippingTotal: number } }
   | { type: "REMOVE_FROM_CART"; payload: { productId: number } }
   | { type: "CHECKOUT" };
@@ -31,11 +34,32 @@ const initialState: AppState = {
 
 const reducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
-    case "ADD_TO_CART":
+    case "UPDATE_CART":
       return {
         ...state,
-        cart: [...state.cart, action.payload],
+        cart: action.payload,
       };
+    case "ADD_TO_CART": {
+      const updatedCart = [...state.cart, action.payload].reduce(
+        (result: CartItem[], cartItem) => {
+          const itemIndex = result.findIndex(
+            (item) => item.product.id === cartItem.product.id
+          );
+          if (itemIndex === -1) {
+            result.push(cartItem);
+          } else {
+            result[itemIndex].quantity += cartItem.quantity;
+          }
+          return result;
+        },
+        []
+      );
+      return {
+        ...state,
+        cart: updatedCart,
+      };
+    }
+
     case "UPDATE_SHIPPING":
       return {
         ...state,
@@ -48,9 +72,6 @@ const reducer = (state: AppState, action: Action): AppState => {
           (item) => item.product.id !== action.payload.productId
         ),
       };
-    case "CHECKOUT":
-      // Implement checkout logic if needed
-      return initialState;
     default:
       return state;
   }
@@ -58,7 +79,6 @@ const reducer = (state: AppState, action: Action): AppState => {
 
 const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
   return (
     <ShopContext.Provider value={{ state, dispatch }}>
       {children}
@@ -68,7 +88,6 @@ const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
 const useShopContext = (): ShopContextType => {
   const context = useContext(ShopContext);
-
   if (!context) {
     throw new Error("useShopContext must be used within a StoreProvider");
   }

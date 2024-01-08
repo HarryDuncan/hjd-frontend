@@ -1,5 +1,4 @@
 import { SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
-import { ActionButton } from "components/buttons/action-button/ActionButton.styles";
 import Image from "next/image";
 import { CheckoutSection, ItemDetails } from "../checkout.styles";
 import { useShopContext } from "views/shop/shop-context/shop.context";
@@ -20,7 +19,6 @@ const CartTable = () => {
       },
     });
   };
-
   return (
     <CheckoutSection>
       <table>
@@ -40,6 +38,7 @@ const CartTable = () => {
                   <p>{cartItem.quantity}</p>
                   <p>{cartItem.product.title}</p>
                   <p>${cartItem.product.price} AUD</p>
+                  {cartItem.errorMessage && <p>{cartItem.errorMessage}</p>}
                 </ItemDetails>
               </td>
               <td>

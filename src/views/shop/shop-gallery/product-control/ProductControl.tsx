@@ -1,13 +1,14 @@
 import { ActionButton } from "components/buttons/action-button/ActionButton";
 import { ContentSubText } from "components/text/Text";
 import { Product } from "models/shop/types";
+import { useCallback } from "react";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 
 export const ProductControl = ({ productData }: { productData: Product }) => {
   const { stock, price } = productData;
   const { dispatch } = useShopContext();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = useCallback(() => {
     dispatch({
       type: "ADD_TO_CART",
       payload: {
@@ -15,12 +16,12 @@ export const ProductControl = ({ productData }: { productData: Product }) => {
         quantity: 1,
       },
     });
-  };
+  }, [dispatch, productData]);
 
   return (
     <>
       {stock && price ? (
-        <ActionButton onClick={handleAddToCart} title={"Add To Cart"} />
+        <ActionButton onClick={handleAddToCart} title="Add To Cart" />
       ) : (
         <ContentSubText>Sold Out</ContentSubText>
       )}

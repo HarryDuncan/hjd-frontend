@@ -1,6 +1,5 @@
 import { formatLineItems } from "views/shop/checkout/formatLineItems";
 import { ApiResponse, CheckoutSessionRequest } from "./api.types";
-import { checkInventory } from "services/shop/checkInventory";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
@@ -10,12 +9,9 @@ export default async function handler(
 ) {
   const cart = JSON.parse(req.body.cart);
   const shippingTotal = JSON.parse(req.body.shippingTotal);
-  const { inventoryData } = await checkInventory(cart);
-  console.log(inventoryData);
   if (req.method === "POST") {
     try {
       const lineItems = formatLineItems(cart, shippingTotal);
-      // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
 

@@ -2,7 +2,7 @@ import { StyledActionButton } from "./ActionButton.styles";
 
 interface ActionButtonProps {
   title: string;
-  onClick: () => void;
+  onClick?: () => void;
   color?: string;
   isDisabled?: boolean;
   type?: "button" | "submit" | "reset";
@@ -14,7 +14,7 @@ export const ActionButton = ({
   type = "button",
 }: ActionButtonProps) => {
   const handleClick = () => {
-    if (!isDisabled) {
+    if (!isDisabled && onClick) {
       onClick();
     }
   };

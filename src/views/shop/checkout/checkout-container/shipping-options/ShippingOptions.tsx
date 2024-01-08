@@ -1,4 +1,4 @@
-import { useShopData } from "hooks/shop/useShopData";
+import { useShopData } from "views/shop/hooks/useShopData";
 import { CheckoutSection } from "../checkout.styles";
 import { useEffect, useMemo, useState } from "react";
 import { ShippingZone } from "models/shop/types";
@@ -43,7 +43,7 @@ export const ShippingOptions = () => {
         shippingTotal,
       },
     });
-  }, [shippingTotal]);
+  }, [shippingTotal, dispatch]);
 
   return (
     <CheckoutSection>

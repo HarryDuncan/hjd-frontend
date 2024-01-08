@@ -2,11 +2,16 @@ import { gql } from "@apollo/client";
 import { client } from "network/ApolloClient";
 import { CartItem } from "views/shop/shop-context/shop.context";
 
-export const checkInventory = async (cartData: CartItem[]) => {
+export const checkInventory = async (cart: CartItem[]) => {
   const mutation = gql`
-    mutation CheckInventory($cartData: YourCartInputType) {
-      checkInventory(cartData: $cartData)
-        @rest(type: "inventoryData", path: "/shop/products/inventory") {
+    mutation CheckInventory($cart: CartItem) {
+      checkInventory(cart: $cart)
+        @rest(
+          type: "inventoryData"
+          method: "POST"
+          path: "/shop/products/inventory"
+          bodyKey: "cart"
+        ) {
         products
         productVariations
         hasInventory
@@ -18,7 +23,7 @@ export const checkInventory = async (cartData: CartItem[]) => {
     const response = await client.mutate({
       mutation,
       variables: {
-        cartData,
+        cart,
       },
     });
     const {
@@ -26,7 +31,6 @@ export const checkInventory = async (cartData: CartItem[]) => {
     } = response;
     return { inventoryData, loading: false };
   } catch (error) {
-    // Handle error
     console.error("Error checking inventory:", error);
     return { inventoryData: null, loading: false, error };
   }

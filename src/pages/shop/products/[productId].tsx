@@ -1,5 +1,5 @@
-import { useProductData } from "hooks/shop/useProductData";
-import { useScrollProducts } from "hooks/shop/useScrollProducts";
+import { useProductData } from "views/shop/hooks/useProductData";
+import { useScrollProducts } from "views/shop/hooks/useScrollProducts";
 import { useCallback, useState } from "react";
 import { ContentText } from "components/text/Text";
 import { useRouter } from "next/router";

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import ThemeContext from "styled-components";
 
 export const useThemeContext = () => {
-  //@ts-ignore
+  // @ts-ignore
   const context = useContext(ThemeContext);
   if (!context)
     throw new Error(
