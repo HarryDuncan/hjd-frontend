@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useMemo } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   FloatingCentralContainer,
@@ -9,44 +9,35 @@ import { CheckoutContentContainer } from "./checkout.styles";
 import { MainTitle } from "components/text/Text";
 import { CheckoutTotal } from "./checkout-total/CheckoutTotal";
 import { ShippingOptions } from "./shipping-options/ShippingOptions";
-import { useShopContext } from "views/shop/shop-context/shop.context";
 import { ActionButton } from "components/buttons/action-button/ActionButton";
 import { checkInventory } from "services/shop/checkInventory";
 import { Product } from "models/shop/types";
+import { useCalculateTotal } from "views/shop/hooks/useCalculateTotal";
+import { useShopContext } from "views/shop/shop-context/shop.context";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? ""
 );
 
 export default function CheckoutPreview() {
-  useEffect(() => {
-    const query = new URLSearchParams(window.location.search);
-    if (query.get("success")) {
-      console.log("Order placed! You will receive an email confirmation.");
-    }
-
-    if (query.get("canceled")) {
-      console.log(
-        "Order canceled -- continue to shop around and checkout when you’re ready."
-      );
-    }
-  }, []);
-
   const {
     state: { cart, shippingTotal },
   } = useShopContext();
-  const isCheckoutDisabled = shippingTotal === null;
+  const isCheckoutDisabled = useMemo(
+    () => shippingTotal === null || cart.some((item) => item.errorMessage),
+    [shippingTotal, cart]
+  );
+  const checkoutTotal = useCalculateTotal(cart, shippingTotal);
   const setInventoryErrors = useDisplayErrors();
-
   const handleSubmit = async () => {
+    sessionStorage.setItem("inventoryReset", JSON.stringify(false));
     const checkInventoryResult = await checkInventory(cart);
     const { hasInventory, products } = checkInventoryResult.inventoryData;
     if (hasInventory) {
       const formData = {
-        cart: cart,
-        shippingTotal: shippingTotal,
+        cart,
+        shippingTotal,
       };
-      sessionStorage.setItem("formData", JSON.stringify(formData));
       await fetch("/api/checkout_sessions", {
         method: "POST",
         headers: {
@@ -58,6 +49,7 @@ export default function CheckoutPreview() {
       setInventoryErrors(products);
     }
   };
+
   return (
     <FloatingCentralContainer>
       <OverlayDiv />
@@ -65,7 +57,7 @@ export default function CheckoutPreview() {
         <MainTitle $isLight={false}>Checkout</MainTitle>
         <CartTable />
         <ShippingOptions />
-        <CheckoutTotal />
+        <CheckoutTotal total={checkoutTotal} />
         <form
           onSubmit={handleSubmit}
           method="POST"
@@ -80,7 +72,7 @@ export default function CheckoutPreview() {
           <ActionButton
             isDisabled={isCheckoutDisabled}
             type="submit"
-            title={" Checkout"}
+            title="Checkout"
           />
         </form>
       </CheckoutContentContainer>

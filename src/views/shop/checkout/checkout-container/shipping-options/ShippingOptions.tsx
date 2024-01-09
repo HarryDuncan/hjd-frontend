@@ -48,9 +48,13 @@ export const ShippingOptions = () => {
   return (
     <CheckoutSection>
       <SearchableDropdown options={options} onSelect={onOptionSelect} />
-      {setSelectedShippingZoneId !== null ? (
+      {selectedShippingZoneId !== null ? (
         <>
-          <ContentText>Shipping:${shippingTotal} AUD</ContentText>
+          <ContentText>
+            {shippingTotal === 0
+              ? "Free Shipping"
+              : `Shipping:$${shippingTotal} AUD`}
+          </ContentText>
           <ContentSubText>Estimated {shippingTime}</ContentSubText>
         </>
       ) : null}

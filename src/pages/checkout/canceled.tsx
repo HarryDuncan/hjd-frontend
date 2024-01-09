@@ -1,11 +1,16 @@
-import { useRedirectOnEmptyCart } from "views/shop/hooks/useRedirectOnEmptyCheckout";
+import { DefaultScene } from "components/animations/scenes/DefaultScene";
 import FullScreenLayout from "layout/FullScreenLayout";
+import CartStorageHandler from "views/shop/checkout/cancel/CartStorageHandler";
+import CheckoutPreview from "views/shop/checkout/checkout-container/CheckoutContainer";
+import { useRedirectOnEmptyCart } from "views/shop/hooks/useRedirectOnEmptyCheckout";
 
 const Result = () => {
-  useRedirectOnEmptyCart();
+  useRedirectOnEmptyCart(true);
   return (
     <FullScreenLayout>
-      <div></div>
+      <CartStorageHandler resetInventoryEnabled />
+      <CheckoutPreview />
+      <DefaultScene />
     </FullScreenLayout>
   );
 };

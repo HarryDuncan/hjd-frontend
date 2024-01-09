@@ -49,6 +49,7 @@ export const ViewItemContainer = styled.div`
   justify-content: space-between;
   width: 95%;
   margin: 0 2.5%;
+  position: relative;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.laptop}px) => {
     width: 100%;
@@ -171,10 +172,10 @@ export const FloatingCentralContainer = styled.div`
   display: flex;
   flex-direction: column;
   @media only screen and (max-width: ${({ theme }) =>
-    theme.breakpoints.mobile}px) {
+      theme.breakpoints.mobile}px) {
     width: 100vw;
     margin-top: 3rem;
-    min-height : 100vh
+    min-height: 100vh;
     margin-bottom: 3rem;
   }
 `;

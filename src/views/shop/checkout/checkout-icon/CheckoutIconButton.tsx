@@ -3,6 +3,7 @@ import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import React, { useCallback } from "react";
 import styled from "styled-components";
 import { useShopContext } from "views/shop/shop-context/shop.context";
+import CartStorageHandler from "../cancel/CartStorageHandler";
 
 const CartIconContainer = styled.div`
   position: relative;
@@ -24,7 +25,7 @@ const CartIcon = styled.div<{ $isDark: boolean }>`
   align-items: center;
   justify-content: center;
   @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}px) {
+      theme.breakpoints.tablet}px) {
     height: 38px;
     width: 38px;
   }
@@ -41,6 +42,12 @@ const Badge = styled.div`
   padding: 4px 8px;
   font-family: ${({ theme }) => theme.font.alternative.family};
   font-size: ${({ theme }) => theme.font.size.xSmall};
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
+    bottom: 0px;
+    right: 0px;
+    padding: 2px 5px;
+  }
 `;
 
 const CartWithDropdown: React.FC = () => {
@@ -55,6 +62,7 @@ const CartWithDropdown: React.FC = () => {
 
   return (
     <CartIconContainer>
+      <CartStorageHandler resetInventoryEnabled={false} />
       <CartIcon onClick={onClick} $isDark={isNavTop}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -84,8 +92,7 @@ const useItemCount = () => {
     state: { cart },
   } = useShopContext();
   return cart.reduce((prev, curr) => {
-    prev += curr.quantity;
-    return prev;
+    return prev + curr.quantity;
   }, 0);
 };
 export default CartWithDropdown;

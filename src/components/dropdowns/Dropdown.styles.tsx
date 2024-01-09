@@ -5,17 +5,16 @@ export const DropdownContainer = styled.div`
   display: inline-block;
 `;
 
-export const DropdownButton = styled.button`
-  padding: 8px;
-  width: 150px;
-  cursor: pointer;
-  border: none;
-  background-color: black;
-  color: white;
-  font-size: ${({ theme }) => theme.font.size.xSmall};
+export const DropdownInput = styled.div`
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  height: 32px;
+  min-width: 86px;
+  border-color: ${({ theme }) => theme.colors.mono.lightGray};
+  border: 1px solid;
+  border-radius: 5px;
 `;
-
-export const DropdownInput = styled.input``;
 export const DropdownList = styled.ul`
   list-style: none;
   padding: 0;
@@ -28,11 +27,14 @@ export const DropdownList = styled.ul`
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid #ccc;
+  overflow: auto;
+  height: 200px;
 `;
 
 export const DropdownItem = styled.li`
   padding: 8px;
   cursor: pointer;
+  position: relative;
   font-family: ${({ theme }) => theme.font.default.family};
   font-size: ${({ theme }) => theme.font.size.xSmall};
   &:hover {

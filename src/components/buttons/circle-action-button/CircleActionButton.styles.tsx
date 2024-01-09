@@ -2,14 +2,13 @@ import styled from "styled-components";
 
 export const CircleButton = styled.button`
   z-index: 15;
-  bottom: 1vh;
+  bottom: 5vh;
   position: fixed;
   grid-area: 1 / 1 / -1 / -1;
   align-self: center;
   justify-self: center;
   color: #fff;
   font-size: ${({ theme }) => theme.font.size.medium};
-
   background: transparent;
   border: 0;
   padding: 0;
@@ -48,7 +47,7 @@ export const CircleButton = styled.button`
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    bottom: 2vh;
+    bottom: 15vh;
     width: 150px;
     height: 150px;
     h2 {

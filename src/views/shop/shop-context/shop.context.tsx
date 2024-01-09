@@ -18,6 +18,10 @@ export type Action =
   | { type: "UPDATE_CART"; payload: CartItem[] }
   | { type: "UPDATE_SHIPPING"; payload: { shippingTotal: number } }
   | { type: "REMOVE_FROM_CART"; payload: { productId: number } }
+  | {
+      type: "UPDATE_QUANTITY";
+      payload: { productId: number; quantity: number };
+    }
   | { type: "CHECKOUT" };
 
 type ShopContextType = {
@@ -35,10 +39,24 @@ const initialState: AppState = {
 const reducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
     case "UPDATE_CART":
+      sessionStorage.setItem("cart", JSON.stringify(action.payload));
       return {
         ...state,
         cart: action.payload,
       };
+    case "UPDATE_QUANTITY": {
+      const updatedCart = state.cart.map((cartItem) => {
+        if (cartItem.product.id === action.payload.productId) {
+          return { ...cartItem, stock: action.payload.quantity };
+        }
+        return cartItem;
+      });
+      sessionStorage.setItem("cart", JSON.stringify(updatedCart));
+      return {
+        ...state,
+        cart: updatedCart,
+      };
+    }
     case "ADD_TO_CART": {
       const updatedCart = [...state.cart, action.payload].reduce(
         (result: CartItem[], cartItem) => {
@@ -54,6 +72,7 @@ const reducer = (state: AppState, action: Action): AppState => {
         },
         []
       );
+      sessionStorage.setItem("cart", JSON.stringify(updatedCart));
       return {
         ...state,
         cart: updatedCart,
@@ -65,13 +84,16 @@ const reducer = (state: AppState, action: Action): AppState => {
         ...state,
         shippingTotal: action.payload.shippingTotal,
       };
-    case "REMOVE_FROM_CART":
+    case "REMOVE_FROM_CART": {
+      const updatedCart = state.cart.filter(
+        (item) => item.product.id !== action.payload.productId
+      );
+      sessionStorage.setItem("cart", JSON.stringify(updatedCart));
       return {
         ...state,
-        cart: state.cart.filter(
-          (item) => item.product.id !== action.payload.productId
-        ),
+        cart: updatedCart,
       };
+    }
     default:
       return state;
   }

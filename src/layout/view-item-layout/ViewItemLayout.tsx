@@ -7,10 +7,10 @@ import {
 import { ReactNode } from "react";
 import SwipeablePageNavigator from "components/mobile/SwipeableNavigator";
 import { Direction } from "utils/moveThroughArray";
-import { IconButton } from "components/buttons/icon-button/IconButton";
-import { IconTypes } from "components/buttons/icon-button/IconButton.types";
 import { MainTitle } from "components/text/Text";
 import DefaultLayout from "layout/DefaultLayout";
+import { IconButton } from "components/buttons/icon-button/IconButton";
+import { IconTypes } from "components/buttons/icon-button/IconButton.types";
 
 interface ViewItemProps {
   title: string;

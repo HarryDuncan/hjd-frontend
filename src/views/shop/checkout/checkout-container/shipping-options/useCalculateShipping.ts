@@ -34,5 +34,5 @@ export const useCalculateShipping = (
       }, 0);
     }
     return 0;
-  }, [cart, selectedShippingZone, shippingOptions]);
+  }, [cart, selectedShippingZone, shippingZones, shippingOptions]);
 };

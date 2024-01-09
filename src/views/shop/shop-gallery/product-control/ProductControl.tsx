@@ -19,12 +19,12 @@ export const ProductControl = ({ productData }: { productData: Product }) => {
   }, [dispatch, productData]);
 
   return (
-    <>
+    <div>
       {stock && price ? (
         <ActionButton onClick={handleAddToCart} title="Add To Cart" />
       ) : (
         <ContentSubText>Sold Out</ContentSubText>
       )}
-    </>
+    </div>
   );
 };
