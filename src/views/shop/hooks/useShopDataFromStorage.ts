@@ -12,12 +12,12 @@ export const useShopDataFromStorage = () => {
       if (cart) {
         return {
           cart: cart ? (JSON.parse(cart) as CartItem[]) : ([] as CartItem[]),
-          shipping: shipping ? JSON.parse(shipping) : 0,
+          shipping: shipping ? JSON.parse(shipping) : null,
         };
       }
     } else {
       console.error("sessionStorage is not supported in this environment.");
     }
-    return { cart: [] as CartItem[], shipping: 0 };
+    return { cart: [] as CartItem[], shipping: null };
   }, [savedCart, shippingTotal]);
 };

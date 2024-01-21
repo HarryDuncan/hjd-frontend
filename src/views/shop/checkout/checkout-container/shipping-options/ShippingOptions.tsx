@@ -37,13 +37,15 @@ export const ShippingOptions = () => {
   );
 
   useEffect(() => {
-    dispatch({
-      type: "UPDATE_SHIPPING",
-      payload: {
-        shippingTotal,
-      },
-    });
-  }, [shippingTotal, dispatch]);
+    if (selectedShippingZoneId !== null) {
+      dispatch({
+        type: "UPDATE_SHIPPING",
+        payload: {
+          shippingTotal,
+        },
+      });
+    }
+  }, [shippingTotal, selectedShippingZoneId, dispatch]);
 
   return (
     <CheckoutSection>

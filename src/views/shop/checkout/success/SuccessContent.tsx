@@ -28,7 +28,6 @@ const SuccessContent = () => {
         const {
           session: { shipping_details, customer_details },
         } = await response.json();
-
         setBillingDetails(shipping_details);
         setCustomerDetails(customer_details);
       }

@@ -18,7 +18,7 @@ export const ActionButton = ({
       onClick();
     }
   };
-  console.log(isDisabled);
+
   return (
     <StyledActionButton
       type={type}

@@ -27,7 +27,7 @@ const CartStorageHandler = ({
         payload: cart,
       });
     }
-    if (shippingTotal === null) {
+    if (shippingTotal === null && shipping !== undefined && shipping !== null) {
       dispatch({
         type: "UPDATE_SHIPPING",
         payload: shipping,

@@ -19,6 +19,8 @@ export const CheckoutContentContainer = styled.div`
 export const CartTableRow = styled.div`
   display: flex;
   border-bottom : 1px solid black;
+  padding : 1rem;
+  justify-content : center;
   font-family: ${({ theme }) => theme.font.default.family};
   font-weight ${({ theme }) => theme.font.weight.light};
   text-align: left;
@@ -28,8 +30,9 @@ export const CartTableRow = styled.div`
 export const CartTableControl = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 0 1rem;
   img {
-    height: 1.5rem;
+    height: 30px;
   }
 `;
 export const TableImageContainer = styled.div`
@@ -50,6 +53,8 @@ export const CheckoutSection = styled.div`
 export const ItemDetails = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0 1rem;
+  width: 20%;
   p {
     margin: 0;
   }

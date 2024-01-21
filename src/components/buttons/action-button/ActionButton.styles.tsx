@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const StyledActionButton = styled.button<{
   $disabled: boolean;
-  color?: string;
+  $color?: string;
 }>`
   padding: 1rem;
   border-radius: 30px;
-  cursor: pointer;
+  cursor: ${({ $disabled }) => ($disabled ? "none" : "pointer")};
   font-size: ${({ theme }) => theme.font.size.small};
   border: none;
   background-color: ${({ $disabled, theme }) =>

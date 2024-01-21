@@ -56,10 +56,11 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
-// Props for the SpinButton component
 interface SpinButtonProps {
   value: number;
   onChange: (value: number) => void;
+  max?: number;
+  min?: number;
 }
 
 const ChevronUpIcon = () => (
@@ -74,9 +75,17 @@ const ChevronDownIcon = () => (
   </svg>
 );
 
-export const SpinButton = ({ value, onChange }: SpinButtonProps) => {
-  const increment = () => onChange(value + 1);
-  const decrement = () => onChange(value - 1);
+export const SpinButton = ({ value, onChange, max, min }: SpinButtonProps) => {
+  const increment = () => {
+    if (!max || value + 1 < max) {
+      onChange(value + 1);
+    }
+  };
+  const decrement = () => {
+    if (min === undefined || value + 1 < min) {
+      onChange(value - 1);
+    }
+  };
 
   return (
     <SpinButtonContainer>

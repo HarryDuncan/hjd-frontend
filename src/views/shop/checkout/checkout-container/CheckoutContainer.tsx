@@ -24,9 +24,12 @@ export default function CheckoutPreview() {
     state: { cart, shippingTotal },
   } = useShopContext();
   const isCheckoutDisabled = useMemo(
-    () => shippingTotal === null || cart.some((item) => item.errorMessage),
+    () =>
+      shippingTotal === null ||
+      (shippingTotal !== null && cart.some((item) => item.errorMessage)),
     [shippingTotal, cart]
   );
+
   const checkoutTotal = useCalculateTotal(cart, shippingTotal);
   const setInventoryErrors = useDisplayErrors();
   const handleSubmit = async () => {

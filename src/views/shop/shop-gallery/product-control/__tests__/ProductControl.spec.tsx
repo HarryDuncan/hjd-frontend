@@ -5,7 +5,7 @@ import { ProductControl } from "../ProductControl";
 import { ActionButton } from "components/buttons/action-button/ActionButton.styles";
 import { ContentSubText } from "components/text/Text";
 import { Product } from "models/shop/types";
-import { WithApp } from "test-utils/WithApp";
+import { WithApp } from "../../../../../../test-utils/WithApp";
 
 vi.mock("components/buttons/action-button/ActionButton.styled", () => ({
   ActionButton: vi.fn(),

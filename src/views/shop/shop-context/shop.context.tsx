@@ -47,7 +47,7 @@ const reducer = (state: AppState, action: Action): AppState => {
     case "UPDATE_QUANTITY": {
       const updatedCart = state.cart.map((cartItem) => {
         if (cartItem.product.id === action.payload.productId) {
-          return { ...cartItem, stock: action.payload.quantity };
+          return { ...cartItem, quantity: action.payload.quantity };
         }
         return cartItem;
       });

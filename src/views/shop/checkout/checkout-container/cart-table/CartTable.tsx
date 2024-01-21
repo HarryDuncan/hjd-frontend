@@ -48,7 +48,6 @@ const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
               objectFit={"contain"}
             />
           </TableImageContainer>
-
           <ItemDetails>
             <p>{cartItem.product.title}</p>
             <p>${cartItem.product.price} AUD</p>
@@ -58,6 +57,8 @@ const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
             <CartTableControl>
               <SpinButton
                 value={cartItem.quantity}
+                max={cartItem.product.stock}
+                min={0}
                 onChange={(updatedValue: number) => {
                   handleUpdateQuantity(updatedValue, cartItem.product.id);
                 }}

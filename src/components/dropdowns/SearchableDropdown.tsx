@@ -22,9 +22,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   onSelect,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<DropdownOption | null>(
-    null
-  );
+
   const [filterText, setFilterText] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -39,7 +37,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   };
 
   const handleSelect = (option: DropdownOption) => {
-    setSelectedOption(option);
+    console.log(option);
     onSelect(option);
     setIsOpen(false);
     setFilterText(option.label);
@@ -58,6 +56,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
           onChange={(e) => setFilterText(e.target.value)}
           ref={inputRef}
           onFocus={handleToggle}
+          placeholder="Search Country"
         />
       </DropdownInput>
       {isOpen && (
