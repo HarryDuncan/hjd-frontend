@@ -24,7 +24,7 @@ declare module "styled-components" {
                 rgba(219, 219, 219, 1) 50%,
                 rgba(255, 255, 255, 1) 100%
               );`;
-        dark: `linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,0,0,0.8911939775910365) 100%);`;
+        dark: `linear-gradient(180deg, rgba(15,15,15,1) 0%, rgba(62,62,62,1) 100%);`;
       };
     };
     font: {

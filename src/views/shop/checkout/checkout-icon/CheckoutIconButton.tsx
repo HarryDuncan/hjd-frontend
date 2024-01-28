@@ -4,6 +4,7 @@ import React, { useCallback } from "react";
 import styled from "styled-components";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 import CartStorageHandler from "../cancel/CartStorageHandler";
+import { useCartItemCount } from "views/shop/hooks/useCartItemCount";
 
 const CartIconContainer = styled.div`
   position: relative;
@@ -31,7 +32,7 @@ const CartIcon = styled.div<{ $isDark: boolean }>`
   }
 `;
 
-const Badge = styled.div`
+export const Badge = styled.div`
   position: absolute;
   bottom: -10px;
   right: 0px;
@@ -53,7 +54,7 @@ const Badge = styled.div`
 const CartWithDropdown: React.FC = () => {
   const isNavTop = useIsNavTop();
   const handleRouting = useHandleRouting("/checkout");
-  const itemCount = useItemCount();
+  const itemCount = useCartItemCount();
   const onClick = useCallback(() => {
     if (itemCount > 0) {
       handleRouting();
@@ -87,12 +88,4 @@ const CartWithDropdown: React.FC = () => {
   );
 };
 
-const useItemCount = () => {
-  const {
-    state: { cart },
-  } = useShopContext();
-  return cart.reduce((prev, curr) => {
-    return prev + curr.quantity;
-  }, 0);
-};
 export default CartWithDropdown;

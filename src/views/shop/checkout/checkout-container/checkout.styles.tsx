@@ -3,16 +3,16 @@ import styled from "styled-components";
 
 export const CheckoutContentContainer = styled.div`
   color: black;
-  width: 50%;
+  width: 80%;
   background: white;
-  border-radius: 5px;
   z-index: 5;
-  margin: 1rem auto;
-  padding: 1rem;
-
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 3rem;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    width: 80%;
+    width: 100%;
+    padding: 0;
   }
 `;
 
@@ -58,4 +58,9 @@ export const ItemDetails = styled.div`
   p {
     margin: 0;
   }
+`;
+
+export const CheckoutTitleContainer = styled.div`
+  height: 20vh;
+  position: relative;
 `;

@@ -5,8 +5,12 @@ import { useCalculateTotal } from "views/shop/hooks/useCalculateTotal";
 import { useShopDataFromStorage } from "views/shop/hooks/useShopDataFromStorage";
 import CartTable from "../checkout-container/cart-table/CartTable";
 import { CheckoutTotal } from "../checkout-container/checkout-total/CheckoutTotal";
-import { CheckoutContentContainer } from "../checkout-container/checkout.styles";
+import {
+  CheckoutContentContainer,
+  CheckoutTitleContainer,
+} from "../checkout-container/checkout.styles";
 import { TransactionDetailsSection } from "./TransactionDetailsSection";
+import { TextScroller } from "components/text-scroller/TextScroller";
 
 const SuccessContent = () => {
   const { cart, shipping } = useShopDataFromStorage();
@@ -40,7 +44,9 @@ const SuccessContent = () => {
 
   return (
     <CheckoutContentContainer>
-      <MainTitle $isLight={false}>Thank You</MainTitle>
+      <CheckoutTitleContainer>
+        <TextScroller text={" Thank You "} isLight={false} />
+      </CheckoutTitleContainer>
       {cart.length && <CartTable isReadOnly parsedCartData={cart} />}
 
       {billingDetails && customerDetails && (

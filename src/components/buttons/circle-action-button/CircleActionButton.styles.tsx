@@ -2,17 +2,16 @@ import styled from "styled-components";
 
 export const CircleButton = styled.button`
   z-index: 15;
-  bottom: 5vh;
-  position: fixed;
+  margin: 0 auto;
+  position: relative;
   grid-area: 1 / 1 / -1 / -1;
   align-self: center;
   justify-self: center;
   color: #fff;
-  font-size: ${({ theme }) => theme.font.size.medium};
+  font-size: ${({ theme }) => theme.font.size.small};
   background: transparent;
   border: 0;
   padding: 0;
-  margin: 0;
   font: inherit;
 
   :focus {
@@ -20,8 +19,8 @@ export const CircleButton = styled.button`
   }
   cursor: pointer;
   font-weight: 200;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   display: grid;
   place-items: center;
   .circle-svg {
@@ -47,9 +46,11 @@ export const CircleButton = styled.button`
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    bottom: 15vh;
-    width: 150px;
-    height: 150px;
+    margin: 0 auto;
+    margin-top: 25%;
+    width: 110px;
+    height: 110px;
+    position: relative;
     h2 {
       font-size: ${({ theme }) => theme.font.size.medium};
       transition: transform 0.3s ease-out;
@@ -62,7 +63,7 @@ export const ButtonText = styled.h2`
   grid-area: 1 / 1 / -1 / -1;
   display: block;
   padding: 0 0.5rem;
-  color: white;
+  color: ${({ theme }) => theme.colors.mono.darkText};
   text-transform: uppercase;
   font-size: ${({ theme }) => theme.font.size.large};
   z-index: 5;

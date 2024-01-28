@@ -12,14 +12,13 @@ import { AnimationConfig } from "visual/display/animation/animation.types";
 import { SceneData } from "visual/set-up/config/config.types";
 import Head from "next/head";
 import FullScreenLayout from "layout/FullScreenLayout";
+import TitlePageLayout from "layout/title-page-layout/TitlePageLayout";
+import { HomeContainerBottom } from "views/home/Home.styles";
+import { TextScroller } from "components/text-scroller/TextScroller";
 
 const Home: NextPage = () => {
   useSetWindowState();
-  const handleRouting = useHandleRouting("bio");
-  const buttonRef = useRef<HTMLElement | null>(null);
-  const onEnterClick = useCallback(() => {
-    handleRouting();
-  }, [handleRouting]);
+
   return (
     <>
       <Head>
@@ -30,16 +29,12 @@ const Home: NextPage = () => {
           key="desc"
         />
       </Head>
-      <FullScreenLayout>
-        <CircleActionButton
-          ref={buttonRef}
-          onClick={onEnterClick}
-          buttonText="ENTER"
-        />
+      <TitlePageLayout>
+        <BottomSection />
         <Suspense>
           <HomeSceneContent />
         </Suspense>
-      </FullScreenLayout>
+      </TitlePageLayout>
     </>
   );
 };
@@ -73,6 +68,24 @@ const HomeSceneContent = () => {
   return sceneData !== null && sceneParameters !== null ? (
     <DynamicScene {...sceneParameters} sceneData={sceneData as SceneData} />
   ) : null;
+};
+
+const BottomSection = () => {
+  const handleRouting = useHandleRouting("bio");
+  const buttonRef = useRef<HTMLElement | null>(null);
+  const onEnterClick = useCallback(() => {
+    handleRouting();
+  }, [handleRouting]);
+
+  return (
+    <HomeContainerBottom>
+      <CircleActionButton
+        ref={buttonRef}
+        onClick={onEnterClick}
+        buttonText="ENTER"
+      />
+    </HomeContainerBottom>
+  );
 };
 
 export default Home;

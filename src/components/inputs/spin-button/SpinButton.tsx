@@ -7,7 +7,7 @@ const SpinButtonContainer = styled.div`
   position: relative;
   box-sizing: border-box;
   height: 32px;
-  min-width: 86px;
+  min-width: 66px;
   border-color: rgb(96, 94, 92);
   border: 1px solid;
 `;

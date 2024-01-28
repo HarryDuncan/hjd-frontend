@@ -5,7 +5,10 @@ import {
   OverlayDiv,
 } from "components/containers/Containers";
 import CartTable from "./cart-table/CartTable";
-import { CheckoutContentContainer } from "./checkout.styles";
+import {
+  CheckoutContentContainer,
+  CheckoutTitleContainer,
+} from "./checkout.styles";
 import { MainTitle } from "components/text/Text";
 import { CheckoutTotal } from "./checkout-total/CheckoutTotal";
 import { ShippingOptions } from "./shipping-options/ShippingOptions";
@@ -14,6 +17,7 @@ import { checkInventory } from "services/shop/checkInventory";
 import { Product } from "models/shop/types";
 import { useCalculateTotal } from "views/shop/hooks/useCalculateTotal";
 import { useShopContext } from "views/shop/shop-context/shop.context";
+import { TextScroller } from "components/text-scroller/TextScroller";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? ""
@@ -33,31 +37,34 @@ export default function CheckoutPreview() {
   const checkoutTotal = useCalculateTotal(cart, shippingTotal);
   const setInventoryErrors = useDisplayErrors();
   const handleSubmit = async () => {
-    sessionStorage.setItem("inventoryReset", JSON.stringify(false));
-    const checkInventoryResult = await checkInventory(cart);
-    const { hasInventory, products } = checkInventoryResult.inventoryData;
-    if (hasInventory) {
-      const formData = {
-        cart,
-        shippingTotal,
-      };
-      await fetch("/api/checkout_sessions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-    } else {
-      setInventoryErrors(products);
+    if (!isCheckoutDisabled) {
+      sessionStorage.setItem("inventoryReset", JSON.stringify(false));
+      const checkInventoryResult = await checkInventory(cart);
+      const { hasInventory, products } = checkInventoryResult.inventoryData;
+      if (hasInventory) {
+        const formData = {
+          cart,
+          shippingTotal,
+        };
+        await fetch("/api/checkout_sessions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+      } else {
+        setInventoryErrors(products);
+      }
     }
   };
 
   return (
     <FloatingCentralContainer>
-      <OverlayDiv />
       <CheckoutContentContainer>
-        <MainTitle $isLight={false}>Checkout</MainTitle>
+        <CheckoutTitleContainer>
+          <TextScroller text={" Checkout "} isLight={false} />
+        </CheckoutTitleContainer>
         <CartTable />
         <ShippingOptions />
         <CheckoutTotal total={checkoutTotal} />
@@ -74,7 +81,7 @@ export default function CheckoutPreview() {
           />
           <ActionButton
             isDisabled={isCheckoutDisabled}
-            type="submit"
+            type={isCheckoutDisabled ? "button" : "submit"}
             title="Checkout"
           />
         </form>
