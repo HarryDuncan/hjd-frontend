@@ -1,17 +1,14 @@
-import {
-  calculateNormal,
-  diffuseFactor,
-} from "visual/display/materials/webgl-shaders/shader-functions";
+import { calculateNormal } from "visual/display/materials/webgl-shaders/shader-functions";
 import { ShaderPropertyValueTypes } from "../../../../buildShader.constants";
 import {
   DefaultUniform,
   FragmentEffectData,
   MaterialEffectProps,
-  ShaderFunction,
   VaryingConfig,
 } from "../../../../buildShader.types";
 import { FRAGMENT_COLOR_NAMES } from "../../../fragmentEffects.consts";
 import { VARYING_TYPES } from "../../../../shader-properties/varyings/varyings.consts";
+import { matcapFunction } from "visual/display/materials/webgl-shaders/shader-functions/matcap";
 
 const getCustomUniforms = () => [
   {
@@ -20,14 +17,13 @@ const getCustomUniforms = () => [
   },
 ];
 
-const getRequiredFunctions = () =>
-  [
-    { id: "diffuseFactor", functionDefinition: diffuseFactor },
-    { id: "calculateNormal", functionDefinition: calculateNormal },
-  ] as ShaderFunction[];
-
 const getVaryings = () =>
   [
+    {
+      id: "vEye",
+      varyingType: VARYING_TYPES.DEFAULT,
+      valueType: ShaderPropertyValueTypes.VEC3,
+    },
     {
       id: "vPosition",
       varyingType: VARYING_TYPES.DEFAULT,
@@ -38,15 +34,20 @@ const getVaryings = () =>
       varyingType: VARYING_TYPES.DEFAULT,
       valueType: ShaderPropertyValueTypes.VEC3,
     },
+    {
+      id: "vUv",
+      varyingType: VARYING_TYPES.DEFAULT,
+      valueType: ShaderPropertyValueTypes.VEC2,
+    },
   ] as VaryingConfig[];
 
 const getOpacity = (opacity?: boolean | undefined) => {
   if (opacity) {
-    return `finalFrag.a * opacity`;
+    return `matcapColor.a * opacity`;
   }
-  return `finalFrag.a`;
+  return `matcapColor.a`;
 };
-export const matcapMaterial = (
+export const simpleMatcap = (
   _transformColorName: string,
   fragmentEffects: Partial<MaterialEffectProps> | undefined
 ): FragmentEffectData => {
@@ -57,24 +58,20 @@ export const matcapMaterial = (
   };
   const varyingConfig = getVaryings();
   const transformation = `
-  vec3 newNormal = calculateNormal(vPosition);
-  vec3 viewDir = normalize(-vPosition.xyz);
-  vec3 x = normalize( vec3( viewDir.z, 0.0, - viewDir.x ) );
-  vec3 y = cross( viewDir, x );
-  vec2 uv = vec2( dot( x, newNormal ), dot( y, newNormal ) ) * 0.495 + 0.5; 
-  vec4 uMaterialTex = texture2D(uMaterial, uv);
-  float minResolution = min(uResolution.x, uResolution.y);
-  vec3 lightDirection = -vec3((uLightDir - 0.5 * uResolution) / minResolution, 0.25);
-  vec3 surfaceColor = vec3(1.0, 0.5, 0.4);
-  float curvature = 5.0 - abs(dot(normalize(vNormal), normalize(vec3(0.0, 0.0, 1.0))));
-  vec3 finalColor = mix(surfaceColor, vec3(1.0), curvature);
-  vec4 finalFrag = mix(uMaterialTex,vec4( finalColor, 1.0), 0.0);
-  vec4 ${fragmentColorName} = vec4(finalFrag.rgb, ${getOpacity(
+    vec3 newNormal = calculateNormal(vPosition);
+    vec3 x = normalize( vec3( vEye.z, 0.0, - vEye.x ) );
+    vec3 y = cross( vEye, x );
+    vec2 uv = vec2( dot( x, newNormal ), dot( y, newNormal ) ) * 0.495 + 0.5; 
+    vec4 matcapColor = texture2D(uMaterial, uv);
+    vec4 ${fragmentColorName} = vec4( matcapColor.rgb, ${getOpacity(
     fragmentEffects?.opacity
   )});`;
-  const requiredFunctions = getRequiredFunctions();
+
   return {
-    requiredFunctions,
+    requiredFunctions: [
+      { id: "calculateNormal", functionDefinition: calculateNormal },
+      { id: "matcap", functionDefinition: matcapFunction },
+    ],
     uniformConfig,
     transformation,
     varyingConfig,

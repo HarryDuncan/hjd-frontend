@@ -3,7 +3,6 @@ import { StyledActionButton } from "./ActionButton.styles";
 interface ActionButtonProps {
   title: string;
   onClick?: () => void;
-  color?: string;
   isDisabled?: boolean;
   type?: "button" | "submit" | "reset";
 }

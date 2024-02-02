@@ -4,10 +4,7 @@ import {
   SceneLight,
 } from "visual/display/scene-elements/lights/lights.types";
 import { MaterialConfig } from "visual/set-up/config/material/materials.types";
-import {
-  ExternalInteractionConfig,
-  InteractionConfig,
-} from "interaction/interactions.types";
+import { InteractionConfig } from "interaction/interactions.types";
 import { Asset } from "visual/set-up/assets/asset.types";
 import { GeometryConfig } from "../assets/geometry/geometry.types";
 import { CameraConfig } from "visual/set-up/config/three-js/use-camera/camera.types";
@@ -28,15 +25,17 @@ import { Position3d } from "visual/utils/three-dimension-space/position/position
 import { AttributeConfig } from "./material/shaders/build-shader/buildShader.types";
 import { SceneConfigType } from "./config.constants";
 
-export type RandomizationConfig = {
+export type MultipleConfig = {
   instanceCount: number;
-  randomRotation?: boolean;
   boundingBoxConfig: {
     width: number;
     height: number;
     depth: number;
     center: Partial<Position3d>;
   };
+};
+export type RandomizationConfig = MultipleConfig & {
+  randomRotation?: boolean;
 };
 
 export type SceneComponentConfig = {
@@ -51,6 +50,7 @@ export type MeshComponentConfig = {
   materialId?: string;
   rotation?: Partial<Position3d>;
   position?: Partial<Position3d>;
+  multipleConfig?: MultipleConfig;
   randomizationConfig?: RandomizationConfig;
   geometryConfig?: GeometryConfig;
   groupId?: string;
@@ -130,7 +130,6 @@ export type SceneConfig = {
   lightConfig: LightConfigs[];
   sceneComponentConfigs?: SceneComponentConfig[];
   interactionConfig?: InteractionConfig[];
-  externalInteractionConfig?: ExternalInteractionConfig;
   threeJsConfig: ThreeJSConfig;
   scenePropertiesConfig: ScenePropertiesConfig;
   screenSizeAdjustments?: ScreenSizeAdjustmentConfig[];

@@ -1,21 +1,29 @@
-import { Product } from "models/shop/types";
-
 export type ApiRequest = {
   method: string;
-  body;
-};
-
-export type CheckoutSessionRequest = ApiRequest & {
-  selectedProducts: Product[];
-};
-
-export type ApiResponse = {
-  redirect: (arg0: number, arg1: any) => void;
-  status: (arg0: number) => {
-    (): any;
-    new (): any;
-    json: { (arg0: any): void; new (): any };
-    end: { (arg0: string): void; new (): any };
+  headers: {
+    origin: string;
   };
+  body: string;
+};
+
+export type CheckoutSuccessRequest = ApiRequest & {
+  body: {
+    sessionId: string;
+  };
+};
+
+export interface ResponseError {
+  statusCode: number;
+  message: string;
+}
+export type ApiResponse = {
+  redirect: (arg0: number, arg1: unknown) => void;
+  status: (arg0: number) => {
+    (): unknown;
+    new (): unknown;
+    json: { (arg0: unknown): void; new (): unknown };
+    end: { (arg0: string): void; new (): unknown };
+  };
+  json: (arg0: unknown) => unknown;
   setHeader: (arg0: string, arg1: string) => void;
 };

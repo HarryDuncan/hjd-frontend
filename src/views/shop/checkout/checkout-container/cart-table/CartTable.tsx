@@ -44,8 +44,8 @@ const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
             <Image
               src={`${SHOP_IMAGE_URL_ROOT}${cartItem.product.imageUrl}`}
               alt={cartItem.product.title}
-              fill={true}
-              objectFit={"contain"}
+              fill
+              objectFit="contain"
             />
           </TableImageContainer>
           <ItemDetails>
@@ -64,7 +64,7 @@ const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
                 }}
               />
               <IconButton
-                hasGesture={true}
+                hasGesture
                 type={IconTypes.TRASH}
                 onClick={() => handleRemoveItem(cartItem.product.id)}
               />

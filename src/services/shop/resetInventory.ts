@@ -25,8 +25,7 @@ export const resetInventory = async (cart: CartItem[]) => {
       },
     });
     const { data } = response;
-    console.log(response);
-    return { loading: false };
+    return { loading: false, data };
   } catch (error) {
     console.error("Error checking inventory:", error);
     return { inventoryData: null, loading: false, error };

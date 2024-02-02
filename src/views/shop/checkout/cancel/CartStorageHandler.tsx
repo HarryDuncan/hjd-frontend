@@ -33,7 +33,14 @@ const CartStorageHandler = ({
         payload: shipping,
       });
     }
-  }, [dispatch, cart, shipping]);
+  }, [
+    dispatch,
+    cart,
+    shipping,
+    contextCart.length,
+    resetInventory,
+    shippingTotal,
+  ]);
   useEffect(() => {
     setData();
   }, [setData]);

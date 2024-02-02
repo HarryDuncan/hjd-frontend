@@ -8,7 +8,6 @@ import {
 import Link from "next/link";
 import { CHECKOUT_PAGE, NAV_THEMES, SITE_PAGES } from "../navigation.consts";
 import { HamburgerMenu } from "./hamburger-menu/HamburgerMenu";
-import CartWithDropdown from "views/shop/checkout/checkout-icon/CheckoutIconButton";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 
 interface MobileNavigationProps {
@@ -23,9 +22,8 @@ export const MobileNavigation = ({ navTheme }: MobileNavigationProps) => {
   const mobileMenuItems = useMemo(() => {
     if (!cart.length) {
       return SITE_PAGES;
-    } else {
-      return [...SITE_PAGES, ...CHECKOUT_PAGE];
     }
+    return [...SITE_PAGES, ...CHECKOUT_PAGE];
   }, [cart]);
   const handleMobileMenuClick = () => {
     updateIsMenuOpen(!isMenuOpen);

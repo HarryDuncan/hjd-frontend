@@ -1,3 +1,5 @@
+import { CartItem } from "../shop-context/shop.context";
+
 export interface Address {
   city: string;
   country: string;
@@ -14,4 +16,10 @@ export interface BillingDetails {
 
 export interface CustomerDetails {
   email: string;
+}
+
+export interface ReceiptData {
+  customerDetails: CustomerDetails;
+  billingDetails: BillingDetails;
+  cart: CartItem[];
 }

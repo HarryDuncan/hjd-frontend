@@ -2,7 +2,6 @@ import { useIsNavTop } from "components/navigation/hooks/useIsNavTop";
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import React, { useCallback } from "react";
 import styled from "styled-components";
-import { useShopContext } from "views/shop/shop-context/shop.context";
 import CartStorageHandler from "../cancel/CartStorageHandler";
 import { useCartItemCount } from "views/shop/hooks/useCartItemCount";
 
@@ -60,7 +59,9 @@ const CartWithDropdown: React.FC = () => {
       handleRouting();
     }
   }, [handleRouting, itemCount]);
-
+  if (itemCount === 0) {
+    return null;
+  }
   return (
     <CartIconContainer>
       <CartStorageHandler resetInventoryEnabled={false} />

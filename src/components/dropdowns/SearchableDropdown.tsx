@@ -22,7 +22,6 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   onSelect,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const [filterText, setFilterText] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -37,7 +36,6 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   };
 
   const handleSelect = (option: DropdownOption) => {
-    console.log(option);
     onSelect(option);
     setIsOpen(false);
     setFilterText(option.label);

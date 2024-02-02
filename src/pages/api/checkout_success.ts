@@ -1,6 +1,17 @@
+// eslint-disable import/no-extraneous-dependencies
+import {
+  ApiResponse,
+  CheckoutSuccessRequest,
+  ResponseError,
+} from "./api.types";
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-export default async function handler(req: any, res: any) {
+export default async function handler(
+  req: CheckoutSuccessRequest,
+  res: ApiResponse
+) {
   if (req.method === "POST") {
     try {
       const session = await stripe.checkout.sessions.retrieve(
@@ -8,7 +19,9 @@ export default async function handler(req: any, res: any) {
       );
       res.json({ session });
     } catch (err) {
-      res.status(err.statusCode || 500).json(err.message);
+      const error = err as ResponseError;
+      const { statusCode, message } = error;
+      res.status(statusCode || 500).json(message);
     }
   } else {
     res.setHeader("Allow", "POST");

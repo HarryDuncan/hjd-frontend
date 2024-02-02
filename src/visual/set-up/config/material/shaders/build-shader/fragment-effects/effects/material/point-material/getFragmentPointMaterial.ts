@@ -67,8 +67,8 @@ const ATTRIBUTE_CONFIG = [
 ] as AttributeConfig[];
 
 export const getFragmentPointMaterial = (
-  effectProps: Partial<PointMaterialEffectProps> | undefined,
-  _transformColorName
+  _transformColorName: string,
+  effectProps: Partial<PointMaterialEffectProps> | undefined
 ): FragmentEffectData => {
   const formattedEffectProps = formatWithDefaultEffectProps(effectProps);
   const { pointDefinitions, defaultColor } = formattedEffectProps;

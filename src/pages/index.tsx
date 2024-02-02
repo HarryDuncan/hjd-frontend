@@ -11,10 +11,8 @@ import { CircleActionButton } from "components/buttons/circle-action-button/Circ
 import { AnimationConfig } from "visual/display/animation/animation.types";
 import { SceneData } from "visual/set-up/config/config.types";
 import Head from "next/head";
-import FullScreenLayout from "layout/FullScreenLayout";
 import TitlePageLayout from "layout/title-page-layout/TitlePageLayout";
 import { HomeContainerBottom } from "views/home/Home.styles";
-import { TextScroller } from "components/text-scroller/TextScroller";
 
 const Home: NextPage = () => {
   useSetWindowState();

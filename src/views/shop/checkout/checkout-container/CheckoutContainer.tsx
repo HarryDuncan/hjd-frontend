@@ -1,15 +1,10 @@
 import { useCallback, useMemo } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import {
-  FloatingCentralContainer,
-  OverlayDiv,
-} from "components/containers/Containers";
+import { FloatingCentralContainer } from "components/containers/Containers";
 import CartTable from "./cart-table/CartTable";
 import {
   CheckoutContentContainer,
   CheckoutTitleContainer,
 } from "./checkout.styles";
-import { MainTitle } from "components/text/Text";
 import { CheckoutTotal } from "./checkout-total/CheckoutTotal";
 import { ShippingOptions } from "./shipping-options/ShippingOptions";
 import { ActionButton } from "components/buttons/action-button/ActionButton";
@@ -18,10 +13,7 @@ import { Product } from "models/shop/types";
 import { useCalculateTotal } from "views/shop/hooks/useCalculateTotal";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 import { TextScroller } from "components/text-scroller/TextScroller";
-
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? ""
-);
+import { getStripe } from "services/shop/getStripe";
 
 export default function CheckoutPreview() {
   const {
@@ -33,7 +25,7 @@ export default function CheckoutPreview() {
       (shippingTotal !== null && cart.some((item) => item.errorMessage)),
     [shippingTotal, cart]
   );
-
+  getStripe();
   const checkoutTotal = useCalculateTotal(cart, shippingTotal);
   const setInventoryErrors = useDisplayErrors();
   const handleSubmit = async () => {
@@ -63,7 +55,7 @@ export default function CheckoutPreview() {
     <FloatingCentralContainer>
       <CheckoutContentContainer>
         <CheckoutTitleContainer>
-          <TextScroller text={" Checkout "} isLight={false} />
+          <TextScroller text=" Checkout " isLight={false} />
         </CheckoutTitleContainer>
         <CartTable />
         <ShippingOptions />
