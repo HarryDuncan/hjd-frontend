@@ -34,16 +34,13 @@ export default function CheckoutPreview() {
       const checkInventoryResult = await checkInventory(cart);
       const { hasInventory, products } = checkInventoryResult.inventoryData;
       if (hasInventory) {
-        const formData = {
-          cart,
-          shippingTotal,
-        };
+        const formData = new FormData();
+        formData.append("cart", JSON.stringify(cart));
+        formData.append("shippingTotal", JSON.stringify(shippingTotal));
+
         await fetch("/api/checkout_sessions", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
+          body: formData,
         });
       } else {
         setInventoryErrors(products);

@@ -9,7 +9,7 @@ export const checkInventory = async (cart: CartItem[]) => {
         @rest(
           type: "inventoryData"
           method: "POST"
-          path: "/shop/products/inventory"
+          path: "/shop/products/inventory/update"
           bodyKey: "cart"
         ) {
         products

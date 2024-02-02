@@ -1,3 +1,5 @@
+import { CartItem } from "views/shop/shop-context/shop.context";
+
 export type ApiRequest = {
   method: string;
   headers: {
@@ -6,6 +8,12 @@ export type ApiRequest = {
   body: string;
 };
 
+export type CheckoutSessionRequest = ApiRequest & {
+  body: {
+    cart: string;
+    shippingTotal: string;
+  };
+};
 export type CheckoutSuccessRequest = ApiRequest & {
   body: {
     sessionId: string;

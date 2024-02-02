@@ -1,16 +1,23 @@
 // eslint-disable import/no-extraneous-dependencies
 import { formatLineItems } from "views/shop/checkout/formatLineItems";
-import { ApiRequest, ApiResponse, ResponseError } from "./api.types";
+import {
+  ApiResponse,
+  CheckoutSessionRequest,
+  ResponseError,
+} from "./api.types";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-export default async function handler(req: ApiRequest, res: ApiResponse) {
-  const { shippingTotal, cart } = JSON.parse(req.body);
+export default async function handler(
+  req: CheckoutSessionRequest,
+  res: ApiResponse
+) {
   if (req.method === "POST") {
     try {
+      const cart = JSON.parse(req.body.cart);
+      const shippingTotal = JSON.parse(req.body.shippingTotal);
       const lineItems = formatLineItems(cart, shippingTotal);
-
       const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
         shipping_address_collection: {
