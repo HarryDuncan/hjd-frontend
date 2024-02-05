@@ -31,12 +31,14 @@ declare module "styled-components" {
       size: {
         xSmall: "1rem";
         small: "1.5rem";
+        mediumSmall: "2rem";
         medium: "3rem";
         mediumLarge: "4rem";
         large: "5rem";
         xLarge: "7rem";
       };
       weight: {
+        none: 0;
         light: 200;
         normal: 400;
         bold: 700;

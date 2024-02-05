@@ -18,8 +18,13 @@ export interface CustomerDetails {
   email: string;
 }
 
+export interface TransactionDetails {
+  refId: string;
+  purchaseDate: number;
+}
 export interface ReceiptData {
   customerDetails: CustomerDetails;
   billingDetails: BillingDetails;
   cart: CartItem[];
+  transactionDetails: TransactionDetails;
 }

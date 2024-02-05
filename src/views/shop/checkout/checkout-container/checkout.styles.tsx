@@ -1,3 +1,4 @@
+import { NAV_HEIGHT } from "components/navigation/Navigation.styles";
 import { ContentText } from "components/text/Text";
 import styled from "styled-components";
 
@@ -12,6 +13,7 @@ export const CheckoutContentContainer = styled.div`
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     width: 100%;
+    height: calc(100vh - ${NAV_HEIGHT});
     padding: 0;
   }
 `;
@@ -19,8 +21,8 @@ export const CheckoutContentContainer = styled.div`
 export const CartTableRow = styled.div`
   display: flex;
   border-bottom : 1px solid black;
-  padding : 1rem;
-  justify-content : center;
+  padding : 0.2rem 0rem ;
+  justify-content : space-between;
   font-family: ${({ theme }) => theme.font.default.family};
   font-weight ${({ theme }) => theme.font.weight.light};
   text-align: left;
@@ -34,6 +36,11 @@ export const CartTableControl = styled.div`
   img {
     height: 30px;
   }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    flex-direction: column;
+    justify-content: space-between;
+  }
 `;
 export const TableImageContainer = styled.div`
   height: 100px;
@@ -44,17 +51,23 @@ export const TableImageContainer = styled.div`
 export const CheckoutSection = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
   ${ContentText} {
     font-size: ${({ theme }) => theme.font.size.xSmall};
+  }
+  form {
+    display: flex;
+    justify-content: center;
   }
 `;
 
 export const ItemDetails = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   padding: 0 1rem;
-  width: 20%;
+  min-width: 20%;
   p {
     margin: 0;
   }

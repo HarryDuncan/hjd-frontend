@@ -9,6 +9,7 @@ import RootLayout from "layout/RootLayout";
 import Head from "next/head";
 import { PageTransitionWrapper } from "components/animations/page-transitions/PageTransitionsWrapper";
 import { ShopProvider } from "views/shop/shop-context/shop.context";
+import { DashboardProvider } from "views/dashboard/dashboard-context/dashboard.context";
 
 const queryClient = new QueryClient();
 
@@ -23,16 +24,18 @@ function MyApp({ Component, pageProps }: AppProps) {
           key="desc"
         />
       </Head>
-      <ShopProvider>
-        <WindowStateProvider>
-          <ThemeProvider theme={THEME}>
-            <GlobalStyle />
-            <QueryClientProvider client={queryClient}>
-              <AppContent Component={Component} pageProps={pageProps} />
-            </QueryClientProvider>
-          </ThemeProvider>
-        </WindowStateProvider>
-      </ShopProvider>
+      <DashboardProvider>
+        <ShopProvider>
+          <WindowStateProvider>
+            <ThemeProvider theme={THEME}>
+              <GlobalStyle />
+              <QueryClientProvider client={queryClient}>
+                <AppContent Component={Component} pageProps={pageProps} />
+              </QueryClientProvider>
+            </ThemeProvider>
+          </WindowStateProvider>
+        </ShopProvider>
+      </DashboardProvider>
     </RootLayout>
   );
 }

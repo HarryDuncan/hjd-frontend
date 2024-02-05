@@ -47,9 +47,9 @@ export const CircleButton = styled.button`
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     margin: 0 auto;
-    margin-top: 25%;
-    width: 110px;
-    height: 110px;
+    margin-top: 10%;
+    width: 8rem;
+    height: 8rem;
     position: relative;
     h2 {
       font-size: ${({ theme }) => theme.font.size.medium};

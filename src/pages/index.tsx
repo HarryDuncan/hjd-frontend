@@ -80,7 +80,7 @@ const BottomSection = () => {
       <CircleActionButton
         ref={buttonRef}
         onClick={onEnterClick}
-        buttonText="ENTER"
+        title="ENTER"
       />
     </HomeContainerBottom>
   );

@@ -5,7 +5,7 @@ import { ShippingZone } from "models/shop/types";
 import {
   DropdownOption,
   SearchableDropdown,
-} from "components/dropdowns/SearchableDropdown";
+} from "components/inputs/searchable-dropdown/SearchableDropdown";
 import { useCalculateShipping } from "./useCalculateShipping";
 import { ContentSubText, ContentText } from "components/text/Text";
 import { useShopContext } from "views/shop/shop-context/shop.context";

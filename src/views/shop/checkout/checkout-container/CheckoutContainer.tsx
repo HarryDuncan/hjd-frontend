@@ -3,6 +3,7 @@ import { FloatingCentralContainer } from "components/containers/Containers";
 import CartTable from "./cart-table/CartTable";
 import {
   CheckoutContentContainer,
+  CheckoutSection,
   CheckoutTitleContainer,
 } from "./checkout.styles";
 import { CheckoutTotal } from "./checkout-total/CheckoutTotal";
@@ -57,23 +58,25 @@ export default function CheckoutPreview() {
         <CartTable />
         <ShippingOptions />
         <CheckoutTotal total={checkoutTotal} />
-        <form
-          onSubmit={handleSubmit}
-          method="POST"
-          action="/api/checkout_sessions"
-        >
-          <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <input
-            type="hidden"
-            name="shippingTotal"
-            value={JSON.stringify(shippingTotal)}
-          />
-          <ActionButton
-            isDisabled={isCheckoutDisabled}
-            type={isCheckoutDisabled ? "button" : "submit"}
-            title="Checkout"
-          />
-        </form>
+        <CheckoutSection>
+          <form
+            onSubmit={handleSubmit}
+            method="POST"
+            action="/api/checkout_sessions"
+          >
+            <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+            <input
+              type="hidden"
+              name="shippingTotal"
+              value={JSON.stringify(shippingTotal)}
+            />
+            <ActionButton
+              isDisabled={isCheckoutDisabled}
+              type={isCheckoutDisabled ? "button" : "submit"}
+              title="Checkout"
+            />
+          </form>
+        </CheckoutSection>
       </CheckoutContentContainer>
     </FloatingCentralContainer>
   );

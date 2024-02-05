@@ -6,7 +6,7 @@ export const StyledInput = styled.input`
   flex: 1 1 0%;
   margin: 0px;
   font-size: 14px;
-  font-family: inherit;
+  font-family: ${({ theme }) => theme.font.default};
   color: rgb(50, 49, 48);
   background-color: rgb(255, 255, 255);
   height: 100%;
@@ -23,3 +23,6 @@ export const StyledInput = styled.input`
   user-select: text;
   box-sizing: border-box;
 `;
+
+export const InputContainer = styled.div``;
+export const StyledLabel = styled.span``;

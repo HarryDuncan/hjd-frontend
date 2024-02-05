@@ -3,16 +3,16 @@ import { ButtonText, CircleButton } from "./CircleActionButton.styles";
 
 interface CircleButtonProps {
   onClick: () => void;
-  buttonText: string;
+  title: string;
 }
 export const CircleActionButton = forwardRef(
-  ({ onClick, buttonText }: CircleButtonProps, ref) => {
+  ({ onClick, title }: CircleButtonProps, ref) => {
     return (
       <CircleButton
         ref={ref as RefObject<HTMLButtonElement> | null}
         onClick={onClick}
       >
-        <ButtonText>{buttonText}</ButtonText>
+        <ButtonText>{title}</ButtonText>
         <svg className="circle-svg" viewBox="0 0 100 100">
           <circle
             stroke="white"
