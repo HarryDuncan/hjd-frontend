@@ -8,7 +8,7 @@ import {
 } from "../checkout-container/checkout.styles";
 import { TransactionDetailsSection } from "./TransactionDetailsSection";
 import { TextScroller } from "components/text-scroller/TextScroller";
-import { ContentSubText } from "components/text/Text";
+import { ContentSubText, ContentText } from "components/text/Text";
 import { useTransactionData } from "./useTransactionData";
 import { useSendReceipt } from "./useSendReceipt";
 
@@ -17,7 +17,7 @@ const SuccessContent = () => {
   const total = useCalculateTotal(cart, shipping);
   const { billingDetails, customerDetails, transactionDetails } =
     useTransactionData();
-  const sendReceiptFunction = useSendReceipt(
+  const { sendReceiptData, orderId } = useSendReceipt(
     billingDetails,
     customerDetails,
     cart,
@@ -28,10 +28,14 @@ const SuccessContent = () => {
       <CheckoutTitleContainer>
         <TextScroller text=" Thank You " isLight={false} />
       </CheckoutTitleContainer>
+      <CheckoutContentContainer></CheckoutContentContainer>
       {cart.length && <CartTable isReadOnly parsedCartData={cart} />}
 
       {billingDetails && customerDetails && (
-        <TransactionDetailsSection billingDetails={billingDetails} />
+        <TransactionDetailsSection
+          orderId={orderId}
+          billingDetails={billingDetails}
+        />
       )}
       <CheckoutTotal total={total} />
       <CheckoutContentContainer>
@@ -42,7 +46,7 @@ const SuccessContent = () => {
         </ContentSubText>
         <ContentSubText>
           Haven't received your receipt? click here{" "}
-          <button onClick={sendReceiptFunction}></button>
+          <button onClick={sendReceiptData}></button>
         </ContentSubText>
       </CheckoutContentContainer>
     </CheckoutContentContainer>

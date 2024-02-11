@@ -51,14 +51,22 @@ export const TableImageContainer = styled.div`
 export const CheckoutSection = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
+  min-width: 25rem;
+  width: 20vw;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
   ${ContentText} {
     font-size: ${({ theme }) => theme.font.size.xSmall};
   }
   form {
     display: flex;
     justify-content: center;
+  }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    max-width: 100%;
+    min-width: 80%;
   }
 `;
 

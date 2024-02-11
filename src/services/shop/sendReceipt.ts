@@ -12,7 +12,7 @@ export const sendReceipt = async (receiptData: ReceiptData) => {
           path: "/shop/receipt"
           bodyKey: "receiptData"
         ) {
-        isReset
+        orderId
       }
     }
   `;
@@ -24,10 +24,9 @@ export const sendReceipt = async (receiptData: ReceiptData) => {
       },
     });
     const { data } = response;
-    // console.log(response);
-    return { loading: false, data };
+    return { loading: false, data: data.sendReceipt };
   } catch (error) {
     console.error("Error checking inventory:", error);
-    return { inventoryData: null, loading: false, error };
+    return { data: null, loading: false, error };
   }
 };

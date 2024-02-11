@@ -3,6 +3,7 @@ import { ContentSubText } from "components/text/Text";
 import { Product } from "models/shop/types";
 import { useCallback } from "react";
 import { useShopContext } from "views/shop/shop-context/shop.context";
+import { ProductControlContainer } from "../ShopGallery.styles";
 
 export const ProductControl = ({ productData }: { productData: Product }) => {
   const { stock, price } = productData;
@@ -19,12 +20,12 @@ export const ProductControl = ({ productData }: { productData: Product }) => {
   }, [dispatch, productData]);
 
   return (
-    <div>
+    <ProductControlContainer>
       {stock && price ? (
         <ActionButton onClick={handleAddToCart} title="Add To Cart" />
       ) : (
         <ContentSubText>Sold Out</ContentSubText>
       )}
-    </div>
+    </ProductControlContainer>
   );
 };

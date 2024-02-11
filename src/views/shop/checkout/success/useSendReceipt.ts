@@ -14,11 +14,8 @@ export const useSendReceipt = (
   transactionDetails: TransactionDetails | null
 ) => {
   const [hasSentReceipt, setHasSentReceipt] = useState<boolean>(false);
-  const sendReceiptData = useCallback(() => {
-    console.log(billingDetails);
-    console.log(customerDetails);
-    console.log(transactionDetails);
-    console.log(cart);
+  const [orderId, setOrderId] = useState<number | null>(null);
+  const sendReceiptData = useCallback(async () => {
     if (
       billingDetails &&
       customerDetails &&
@@ -32,7 +29,9 @@ export const useSendReceipt = (
         transactionDetails,
       };
 
-      sendReceipt(receiptData);
+      const data = await sendReceipt(receiptData);
+
+      setOrderId(data?.orderId);
       setHasSentReceipt(true);
     }
   }, [
@@ -49,5 +48,5 @@ export const useSendReceipt = (
     }
   }, [sendReceiptData]);
 
-  return sendReceiptData;
+  return { sendReceiptData, orderId };
 };
