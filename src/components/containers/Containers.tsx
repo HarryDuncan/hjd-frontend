@@ -166,8 +166,7 @@ export const FloatingCentralContainer = styled.div`
   position: relative;
   z-index: 10;
   margin: 0 auto;
-  margin-top: 8rem;
-  margin-bottom: 8rem;
+  margin-top: ${NAV_HEIGHT};
   width: 80vw;
   display: flex;
   flex-direction: column;

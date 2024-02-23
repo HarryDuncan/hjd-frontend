@@ -16,16 +16,19 @@ import { useShopContext } from "views/shop/shop-context/shop.context";
 import { TextScroller } from "components/text-scroller/TextScroller";
 import { getStripe } from "services/shop/getStripe";
 import { CheckoutNavigation } from "./checkout-navigation/CheckoutNavigation";
+import { useCartItemCount } from "views/shop/hooks/useCartItemCount";
 
 export default function CheckoutPreview() {
   const {
     state: { cart, shippingTotal },
   } = useShopContext();
+  const cartItemCount = useCartItemCount();
   const isCheckoutDisabled = useMemo(
     () =>
       shippingTotal === null ||
-      (shippingTotal !== null && cart.some((item) => item.errorMessage)),
-    [shippingTotal, cart]
+      (shippingTotal !== null && cart.some((item) => item.errorMessage)) ||
+      cartItemCount === 0,
+    [shippingTotal, cart, cartItemCount]
   );
   getStripe();
   const checkoutTotal = useCalculateTotal(cart, shippingTotal);
