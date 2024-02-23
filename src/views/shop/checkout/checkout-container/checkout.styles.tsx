@@ -85,3 +85,8 @@ export const CheckoutTitleContainer = styled.div`
   height: 20vh;
   position: relative;
 `;
+
+export const CheckoutNavigationContainer = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+`;

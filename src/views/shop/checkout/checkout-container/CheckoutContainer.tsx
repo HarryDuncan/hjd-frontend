@@ -15,6 +15,7 @@ import { useCalculateTotal } from "views/shop/hooks/useCalculateTotal";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 import { TextScroller } from "components/text-scroller/TextScroller";
 import { getStripe } from "services/shop/getStripe";
+import { CheckoutNavigation } from "./checkout-navigation/CheckoutNavigation";
 
 export default function CheckoutPreview() {
   const {
@@ -52,6 +53,7 @@ export default function CheckoutPreview() {
   return (
     <FloatingCentralContainer>
       <CheckoutContentContainer>
+        <CheckoutNavigation />
         <CheckoutTitleContainer>
           <TextScroller text=" Checkout " isLight={false} />
         </CheckoutTitleContainer>
