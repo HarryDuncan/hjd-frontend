@@ -14,7 +14,7 @@ type DashboardContextType = {
 const ShopContext = createContext<DashboardContextType | undefined>(undefined);
 
 const initialState: DashboardState = {
-  isLoggedIn: false,
+  isLoggedIn: true,
 };
 
 const reducer = (state: DashboardState, action: Action): DashboardState => {

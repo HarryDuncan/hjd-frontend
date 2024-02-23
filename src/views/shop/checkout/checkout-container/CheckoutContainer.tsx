@@ -17,20 +17,24 @@ import { TextScroller } from "components/text-scroller/TextScroller";
 import { getStripe } from "services/shop/getStripe";
 import { CheckoutNavigation } from "./checkout-navigation/CheckoutNavigation";
 import { useCartItemCount } from "views/shop/hooks/useCartItemCount";
+import { useShopData } from "views/shop/hooks/useShopData";
 
 export default function CheckoutPreview() {
   const {
-    state: { cart, shippingTotal },
+    state: { cart, shippingTotal, shippingZoneId },
   } = useShopContext();
   const cartItemCount = useCartItemCount();
+  const shippingZoneCode = useSelectedShippingZoneCode(shippingZoneId);
   const isCheckoutDisabled = useMemo(
     () =>
       shippingTotal === null ||
       (shippingTotal !== null && cart.some((item) => item.errorMessage)) ||
-      cartItemCount === 0,
-    [shippingTotal, cart, cartItemCount]
+      cartItemCount === 0 ||
+      shippingZoneCode === undefined,
+    [shippingTotal, cart, cartItemCount, shippingZoneCode]
   );
   getStripe();
+
   const checkoutTotal = useCalculateTotal(cart, shippingTotal);
   const setInventoryErrors = useDisplayErrors();
   const handleSubmit = async () => {
@@ -39,13 +43,8 @@ export default function CheckoutPreview() {
       const checkInventoryResult = await checkInventory(cart);
       const { hasInventory, products } = checkInventoryResult.inventoryData;
       if (hasInventory) {
-        const formData = new FormData();
-        formData.append("cart", JSON.stringify(cart));
-        formData.append("shippingTotal", JSON.stringify(shippingTotal));
-
         await fetch("/api/checkout_sessions", {
           method: "POST",
-          body: formData,
         });
       } else {
         setInventoryErrors(products);
@@ -74,6 +73,11 @@ export default function CheckoutPreview() {
               type="hidden"
               name="shippingTotal"
               value={JSON.stringify(shippingTotal)}
+            />
+            <input
+              type="hidden"
+              name="shippingZoneCode"
+              value={JSON.stringify(shippingZoneCode?.countryCode)}
             />
             <ActionButton
               isDisabled={isCheckoutDisabled}
@@ -118,5 +122,15 @@ const useDisplayErrors = () => {
       });
     },
     [cart, dispatch]
+  );
+};
+
+const useSelectedShippingZoneCode = (selectedZoneId: null | number) => {
+  const {
+    shopData: { shippingZones },
+  } = useShopData();
+  return useMemo(
+    () => shippingZones.find(({ id }) => id === selectedZoneId),
+    [shippingZones, selectedZoneId]
   );
 };

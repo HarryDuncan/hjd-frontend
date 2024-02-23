@@ -42,6 +42,7 @@ export const ShippingOptions = () => {
         type: "UPDATE_SHIPPING",
         payload: {
           shippingTotal,
+          selectedShippingZoneId,
         },
       });
     }
@@ -67,9 +68,14 @@ export const ShippingOptions = () => {
 const useDropdownOptions = (shippingOptions: ShippingZone[]) =>
   useMemo(
     () =>
-      shippingOptions.map(({ country, id }) => ({
-        value: String(id),
-        label: country,
-      })),
+      shippingOptions.flatMap(({ country, id, countryCode }) => {
+        if (countryCode) {
+          return {
+            value: String(id),
+            label: country,
+          };
+        }
+        return [];
+      }),
     [shippingOptions]
   );

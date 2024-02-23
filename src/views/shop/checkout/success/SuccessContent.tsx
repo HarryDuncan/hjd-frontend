@@ -11,6 +11,7 @@ import { TextScroller } from "components/text-scroller/TextScroller";
 import { ContentSubText, ContentText } from "components/text/Text";
 import { useTransactionData } from "./useTransactionData";
 import { useSendReceipt } from "./useSendReceipt";
+import { CheckoutNavigation } from "../checkout-container/checkout-navigation/CheckoutNavigation";
 
 const SuccessContent = () => {
   const { cart, shipping } = useShopDataFromStorage();
@@ -25,6 +26,7 @@ const SuccessContent = () => {
   );
   return (
     <CheckoutContentContainer>
+      <CheckoutNavigation />
       <CheckoutTitleContainer>
         <TextScroller text=" Thank You " isLight={false} />
       </CheckoutTitleContainer>
@@ -44,9 +46,12 @@ const SuccessContent = () => {
         <ContentSubText>
           You wil receieve a confirmation when your order has been dispatched
         </ContentSubText>
+        <br />
         <ContentSubText>
-          Haven't received your receipt? click here{" "}
-          <button onClick={sendReceiptData}></button>
+          Haven't received your receipt?{" "}
+          <a href="#" onClick={sendReceiptData}>
+            Click here
+          </a>
         </ContentSubText>
       </CheckoutContentContainer>
     </CheckoutContentContainer>

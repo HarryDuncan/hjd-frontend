@@ -38,6 +38,7 @@ export type ShippingZone = {
   country: string;
   ausPostZone: number;
   estimatedDeliveryTime: string;
+  countryCode: string | null;
 };
 
 export type ReturnedShopData = FetchResponse & {

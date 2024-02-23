@@ -10,13 +10,17 @@ export type CartItem = {
 
 export type AppState = {
   cart: CartItem[];
+  shippingZoneId: number | null;
   shippingTotal: number | null;
 };
 
 export type Action =
   | { type: "ADD_TO_CART"; payload: CartItem }
   | { type: "UPDATE_CART"; payload: CartItem[] }
-  | { type: "UPDATE_SHIPPING"; payload: { shippingTotal: number } }
+  | {
+      type: "UPDATE_SHIPPING";
+      payload: { shippingTotal: number; selectedShippingZoneId: null | number };
+    }
   | { type: "REMOVE_FROM_CART"; payload: { productId: number } }
   | {
       type: "UPDATE_QUANTITY";
@@ -33,6 +37,7 @@ const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
 const initialState: AppState = {
   cart: [],
+  shippingZoneId: null,
   shippingTotal: null,
 };
 
@@ -83,6 +88,7 @@ const reducer = (state: AppState, action: Action): AppState => {
       return {
         ...state,
         shippingTotal: action.payload.shippingTotal,
+        shippingZoneId: action.payload.selectedShippingZoneId,
       };
     case "REMOVE_FROM_CART": {
       const updatedCart = state.cart.filter(

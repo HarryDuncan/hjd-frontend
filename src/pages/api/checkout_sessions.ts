@@ -17,11 +17,12 @@ export default async function handler(
     try {
       const cart = JSON.parse(req.body.cart);
       const shippingTotal = JSON.parse(req.body.shippingTotal);
+      const shippingZoneCode = JSON.parse(req.body.shippingZoneCode);
       const lineItems = formatLineItems(cart, shippingTotal);
       const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
         shipping_address_collection: {
-          allowed_countries: ["US", "CA", "NZ", "AU", "HK"],
+          allowed_countries: [shippingZoneCode],
         },
         mode: "payment",
         success_url: `${req.headers.origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,

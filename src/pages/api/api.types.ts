@@ -12,6 +12,7 @@ export type CheckoutSessionRequest = ApiRequest & {
   body: {
     cart: string;
     shippingTotal: string;
+    shippingZoneCode: string;
   };
 };
 export type CheckoutSuccessRequest = ApiRequest & {
