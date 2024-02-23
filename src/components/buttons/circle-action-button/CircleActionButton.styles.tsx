@@ -20,7 +20,7 @@ export const CircleButton = styled.button`
   cursor: pointer;
   font-weight: 200;
   width: 200px;
-  height: 200px;
+  height: 100%;
   display: grid;
   place-items: center;
   .circle-svg {
