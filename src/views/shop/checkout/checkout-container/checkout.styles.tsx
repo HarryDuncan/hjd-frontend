@@ -5,11 +5,11 @@ import styled from "styled-components";
 export const CheckoutContentContainer = styled.div`
   color: black;
   width: 80%;
-  background: white;
+  background: ${({ theme }) => theme.colors.mono.background};
   z-index: 5;
   margin: 0 auto;
   overflow: hidden;
-  padding: 1rem 3rem;
+  padding: 1rem;
   text-align: center;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
@@ -35,7 +35,7 @@ export const CartTableControl = styled.div`
   flex-direction: row;
   padding: 0 1rem;
   img {
-    height: 30px;
+    height: 1.5rem;
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {

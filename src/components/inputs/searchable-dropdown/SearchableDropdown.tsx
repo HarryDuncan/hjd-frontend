@@ -15,11 +15,13 @@ export interface DropdownOption {
 interface SearchableDropdownProps {
   options: DropdownOption[];
   onSelect: (selectedOption: DropdownOption | null) => void;
+  placeHolder: string;
 }
 
 export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   options,
   onSelect,
+  placeHolder,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [filterText, setFilterText] = useState("");
@@ -45,16 +47,25 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
     option.label.toLowerCase().includes(filterText.toLowerCase())
   );
 
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (!isOpen) {
+      setIsOpen(true);
+    }
+    setFilterText(value);
+  };
+
   return (
     <DropdownContainer>
       <DropdownInput>
         <StyledInput
           type="text"
           value={filterText}
-          onChange={(e) => setFilterText(e.target.value)}
+          onChange={handleOnChange}
           ref={inputRef}
           onFocus={handleToggle}
-          placeholder="Search Country"
+          onBlur={handleToggle}
+          placeholder={placeHolder}
         />
       </DropdownInput>
       {isOpen && (

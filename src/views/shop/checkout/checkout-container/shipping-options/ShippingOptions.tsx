@@ -50,7 +50,11 @@ export const ShippingOptions = () => {
 
   return (
     <CheckoutSection>
-      <SearchableDropdown options={options} onSelect={onOptionSelect} />
+      <SearchableDropdown
+        options={options}
+        onSelect={onOptionSelect}
+        placeHolder="Select your country"
+      />
       {selectedShippingZoneId !== null ? (
         <>
           <ContentText>
