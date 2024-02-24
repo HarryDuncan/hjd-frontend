@@ -55,7 +55,7 @@ export default function CheckoutPreview() {
   return (
     <FloatingCentralContainer>
       <CheckoutContentContainer>
-        <CheckoutNavigation />
+        <CheckoutNavigation navigationRoutes={["back"]} />
         <CheckoutTitleContainer>
           <TextScroller text=" Checkout " isLight={false} />
         </CheckoutTitleContainer>

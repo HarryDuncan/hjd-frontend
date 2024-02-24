@@ -7,7 +7,7 @@ import { NavBackgroundOverlay, NavigationContainer } from "./Navigation.styles";
 import { useIsNavTop } from "./hooks/useIsNavTop";
 import { NavTheme } from "./navigation.types";
 import { HoverTitle } from "components/animations/gesture-animations/hover/HoverTitle";
-import { useGoToLanding } from "./hooks/useGoToLanding";
+import { useGoToLanding } from "../../hooks/routing/useGoToLanding";
 
 const Navigation = () => {
   const windowSize = useClientWindowSize();

@@ -2,7 +2,7 @@ import React from "react";
 import { InvisibleNavigationContainer } from "./InvisibleNavigation.styles";
 import { NavBackgroundOverlay } from "../Navigation.styles";
 import { HoverTitle } from "components/animations/gesture-animations/hover/HoverTitle";
-import { useGoToLanding } from "../hooks/useGoToLanding";
+import { useGoToLanding } from "../../../hooks/routing/useGoToLanding";
 
 const InvisibleNavigation = () => {
   const goToLanding = useGoToLanding();

@@ -13,6 +13,7 @@ export const DropdownInput = styled.div`
   min-width: 86px;
   border-color: ${({ theme }) => theme.colors.mono.lightGray};
   border: 1px solid;
+  text-align: left;
 `;
 export const DropdownList = styled.ul`
   list-style: none;
@@ -23,6 +24,7 @@ export const DropdownList = styled.ul`
   left: 0;
   width: 100%;
   z-index: 5;
+  text-align: left;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid #ccc;

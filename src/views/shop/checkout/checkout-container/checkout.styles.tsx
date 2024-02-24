@@ -9,7 +9,8 @@ export const CheckoutContentContainer = styled.div`
   z-index: 5;
   margin: 0 auto;
   overflow: hidden;
-  padding: 3rem;
+  padding: 1rem 3rem;
+  text-align: center;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     width: 100%;

@@ -26,11 +26,11 @@ const SuccessContent = () => {
   );
   return (
     <CheckoutContentContainer>
-      <CheckoutNavigation />
+      <CheckoutNavigation navigationRoutes={["home"]} />
       <CheckoutTitleContainer>
         <TextScroller text=" Thank You " isLight={false} />
       </CheckoutTitleContainer>
-      <CheckoutContentContainer></CheckoutContentContainer>
+
       {cart.length && <CartTable isReadOnly parsedCartData={cart} />}
 
       {billingDetails && customerDetails && (

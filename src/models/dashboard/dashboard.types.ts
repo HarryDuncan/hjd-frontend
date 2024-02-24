@@ -24,3 +24,12 @@ export interface Order {
 export type FetchOrderResponse = FetchResponse & {
   orders: Order[];
 };
+
+export type OrderUpdateData = {
+  id: number;
+  shippingData: {
+    shippingCompany: string;
+    trackingNumber: string;
+  };
+  status: string;
+};
