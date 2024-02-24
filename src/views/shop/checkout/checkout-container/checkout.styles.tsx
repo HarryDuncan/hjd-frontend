@@ -83,7 +83,7 @@ export const ItemDetails = styled.div`
 `;
 
 export const CheckoutTitleContainer = styled.div`
-  height: 20vh;
+  height: 15vh;
   position: relative;
 `;
 

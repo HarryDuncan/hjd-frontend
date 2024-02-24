@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, FocusEventHandler } from "react";
 import {
   DropdownContainer,
   DropdownList,
@@ -54,7 +54,9 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
     }
     setFilterText(value);
   };
-
+  const handleBlur = (e: FocusEventHandler<HTMLInputElement> | undefined) => {
+    console.log(e);
+  };
   return (
     <DropdownContainer>
       <DropdownInput>
@@ -64,7 +66,6 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
           onChange={handleOnChange}
           ref={inputRef}
           onFocus={handleToggle}
-          onBlur={handleToggle}
           placeholder={placeHolder}
         />
       </DropdownInput>

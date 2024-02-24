@@ -170,6 +170,7 @@ export const FloatingCentralContainer = styled.div`
   width: 80vw;
   display: flex;
   flex-direction: column;
+  max-height: 90vh;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     width: 100vw;
