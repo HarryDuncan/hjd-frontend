@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, FocusEventHandler } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   DropdownContainer,
   DropdownList,
@@ -48,15 +48,13 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   );
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const { value } = e.target;
     if (!isOpen) {
       setIsOpen(true);
     }
     setFilterText(value);
   };
-  const handleBlur = (e: FocusEventHandler<HTMLInputElement> | undefined) => {
-    console.log(e);
-  };
+
   return (
     <DropdownContainer>
       <DropdownInput>

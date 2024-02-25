@@ -21,19 +21,16 @@ const StyledInput = styled.input<CustomInputProps>`
 `;
 
 interface TextInputProps {
-  placeholder: string;
   label: string;
-
   onChange: (newValue: string) => void;
-  value?: string;
-  type?: string;
+  placeholder?: string;
+  type?: "text" | "password" | undefined;
 }
 export const TextInput = ({
-  placeholder,
+  placeholder = "",
   label,
   onChange,
   type = "text",
-  value = "",
 }: TextInputProps) => {
   const handleInputChange = (value: string) => {
     onChange(value);

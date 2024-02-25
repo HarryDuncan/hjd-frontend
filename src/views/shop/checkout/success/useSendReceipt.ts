@@ -29,9 +29,11 @@ export const useSendReceipt = (
         transactionDetails,
       };
 
-      const data = await sendReceipt(receiptData);
+      const { data } = await sendReceipt(receiptData);
+      if (data?.orderId) {
+        setOrderId(data?.orderId as number);
+      }
 
-      setOrderId(data?.orderId);
       setHasSentReceipt(true);
     }
   }, [

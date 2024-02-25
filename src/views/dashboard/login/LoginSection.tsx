@@ -32,25 +32,9 @@ export const LoginSection = () => {
     <FloatingCentralContainer>
       <MainTitle>Login To Dashboard</MainTitle>
       <form onSubmit={handleSubmit}>
-        <TextInput
-          label={"Username"}
-          value={username ?? ""}
-          onChange={setUsername}
-          placeholder={""}
-        />
-        <TextInput
-          label={"Password"}
-          type="password"
-          value={password ?? ""}
-          onChange={setPassword}
-          placeholder={""}
-        />
-        <TextInput
-          label={"MFA"}
-          value={mfaCode ?? ""}
-          onChange={setMfaCode}
-          placeholder={""}
-        />
+        <TextInput label="Username" onChange={setUsername} />
+        <TextInput label="Password" type="password" onChange={setPassword} />
+        <TextInput label="MFA" onChange={setMfaCode} />
         <ActionButton
           title="Login"
           isDisabled={!(mfaCode && password && username)}

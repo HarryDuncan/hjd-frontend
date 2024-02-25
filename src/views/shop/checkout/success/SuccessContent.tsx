@@ -8,7 +8,7 @@ import {
 } from "../checkout-container/checkout.styles";
 import { TransactionDetailsSection } from "./TransactionDetailsSection";
 import { TextScroller } from "components/text-scroller/TextScroller";
-import { ContentSubText, ContentText } from "components/text/Text";
+import { ContentSubText } from "components/text/Text";
 import { useTransactionData } from "./useTransactionData";
 import { useSendReceipt } from "./useSendReceipt";
 import { CheckoutNavigation } from "../checkout-container/checkout-navigation/CheckoutNavigation";
@@ -48,7 +48,7 @@ const SuccessContent = () => {
         </ContentSubText>
         <br />
         <ContentSubText>
-          Haven't received your receipt?{" "}
+          Haven't received your receipt?
           <a href="#" onClick={sendReceiptData}>
             Click here
           </a>

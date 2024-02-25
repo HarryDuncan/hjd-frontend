@@ -2,7 +2,6 @@ import { IconButton } from "components/buttons/icon-button/IconButton";
 import { CheckoutNavigationContainer } from "../checkout.styles";
 import { IconTypes } from "components/buttons/icon-button/IconButton.types";
 import { useRouteHistory } from "hooks/routing/useRouteHistory";
-import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useGoToLanding } from "hooks/routing/useGoToLanding";
 
 interface CheckoutNavigationProps {

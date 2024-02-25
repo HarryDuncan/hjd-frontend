@@ -1,4 +1,3 @@
-import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useEffect } from "react";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 import { useShopDataFromStorage } from "./useShopDataFromStorage";

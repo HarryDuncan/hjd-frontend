@@ -25,8 +25,8 @@ export const updateOrder = async (orderUpdateData: OrderUpdateData) => {
       },
     });
     const { data } = response;
-    console.log(response);
-    return { loading: false, success: true };
+    // console.log(response);
+    return { loading: false, success: true, data };
   } catch (error) {
     console.error("Error checking inventory:", error);
     return { loading: false, error, success: false };

@@ -1,5 +1,3 @@
-import { CartItem } from "views/shop/shop-context/shop.context";
-
 export type ApiRequest = {
   method: string;
   headers: {

@@ -28,7 +28,7 @@ export const useTransactionData = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         const { shippingDetails, customerDetails, paymentIntent, created } =
           snakeCaseKeysToCamelCase(data.session);
         setBillingDetails(shippingDetails as unknown as BillingDetails);

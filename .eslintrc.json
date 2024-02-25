@@ -38,6 +38,8 @@
     "no-param-reassign": ["error", { "props": false }],
     "no-use-before-define": "off",
     "operator-linebreak": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/no-unescaped-entities": "off",
     // turning off because gsl shaders doesn't currently have formatting
     "no-tabs": "off",
     "react/require-default-props": "off",

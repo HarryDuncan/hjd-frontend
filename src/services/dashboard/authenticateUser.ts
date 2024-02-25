@@ -31,7 +31,7 @@ export const authenticateUser = async (
         authenticateUser: { success },
       },
     } = response;
-    console.log(response);
+
     return { loading: false, success };
   } catch (error) {
     console.error("Error checking inventory:", error);

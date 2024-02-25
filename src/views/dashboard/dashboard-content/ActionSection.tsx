@@ -1,6 +1,6 @@
 import { ContentText } from "components/text/Text";
 
-export const ActionSection = (orderId: number, status: string) => {
+export const ActionSection = () => {
   return (
     <div>
       <ContentText>Status</ContentText>

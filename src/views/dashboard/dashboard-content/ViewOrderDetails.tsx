@@ -1,3 +1,3 @@
-export const ViewOrderDetails = (orderDetails: string) => {
+export const ViewOrderDetails = () => {
   return <div />;
 };

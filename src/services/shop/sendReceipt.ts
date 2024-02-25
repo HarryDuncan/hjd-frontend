@@ -24,7 +24,7 @@ export const sendReceipt = async (receiptData: ReceiptData) => {
       },
     });
     const { data } = response;
-    return { loading: false, data: data.sendReceipt };
+    return { loading: false, data: data.sendReceipt as { orderId: number } };
   } catch (error) {
     console.error("Error checking inventory:", error);
     return { data: null, loading: false, error };

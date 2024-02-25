@@ -5,14 +5,7 @@ import { TextInput } from "components/inputs/text-input/TextInput";
 import { useState } from "react";
 import { updateOrder } from "services/dashboard/updateOrder";
 
-export const OrderTableRow = ({
-  name,
-  email,
-  id,
-  refId,
-  status,
-  orderDetails,
-}: Order) => {
+export const OrderTableRow = ({ name, email, id, refId, status }: Order) => {
   const [shippingCompany, setShippingCompany] = useState("");
   const [trackingNumber, setTrackingNumber] = useState("");
 
@@ -31,8 +24,7 @@ export const OrderTableRow = ({
       },
       status: "Dispatched",
     };
-    const { success } = await updateOrder(orderUpdateData);
-    console.log(success);
+    await updateOrder(orderUpdateData);
   };
   return (
     <OrderRowContainer>
@@ -41,17 +33,11 @@ export const OrderTableRow = ({
       <ContentText>{email}</ContentText>
       <ContentText>{status}</ContentText>
       <ContentText> {refId}</ContentText>
-      <TextInput
-        placeholder={""}
-        label={"Shipping Company"}
-        onChange={onShippingCompanyChange}
-      />
-      <TextInput
-        placeholder={""}
-        label={"Tracking Number"}
-        onChange={onTrackingNumberChange}
-      />
-      <button onClick={submit}>Submit Order</button>
+      <TextInput label="Shipping Company" onChange={onShippingCompanyChange} />
+      <TextInput label="Tracking Number" onChange={onTrackingNumberChange} />
+      <button onClick={submit} type="button">
+        Submit Order
+      </button>
     </OrderRowContainer>
   );
 };
