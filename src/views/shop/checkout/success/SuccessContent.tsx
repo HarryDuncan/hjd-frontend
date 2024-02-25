@@ -44,7 +44,7 @@ const SuccessContent = () => {
         <ContentSubText>An email will be sent with your receipt</ContentSubText>
         <br />
         <ContentSubText>
-          You wil receieve a confirmation when your order has been dispatched
+          You will receieve a confirmation when your order has been dispatched
         </ContentSubText>
         <br />
         <ContentSubText>
