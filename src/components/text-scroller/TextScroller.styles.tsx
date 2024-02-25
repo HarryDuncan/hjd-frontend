@@ -12,12 +12,12 @@ const scrollText = keyframes`
 export const TextScrollerText = styled.h1<{ $isLight: boolean }>`
   text-transform: uppercase;
   color: ${({ $isLight }) => ($isLight ? "white" : "black")};
-  font-size: 5rem;
+  font-size: ${({ theme }) => theme.font.size.large};
   font-weight: ${({ theme }) => theme.font.weight.light};
   
   @media only screen and (max-width: ${({ theme }) =>
     theme.breakpoints.mobile}px) {
-    font-size: 4rem;
+      font-size: ${({ theme }) => theme.font.size.medium};
 `;
 
 export const TextScrollerContainer = styled.div<{

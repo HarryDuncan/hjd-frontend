@@ -21,6 +21,7 @@ export const getAssetMappedMaterials = (
     if (!ASSET_MAPPED_MATERIALS.includes(configItem.materialType)) {
       return [];
     }
+
     const mappedAsset = assets.find(
       (asset) => asset.id === configItem.materialProps.assetId
     );
@@ -39,10 +40,11 @@ export const getAssetMappedMaterials = (
 const formatMaterial = (configItem: MaterialConfig, mappedAsset: Asset) => {
   switch (configItem.materialType) {
     case MATERIAL_TYPES.ENV_MAP: {
-      return getEnvMapMaterial(
+      getEnvMapMaterial(
         configItem.materialProps as EnvMapMaterialProps,
         mappedAsset
       );
+      break;
     }
     case MATERIAL_TYPES.VIDEO: {
       return getVideoMaterial(

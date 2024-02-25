@@ -21,6 +21,8 @@ export const getAssetGeometry = (asset: Asset) => {
   const modelFileType = getFileTypeFromFilename(url);
   switch (modelFileType) {
     case FILE_TYPES.MODELS.OBJ:
+    case FILE_TYPES.MODELS.GLB:
+    case FILE_TYPES.MODELS.GLTF:
       return getObjectGeometries(data as LoadedGroup, name);
     default:
       console.warn(`no formatting for ${modelFileType}`);
@@ -28,7 +30,7 @@ export const getAssetGeometry = (asset: Asset) => {
   }
 };
 
-const getObjectGeometries = (data: LoadedGroup, name: string) => {
+export const getObjectGeometries = (data: LoadedGroup, name: string) => {
   const { children } = data;
   if (children.length) {
     return children.map((child: LoadedObjChild) => ({

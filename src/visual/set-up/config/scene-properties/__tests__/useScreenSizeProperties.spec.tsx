@@ -1,18 +1,23 @@
-import React from "react";
 import { expect, test, describe, vi } from "vitest";
 import { render } from "@testing-library/react";
 import mockConfig from "./mockConfig.json";
 import { useScreenSizeProperties } from "../useScreenSizeProperties";
 import { SceneConfig } from "../../config.types";
+import { ScreenType } from "visual/compat/window-state/types";
 
 const mockFunction = vi.fn();
+const mockThreeFunction = vi.fn();
+const mockMeshFunction = vi.fn();
 
 describe("useScreenSizeProperties", () => {
   test("returns default config if no adjustment detected", () => {
     render(
-      <MockComponent mockScreenConfig={mockConfig} screenType={"DESKTOP"} />
+      <MockComponent
+        mockSceneConfig={mockConfig as unknown as SceneConfig}
+        screenType={"DESKTOP"}
+      />
     );
-    expect(mockFunction).toHaveBeenCalledWith(mockConfig);
+    expect(mockFunction).toHaveBeenLastCalledWith(mockConfig);
   });
   test("returns merged three js config for a mobile screen size", () => {
     const withScreenProperties = {
@@ -21,13 +26,13 @@ describe("useScreenSizeProperties", () => {
         {
           screenType: "MOBILE",
           threeJsConfig: {
-            camera: { position: { x: 0, y: -10, z: 90 } },
+            camera: { position: { x: 0.5, y: -10, z: 90 } },
           },
         },
       ],
     };
     const expectedThreeJsConfig = {
-      camera: { position: { x: 0, y: -10, z: 90 } },
+      camera: { position: { x: 0.5, y: -10, z: 90 } },
       controls: {
         minDistance: 10,
         maxDistance: 25,
@@ -35,11 +40,11 @@ describe("useScreenSizeProperties", () => {
     };
     render(
       <MockComponent
-        mockScreenConfig={withScreenProperties}
+        mockSceneConfig={withScreenProperties as unknown as SceneConfig}
         screenType={"MOBILE"}
       />
     );
-    expect(mockFunction).toHaveBeenCalledWith(expectedThreeJsConfig);
+    expect(mockThreeFunction).toHaveBeenLastCalledWith(expectedThreeJsConfig);
   });
   test("merges matching mesh configs for a mobile screen size", () => {
     const withScreenProperties = {
@@ -65,6 +70,7 @@ describe("useScreenSizeProperties", () => {
         id: "hjdcurves1",
         geometryId: "Cube",
         size: 20,
+        geometryConfig: {},
         position: { x: -0.5, y: 10, z: 0 },
         rotation: { x: -90, y: -130, z: -40 },
         materialId: "phong-red",
@@ -72,27 +78,30 @@ describe("useScreenSizeProperties", () => {
     ];
     render(
       <MockComponent
-        mockScreenConfig={withScreenProperties}
+        mockSceneConfig={withScreenProperties as unknown as SceneConfig}
         screenType={"MOBILE"}
       />
     );
-    expect(mockFunction).toHaveBeenCalledWith(expected);
+    expect(mockMeshFunction).toHaveBeenLastCalledWith(expected);
   });
 });
 
-const MockComponent = ({ mockScreenConfig, screenType }) => {
+const MockComponent = ({
+  mockSceneConfig,
+  screenType,
+}: {
+  mockSceneConfig: SceneConfig;
+  screenType: ScreenType;
+}) => {
   const config = useScreenSizeProperties(
-    mockScreenConfig,
+    mockSceneConfig,
     screenType
   ) as SceneConfig;
-  console.log(config.threeJsConfig);
   if (config) {
-    const three = config.threeJsConfig;
-    const mesh = config.meshComponentConfigs;
-    mockFunction(three);
-    // mockFunction(mesh);
-    // mockFunction(config);
+    const { threeJsConfig, meshComponentConfigs } = config;
+    mockFunction(mockConfig);
+    mockThreeFunction(threeJsConfig);
+    mockMeshFunction(meshComponentConfigs);
   }
-
   return <div />;
 };

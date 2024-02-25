@@ -41,14 +41,17 @@ const shrinkNav = keyframes`
     width: 0px;
   }
 `;
+export const MobileMenuItems = styled.div`
+  display: flex;
+`;
 export const MobileText = styled.span<{ $isLight: boolean }>`
   text-align: right;
   cursor: pointer;
-  font-family: var(--font-hjd);
+  font-family: ${({ theme }) => theme.font.alternative.family};
   text-transform: uppercase;
   padding-right: 0.5rem;
   color: ${({ $isLight }) => ($isLight ? "white" : "black")};
-  font-size: 7rem;
+  font-size: ${({ theme }) => theme.font.size.xLarge};
   margin-right: 2.5%;
   a {
     color: ${({ $isLight }) => ($isLight ? "white" : "black")};
@@ -56,11 +59,11 @@ export const MobileText = styled.span<{ $isLight: boolean }>`
   @media only screen and (max-width: ${({ theme: { breakpoints } }) =>
       breakpoints.tablet}px) {
     margin: 0.5rem;
-    font-size: 6rem;
+    font-size: ${({ theme }) => theme.font.size.large};
   }
   @media only screen and (max-width: ${({ theme: { breakpoints } }) =>
       breakpoints.mobile}px) {
     margin: 1rem 0.5rem;
-    font-size: 4rem;
+    font-size: ${({ theme }) => theme.font.size.medium};
   }
 `;

@@ -16,6 +16,7 @@ import {
   EnvMapMaterialProps,
   VideoMaterialProps,
   PhongMaterialProps,
+  StandardMaterialProps,
 } from "../../set-up/config/material/materials.types";
 
 export const getMaterial = (
@@ -55,7 +56,17 @@ export const getMaterial = (
         materialProps as unknown as PhongMaterialProps;
       return new MeshPhongMaterial({ color, specular, shininess });
     }
-    case MATERIAL_TYPES.STANDARD:
+    case MATERIAL_TYPES.STANDARD: {
+      const { color, roughness, metalness, envMapIntensity } =
+        materialProps as unknown as StandardMaterialProps;
+      return new MeshStandardMaterial({
+        color,
+        roughness,
+        metalness,
+        envMapIntensity,
+      });
+    }
+
     default:
       return new MeshStandardMaterial({});
   }

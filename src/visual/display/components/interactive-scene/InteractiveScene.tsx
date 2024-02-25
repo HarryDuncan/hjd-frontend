@@ -35,7 +35,8 @@ export class InteractiveScene extends Scene {
   constructor(
     sceneFunctions: InteractiveSceneFunctions,
     eventConfig: EventConfig[],
-    animationConfig: AnimationConfig[]
+    animationConfig: AnimationConfig[],
+    interactionEvents: SceneInteraction[]
   ) {
     super();
     this.guid = "";
@@ -43,6 +44,7 @@ export class InteractiveScene extends Scene {
     this.clock = new Clock();
     this.bindExecutionFunctions();
     this.addEvents(eventConfig);
+    this.addInteractionEvents(interactionEvents);
     this.orbitControls = null;
     this.animationManager = new AnimationManager(animationConfig);
     this.eventsSet = false;
@@ -60,6 +62,10 @@ export class InteractiveScene extends Scene {
         onTriggeredUpdate(this)
       );
     }
+    // @ts-ignore
+    document.addEventListener(ENGINE_EVENTS.MESH_ADDED, ({ detail }) => {
+      this.add(detail);
+    });
   }
 
   addInteractionEvents(interactionEvents: SceneInteraction[]) {

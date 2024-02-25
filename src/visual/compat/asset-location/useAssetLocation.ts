@@ -12,6 +12,7 @@ export const useAssetLocation = (
           const url = staticContentRootUrl.length
             ? `/${removeElipse(asset.url)}`
             : asset.url;
+
           return {
             ...asset,
             url: `${staticContentRootUrl}${url}`,

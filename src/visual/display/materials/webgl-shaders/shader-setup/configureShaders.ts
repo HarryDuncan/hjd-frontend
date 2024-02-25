@@ -2,15 +2,18 @@ import { Asset } from "visual/set-up/assets/asset.types";
 import { AssetMap, ShaderConfig } from "../shaders.types";
 import { importShader } from "./importShader";
 import { MaterialUniform } from "visual/set-up/config/material/materials.types";
-import { Texture } from "three";
 
 export const configureShaders = (
   shaderConfig: ShaderConfig,
   uniforms: MaterialUniform,
   assets?: Asset[]
 ) => {
-  const { shaderId, fragmentShaderId, vertexShaderId, assetMapping } =
-    shaderConfig;
+  const {
+    shaderId,
+    fragmentShaderId,
+    vertexShaderId,
+    assetMapping,
+  } = shaderConfig;
   const { fragmentShader, vertexShader, setUpDefaultUniforms } = importShader(
     shaderId,
     vertexShaderId,
@@ -32,6 +35,7 @@ const configureUniforms = (
   return uniforms;
 };
 
+// TODO - refactor to use mapAssetsToUniforms
 const mapAssets = (
   uniforms: Record<string, unknown>,
   assetMapping: AssetMap[],
@@ -51,7 +55,7 @@ const mapAssets = (
 const getMappedAsset = (assetMapping: AssetMap, assets: Asset[]) => {
   const mappedAsset = assets.find((asset) => asset.id === assetMapping.assetId);
   if (mappedAsset && mappedAsset.data) {
-    const texture = mappedAsset.data as Texture;
+    const texture = mappedAsset.data;
     return texture;
   }
   console.warn(`no mapped asset found for ${assetMapping.assetId}`);

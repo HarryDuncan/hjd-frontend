@@ -1,12 +1,13 @@
-import { useProductData } from "hooks/shop/useProductData";
-import { useScrollProducts } from "hooks/shop/useScrollProducts";
+import { useProductData } from "views/shop/hooks/useProductData";
+import { useScrollProducts } from "views/shop/hooks/useScrollProducts";
 import { useCallback, useState } from "react";
-import { ContentSubText, ContentText } from "components/text/Text";
+import { ContentText } from "components/text/Text";
 import { useRouter } from "next/router";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/slide-with-background/SlideWithBackgroundTransition";
 import { Direction } from "utils/moveThroughArray";
 import { SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
 import ViewItemLayout from "layout/view-item-layout/ViewItemLayout";
+import { ProductControl } from "views/shop/shop-gallery/product-control/ProductControl";
 
 const ProductDetails = () => {
   const { product } = useProductData();
@@ -33,7 +34,7 @@ const ProductDetails = () => {
       >
         <ContentText>{description}</ContentText>
         <br />
-        <ContentSubText>Sold Out</ContentSubText>
+        <ProductControl productData={product} />
       </ViewItemLayout>
     </SlideWithBackgroundTransition>
   );

@@ -34,9 +34,11 @@ export type ShippingOption = {
 };
 
 export type ShippingZone = {
+  id: number;
   country: string;
   ausPostZone: number;
   estimatedDeliveryTime: string;
+  countryCode: string | null;
 };
 
 export type ReturnedShopData = FetchResponse & {
@@ -44,6 +46,6 @@ export type ReturnedShopData = FetchResponse & {
     products: Product[];
     productVariations: ProductVariations[];
     shippingZones: ShippingZone[];
-    ShippingOptions: ShippingOption[];
+    shippingOptions: ShippingOption[];
   };
 };

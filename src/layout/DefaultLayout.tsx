@@ -23,7 +23,7 @@ export default function DefaultLayout({
       <PageContainer $topPadding={topPadding} className="page-container">
         {isError ?? <p>Oops we are having an issue with our servers</p>}
         {children}
-        {hasFooter ?? <Footer />}
+        {hasFooter ? <Footer /> : null}
       </PageContainer>
     </LayoutContainer>
   );

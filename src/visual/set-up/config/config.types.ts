@@ -22,9 +22,10 @@ import {
 } from "three";
 import { RendererParams } from "visual/display/hooks/use-three-js/renderer/types";
 import { Position3d } from "visual/utils/three-dimension-space/position/position.types";
-import { AttributeConfig } from "./mesh/geometry/attributes/setAttibutes";
+import { AttributeConfig } from "./material/shaders/build-shader/buildShader.types";
+import { SceneConfigType } from "./config.constants";
 
-export type RandomizationConfig = {
+export type MultipleConfig = {
   instanceCount: number;
   boundingBoxConfig: {
     width: number;
@@ -32,6 +33,9 @@ export type RandomizationConfig = {
     depth: number;
     center: Partial<Position3d>;
   };
+};
+export type RandomizationConfig = MultipleConfig & {
+  randomRotation?: boolean;
 };
 
 export type SceneComponentConfig = {
@@ -46,6 +50,7 @@ export type MeshComponentConfig = {
   materialId?: string;
   rotation?: Partial<Position3d>;
   position?: Partial<Position3d>;
+  multipleConfig?: MultipleConfig;
   randomizationConfig?: RandomizationConfig;
   geometryConfig?: GeometryConfig;
   groupId?: string;
@@ -105,6 +110,7 @@ export type MeshTransformType = keyof typeof MESH_TRANSFORM;
 export type MeshTransformConfig = {
   type: MeshTransformType;
   transformedMeshIds: string[];
+  materialId?: string;
   attributeConfig?: AttributeConfig[];
 };
 
@@ -115,6 +121,7 @@ export type ScreenSizeAdjustmentConfig = {
 };
 
 export type SceneConfig = {
+  sceneConfigType?: SceneConfigType;
   assets?: Asset[];
   meshComponentConfigs: MeshComponentConfig[];
   meshTransforms?: MeshTransformConfig[];

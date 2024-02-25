@@ -1,5 +1,5 @@
-import { ParallaxImageContainer } from "components/images/parallax-image/styledComponents";
-import { NAV_HEIGHT } from "components/navigation/navigation.styled";
+import { ParallaxImageContainer } from "components/images/parallax-image/ParallaxImage.styles";
+import { NAV_HEIGHT } from "components/navigation/Navigation.styles";
 import { MainTitle } from "components/text/Text";
 import styled from "styled-components";
 
@@ -49,6 +49,7 @@ export const ViewItemContainer = styled.div`
   justify-content: space-between;
   width: 95%;
   margin: 0 2.5%;
+  position: relative;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.laptop}px) => {
     width: 100%;
@@ -95,7 +96,7 @@ export const ViewItemContent = styled.div`
   ${MainTitle} {
     @media only screen and (max-width: ${({ theme }) =>
         theme.breakpoints.mobile}px) {
-      font-size: 3rem;
+      font-size: ${({ theme }) => theme.font.size.medium};
       margin: 1.5rem;
     }
   }
@@ -158,5 +159,23 @@ export const ViewItemDetails = styled.div`
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     margin: 2rem;
+  }
+`;
+
+export const FloatingCentralContainer = styled.div`
+  position: relative;
+  z-index: 10;
+  margin: 0 auto;
+  margin-top: ${NAV_HEIGHT};
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    width: 100vw;
+    margin-top: 3rem;
+    min-height: 100vh;
+    margin-bottom: 3rem;
   }
 `;

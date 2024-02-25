@@ -1,7 +1,7 @@
 import {
   ScrolledTypographyHeader,
   ScrolledTypographyText,
-} from "../ScrollTypography.styled";
+} from "../ScrollTypography.styles";
 import { TEXT_TYPE } from "../scrollTypography.consts";
 
 interface ScrollTypographyProps {

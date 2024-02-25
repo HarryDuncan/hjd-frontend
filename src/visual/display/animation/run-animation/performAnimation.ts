@@ -2,6 +2,8 @@ import { MathUtils, Object3D } from "three";
 import {
   AnimationProperties,
   AnimationType,
+  FallAnimationConfig,
+  MoveAnimationConfig,
   ObjectUpdateProperty,
   // FallAnimationConfig,
   RotationAnimationConfig,
@@ -15,19 +17,20 @@ import {
 } from "../animation.constants";
 import { traverseThroughtArray } from "../animation-functions/mesh-animations/traversal/traverseThroughArray";
 import { rotateMeshAlongAxis } from "../animation-functions/rotation/rotateMeshAlongAxis";
-
 import { updateObject } from "../animation-functions/mesh-animations/update-object/updateObject";
 import { spinMeshAlongAxis } from "../animation-functions/rotation/spinMeshAlongAxis";
-import { fall } from "../animation-functions/mesh-animations/fall";
 import { MeshObject } from "visual/set-up/config/mesh/mesh.types";
 import { updateTimeStamp } from "../animation-functions/mesh-animations/trigonometric/updateTimestampTrigonometric";
 import { easeOut } from "visual/utils/maths/maths";
+import { moveObject } from "../animation-functions/mesh-animations/move/moveObject";
+import { fallAnimation } from "../animation-functions/mesh-animations/fall/fallAnimation";
 
 export const performAnimation = (
   animationType: AnimationType,
   object: MeshObject | Object3D,
   progress: number,
-  animationProperties: AnimationProperties
+  animationProperties: AnimationProperties,
+  count = 0
 ) => {
   if (animationType === ANIMATION_TYPES.TRAVERSE) {
     const {
@@ -66,7 +69,17 @@ export const performAnimation = (
     );
   }
   if (animationType === ANIMATION_TYPES.FALL) {
-    fall(object as MeshObject, progress);
+    const { fallParams } = animationProperties as FallAnimationConfig;
+    fallAnimation(object as MeshObject, progress, fallParams);
+  }
+  if (animationType === ANIMATION_TYPES.MOVE) {
+    const {
+      animationDurationMilis,
+      moveTo,
+      moveFrom,
+    } = animationProperties as MoveAnimationConfig;
+    const prog = easeOut(progress / animationDurationMilis);
+    moveObject(object as MeshObject, prog, moveTo, moveFrom, count);
   }
   if (animationType === ANIMATION_TYPES.SPIN) {
     const { rotationAxis, speed } = animationProperties as SpinAnimationConfig;

@@ -7,5 +7,5 @@ export interface RendererParams {
   rendererType: RendererType;
   clearColor?: number;
   size?: { width: number; height: number };
-  outputEncoding?: ColorSpace;
+  outputColorSpace: ColorSpace;
 }

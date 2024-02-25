@@ -57,7 +57,7 @@ const useBannerSize = () => {
     ) {
       setHeight(height);
     }
-  }, [height]);
+  }, [height, bioSectionHeight]);
   return useMemo(() => {
     const bannerConfig = BIO_BANNER_CONFIG;
     bannerConfig.default.heightPx = bioSectionHeight;

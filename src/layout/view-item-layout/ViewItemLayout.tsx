@@ -7,10 +7,10 @@ import {
 import { ReactNode } from "react";
 import SwipeablePageNavigator from "components/mobile/SwipeableNavigator";
 import { Direction } from "utils/moveThroughArray";
-import { Icon } from "components/icons/Icons";
-import { IconTypes } from "components/icons/Icons.types";
 import { MainTitle } from "components/text/Text";
 import DefaultLayout from "layout/DefaultLayout";
+import { IconButton } from "components/buttons/icon-button/IconButton";
+import { IconTypes } from "components/buttons/icon-button/IconButton.types";
 
 interface ViewItemProps {
   title: string;
@@ -32,13 +32,13 @@ export default function ViewItem({
         <ViewItemContainer>
           <StaticImage imageUrl={imageUrl} imageTitle={title} />
           <ViewItemContent>
-            <Icon onClick={handleExit} type={IconTypes.EXIT} hasGesture />
-            <Icon
+            <IconButton onClick={handleExit} type={IconTypes.EXIT} hasGesture />
+            <IconButton
               onClick={onChangeItem}
               type={IconTypes.CHEVRON_LEFT}
               hasGesture
             />
-            <Icon
+            <IconButton
               onClick={onChangeItem}
               type={IconTypes.CHEVRON_RIGHT}
               hasGesture

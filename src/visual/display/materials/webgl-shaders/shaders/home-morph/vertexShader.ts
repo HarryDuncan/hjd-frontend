@@ -1,5 +1,5 @@
 export const vertexShader = `
-precision highp float;
+
   // Common uniforms
 
   uniform vec2 uResolution;
@@ -45,10 +45,13 @@ precision highp float;
   
     vec4 mv_position =  vec4(new_position,1.0);
     // Save the varyings
+ 
+    // Save the varyings
     v_position = mv_position.xyz;
-    vNormal = normalize(normalMatrix * new_normal);
-  
 
+
+    gl_PointSize = max(8.0, min(18.0, 18.0 *  (9.0 / position.z)) );
+    
   
     // Vertex shader output
     gl_Position = projectionMatrix  *  modelViewMatrix * mv_position;

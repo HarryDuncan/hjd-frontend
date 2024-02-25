@@ -3,6 +3,7 @@ import { TextScrollerContainer, TextScrollerText } from "./TextScroller.styles";
 
 interface TextScrollerProps {
   text: string;
+  isLight?: boolean;
   textPosition?: string;
 }
 export const TEXT_POSITIONS = {
@@ -11,6 +12,7 @@ export const TEXT_POSITIONS = {
 };
 export const TextScroller = ({
   text,
+  isLight = true,
   textPosition = TEXT_POSITIONS.CENTER,
 }: TextScrollerProps) => {
   const [animating, setAnimating] = useState(true);
@@ -26,7 +28,7 @@ export const TextScroller = ({
       onAnimationEnd={() => setAnimating(false)}
     >
       {textData.map(({ char, id }) => (
-        <TextScrollerText key={`text-${id}`} $isLight>
+        <TextScrollerText key={`text-${id}`} $isLight={isLight}>
           {char}
         </TextScrollerText>
       ))}

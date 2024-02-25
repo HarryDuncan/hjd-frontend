@@ -8,8 +8,8 @@ import {
 import { SHOP_IMAGES } from "constants/shop.constants";
 import { TextScroller } from "components/text-scroller/TextScroller";
 import Head from "next/head";
-import { ProductGallery } from "views/shop/product-gallery/ProductGallery";
 import DefaultLayout from "layout/DefaultLayout";
+import { ProductGallery } from "views/shop/shop-gallery/product-gallery/ProductGallery";
 
 const Shop: NextPage = () => {
   const { images } = useContentForPage({ imageSelection: SHOP_IMAGES });

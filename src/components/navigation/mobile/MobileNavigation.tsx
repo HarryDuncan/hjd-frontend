@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { NavTheme, PageItem } from "../navigation.types";
-import { MobileText, NavItemContainer } from "./MobileNavigation.styles";
+import {
+  MobileMenuItems,
+  MobileText,
+  NavItemContainer,
+} from "./MobileNavigation.styles";
 import Link from "next/link";
-import { NAV_THEMES, SITE_PAGES } from "../navigation.consts";
+import { CHECKOUT_PAGE, NAV_THEMES, SITE_PAGES } from "../navigation.consts";
 import { HamburgerMenu } from "./hamburger-menu/HamburgerMenu";
+import { useShopContext } from "views/shop/shop-context/shop.context";
 
 interface MobileNavigationProps {
   navTheme: NavTheme;
@@ -11,7 +16,15 @@ interface MobileNavigationProps {
 
 export const MobileNavigation = ({ navTheme }: MobileNavigationProps) => {
   const [isMenuOpen, updateIsMenuOpen] = useState<boolean>(false);
-
+  const {
+    state: { cart },
+  } = useShopContext();
+  const mobileMenuItems = useMemo(() => {
+    if (!cart.length) {
+      return SITE_PAGES;
+    }
+    return [...SITE_PAGES, ...CHECKOUT_PAGE];
+  }, [cart]);
   const handleMobileMenuClick = () => {
     updateIsMenuOpen(!isMenuOpen);
   };
@@ -23,11 +36,13 @@ export const MobileNavigation = ({ navTheme }: MobileNavigationProps) => {
 
   return (
     <>
-      <HamburgerMenu
-        onClick={handleMobileMenuClick}
-        isOpen={isMenuOpen}
-        isLight={navTheme === NAV_THEMES.LIGHT}
-      />
+      <MobileMenuItems>
+        <HamburgerMenu
+          onClick={handleMobileMenuClick}
+          isOpen={isMenuOpen}
+          isLight={navTheme === NAV_THEMES.LIGHT}
+        />
+      </MobileMenuItems>
 
       <NavItemContainer
         $isOpen={isMenuOpen}
@@ -35,7 +50,7 @@ export const MobileNavigation = ({ navTheme }: MobileNavigationProps) => {
       >
         {isMenuOpen && (
           <>
-            {SITE_PAGES.map((page: PageItem, _index: number) => (
+            {mobileMenuItems.map((page: PageItem, _index: number) => (
               <MobileText
                 $isLight={navTheme === NAV_THEMES.DARK}
                 key={`${page.title}-${navTheme}`}

@@ -2,7 +2,7 @@ import { DynamicScene } from "components/visual-components/DynamicInteractiveNod
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
 import type { NextPage } from "next";
-import { useCallback, useMemo, useRef } from "react";
+import { Suspense, useCallback, useMemo, useRef } from "react";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
 import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
@@ -11,15 +11,12 @@ import { CircleActionButton } from "components/buttons/circle-action-button/Circ
 import { AnimationConfig } from "visual/display/animation/animation.types";
 import { SceneData } from "visual/set-up/config/config.types";
 import Head from "next/head";
-import FullScreenLayout from "layout/FullScreenLayout";
+import TitlePageLayout from "layout/title-page-layout/TitlePageLayout";
+import { HomeContainerBottom } from "views/home/Home.styles";
 
 const Home: NextPage = () => {
   useSetWindowState();
-  const handleRouting = useHandleRouting("bio");
-  const buttonRef = useRef<HTMLElement | null>(null);
-  const onEnterClick = useCallback(() => {
-    handleRouting();
-  }, [handleRouting]);
+
   return (
     <>
       <Head>
@@ -30,14 +27,12 @@ const Home: NextPage = () => {
           key="desc"
         />
       </Head>
-      <FullScreenLayout>
-        <CircleActionButton
-          ref={buttonRef}
-          onClick={onEnterClick}
-          buttonText="ENTER"
-        />
-        <HomeSceneContent />
-      </FullScreenLayout>
+      <TitlePageLayout>
+        <BottomSection />
+        <Suspense>
+          <HomeSceneContent />
+        </Suspense>
+      </TitlePageLayout>
     </>
   );
 };
@@ -71,6 +66,24 @@ const HomeSceneContent = () => {
   return sceneData !== null && sceneParameters !== null ? (
     <DynamicScene {...sceneParameters} sceneData={sceneData as SceneData} />
   ) : null;
+};
+
+const BottomSection = () => {
+  const handleRouting = useHandleRouting("bio");
+  const buttonRef = useRef<HTMLElement | null>(null);
+  const onEnterClick = useCallback(() => {
+    handleRouting();
+  }, [handleRouting]);
+
+  return (
+    <HomeContainerBottom>
+      <CircleActionButton
+        ref={buttonRef}
+        onClick={onEnterClick}
+        title="ENTER"
+      />
+    </HomeContainerBottom>
+  );
 };
 
 export default Home;

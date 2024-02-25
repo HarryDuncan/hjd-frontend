@@ -73,10 +73,9 @@ const getGeometryForMeshConfig = (
       geometry names ${geometries.map(({ name }) => name)}`
     );
   }
-  const bufferGeometry = meshGeometry?.geometry.clone();
   return {
     ...meshGeometry,
-    geometry: bufferGeometry,
+    geometry: meshGeometry?.geometry.clone(),
   };
 };
 

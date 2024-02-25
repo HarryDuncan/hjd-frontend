@@ -1,4 +1,6 @@
-import { HamburgerMenuContainer } from "./hamburgerMenu.styled";
+import { useCartItemCount } from "views/shop/hooks/useCartItemCount";
+import { HamburgerMenuContainer } from "./HamburgerMenu.styles";
+import { Badge } from "views/shop/checkout/checkout-icon/CheckoutIconButton";
 
 interface HamburgerMenuProps {
   onClick: () => void;
@@ -13,6 +15,7 @@ export const HamburgerMenu = ({
 }: HamburgerMenuProps) => {
   const isActive = isOpen ? "active" : "";
   const showAsLight = isLight ? "" : "menu-light";
+  const itemCount = useCartItemCount();
   return (
     <HamburgerMenuContainer>
       <svg
@@ -32,6 +35,7 @@ export const HamburgerMenu = ({
           strokeWidth="25"
         />
       </svg>
+      {itemCount > 0 && !isActive && <Badge>{itemCount}</Badge>}
     </HamburgerMenuContainer>
   );
 };

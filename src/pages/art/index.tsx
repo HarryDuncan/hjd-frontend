@@ -27,7 +27,7 @@ const Art: NextPage = () => {
           key="desc"
         />
       </Head>
-      <DefaultLayout>
+      <DefaultLayout hasFooter>
         <ParallaxImage
           hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
           imageUrl={images[0]?.imageUrl ?? ""}

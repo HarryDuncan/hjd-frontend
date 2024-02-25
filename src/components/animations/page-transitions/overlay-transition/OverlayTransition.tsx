@@ -1,6 +1,6 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useRouter } from "next/router";
-import { TransitionEffectContainer } from "../Transitions.styled";
+import { TransitionEffectContainer } from "../Transitions.styles";
 import { PageTransitionProps } from "../pageTransitions.types";
 
 const TRANSITION_DURATION = 0.4;

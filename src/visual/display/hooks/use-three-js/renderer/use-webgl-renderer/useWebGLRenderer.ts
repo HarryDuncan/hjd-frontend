@@ -12,22 +12,16 @@ export const useWebGLRenderer = (
     state: { devicePixelRatio },
   } = useWindowState();
   const { width, height } = useRendererSize(rendererParams);
-  const renderer = useMemo(
-    () =>
-      new WebGLRenderer({
-        antialias: true,
-        alpha: true,
-        powerPreference: "high-performance",
-        precision: "mediump",
-      }),
-    []
-  );
   return useMemo(() => {
+    const renderer = new WebGLRenderer({
+      powerPreference: "high-performance",
+      antialias: true,
+    });
     renderer.setPixelRatio(devicePixelRatio);
     renderer.setSize(width, height);
     renderer.setClearColor(0x112233, 0);
-    renderer.outputColorSpace = rendererParams.outputEncoding ?? SRGBColorSpace;
-
+    renderer.outputColorSpace =
+      rendererParams.outputColorSpace ?? SRGBColorSpace;
     return renderer;
-  }, [rendererParams, width, height, devicePixelRatio, renderer]);
+  }, [rendererParams, width, height, devicePixelRatio]);
 };

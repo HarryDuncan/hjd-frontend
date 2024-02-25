@@ -6,6 +6,8 @@ export const SITE_PAGES = [
   { title: "Shop", link: "/shop" },
 ];
 
+export const CHECKOUT_PAGE = [{ title: "Cart", link: "/checkout" }];
+
 export const LARGE_NAV_WINDOW_SIZES = [
   WINDOW_TYPE.DESKTOP,
   WINDOW_TYPE.LAPTOP,

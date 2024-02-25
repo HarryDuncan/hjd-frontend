@@ -18,25 +18,47 @@ export const FooterContainer = styled.div`
 `;
 
 export const FooterCenterText = styled.div`
-  font-size: 0.9em;
+  font-size: ${({ theme }) => theme.font.size.xSmall};
   text-decoration: none;
   padding: 2rem 5px;
   position: relative;
   margin: 0 auto;
-  font-family: arial;
+  font-family: ${({ theme }) => theme.font.default.family};
   text-align: center;
   width: 80%;
   color: white;
 `;
 export const FooterLink = styled.a`
-  color: black;
-  text-decoration: none;
   padding: 5px 5px;
   position: relative;
   text-transform: none;
   text-decoration: underline;
   margin: 0 auto;
-  font-family: arial;
+  font-family: ${({ theme }) => theme.font.default.family};
   cursor: pointer;
-  color: white;
+  color: black;
+`;
+export const FooterLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 20%;
+  margin: 0 auto;
+  width: 100%;
+`;
+export const FooterLinkContainer = styled.div`
+  ${ContentText} {
+    color: black;
+  }
+  .circle-svg {
+    height: 25rem;
+    margin: 0 auto;
+    width: 100%;
+  }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    .circle-svg {
+      height: 15rem;
+    }
+  }
 `;
