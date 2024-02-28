@@ -43,15 +43,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 const AppContent = ({ Component, pageProps }: Partial<AppProps>) => {
   const isSplashShowing = useSplash();
 
-  if (Component) {
+  if (Component && !isSplashShowing) {
     return (
       <PageTransitionWrapper>
-        <Splash isVisible={isSplashShowing} />
         <Component {...pageProps} />
       </PageTransitionWrapper>
     );
   }
-  return null;
+  return <Splash isVisible={isSplashShowing} />;
 };
 
 export default MyApp;

@@ -3,13 +3,12 @@ import styled, { keyframes } from "styled-components";
 
 const growDown = keyframes`
   from {
-    height: 0;
+    transform: translateY(-100%);
   }
   to {
-    height: 20vh; /* Adjust the final height as needed */
+    transform: translateY(0);
   }
 `;
-
 export const PageTitleContainer = styled.div`
   width: 100vw;
   position: relative;
@@ -20,5 +19,5 @@ export const PageTitleContainer = styled.div`
   ${TextScrollerText} {
     font-size: ${({ theme }) => theme.font.size.large};
   }
-  animation: ${growDown} 1s ease-in-out 1.5s;
+  animation: ${growDown} 1.5s ease-in-out 0s forwards;
 `;

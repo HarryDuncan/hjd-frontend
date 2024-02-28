@@ -17,7 +17,7 @@ export const HomeContainerBottom = styled.div`
   width: 100vw;
   position: absolute;
   bottom: 0;
-  height: 30vh;
+  height: 00vh;
   overflow: hidden;
   background: ${({ theme }) => theme.colors.gradients.dark};
   z-index: 50;
@@ -31,5 +31,5 @@ export const HomeContainerBottom = styled.div`
     margin: 0;
     color: black;
   }
-  animation: ${growDown} 1s ease-in-out 1.5s;
+  animation: ${growDown} 1.5s ease-in-out 0.2s forwards;
 `;
