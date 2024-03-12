@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { CartItem, useShopContext } from "../shop-context/shop.context";
+import { ShippingData } from "../checkout/checkout.types";
 
 export const useShopDataFromStorage = () => {
   const {
@@ -12,7 +13,7 @@ export const useShopDataFromStorage = () => {
       if (cart) {
         return {
           cart: cart ? (JSON.parse(cart) as CartItem[]) : ([] as CartItem[]),
-          shipping: shipping ? JSON.parse(shipping) : null,
+          shipping: shipping ? (JSON.parse(shipping) as ShippingData) : null,
         };
       }
     } else {

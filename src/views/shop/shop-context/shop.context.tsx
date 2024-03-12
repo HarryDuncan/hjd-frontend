@@ -85,6 +85,7 @@ const reducer = (state: AppState, action: Action): AppState => {
     }
 
     case "UPDATE_SHIPPING":
+      sessionStorage.setItem("shipping", JSON.stringify(action.payload));
       return {
         ...state,
         shippingTotal: action.payload.shippingTotal,

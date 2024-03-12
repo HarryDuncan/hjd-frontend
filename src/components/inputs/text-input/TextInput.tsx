@@ -20,16 +20,26 @@ const StyledInput = styled.input<CustomInputProps>`
   `}
 `;
 
+const StyledTextArea = styled.textarea<CustomInputProps>`
+  padding: 8px;
+  margin: 5px;
+  border: 1px solid #ccc;
+`;
+
 interface TextInputProps {
   label: string;
   onChange: (newValue: string) => void;
+  required?: boolean;
   placeholder?: string;
+  multiLine?: boolean;
   type?: "text" | "password" | undefined;
 }
 export const TextInput = ({
   placeholder = "",
   label,
   onChange,
+  required = false,
+  multiLine = false,
   type = "text",
 }: TextInputProps) => {
   const handleInputChange = (value: string) => {
@@ -37,12 +47,23 @@ export const TextInput = ({
   };
   return (
     <InputContainer>
-      <StyledLabel>{label}</StyledLabel>
-      <StyledInput
-        type={type}
-        placeholder={placeholder}
-        onChange={(e) => handleInputChange(e.target.value)}
-      />
+      <StyledLabel>
+        {label} {required && <span>*</span>}
+      </StyledLabel>
+      {multiLine ? (
+        <StyledTextArea
+          type={type}
+          rows={multiLine ? "5" : "1"}
+          placeholder={placeholder}
+          onChange={(e) => handleInputChange(e.target.value)}
+        />
+      ) : (
+        <StyledInput
+          type={type}
+          placeholder={placeholder}
+          onChange={(e) => handleInputChange(e.target.value)}
+        />
+      )}
     </InputContainer>
   );
 };

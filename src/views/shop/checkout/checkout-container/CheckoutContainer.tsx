@@ -1,11 +1,10 @@
 import { useCallback, useMemo } from "react";
-import { FloatingCentralContainer } from "components/containers/Containers";
-import CartTable from "./cart-table/CartTable";
 import {
-  CheckoutContentContainer,
-  CheckoutSection,
-  CheckoutTitleContainer,
-} from "./checkout.styles";
+  FloatingCentralContainer,
+  FloatingContentContainer,
+} from "components/containers/Containers";
+import CartTable from "./cart-table/CartTable";
+import { CheckoutSection, CheckoutTitleContainer } from "./checkout.styles";
 import { CheckoutTotal } from "./checkout-total/CheckoutTotal";
 import { ShippingOptions } from "./shipping-options/ShippingOptions";
 import { ActionButton } from "components/buttons/action-button/ActionButton";
@@ -15,9 +14,9 @@ import { useCalculateTotal } from "views/shop/hooks/useCalculateTotal";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 import { TextScroller } from "components/text-scroller/TextScroller";
 import { getStripe } from "services/shop/getStripe";
-import { CheckoutNavigation } from "./checkout-navigation/CheckoutNavigation";
 import { useCartItemCount } from "views/shop/hooks/useCartItemCount";
 import { useShopData } from "views/shop/hooks/useShopData";
+import { FloatingContentNavigation } from "components/navigation/floating-content-navigation/FloatingContentNavigation";
 
 export default function CheckoutPreview() {
   const {
@@ -54,8 +53,8 @@ export default function CheckoutPreview() {
 
   return (
     <FloatingCentralContainer>
-      <CheckoutContentContainer>
-        <CheckoutNavigation navigationRoutes={["back"]} />
+      <FloatingContentContainer>
+        <FloatingContentNavigation navigationRoutes={["back"]} />
         <CheckoutTitleContainer>
           <TextScroller text=" Checkout " isLight={false} />
         </CheckoutTitleContainer>
@@ -86,7 +85,7 @@ export default function CheckoutPreview() {
             />
           </form>
         </CheckoutSection>
-      </CheckoutContentContainer>
+      </FloatingContentContainer>
     </FloatingCentralContainer>
   );
 }
