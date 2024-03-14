@@ -8,6 +8,7 @@ interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: "text" | "password";
 }
 
+type CustomTextAreaProps = InputHTMLAttributes<HTMLTextAreaElement>;
 const StyledInput = styled.input<CustomInputProps>`
   padding: 8px;
   margin: 5px;
@@ -20,7 +21,7 @@ const StyledInput = styled.input<CustomInputProps>`
   `}
 `;
 
-const StyledTextArea = styled.textarea<CustomInputProps>`
+const StyledTextArea = styled.textarea<CustomTextAreaProps>`
   padding: 8px;
   margin: 5px;
   border: 1px solid #ccc;
@@ -53,7 +54,7 @@ export const TextInput = ({
       {multiLine ? (
         <StyledTextArea
           type={type}
-          rows={multiLine ? "5" : "1"}
+          rows={multiLine ? 5 : 1}
           placeholder={placeholder}
           onChange={(e) => handleInputChange(e.target.value)}
         />

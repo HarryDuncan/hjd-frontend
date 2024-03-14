@@ -4,12 +4,12 @@ import { useRouteHistory } from "hooks/routing/useRouteHistory";
 import { useGoToLanding } from "hooks/routing/useGoToLanding";
 import { FloatingNavigationContainer } from "../Navigation.styles";
 
-interface FloatingContentNavigation {
+interface FloatingContentNavigationProps {
   navigationRoutes: string[];
 }
 export const FloatingContentNavigation = ({
   navigationRoutes,
-}: FloatingContentNavigation) => {
+}: FloatingContentNavigationProps) => {
   const routeHistory = useRouteHistory();
   const goToLanding = useGoToLanding();
   return (

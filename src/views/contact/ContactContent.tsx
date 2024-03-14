@@ -34,7 +34,6 @@ export const ContactContent = () => {
       message,
     } as ContactData;
     const response = await sendContactMessage(contactData);
-    console.log(response);
     if (response.data.success) {
       setMessageStatus("success");
     }
@@ -45,20 +44,16 @@ export const ContactContent = () => {
       <MainTitle>Get In TOUCH</MainTitle>
       {messageStatus === null && (
         <>
-          <TextInput label={"Email"} required={true} onChange={onEmailChange} />
+          <TextInput label="Email" required onChange={onEmailChange} />
+          <TextInput label="Subject" required onChange={onSubjectChange} />
           <TextInput
-            label={"Subject"}
-            required={true}
-            onChange={onSubjectChange}
-          />
-          <TextInput
-            label={"Message"}
-            required={true}
-            multiLine={true}
+            label="Message"
+            required
+            multiLine
             onChange={onMessageChange}
           />
           <ActionButton
-            title={"Submit"}
+            title="Submit"
             isDisabled={isDisabled}
             onClick={onSubmit}
           />

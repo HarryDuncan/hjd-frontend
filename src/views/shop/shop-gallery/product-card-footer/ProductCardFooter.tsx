@@ -21,7 +21,7 @@ export const ProductCardFooter = ({
   return (
     <CardFooter>
       <Title>{title}</Title>
-      <Label>{!isSoldOut ? `AUD ${priceLabel}` : `Sold Out`}</Label>
+      <Label>{!isSoldOut ? `AUD $${priceLabel}` : `Sold Out`}</Label>
       <br />
       {variations.length >= 2 && (
         <Label>
