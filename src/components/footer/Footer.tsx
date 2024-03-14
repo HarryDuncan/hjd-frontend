@@ -46,7 +46,7 @@ export const Footer = () => {
         </svg>
         <FooterLinks>
           <SocialLinks />
-          <FooterLink href="mailto: harry@harryjdee.com">
+          <FooterLink href="/contact">
             <ContentText $isLight>Get In Touch</ContentText>
           </FooterLink>
           <FooterLink href="/terms-and-conditions">

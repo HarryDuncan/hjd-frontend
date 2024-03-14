@@ -2,31 +2,30 @@ import { useCalculateTotal } from "views/shop/hooks/useCalculateTotal";
 import { useShopDataFromStorage } from "views/shop/hooks/useShopDataFromStorage";
 import CartTable from "../checkout-container/cart-table/CartTable";
 import { CheckoutTotal } from "../checkout-container/checkout-total/CheckoutTotal";
-import {
-  CheckoutContentContainer,
-  CheckoutTitleContainer,
-} from "../checkout-container/checkout.styles";
+import { CheckoutTitleContainer } from "../checkout-container/checkout.styles";
 import { TransactionDetailsSection } from "./TransactionDetailsSection";
 import { TextScroller } from "components/text-scroller/TextScroller";
 import { ContentSubText } from "components/text/Text";
 import { useTransactionData } from "./useTransactionData";
 import { useSendReceipt } from "./useSendReceipt";
-import { CheckoutNavigation } from "../checkout-container/checkout-navigation/CheckoutNavigation";
+import { FloatingContentNavigation } from "components/navigation/floating-content-navigation/FloatingContentNavigation";
+import { FloatingContentContainer } from "components/containers/Containers";
 
 const SuccessContent = () => {
   const { cart, shipping } = useShopDataFromStorage();
-  const total = useCalculateTotal(cart, shipping);
+  const total = useCalculateTotal(cart, shipping?.shippingTotal ?? 0);
   const { billingDetails, customerDetails, transactionDetails } =
     useTransactionData();
   const { sendReceiptData, orderId } = useSendReceipt(
     billingDetails,
     customerDetails,
+    shipping,
     cart,
     transactionDetails
   );
   return (
-    <CheckoutContentContainer>
-      <CheckoutNavigation navigationRoutes={["home"]} />
+    <FloatingContentContainer>
+      <FloatingContentNavigation navigationRoutes={["home"]} />
       <CheckoutTitleContainer>
         <TextScroller text=" Thank You " isLight={false} />
       </CheckoutTitleContainer>
@@ -36,11 +35,12 @@ const SuccessContent = () => {
       {billingDetails && customerDetails && (
         <TransactionDetailsSection
           orderId={orderId}
+          customerDetails={customerDetails}
           billingDetails={billingDetails}
         />
       )}
       <CheckoutTotal total={total} />
-      <CheckoutContentContainer>
+      <FloatingContentContainer>
         <ContentSubText>An email will be sent with your receipt</ContentSubText>
         <br />
         <ContentSubText>
@@ -49,12 +49,13 @@ const SuccessContent = () => {
         <br />
         <ContentSubText>
           Haven't received your receipt?
+          <br />
           <a href="#" onClick={sendReceiptData}>
-            Click here
+            Resend Receipt
           </a>
         </ContentSubText>
-      </CheckoutContentContainer>
-    </CheckoutContentContainer>
+      </FloatingContentContainer>
+    </FloatingContentContainer>
   );
 };
 

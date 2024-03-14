@@ -179,3 +179,20 @@ export const FloatingCentralContainer = styled.div`
     margin-bottom: 3rem;
   }
 `;
+export const FloatingContentContainer = styled.div`
+  color: black;
+  width: 80%;
+  background: ${({ theme }) => theme.colors.mono.background};
+  z-index: 5;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1rem;
+  text-align: center;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    width: 100%;
+    height: calc(100vh - ${NAV_HEIGHT});
+    padding: 0;
+  }
+`;
