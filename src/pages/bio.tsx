@@ -8,6 +8,8 @@ import { useContentForPage } from "hooks/content/useContentForPage";
 import type { NextPage } from "next";
 import Head from "next/head";
 import DefaultLayout from "layout/DefaultLayout";
+import { Suspense } from "react";
+import { SectionLoadingFallback } from "components/loading/fallbacks/section-loading/SectionLoadingFallback";
 
 const Bio: NextPage = () => {
   const { text, images } = useBioPageContent();
@@ -23,16 +25,18 @@ const Bio: NextPage = () => {
         />
       </Head>
       <DefaultLayout>
-        <BioPage>
-          {images.map((image, index) => (
-            <BioSection
-              key={`section-${image.id}`}
-              image={image}
-              text={text[index]}
-              index={index}
-            />
-          ))}
-        </BioPage>
+        <Suspense fallback={<SectionLoadingFallback />}>
+          <BioPage>
+            {images.map((image, index) => (
+              <BioSection
+                key={`section-${image.id}`}
+                image={image}
+                text={text[index]}
+                index={index}
+              />
+            ))}
+          </BioPage>
+        </Suspense>
       </DefaultLayout>
     </>
   );

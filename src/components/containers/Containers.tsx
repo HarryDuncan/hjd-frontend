@@ -1,7 +1,7 @@
 import { ParallaxImageContainer } from "components/images/parallax-image/ParallaxImage.styles";
 import { NAV_HEIGHT } from "components/navigation/Navigation.styles";
 import { MainTitle } from "components/text/Text";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const LayoutContainer = styled.div`
   position: relative;
@@ -30,6 +30,16 @@ export const PageContainer = styled.div<{
   }
 `;
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
 export const InnerContainer = styled.div<{ $topOffset?: number }>`
   background-color: ${({ theme }) => theme.colors.mono.background};
   width: 100%;
@@ -37,6 +47,7 @@ export const InnerContainer = styled.div<{ $topOffset?: number }>`
   margin-top: ${({ $topOffset }) => $topOffset ?? 0}px;
   z-index: 2;
   position: relative;
+  animation: ${fadeIn} 2.5s ease-in-out;
   ${ParallaxImageContainer} {
     position: relative;
   }

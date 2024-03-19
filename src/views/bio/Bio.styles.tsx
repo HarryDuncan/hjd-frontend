@@ -2,7 +2,7 @@ import {
   ScrolledTypographyHeader,
   ScrolledTypographyText,
 } from "components/animations/scroll/scroll-typography/ScrollTypography.styles";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const TextContainer = styled.div`
   position: relative;
@@ -58,10 +58,20 @@ export const BioContentContainer = styled.div<{ $index: number }>`
   }
 `;
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
 export const BioPage = styled.div`
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
+  animation: ${fadeIn} 2.5s ease-in-out;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
     width: 100%;
