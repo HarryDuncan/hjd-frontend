@@ -34,7 +34,7 @@ export const StyledImage = styled(Image)`
   margin: 0 auto;
   margin-top: 1.5rem;
   height: auto !important;
-  width: auto !important;
+  width: 100% !important;
   max-width: 50rem;
   max-height: 50rem;
 
@@ -48,8 +48,13 @@ export const StyledImage = styled(Image)`
     max-width: 40rem;
   }
   @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
+    width: auto !important;
+  }
+  @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     margin-top: 0;
+    width: auto !important;
     max-height: 40rem;
     max-width: 100vw;
   }

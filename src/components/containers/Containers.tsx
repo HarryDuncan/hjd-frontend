@@ -98,13 +98,14 @@ export const OverlayDiv = styled.div`
 
 export const ViewItemContent = styled.div`
   text-align: center;
-  width: 50%;
-  margin: 0 3.5rem;
+  width: 30%;
+  margin: 0 auto;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.laptop}px) {
-    width: 35%;
+    width: 25%;
   }
   ${MainTitle} {
+    font-size: ${({ theme }) => theme.font.size.mediumLarge};
     @media only screen and (max-width: ${({ theme }) =>
         theme.breakpoints.mobile}px) {
       font-size: ${({ theme }) => theme.font.size.medium};
