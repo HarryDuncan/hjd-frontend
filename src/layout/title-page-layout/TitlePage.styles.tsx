@@ -2,12 +2,12 @@ import { TextScrollerText } from "components/text-scroller/TextScroller.styles";
 import styled, { keyframes } from "styled-components";
 
 const growDown = keyframes`
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0);
-  }
+from {
+  height: 0;
+}
+to {
+  height: 20vh; /* Adjust the final height as needed */
+}
 `;
 export const PageTitleContainer = styled.div`
   width: 100vw;
