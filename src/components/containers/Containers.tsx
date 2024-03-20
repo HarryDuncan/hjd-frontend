@@ -43,6 +43,7 @@ const fadeIn = keyframes`
 export const InnerContainer = styled.div<{ $topOffset?: number }>`
   background-color: ${({ theme }) => theme.colors.mono.background};
   width: 100%;
+  min-height: 80vh;
   display: block;
   margin-top: ${({ $topOffset }) => $topOffset ?? 0}px;
   z-index: 2;

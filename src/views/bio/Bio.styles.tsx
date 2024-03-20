@@ -71,6 +71,7 @@ export const BioPage = styled.div`
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
+  min-height: 100vh;
   animation: ${fadeIn} 2.5s ease-in-out;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {

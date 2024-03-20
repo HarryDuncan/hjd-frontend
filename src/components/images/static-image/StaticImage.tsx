@@ -29,7 +29,10 @@ export const StaticImage = ({
   };
 
   return (
-    <ImageContainer $height={imageDimensions?.height}>
+    <ImageContainer
+      $height={imageDimensions?.height}
+      $width={imageDimensions?.width}
+    >
       {!isImageLoaded && <LoadingSvg />}
       <StyledImage
         loader={imageLoader}
