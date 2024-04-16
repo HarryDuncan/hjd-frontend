@@ -67,4 +67,8 @@ export const ItemDetails = styled.div`
 export const CheckoutTitleContainer = styled.div`
   height: 15vh;
   position: relative;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    height: 8vh;
+  }
 `;
