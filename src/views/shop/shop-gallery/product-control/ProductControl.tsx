@@ -26,6 +26,7 @@ export const ProductControl = ({ productData }: { productData: Product }) => {
           ref={buttonRef}
           onClick={handleAddToCart}
           title="Add To Cart"
+          circleFill="#030303"
         />
       ) : (
         <ContentSubText>Sold Out</ContentSubText>

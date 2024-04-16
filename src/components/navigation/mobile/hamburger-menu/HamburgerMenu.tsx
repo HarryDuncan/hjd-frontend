@@ -15,7 +15,7 @@ export const HamburgerMenu = ({
 }: HamburgerMenuProps) => {
   const isActive = isOpen ? "active" : "";
   const showAsLight = isLight ? "" : "menu-light";
-  const itemCount = useCartItemCount();
+
   return (
     <HamburgerMenuContainer>
       <svg
@@ -26,16 +26,15 @@ export const HamburgerMenu = ({
       >
         <path
           className="line top"
-          d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20"
+          d="m 70,38 h -40 c 0,0 -1.5,-7.149796 -8.5,6.8 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20"
         />
-        <path className="line middle" d="m 70,50 h -40" />
+        <path className="line middle" d="m 70,52.5 h -40" />
         <path
           className="line bottom"
-          d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20"
+          d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-5.8 0,-8.649796 -5.5,-8.5 -8.5,-8.5 h -20 v 20"
           strokeWidth="25"
         />
       </svg>
-      {itemCount > 0 && !isActive && <Badge>{itemCount}</Badge>}
     </HamburgerMenuContainer>
   );
 };

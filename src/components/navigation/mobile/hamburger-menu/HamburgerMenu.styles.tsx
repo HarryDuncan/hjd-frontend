@@ -33,7 +33,7 @@ export const HamburgerMenuContainer = styled.div`
     fill: none;
     transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
     stroke: #000;
-    stroke-width: 10;
+    stroke-width: 8;
   }
   .menu-light {
     path {
@@ -42,6 +42,6 @@ export const HamburgerMenuContainer = styled.div`
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
-    margin: 0.2rem;
+    margin-right: 0.2rem;
   }
 `;
