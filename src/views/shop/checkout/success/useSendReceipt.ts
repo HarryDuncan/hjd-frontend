@@ -13,9 +13,11 @@ export const useSendReceipt = (
   customerDetails: CustomerDetails | null,
   shippingData: ShippingData | null,
   cart: CartItem[],
-  transactionDetails: TransactionDetails | null
+  transactionDetails: TransactionDetails | null,
+  orderAlreadyCreated: boolean
 ) => {
-  const [hasSentReceipt, setHasSentReceipt] = useState<boolean>(false);
+  const [hasSentReceipt, setHasSentReceipt] =
+    useState<boolean>(orderAlreadyCreated);
   const [orderId, setOrderId] = useState<number | null>(null);
   const sendReceiptData = useCallback(async () => {
     if (
@@ -52,10 +54,10 @@ export const useSendReceipt = (
   ]);
 
   useEffect(() => {
-    if (!hasSentReceipt) {
+    if (!hasSentReceipt && !orderAlreadyCreated) {
       sendReceiptData();
     }
-  }, [sendReceiptData]);
+  }, [sendReceiptData, orderAlreadyCreated]);
 
   return { sendReceiptData, orderId };
 };

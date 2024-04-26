@@ -15,14 +15,21 @@ export const CartTableRow = styled.div`
 export const CartTableControl = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 0 1rem;
+  margin: 0 1rem;
   img {
-    height: 1.5rem;
+    height: 1rem;
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     flex-direction: column;
     justify-content: space-between;
+    .trash-icon {
+      margin: 1rem;
+      width: 100%;
+    }
+    img {
+      float: right;
+    }
   }
 `;
 export const TableImageContainer = styled.div`

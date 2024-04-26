@@ -52,7 +52,7 @@ export const transformGeometry = (
           return transformedMeshes;
         }
         case MESH_TRANSFORM.CUSTOM_ATTRIBUTES: {
-          const attributesSet = formattedGeometries.map((formattedGeometry) => {
+          const attributesSet = transformedMeshes.map((formattedGeometry) => {
             const { geometry } = formattedGeometry;
             const setAttributeGeometry = setAttributes(
               geometry,

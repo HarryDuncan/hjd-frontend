@@ -90,7 +90,7 @@ export default function CheckoutPreview() {
         <CheckoutSection>
           <ContentText>
             Secure checkout with{" "}
-            <a href="https://stripe.com/" target="_blank">
+            <a href="https://stripe.com/" rel="noreferrer" target="_blank">
               Stripe
             </a>
           </ContentText>

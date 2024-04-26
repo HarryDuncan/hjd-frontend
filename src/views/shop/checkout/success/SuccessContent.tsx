@@ -14,14 +14,19 @@ import { FloatingContentContainer } from "components/containers/Containers";
 const SuccessContent = () => {
   const { cart, shipping } = useShopDataFromStorage();
   const total = useCalculateTotal(cart, shipping?.shippingTotal ?? 0);
-  const { billingDetails, customerDetails, transactionDetails } =
-    useTransactionData();
+  const {
+    billingDetails,
+    customerDetails,
+    transactionDetails,
+    orderAlreadyCreated,
+  } = useTransactionData();
   const { sendReceiptData, orderId } = useSendReceipt(
     billingDetails,
     customerDetails,
     shipping,
     cart,
-    transactionDetails
+    transactionDetails,
+    orderAlreadyCreated
   );
   return (
     <FloatingContentContainer>

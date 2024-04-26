@@ -27,6 +27,15 @@ export const getLoopType = (
         const loopCount = Math.floor(time / duration);
         return loopCount % loopLimit;
       };
+    case ANIMATION_LOOP_TYPES.MIN_MAX_RANDOM:
+      return (time: number) =>
+        Math.max(
+          Math.min(
+            Math.cos(time * speed) * steepness + 0.5 * Math.random(),
+            maxPeak
+          ),
+          minTrough
+        );
     case ANIMATION_LOOP_TYPES.MIN_MAX:
       return (time: number) =>
         Math.max(
@@ -35,7 +44,7 @@ export const getLoopType = (
         );
     case ANIMATION_LOOP_TYPES.LINEAR:
     default:
-      return (time: number) => time;
+      return (time: number) => time * speed;
   }
 };
 

@@ -1,6 +1,4 @@
-import { useCartItemCount } from "views/shop/hooks/useCartItemCount";
 import { HamburgerMenuContainer } from "./HamburgerMenu.styles";
-import { Badge } from "views/shop/checkout/checkout-icon/CheckoutIconButton";
 
 interface HamburgerMenuProps {
   onClick: () => void;
