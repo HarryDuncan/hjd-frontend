@@ -6,9 +6,10 @@ import {
   NavItemContainer,
 } from "./MobileNavigation.styles";
 import Link from "next/link";
-import { CHECKOUT_PAGE, NAV_THEMES, SITE_PAGES } from "../navigation.consts";
+import { NAV_THEMES, SITE_PAGES } from "../navigation.consts";
 import { HamburgerMenu } from "./hamburger-menu/HamburgerMenu";
 import { useShopContext } from "views/shop/shop-context/shop.context";
+import CartWithDropdown from "views/shop/checkout/checkout-icon/CheckoutIconButton";
 
 interface MobileNavigationProps {
   navTheme: NavTheme;
@@ -23,8 +24,9 @@ export const MobileNavigation = ({ navTheme }: MobileNavigationProps) => {
     if (!cart.length) {
       return SITE_PAGES;
     }
-    return [...SITE_PAGES, ...CHECKOUT_PAGE];
+    return [...SITE_PAGES];
   }, [cart]);
+
   const handleMobileMenuClick = () => {
     updateIsMenuOpen(!isMenuOpen);
   };
@@ -37,13 +39,13 @@ export const MobileNavigation = ({ navTheme }: MobileNavigationProps) => {
   return (
     <>
       <MobileMenuItems>
+        <CartWithDropdown />
         <HamburgerMenu
           onClick={handleMobileMenuClick}
           isOpen={isMenuOpen}
           isLight={navTheme === NAV_THEMES.LIGHT}
         />
       </MobileMenuItems>
-
       <NavItemContainer
         $isOpen={isMenuOpen}
         $isLight={navTheme === NAV_THEMES.LIGHT}

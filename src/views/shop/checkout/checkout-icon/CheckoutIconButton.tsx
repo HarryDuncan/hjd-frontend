@@ -13,6 +13,7 @@ const CartIconContainer = styled.div`
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     padding: 0.3rem 0.2rem 0.5rem 0.2rem;
+    margin-right: -15px;
   }
 `;
 
@@ -26,8 +27,8 @@ const CartIcon = styled.div<{ $isDark: boolean }>`
   justify-content: center;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.tablet}px) {
-    height: 38px;
-    width: 38px;
+    height: 35px;
+    width: 35px;
   }
 `;
 

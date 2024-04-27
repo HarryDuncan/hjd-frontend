@@ -16,6 +16,8 @@ export const useTransactionData = () => {
     useState<CustomerDetails | null>(null);
   const [transactionDetails, setTransactionDetails] =
     useState<TransactionDetails | null>(null);
+
+  const [orderAlreadyCreated, setHasBeenCreated] = useState<boolean>(false);
   useEffect(() => {
     const sessionId = router.query.session_id as string;
     const getTransactionDetails = async () => {
@@ -28,7 +30,7 @@ export const useTransactionData = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        // console.log(data);
+
         const { shippingDetails, customerDetails, paymentIntent, created } =
           snakeCaseKeysToCamelCase(data.session);
         setBillingDetails(shippingDetails as unknown as BillingDetails);
@@ -37,6 +39,8 @@ export const useTransactionData = () => {
           refId: paymentIntent as string,
           purchaseDate: created as number,
         });
+        const alreadyCreated = compareTimes(created as number);
+        setHasBeenCreated(alreadyCreated);
       }
     };
 
@@ -44,5 +48,22 @@ export const useTransactionData = () => {
       getTransactionDetails();
     }
   }, [router, setCustomerDetails, setBillingDetails]);
-  return { customerDetails, transactionDetails, billingDetails };
+  return {
+    customerDetails,
+    transactionDetails,
+    billingDetails,
+    orderAlreadyCreated,
+  };
+};
+
+const compareTimes = (createdTime: number) => {
+  const now = new Date().getTime();
+
+  // Calculate the difference in milliseconds
+  const difference = now - createdTime;
+
+  // Convert milliseconds to minutes
+  const minutesDifference = difference / (1000 * 60);
+
+  return minutesDifference >= 1;
 };

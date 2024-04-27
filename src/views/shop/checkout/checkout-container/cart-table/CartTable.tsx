@@ -49,8 +49,11 @@ const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
             />
           </TableImageContainer>
           <ItemDetails>
-            <p>{cartItem.product.title}</p>
+            <p>
+              {cartItem.product.title} {isReadOnly && ` X ${cartItem.quantity}`}
+            </p>
             <p>${cartItem.product.price} AUD</p>
+
             {cartItem.errorMessage && <p>{cartItem.errorMessage}</p>}
           </ItemDetails>
           {!isReadOnly && (

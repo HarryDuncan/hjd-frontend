@@ -5,10 +5,13 @@ export interface Address {
   country: string;
   line1: string;
   line2: string | null;
-  postal_code: string;
+  postalCode: string;
   state: string;
 }
-
+export type ShippingData = {
+  shippingZoneId: number | null;
+  shippingTotal: number | null;
+};
 export interface BillingDetails {
   address: Address;
   name: string;
@@ -26,5 +29,6 @@ export interface ReceiptData {
   customerDetails: CustomerDetails;
   billingDetails: BillingDetails;
   cart: CartItem[];
+  shippingData: ShippingData;
   transactionDetails: TransactionDetails;
 }

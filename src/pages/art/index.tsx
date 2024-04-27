@@ -11,6 +11,7 @@ import { PaintingGallery } from "views/art/PaintingGallery";
 import Head from "next/head";
 import { Suspense } from "react";
 import DefaultLayout from "layout/DefaultLayout";
+import { SectionLoadingFallback } from "components/loading/fallbacks/section-loading/SectionLoadingFallback";
 
 const Art: NextPage = () => {
   const { images } = useContentForPage({
@@ -28,15 +29,15 @@ const Art: NextPage = () => {
         />
       </Head>
       <DefaultLayout hasFooter>
-        <ParallaxImage
-          hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
-          imageUrl={images[0]?.imageUrl ?? ""}
-          imageTitle={images[0]?.title ?? ""}
-          imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
-        >
-          <TextScroller text=" Original Paintings " />
-        </ParallaxImage>
-        <Suspense>
+        <Suspense fallback={<SectionLoadingFallback />}>
+          <ParallaxImage
+            hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
+            imageUrl={images[0]?.imageUrl ?? ""}
+            imageTitle={images[0]?.title ?? ""}
+            imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
+          >
+            <TextScroller text=" Original Paintings " />
+          </ParallaxImage>
           <PaintingGallery />
         </Suspense>
       </DefaultLayout>

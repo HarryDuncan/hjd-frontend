@@ -1,14 +1,14 @@
-import { ActionButton } from "components/buttons/action-button/ActionButton";
 import { ContentSubText } from "components/text/Text";
 import { Product } from "models/shop/types";
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 import { ProductControlContainer } from "../ShopGallery.styles";
+import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
 
 export const ProductControl = ({ productData }: { productData: Product }) => {
   const { stock, price } = productData;
   const { dispatch } = useShopContext();
-
+  const buttonRef = useRef<HTMLElement | null>(null);
   const handleAddToCart = useCallback(() => {
     dispatch({
       type: "ADD_TO_CART",
@@ -22,7 +22,12 @@ export const ProductControl = ({ productData }: { productData: Product }) => {
   return (
     <ProductControlContainer>
       {stock && price ? (
-        <ActionButton onClick={handleAddToCart} title="Add To Cart" />
+        <CircleActionButton
+          ref={buttonRef}
+          onClick={handleAddToCart}
+          title="Add To Cart"
+          circleFill="#030303"
+        />
       ) : (
         <ContentSubText>Sold Out</ContentSubText>
       )}

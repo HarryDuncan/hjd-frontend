@@ -94,3 +94,9 @@ export const shrinkNavMobile = keyframes`
     height: 0px;
   }
 `;
+
+export const FloatingNavigationContainer = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 1rem;
+`;
