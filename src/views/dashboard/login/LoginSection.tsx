@@ -5,8 +5,10 @@ import { MainTitle } from "components/text/Text";
 import { useState } from "react";
 import { authenticateUser } from "services/dashboard/authenticateUser";
 import { useDashboardContext } from "../dashboard-context/dashboard.context";
+import { useLoginOnLocal } from "../useLoginOnLocal";
 
 export const LoginSection = () => {
+  useLoginOnLocal();
   const [username, setUsername] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
   const [mfaCode, setMfaCode] = useState<string | null>(null);

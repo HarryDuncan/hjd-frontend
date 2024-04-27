@@ -17,6 +17,7 @@ import { getStripe } from "services/shop/getStripe";
 import { useCartItemCount } from "views/shop/hooks/useCartItemCount";
 import { useShopData } from "views/shop/hooks/useShopData";
 import { FloatingContentNavigation } from "components/navigation/floating-content-navigation/FloatingContentNavigation";
+import { ContentText } from "components/text/Text";
 
 export default function CheckoutPreview() {
   const {
@@ -78,12 +79,21 @@ export default function CheckoutPreview() {
               name="shippingZoneCode"
               value={JSON.stringify(shippingZoneCode?.countryCode)}
             />
+
             <ActionButton
               isDisabled={isCheckoutDisabled}
               type={isCheckoutDisabled ? "button" : "submit"}
               title="Checkout"
             />
           </form>
+        </CheckoutSection>
+        <CheckoutSection>
+          <ContentText>
+            Secure checkout with{" "}
+            <a href="https://stripe.com/" rel="noreferrer" target="_blank">
+              Stripe
+            </a>
+          </ContentText>
         </CheckoutSection>
       </FloatingContentContainer>
     </FloatingCentralContainer>

@@ -6,7 +6,7 @@ import {
 } from "./api.types";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
 export default async function handler(
   req: CheckoutSuccessRequest,

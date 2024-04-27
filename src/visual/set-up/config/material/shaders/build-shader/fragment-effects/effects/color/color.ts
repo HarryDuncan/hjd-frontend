@@ -1,5 +1,5 @@
 import { Vector3 } from "three";
-import { ShaderPropertyValueTypes } from "../../../buildShader.constants";
+import { ShaderPropertyValueTypes } from "../../../buildShader.consts";
 import {
   DEFAULT_FRAG_COLOR,
   FRAGMENT_COLOR_NAMES,
@@ -27,17 +27,14 @@ export const colorUniforms = () => ({
 export const colorVaryings = () => [];
 
 export const color = (
-  _transformColorName: string,
+  _previousFragName: string,
   effectProps: Partial<ColorEffectProps>
 ): FragmentEffectData => {
   const formattedEffectProps = formatEffectProps(effectProps);
-  const fragmentColorName = FRAGMENT_COLOR_NAMES.COLOR;
+  const fragName = FRAGMENT_COLOR_NAMES.COLOR;
   const uniformConfig = colorUniforms() as UniformConfig;
   const varyingConfig = colorVaryings();
-  const transformation = colorTransformation(
-    fragmentColorName,
-    formattedEffectProps
-  );
+  const transformation = colorTransformation(fragName, formattedEffectProps);
   const requiredFunctions = colorFunctions();
   return {
     requiredFunctions,
@@ -45,7 +42,7 @@ export const color = (
     transformation,
     varyingConfig,
     attributeConfig: [],
-    fragmentColorName,
+    fragName,
   };
 };
 const formatEffectProps = (parsedEffectProps: Partial<ColorEffectProps>) => {
