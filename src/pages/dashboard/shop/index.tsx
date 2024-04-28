@@ -1,7 +1,7 @@
 import { DashboardLayout } from "layout/dashboard-layout/DashboardLayout";
 import { OrdersContent } from "views/dashboard/orders/Orders";
 
-const Dashboard = () => {
+const ShopDashboard = () => {
   return (
     <DashboardLayout>
       <OrdersContent />
@@ -9,4 +9,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default ShopDashboard;
