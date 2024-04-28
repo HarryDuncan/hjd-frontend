@@ -11,6 +11,7 @@ export type Product = {
   percentageDonated: number;
   variations?: ProductVariations[];
   shippingOptionId: number | null;
+  multiImages: string[] | null;
 };
 
 export type ProductVariations = {

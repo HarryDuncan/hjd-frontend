@@ -31,6 +31,13 @@ const ProductDetails = () => {
         imageUrl={`${SHOP_IMAGE_URL_ROOT}${product?.imageUrl}`}
         title={product?.title}
         handleExit={handleExit}
+        multiImage={
+          product.multiImages
+            ? product.multiImages.map(
+                (multiImage) => `${SHOP_IMAGE_URL_ROOT}${multiImage}`
+              )
+            : null
+        }
       >
         <ContentText>{description}</ContentText>
         <br />

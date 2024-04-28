@@ -2,7 +2,7 @@ import { ActionButton } from "components/buttons/action-button/ActionButton";
 import { FloatingCentralContainer } from "components/containers/Containers";
 import { TextInput } from "components/inputs/text-input/TextInput";
 import { MainTitle } from "components/text/Text";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { authenticateUser } from "services/dashboard/authenticateUser";
 import { useDashboardContext } from "../dashboard-context/dashboard.context";
 import { useLoginOnLocal } from "../useLoginOnLocal";
@@ -14,7 +14,7 @@ export const LoginSection = () => {
   const [mfaCode, setMfaCode] = useState<string | null>(null);
 
   const { dispatch } = useDashboardContext();
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     if (username && password && mfaCode) {
       const authenticationData = {
         username,
@@ -28,12 +28,12 @@ export const LoginSection = () => {
         });
       }
     }
-  };
+  }, [dispatch, username, password, mfaCode]);
 
   return (
     <FloatingCentralContainer>
       <MainTitle>Login To Dashboard</MainTitle>
-      <form onSubmit={handleSubmit}>
+      <form>
         <TextInput label="Username" onChange={setUsername} />
         <TextInput label="Password" type="password" onChange={setPassword} />
         <TextInput label="MFA" onChange={setMfaCode} />
