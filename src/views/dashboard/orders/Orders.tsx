@@ -4,7 +4,7 @@ import { OrderTable } from "../dashboard.styles";
 import { MainTitle } from "components/text/Text";
 import { OrderTableRow } from "./OrderTableRow";
 
-export const DashboardContent = () => {
+export const OrdersContent = () => {
   const { orders } = useGetOrders();
   return (
     <FloatingCentralContainer>

@@ -6,6 +6,12 @@ export const SITE_PAGES = [
   { title: "Shop", link: "/shop" },
 ];
 
+export const DASHBOARD_PAGES = [
+  { title: "Bio", link: "/dashboard/bio" },
+  { title: "Art", link: "/dashboard/art" },
+  { title: "Shop", link: "/dashboard/shop" },
+  { title: "orders", link: "/dashboard/orders" },
+];
 export const CHECKOUT_PAGE = { title: "Cart", link: "/checkout" };
 
 export const LARGE_NAV_WINDOW_SIZES = [
