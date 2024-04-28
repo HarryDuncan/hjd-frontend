@@ -2,47 +2,69 @@ import {
   ColorEffectProps,
   FragmentEffectConfig,
   FragmentEffectData,
+  InteractiveFragmentEffect,
   MaterialEffectProps,
+  OpacityEffectProps,
   PointMaterialEffectProps,
+  TriggeredFragmentEffect,
+  VanishEffectProps,
 } from "../../buildShader.types";
 import { FRAGMENT_EFFECT } from "../fragmentEffects.consts";
 import { color } from "./color/color";
 import { defaultFragmentEffect } from "./defaultFragmentEffect/defaultFragmentEffect";
-import { getInteractiveEffects } from "./interactive/interactive";
+import { getInteractiveEffects } from "./interactive/interactiveEffect";
 import { matcapMaterial } from "./material/matcap/matcapMaterial";
 import { simpleMatcap } from "./material/matcap/simpleMatcap";
 import { getFragmentPointMaterial } from "./material/point-material/getFragmentPointMaterial";
 import { opacity } from "./opacity/opacity";
+import { triggeredEffect } from "./triggered-effect/triggeredEffect";
+import { vanishEffect } from "./vanish/vanish";
 
 export const getFragmentEffects = (
   effect: FragmentEffectConfig,
-  transformColorName: string
+  previousFragName: string
 ): FragmentEffectData => {
-  switch (effect.effectType) {
+  const { effectType, effectProps } = effect;
+  switch (effectType) {
     case FRAGMENT_EFFECT.OPACITY:
-      return opacity(transformColorName);
-    case FRAGMENT_EFFECT.COLOR:
-      return color(
-        transformColorName,
-        effect.effectProps as Partial<ColorEffectProps>
+      return opacity(
+        previousFragName,
+        effectProps as Partial<OpacityEffectProps>
       );
+    case FRAGMENT_EFFECT.COLOR:
+      return color(previousFragName, effectProps as Partial<ColorEffectProps>);
     case FRAGMENT_EFFECT.MATERIAL:
       return matcapMaterial(
-        transformColorName,
-        effect.effectProps as Partial<MaterialEffectProps> | undefined
+        previousFragName,
+        effectProps as Partial<MaterialEffectProps> | undefined
       );
     case FRAGMENT_EFFECT.MATCAP:
       return simpleMatcap(
-        transformColorName,
-        effect.effectProps as Partial<MaterialEffectProps> | undefined
+        previousFragName,
+        effectProps as Partial<MaterialEffectProps> | undefined
       );
     case FRAGMENT_EFFECT.POINT_MATERIAL:
       return getFragmentPointMaterial(
-        transformColorName,
-        effect.effectProps as Partial<PointMaterialEffectProps> | undefined
+        previousFragName,
+        effectProps as Partial<PointMaterialEffectProps> | undefined
       );
     case FRAGMENT_EFFECT.INTERACTIVE:
-      return getInteractiveEffects(transformColorName, effect.effectProps);
+      return getInteractiveEffects(
+        previousFragName,
+        effectProps as Partial<InteractiveFragmentEffect>
+      );
+    case FRAGMENT_EFFECT.VANISH:
+      return vanishEffect(
+        previousFragName,
+        effectProps as Partial<VanishEffectProps>
+      );
+    case FRAGMENT_EFFECT.TRIGGERED: {
+      return triggeredEffect(
+        previousFragName,
+        effectProps as Partial<TriggeredFragmentEffect>
+      );
+    }
+
     case FRAGMENT_EFFECT.DEFAULT:
     default:
       return defaultFragmentEffect();

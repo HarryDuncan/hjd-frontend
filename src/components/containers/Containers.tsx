@@ -1,7 +1,7 @@
 import { ParallaxImageContainer } from "components/images/parallax-image/ParallaxImage.styles";
 import { NAV_HEIGHT } from "components/navigation/Navigation.styles";
 import { MainTitle } from "components/text/Text";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const LayoutContainer = styled.div`
   position: relative;
@@ -30,13 +30,25 @@ export const PageContainer = styled.div<{
   }
 `;
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
 export const InnerContainer = styled.div<{ $topOffset?: number }>`
   background-color: ${({ theme }) => theme.colors.mono.background};
   width: 100%;
+  min-height: 80vh;
   display: block;
   margin-top: ${({ $topOffset }) => $topOffset ?? 0}px;
   z-index: 2;
   position: relative;
+  animation: ${fadeIn} 2.5s ease-in-out;
   ${ParallaxImageContainer} {
     position: relative;
   }
@@ -87,13 +99,14 @@ export const OverlayDiv = styled.div`
 
 export const ViewItemContent = styled.div`
   text-align: center;
-  width: 50%;
-  margin: 0 3.5rem;
+  width: 30%;
+  margin: 0 auto;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.laptop}px) {
-    width: 35%;
+    width: 25%;
   }
   ${MainTitle} {
+    font-size: ${({ theme }) => theme.font.size.mediumLarge};
     @media only screen and (max-width: ${({ theme }) =>
         theme.breakpoints.mobile}px) {
       font-size: ${({ theme }) => theme.font.size.medium};
@@ -177,5 +190,22 @@ export const FloatingCentralContainer = styled.div`
     margin-top: 3rem;
     min-height: 100vh;
     margin-bottom: 3rem;
+  }
+`;
+export const FloatingContentContainer = styled.div`
+  color: black;
+  width: 80%;
+  background: ${({ theme }) => theme.colors.mono.background};
+  z-index: 5;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1rem;
+  text-align: center;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    width: 100%;
+    height: calc(100vh - ${NAV_HEIGHT});
+    padding: 0;
   }
 `;

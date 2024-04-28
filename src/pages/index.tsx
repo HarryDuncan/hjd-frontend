@@ -13,7 +13,7 @@ import { SceneData } from "visual/set-up/config/config.types";
 import Head from "next/head";
 import TitlePageLayout from "layout/title-page-layout/TitlePageLayout";
 import { HomeContainerBottom } from "views/home/Home.styles";
-import { SceneLoadingFallback } from "components/loading/scene-loading-fallback/SceneLoadingFallback";
+import { SceneLoadingFallback } from "components/loading/fallbacks/scene-loading/SceneLoadingFallback";
 
 const Home: NextPage = () => {
   useSetWindowState();

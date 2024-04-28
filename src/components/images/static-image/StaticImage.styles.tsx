@@ -1,9 +1,12 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-export const ImageContainer = styled.div<{ $height: number | undefined }>`
+export const ImageContainer = styled.div<{
+  $height: number | undefined;
+  $width: number | undefined;
+}>`
   height: 90%;
-  width: 40%;
+  width: ${({ $width }) => `${$width}px`};
   margin-left: 10%;
   position: relative;
 
@@ -15,7 +18,6 @@ export const ImageContainer = styled.div<{ $height: number | undefined }>`
       theme.breakpoints.tablet}px) {
     flex-direction: column;
     width: 100%;
-    height: 100%;
     height: ${({ $height }) => `${$height}px` ?? "50rem"};
     margin-left: 0%;
   }
@@ -35,8 +37,8 @@ export const StyledImage = styled(Image)`
   margin-top: 1.5rem;
   height: auto !important;
   width: auto !important;
-  max-width: 50rem;
-  max-height: 50rem;
+  max-width: 45rem;
+  max-height: 45rem;
 
   -webkit-box-shadow: 15px 15px 16px #ccc;
   -moz-box-shadow: 15px 15px 16px #ccc;
@@ -48,8 +50,13 @@ export const StyledImage = styled(Image)`
     max-width: 40rem;
   }
   @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
+    width: auto !important;
+  }
+  @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     margin-top: 0;
+    width: auto !important;
     max-height: 40rem;
     max-width: 100vw;
   }

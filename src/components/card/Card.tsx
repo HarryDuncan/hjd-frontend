@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { CardImage, CardTitle, CardWrapper } from "./Card.styles";
 import { CardFooter } from "./CardFooter";
 
@@ -19,10 +20,22 @@ export const Card = ({ cardDetails, onClick }: CardProps) => {
     }
   };
 
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
   return (
-    <CardWrapper onClick={cardClicked}>
+    <CardWrapper
+      onClick={cardClicked}
+      style={{
+        opacity: imageLoaded ? 1 : 0,
+        transition: "opacity 0.5s ease-in-out",
+      }}
+    >
       {cardDetails.imageUrl && (
         <CardImage
+          onLoad={handleImageLoad}
           src={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}${cardDetails.imageUrl}`}
           alt={cardDetails.title}
         />

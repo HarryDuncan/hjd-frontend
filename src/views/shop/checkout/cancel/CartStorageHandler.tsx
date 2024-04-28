@@ -30,7 +30,10 @@ const CartStorageHandler = ({
     if (shippingTotal === null && shipping !== undefined && shipping !== null) {
       dispatch({
         type: "UPDATE_SHIPPING",
-        payload: shipping,
+        payload: {
+          shippingTotal: shipping.shippingTotal ?? 0,
+          selectedShippingZoneId: shipping.shippingZoneId ?? null,
+        },
       });
     }
   }, [
