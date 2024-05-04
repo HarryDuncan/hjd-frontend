@@ -1,11 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import { StaticImage } from "../static-image";
-import {
-  MultiImageContainer,
-  ThumbnailContainer,
-  ThumbnailImage,
-  ThumbnailImageContainer,
-} from "./MultiImage.styles";
+import { MultiImageContainer, ThumbnailContainer } from "./MultiImage.styles";
 import { Thumbnail } from "./Thumbnail";
 import { ImageDimensions } from "../images.types";
 

@@ -40,7 +40,6 @@ export const useSendReceipt = (
       if (data?.orderId) {
         setOrderId(data?.orderId as number);
       }
-
       setHasSentReceipt(true);
     }
   }, [
@@ -54,8 +53,12 @@ export const useSendReceipt = (
   ]);
 
   useEffect(() => {
-    if (!hasSentReceipt) {
+    const storedOrderId = localStorage.getItem(transactionDetails?.refId ?? "");
+    if (!hasSentReceipt && !storedOrderId) {
       sendReceiptData();
+    }
+    if (storedOrderId) {
+      setOrderId(Number(storedOrderId));
     }
   }, [sendReceiptData]);
 

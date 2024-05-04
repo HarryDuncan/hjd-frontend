@@ -5,7 +5,7 @@ import { CheckoutTotal } from "../checkout-container/checkout-total/CheckoutTota
 import { CheckoutTitleContainer } from "../checkout-container/checkout.styles";
 import { TransactionDetailsSection } from "./TransactionDetailsSection";
 import { TextScroller } from "components/text-scroller/TextScroller";
-import { ContentSubText } from "components/text/Text";
+import { ContentSubText, ContentText } from "components/text/Text";
 import { useTransactionData } from "./useTransactionData";
 import { useSendReceipt } from "./useSendReceipt";
 import { FloatingContentNavigation } from "components/navigation/floating-content-navigation/FloatingContentNavigation";
@@ -15,6 +15,7 @@ import { useEffect } from "react";
 const SuccessContent = () => {
   useEffect(() => {
     sessionStorage.setItem("hasCheckedOut", JSON.stringify(true));
+
     return () => {
       sessionStorage.removeItem("cart");
       sessionStorage.removeItem("hasCheckedOut");
@@ -36,6 +37,13 @@ const SuccessContent = () => {
     transactionDetails,
     orderAlreadyCreated
   );
+
+  useEffect(() => {
+    if (orderId && transactionDetails && transactionDetails.refId) {
+      localStorage.setItem(transactionDetails.refId, String(orderId));
+    }
+  }, [orderId, transactionDetails]);
+
   return (
     <FloatingContentContainer>
       <FloatingContentNavigation navigationRoutes={["home"]} />
@@ -43,8 +51,11 @@ const SuccessContent = () => {
         <TextScroller text=" Thank You " isLight={false} />
       </CheckoutTitleContainer>
 
-      {cart.length && <CartTable isReadOnly parsedCartData={cart} />}
-
+      {cart.length > 0 ? (
+        <CartTable isReadOnly parsedCartData={cart} />
+      ) : (
+        <ContentText>This link has expired</ContentText>
+      )}
       {billingDetails && customerDetails && (
         <TransactionDetailsSection
           orderId={orderId}
