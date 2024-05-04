@@ -45,9 +45,6 @@ export default function CheckoutPreview() {
       if (hasInventory) {
         await fetch("/api/checkout_sessions", {
           method: "POST",
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`,
-          },
         });
       } else {
         setInventoryErrors(products);

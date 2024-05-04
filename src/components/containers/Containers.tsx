@@ -59,8 +59,8 @@ export const ViewItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 95%;
-  margin: 0 2.5%;
+  width: 90%;
+  margin: 0 5%;
   position: relative;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.laptop}px) => {
@@ -116,18 +116,18 @@ export const ViewItemContent = styled.div`
   .exit-icon {
     position: absolute;
     top: 2rem;
-    right: 3%;
+    right: -3%;
   }
   .scroll-left-icon {
     position: absolute;
     top: 50%;
-    left: 3%;
+    left: -3%;
   }
 
   .scroll-right-icon {
     position: absolute;
     top: 50%;
-    right: 3%;
+    right: -3%;
   }
 
   @media only screen and (max-width: ${({ theme }) =>

@@ -82,7 +82,7 @@ export const SpinButton = ({ value, onChange, max, min }: SpinButtonProps) => {
     }
   };
   const decrement = () => {
-    if (min === undefined || value + 1 > min) {
+    if (min === undefined || value - 1 > min) {
       onChange(value - 1);
     }
   };

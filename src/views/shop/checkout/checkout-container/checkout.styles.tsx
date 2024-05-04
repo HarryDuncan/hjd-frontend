@@ -17,7 +17,8 @@ export const CartTableControl = styled.div`
   flex-direction: row;
   margin: 0 1rem;
   img {
-    height: 1rem;
+    height: 1rem !important;
+    margin-left: 1rem;
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {

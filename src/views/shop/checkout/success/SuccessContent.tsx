@@ -10,8 +10,16 @@ import { useTransactionData } from "./useTransactionData";
 import { useSendReceipt } from "./useSendReceipt";
 import { FloatingContentNavigation } from "components/navigation/floating-content-navigation/FloatingContentNavigation";
 import { FloatingContentContainer } from "components/containers/Containers";
+import { useEffect } from "react";
 
 const SuccessContent = () => {
+  useEffect(() => {
+    sessionStorage.setItem("hasCheckedOut", JSON.stringify(true));
+    return () => {
+      sessionStorage.removeItem("cart");
+      sessionStorage.removeItem("hasCheckedOut");
+    };
+  }, []);
   const { cart, shipping } = useShopDataFromStorage();
   const total = useCalculateTotal(cart, shipping?.shippingTotal ?? 0);
   const {

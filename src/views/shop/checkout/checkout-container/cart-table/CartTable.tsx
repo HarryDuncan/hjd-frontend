@@ -61,7 +61,7 @@ const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
               <SpinButton
                 value={cartItem.quantity}
                 max={cartItem.product.stock}
-                min={0}
+                min={1}
                 onChange={(updatedValue: number) => {
                   handleUpdateQuantity(updatedValue, cartItem.product.id);
                 }}

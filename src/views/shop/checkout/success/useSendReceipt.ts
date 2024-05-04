@@ -54,10 +54,10 @@ export const useSendReceipt = (
   ]);
 
   useEffect(() => {
-    if (!hasSentReceipt && !orderAlreadyCreated) {
+    if (!hasSentReceipt) {
       sendReceiptData();
     }
-  }, [sendReceiptData, orderAlreadyCreated]);
+  }, [sendReceiptData]);
 
   return { sendReceiptData, orderId };
 };

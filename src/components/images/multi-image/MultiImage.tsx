@@ -1,10 +1,13 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { StaticImage } from "../static-image";
 import {
   MultiImageContainer,
   ThumbnailContainer,
   ThumbnailImage,
+  ThumbnailImageContainer,
 } from "./MultiImage.styles";
+import { Thumbnail } from "./Thumbnail";
+import { ImageDimensions } from "../images.types";
 
 interface MultiImageProps {
   title: string;
@@ -16,23 +19,41 @@ export const MultiImage = ({
   mainImageUrl,
   multiImages,
 }: MultiImageProps) => {
-  const [currentImageUrl, setCurrentImageUrl] = useState<string>(mainImageUrl);
-  const handleChangeImage = useCallback((imageUrl: string) => {
-    setCurrentImageUrl(imageUrl);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
+  const handleChangeImage = useCallback((imageIndex: number) => {
+    setSelectedImageIndex(imageIndex);
   }, []);
+  const images = useMemo(
+    () => [mainImageUrl, ...multiImages.map((multiImage) => multiImage)],
+    [mainImageUrl, multiImages]
+  );
+
+  const [imageDimension, setImageDimension] = useState<ImageDimensions>({
+    width: 0,
+    height: 0,
+  });
+  const onMainImageLoaded = (loadedImageDimensions: ImageDimensions) => {
+    setImageDimension(loadedImageDimensions);
+  };
+
   return (
     <MultiImageContainer>
-      <StaticImage imageUrl={currentImageUrl} imageTitle={title} />
-      <ThumbnailContainer>
-        {multiImages.map((image, index) => (
-          <ThumbnailImage
-            alt={`${title} image-${{ index }}`}
-            unoptimized
-            src={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}/${image}`}
-            width={85}
-            height={85}
-            objectFit="contain"
-            onClick={() => handleChangeImage(image)}
+      <StaticImage
+        onImageLoaded={onMainImageLoaded}
+        imageUrl={images[selectedImageIndex]}
+        imageTitle={title}
+      />
+      <ThumbnailContainer
+        $top={imageDimension.height}
+        $left={imageDimension.width}
+      >
+        {images.map((image, index) => (
+          <Thumbnail
+            isSelected={index === selectedImageIndex}
+            alt={`${title} image-${index}`}
+            url={image}
+            onClick={handleChangeImage}
+            imageIndex={index}
           />
         ))}
       </ThumbnailContainer>
