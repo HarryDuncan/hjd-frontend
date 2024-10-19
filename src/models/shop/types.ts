@@ -12,6 +12,7 @@ export type Product = {
   variations?: ProductVariations[];
   shippingOptionId: number | null;
   multiImages: string[] | null;
+  isSoldOut?: boolean;
 };
 
 export type ProductVariations = {
