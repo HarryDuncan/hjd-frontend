@@ -1,5 +1,5 @@
 import { shaderSafeFloat } from "visual/utils/conversion/shaderConversions";
-import { ExpandEffectProps } from "../../../../buildShader.types";
+import { ExpandEffectProps } from "../../../../types";
 
 export const expandTransformation = (
   previousPointName: string,
@@ -14,7 +14,7 @@ export const expandTransformation = (
         vec3 direction = normalize(uCenter - ${pointName}.xyz);
         ${pointName}.xyz -= direction * ${shaderSafeFloat(
     effectStrength
-  )} * uStrength;
+  )} * uExpandStrength;
       `;
   return { vertexPointInstantiation, transformation };
 };

@@ -12,6 +12,8 @@ export const VERTEX_EFFECTS = {
   EXPAND: "EXPAND",
   NOISE: "NOISE",
   TRIGGERED_EFFECT: "TRIGGERED",
+  VERTEX_IMAGE_EFFECT: "VERTEX_IMAGE_EFFECT",
+  IMAGE_TO_POINT: "IMAGE_TO_POINT",
 };
 export const VERTEX_EFFECT_POINT_NAMES = {
   DEFAULT_POINT: "position",
@@ -27,11 +29,8 @@ export const VERTEX_EFFECT_POINT_NAMES = {
   TRAVERSE_POINT: "traversePoint",
   NOISE_POINT: "noisePoint",
   TRIGGERED_POINT: "triggeredPoint",
-};
-
-export const DEFAULT_MORPH_EFFECT_CONFIG = {
-  morphCount: 2,
-  preTransformConfigs: [],
+  IMAGE_VERTEX_POINT: "imageVertexPoint",
+  IMAGE_TO_POINT: "imageToPoint",
 };
 
 export const enum TransformTypes {
@@ -40,4 +39,29 @@ export const enum TransformTypes {
 
 export const DEFAULT_VERTEX_EFFECT_PARAMS = {
   declareInTransform: true,
+};
+
+export const IMAGE_VERTEX_EFFECT = {
+  IMAGE_TO_POINTS: "IMAGE_TO_POINTS",
+};
+
+export const DISPLACEMENT_TYPES = {
+  EXPLODE: "EXPLODE",
+  IMPLODE: "IMPLODE",
+};
+
+export const DISTORTION_TYPES = {
+  STRETCH: "STRETCH",
+  TWIST: "TWIST",
+  FLEXY_TWISTER: "FLEXY_TWISTER",
+};
+
+export const TRIGGERED_VERTEX_EFFECT = {
+  DISPLACE: "DISPLACE",
+  WARP: "WARP",
+};
+
+export const INTERACTION_VERTEX_EFFECT = {
+  DISPLACE: "DISPLACE",
+  WARP: "WARP",
 };

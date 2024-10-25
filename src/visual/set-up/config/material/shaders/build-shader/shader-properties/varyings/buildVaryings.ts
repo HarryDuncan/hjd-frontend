@@ -1,5 +1,5 @@
-import { ShaderPropertyTypes } from "../../buildShader.consts";
-import { AttributeConfig, VaryingConfig } from "../../buildShader.types";
+import { ShaderPropertyTypes } from "../../constants/buildShader.consts";
+import { AttributeConfig, VaryingConfig } from "../../types";
 import { createDeclarationString } from "../../helpers/createDeclarationString";
 import { getDefaultValueAsString } from "../../helpers/getDefaultValue";
 import {
@@ -74,10 +74,19 @@ const getDefaultVaryingString = (
         strings.push(`vPosition = ${vertexTransformationName}.xyz;`);
         break;
       case "vNormal":
-        strings.push(
-          `vNormal = normalize((modelViewMatrix * vec4(normal, 0.0)).xyz);`
-        );
+        strings.push(`vNormal = normal;`);
         break;
+      case "vModelViewMatrix":
+        strings.push("vModelViewMatrix = modelViewMatrix;");
+        break;
+      case "vNormalInterpolation":
+        return strings.push(
+          "vNormalInterpolation = normalMatrix * rotationNormal;"
+        );
+      case "vTexCoord":
+        strings.push(`vTexCoord = texcoord;`);
+      case "vGeometryNormal":
+        strings.push("vGeometryNormal = normal;");
       case "vEye":
         strings.push(
           `vEye = normalize(vec3(modelViewMatrix * vec4(${vertexTransformationName}.xyz, 1.0)));`
@@ -106,7 +115,7 @@ const getCustomVaryingStrings = (config: VaryingConfig[]) => {
 
 const getAttributeVaryingStrings = (
   config: VaryingConfig[],
-  attributeConfig: AttributeConfig[]
+  attributeConfig: AttributeConfig[] = []
 ) =>
   config.flatMap(({ id, attributeKey, varyingType }) => {
     if (varyingType === VARYING_TYPES.ATTRIBUTE) {

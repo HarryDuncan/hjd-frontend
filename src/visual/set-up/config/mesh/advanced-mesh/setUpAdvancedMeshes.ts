@@ -2,7 +2,7 @@ import { AdvancedScene, Asset } from "visual/set-up/assets/asset.types";
 import { AdvancedMeshConfig } from "./advancedMesh.types";
 import { MeshComponentConfig, MeshTransformConfig } from "../../config.types";
 import { Group, Material } from "three";
-import { ShaderAttributeConfig } from "../../material/shaders/build-shader/buildShader.types";
+import { ShaderAttributeConfig } from "../../material/shaders/build-shader/types";
 import {
   formatPositionFromConfig,
   formatRotationFromConfig,
@@ -51,7 +51,7 @@ const loopThroughAllChildren = (
 ) => {
   const { children } = data;
   children.forEach((child) => {
-    const { idGroup, isMesh } = child as unknown as {
+    const { idGroup, isMesh } = (child as unknown) as {
       idGroup: string | boolean;
       isMesh: boolean;
     };
@@ -66,7 +66,7 @@ const loopThroughAllChildren = (
     }
     if (isMesh) {
       // // add any material data to mesh
-      // const formattedTransforms = formatMeshTransforms(
+      // const formattedTransforms = formatMeshAttributes(
       //   meshTransforms ?? [],
       //   attributeConfigs as unknown as ShaderAttributeConfig[]
       // );
