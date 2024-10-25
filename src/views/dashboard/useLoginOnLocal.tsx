@@ -2,10 +2,13 @@ import { useEffect } from "react";
 import { useDashboardContext } from "./dashboard-context/dashboard.context";
 
 export const useLoginOnLocal = () => {
-  const { dispatch } = useDashboardContext();
+  const {
+    dispatch,
+    state: { isLoggedIn },
+  } = useDashboardContext();
   useEffect(() => {
-    if (window.location.host.indexOf("localhost:3000") !== -1) {
+    if (window.location.host.indexOf("localhost:3s000") !== -1 && !isLoggedIn) {
       dispatch({ type: "LOGIN" });
     }
-  }, [dispatch]);
+  }, [dispatch, isLoggedIn]);
 };

@@ -1,7 +1,7 @@
 import { ActionButton } from "components/buttons/action-button/ActionButton";
 import { FloatingCentralContainer } from "components/containers/Containers";
 import { TextInput } from "components/inputs/text-input/TextInput";
-import { MainTitle } from "components/text/Text";
+import { Label, MainTitle } from "components/text/Text";
 import { useCallback, useState } from "react";
 import { authenticateUser } from "services/dashboard/authenticateUser";
 import { useDashboardContext } from "../dashboard-context/dashboard.context";
@@ -12,9 +12,10 @@ export const LoginSection = () => {
   const [username, setUsername] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
   const [mfaCode, setMfaCode] = useState<string | null>(null);
-
+  const [errorMessage, setErrorMessage] = useState<string | null>();
   const { dispatch } = useDashboardContext();
   const handleSubmit = useCallback(async () => {
+    setErrorMessage(null);
     if (username && password && mfaCode) {
       const authenticationData = {
         username,
@@ -26,6 +27,8 @@ export const LoginSection = () => {
         dispatch({
           type: "LOGIN",
         });
+      } else {
+        setErrorMessage("Error logging in");
       }
     }
   }, [dispatch, username, password, mfaCode]);
@@ -43,6 +46,7 @@ export const LoginSection = () => {
           onClick={handleSubmit}
         />
       </form>
+      <Label>{errorMessage}</Label>
     </FloatingCentralContainer>
   );
 };

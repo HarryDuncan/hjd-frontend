@@ -1,7 +1,7 @@
 import {
   DoubleSide,
   Material,
-  MeshLambertMaterial,
+  MeshBasicMaterial,
   MeshMatcapMaterial,
   MeshPhongMaterial,
   MeshStandardMaterial,
@@ -46,7 +46,7 @@ export const getMaterial = (
       if (video) {
         const texture = new VideoTexture(video as HTMLVideoElement);
         const parameters = { color: 0xffffff, map: texture };
-        return new MeshLambertMaterial(parameters);
+        return new MeshBasicMaterial(parameters);
       }
       console.warn("no video element found");
       return new MeshStandardMaterial({});

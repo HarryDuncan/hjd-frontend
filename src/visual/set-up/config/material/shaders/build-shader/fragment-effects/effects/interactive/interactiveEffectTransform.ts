@@ -1,8 +1,8 @@
 import {
-  ColorEffectProps,
+  ColorFragmentEffectProps,
   FragmentEffectData,
   InteractiveEffectProps,
-} from "../../../buildShader.types";
+} from "../../../types";
 import { FRAGMENT_EFFECT } from "../../fragmentEffects.consts";
 import { color } from "../color/color";
 import { defaultFragmentEffect } from "../defaultFragmentEffect/defaultFragmentEffect";
@@ -44,7 +44,7 @@ const getEffectData = (
   const { effectType, effectProps } = interactiveEffectProps;
   switch (effectType) {
     case FRAGMENT_EFFECT.COLOR:
-      return color(fragName, effectProps as Partial<ColorEffectProps>);
+      return color(fragName, effectProps as Partial<ColorFragmentEffectProps>);
     default:
       console.warn(`No interactive effect configured for ${effectProps}`);
       return defaultFragmentEffect();

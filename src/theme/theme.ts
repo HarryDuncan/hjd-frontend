@@ -47,7 +47,7 @@ export const THEME: DefaultTheme = {
       bold: 700,
     },
     default: {
-      family: "Courier New",
+      family: "var(--font-default)",
     },
     alternative: {
       family: "var(--font-hjd)",

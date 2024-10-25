@@ -31,4 +31,5 @@ export interface ReceiptData {
   cart: CartItem[];
   shippingData: ShippingData;
   transactionDetails: TransactionDetails;
+  orderId?: number | null;
 }

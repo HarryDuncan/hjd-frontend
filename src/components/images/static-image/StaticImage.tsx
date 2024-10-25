@@ -1,32 +1,22 @@
 import { LoadingSvg } from "components/loading/loading-svg/LoadingSvg";
 import { ImageContainer, StyledImage } from "./StaticImage.styles";
-import { useState } from "react";
+import { useLoadedImageDimensions } from "../hooks/useLoadedImageDimensions";
+import { ImageDimensions } from "../images.types";
+import { imageLoader } from "../images.functions";
 
 interface StaticImageProps {
   imageUrl: string;
   imageTitle: string;
+  onImageLoaded?: (imageDimensions: ImageDimensions) => void;
 }
 
-interface Dimensions {
-  height: number;
-  width: number;
-}
 export const StaticImage = ({
   imageUrl = "",
   imageTitle = "img",
+  onImageLoaded,
 }: StaticImageProps) => {
-  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
-  const [imageDimensions, setImageDimensions] = useState<null | Dimensions>(
-    null
-  );
-  const onLoadingComplete = (img: HTMLImageElement) => {
-    const { height, width } = img;
-    setImageDimensions({ height, width });
-    setIsImageLoaded(true);
-  };
-  const imageLoader = ({ src }: { src: string }) => {
-    return `${process.env.NEXT_PUBLIC_CONTENT_ROOT}${src}`;
-  };
+  const { onImageLoadingComplete, imageDimensions, isImageLoaded } =
+    useLoadedImageDimensions(onImageLoaded);
 
   return (
     <ImageContainer
@@ -40,7 +30,7 @@ export const StaticImage = ({
         src={`${process.env.NEXT_PUBLIC_CONTENT_ROOT}${imageUrl}`}
         fill
         unoptimized
-        onLoadingComplete={onLoadingComplete}
+        onLoadingComplete={onImageLoadingComplete}
       />
     </ImageContainer>
   );

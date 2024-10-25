@@ -13,6 +13,9 @@ import {
   formatPositionFromConfig,
   formatRotationFromConfig,
 } from "visual/utils/three-dimension-space/formatFromConfig";
+import { CUSTOM_GEOMETRY_TYPES } from "../mesh.consts";
+import { setUpCustomBufferGeometry } from "./custom-buffer-geometry/setupCustomBufferGeometry";
+import { CustomBufferGeometryType } from "../mesh.types";
 
 export const formatGeometry = (
   loadedAssets: Asset[],
@@ -67,13 +70,21 @@ const getGeometryForMeshConfig = (
   geometries: FormattedGeometry[],
   geometryId: string
 ) => {
+  if (CUSTOM_GEOMETRY_TYPES.includes(geometryId)) {
+    const customGeometry = setUpCustomBufferGeometry(
+      geometryId as CustomBufferGeometryType,
+      {}
+    );
+
+    return { geometry: customGeometry };
+  }
   const meshGeometry = geometries.find(
     (geometry) => geometry.name === geometryId
   );
   if (!meshGeometry) {
     console.warn(
       `no geometry found for ${geometryId} this mesh will not be rendered
-      geometry names ${geometries.map(({ name }) => name)}`
+        geometry names ${geometries.map(({ name }) => name)}`
     );
   }
 

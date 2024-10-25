@@ -1,10 +1,10 @@
 import {
   TriggeredFragmentEffect,
   FragmentEffectData,
-  ColorEffectProps,
-  OpacityEffectProps,
+  ColorFragmentEffectProps,
+  OpacityFragmentEffectProps,
   TriggeredFragmentEffectProps,
-} from "../../../buildShader.types";
+} from "../../../types";
 import { FRAGMENT_EFFECT } from "../../fragmentEffects.consts";
 import { color } from "../color/color";
 import { defaultFragmentEffect } from "../defaultFragmentEffect/defaultFragmentEffect";
@@ -77,11 +77,14 @@ const getEffectData = (
   }
   switch (effectType) {
     case FRAGMENT_EFFECT.COLOR:
-      return color(fragName, formattedEffectProps as Partial<ColorEffectProps>);
+      return color(
+        fragName,
+        formattedEffectProps as Partial<ColorFragmentEffectProps>
+      );
     case FRAGMENT_EFFECT.OPACITY:
       return opacity(
         fragName,
-        formattedEffectProps as Partial<OpacityEffectProps>
+        formattedEffectProps as Partial<OpacityFragmentEffectProps>
       );
     case FRAGMENT_EFFECT.EMPTY:
     default:
