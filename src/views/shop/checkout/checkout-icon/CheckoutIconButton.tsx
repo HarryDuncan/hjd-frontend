@@ -1,9 +1,11 @@
 import { useIsNavTop } from "components/navigation/hooks/useIsNavTop";
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import styled from "styled-components";
 import CartStorageHandler from "../cancel/CartStorageHandler";
 import { useCartItemCount } from "views/shop/hooks/useCartItemCount";
+import { useShopDataFromStorage } from "views/shop/hooks/useShopDataFromStorage";
+import { useShopContext } from "views/shop/shop-context/shop.context";
 
 const CartIconContainer = styled.div`
   position: relative;
@@ -51,7 +53,21 @@ export const Badge = styled.div`
   }
 `;
 
+const useSetCartFromStorage = () => {
+  const {
+    dispatch,
+    state: { cart },
+  } = useShopContext();
+  const { cart: storedCart, hasCheckedOut } = useShopDataFromStorage();
+  useEffect(() => {
+    if (storedCart.length && !hasCheckedOut && !cart.length) {
+      dispatch({ type: "UPDATE_CART", payload: storedCart });
+    }
+  }, [dispatch, storedCart, hasCheckedOut, cart]);
+};
+
 const CartWithDropdown: React.FC = () => {
+  useSetCartFromStorage();
   const isNavTop = useIsNavTop();
   const handleRouting = useHandleRouting("/checkout");
   const itemCount = useCartItemCount();

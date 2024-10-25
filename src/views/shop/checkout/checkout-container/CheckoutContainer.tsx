@@ -17,7 +17,14 @@ import { getStripe } from "services/shop/getStripe";
 import { useCartItemCount } from "views/shop/hooks/useCartItemCount";
 import { useShopData } from "views/shop/hooks/useShopData";
 import { FloatingContentNavigation } from "components/navigation/floating-content-navigation/FloatingContentNavigation";
-import { ContentText } from "components/text/Text";
+import { ContentSubText } from "components/text/Text";
+import { ThirdPartyLogo } from "components/icons/ThirdPartyLogo";
+
+const STRIPE_LOGO_PROPS = {
+  link: "https://stripe.com",
+  alt: "stripe",
+  imgUrl: "/assets/icons/stripe-logo.png",
+};
 
 export default function CheckoutPreview() {
   const {
@@ -88,12 +95,9 @@ export default function CheckoutPreview() {
           </form>
         </CheckoutSection>
         <CheckoutSection>
-          <ContentText>
-            Secure checkout with{" "}
-            <a href="https://stripe.com/" rel="noreferrer" target="_blank">
-              Stripe
-            </a>
-          </ContentText>
+          <ContentSubText>Secure checkout with</ContentSubText>
+          <ThirdPartyLogo {...STRIPE_LOGO_PROPS} />
+          <ContentSubText>We never store your card details</ContentSubText>
         </CheckoutSection>
       </FloatingContentContainer>
     </FloatingCentralContainer>

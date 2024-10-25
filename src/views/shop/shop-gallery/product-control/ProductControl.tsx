@@ -1,8 +1,11 @@
-import { ContentSubText } from "components/text/Text";
+import { ContentSubText, ContentText } from "components/text/Text";
 import { Product } from "models/shop/types";
 import { useCallback, useRef } from "react";
 import { useShopContext } from "views/shop/shop-context/shop.context";
-import { ProductControlContainer } from "../ShopGallery.styles";
+import {
+  ColumnContainer,
+  ProductControlContainer,
+} from "../ShopGallery.styles";
 import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
 
 export const ProductControl = ({ productData }: { productData: Product }) => {
@@ -22,12 +25,16 @@ export const ProductControl = ({ productData }: { productData: Product }) => {
   return (
     <ProductControlContainer>
       {stock && price ? (
-        <CircleActionButton
-          ref={buttonRef}
-          onClick={handleAddToCart}
-          title="Add To Cart"
-          circleFill="#030303"
-        />
+        <ColumnContainer>
+          <ContentText>AUD ${price}</ContentText>
+          <ContentText>{stock} left</ContentText>
+          <CircleActionButton
+            ref={buttonRef}
+            onClick={handleAddToCart}
+            title="Add To Cart"
+            circleFill="#030303"
+          />
+        </ColumnContainer>
       ) : (
         <ContentSubText>Sold Out</ContentSubText>
       )}

@@ -11,6 +11,7 @@ import { MainTitle } from "components/text/Text";
 import DefaultLayout from "layout/DefaultLayout";
 import { IconButton } from "components/buttons/icon-button/IconButton";
 import { IconTypes } from "components/buttons/icon-button/IconButton.types";
+import { MultiImage } from "components/images/multi-image/MultiImage";
 
 interface ViewItemProps {
   title: string;
@@ -18,6 +19,7 @@ interface ViewItemProps {
   onChangeItem: (direction: Direction) => void;
   handleExit: () => void;
   children: ReactNode;
+  multiImage?: string[] | null;
 }
 export default function ViewItem({
   imageUrl,
@@ -25,12 +27,22 @@ export default function ViewItem({
   onChangeItem,
   handleExit,
   children,
+  multiImage,
 }: ViewItemProps) {
   return (
     <DefaultLayout hasFooter={false}>
       <SwipeablePageNavigator onSwipe={onChangeItem}>
         <ViewItemContainer>
-          <StaticImage imageUrl={imageUrl} imageTitle={title} />
+          {multiImage ? (
+            <MultiImage
+              mainImageUrl={imageUrl}
+              title={title}
+              multiImages={multiImage}
+            />
+          ) : (
+            <StaticImage imageUrl={imageUrl} imageTitle={title} />
+          )}
+
           <ViewItemContent>
             <IconButton onClick={handleExit} type={IconTypes.EXIT} hasGesture />
             <IconButton
