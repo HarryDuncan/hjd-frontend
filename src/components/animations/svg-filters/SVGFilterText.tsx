@@ -1,7 +1,18 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { AnimationOptions } from "./SVGFilters.types";
+import { gsap } from "gsap";
+import { ContentText } from "components/text/Text";
 
-export const SVGFilterText = ({ filterId = "#filter-1" }) => {
+interface SVGFilterTextProps {
+  filterId?: string;
+  text: string;
+  isLight?: boolean;
+}
+export const SVGFilterText = ({
+  text,
+  filterId = "#filter-1",
+  isLight = true,
+}: SVGFilterTextProps) => {
   const filterRef = useRef<SVGFilterElement | null>(null);
   const animationOptions: AnimationOptions = useMemo(
     () => ({
@@ -31,12 +42,12 @@ export const SVGFilterText = ({ filterId = "#filter-1" }) => {
     [animationOptions, lineRef]
   );
 
-  //   const onMouseEnter = useCallback(() => {
-  //     timeline.restart();
-  //   }, [timeline]);
-  //   const onMouseLeave = useCallback(() => {
-  //     timeline.progress(1).kill();
-  //   }, [timeline]);
+  const onMouseEnter = useCallback(() => {
+    timeline.restart();
+  }, [timeline]);
+  const onMouseLeave = useCallback(() => {
+    timeline.progress(1).kill();
+  }, [timeline]);
 
   useEffect(() => {
     const filter = filterRef.current;
@@ -80,6 +91,13 @@ export const SVGFilterText = ({ filterId = "#filter-1" }) => {
           </filter>
         </defs>
       </svg>
+      <ContentText
+        $isLight={isLight}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        {text}
+      </ContentText>
     </>
   );
 };
