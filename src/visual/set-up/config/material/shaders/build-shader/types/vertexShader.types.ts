@@ -97,6 +97,11 @@ export type TriggeredVertexEffect = {
   effectProps: TriggeredVertexEffectProps;
 };
 
+export type TransitionEffectProps = EffectParameters & {
+  effectType: string;
+  effectProps: VertexEffectProps;
+};
+
 export type InteractiveVertexEffectProps =
   | DisplacementEffectProps
   | ExplodeEffectProps;

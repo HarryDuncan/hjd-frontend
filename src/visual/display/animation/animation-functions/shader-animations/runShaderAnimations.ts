@@ -18,13 +18,12 @@ export const runShaderAnimations = (
     snapOnPause,
     animationPauseMilis,
     animationLoopConfig,
-    transitionAnimation,
   } = animationProperties;
 
   const duration = animationDurationMilis / 1000;
   const animationLoop = setUpAnimationLoop(
     animationLoopConfig,
-    transitionAnimation,
+
     duration
   );
 

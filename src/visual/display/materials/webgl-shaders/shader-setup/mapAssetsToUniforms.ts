@@ -47,7 +47,7 @@ const getMappedAsset = (assetMapping: AssetMap, assets: Asset[]) => {
       }
 
       case ASSET_MAPPING_RELATIONSHIPS.DIMENSION: {
-        //@ts-ignore
+        // @ts-ignore
         const { width, height } = mappedAsset.data.image;
         return new Vector2(width, height);
       }
