@@ -27,11 +27,14 @@ export const PaintingGallery = () => {
 const usePaintingsInGallery = (paintings: Painting[]) =>
   useMemo(
     () =>
-      paintings.map(({ imageUrl, title, slug }) => ({
-        imageUrl: `${ART_ROOT_URL}${imageUrl}`,
-        title,
-        slug,
-        id: slug,
-      })),
+      paintings
+        .map(({ imageUrl, title, slug, yearCompleted }) => ({
+          imageUrl: `${ART_ROOT_URL}${imageUrl}`,
+          title,
+          slug,
+          id: slug,
+          yearCompleted,
+        }))
+        .sort((a, b) => b.yearCompleted - a.yearCompleted),
     [paintings]
   );

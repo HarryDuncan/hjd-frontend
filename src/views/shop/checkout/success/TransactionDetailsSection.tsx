@@ -13,9 +13,13 @@ export const TransactionDetailsSection = ({
   billingDetails,
 }: BillingDetailsProps) => (
   <CheckoutSection>
+    <ContentText>
+      Thank you {billingDetails.name} your order has been received
+    </ContentText>
+    <br />
     {orderId && <ContentText>Order Id: {orderId}</ContentText>}
     <ContentText>Email: {customerDetails.email}</ContentText>
-    <ContentText>Shipping To: {billingDetails.name}</ContentText>
+    <br />
     <ContentText>Address: {billingDetails.address.line1}</ContentText>
     <ContentText>City: {billingDetails.address.city}</ContentText>
     <ContentText>Country: {billingDetails.address.country}</ContentText>
