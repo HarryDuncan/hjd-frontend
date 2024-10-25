@@ -1,7 +1,7 @@
 import {
   ShaderPropertyTypes,
   ShaderPropertyValueTypes,
-} from "../../buildShader.consts";
+} from "../../constants/buildShader.consts";
 import { expect, test, describe } from "vitest";
 import { createDeclarationString } from "../createDeclarationString";
 
@@ -13,6 +13,17 @@ describe("createDeclarationString", () => {
       "uTest"
     );
     const expected = "uniform float uTest;";
+    expect(result).toStrictEqual(expected);
+  });
+
+  test("returns correct declaration for uniform that is an array of 9", () => {
+    const result = createDeclarationString(
+      ShaderPropertyTypes.UNIFORM,
+      ShaderPropertyValueTypes.FLOAT,
+      "uTest",
+      10
+    );
+    const expected = "uniform float uTest[10];";
     expect(result).toStrictEqual(expected);
   });
 

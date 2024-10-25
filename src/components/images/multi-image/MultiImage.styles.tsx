@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { ImageDimensions } from "../images.types";
 
 export const MultiImageContainer = styled.div`
   display: flex;

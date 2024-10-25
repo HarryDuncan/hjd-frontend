@@ -1,5 +1,5 @@
 import { AXIS } from "visual/utils/three-dimension-space/position/position.types";
-import { ShaderPropertyValueTypes } from "../../../buildShader.consts";
+import { ShaderPropertyValueTypes } from "../../../constants/buildShader.consts";
 
 export const ROTATION_UNIFORMS = {
   defaultUniforms: [],
@@ -17,4 +17,9 @@ export const ROTATION_ATTRIBUTES = [];
 export const DEFAULT_ROTATION_EFFECT_CONFIG = {
   axis: AXIS.Y,
   speed: 0.2,
+};
+
+export const ROTATION_EFFECT_TYPES = {
+  ROTATION_BY_TIME: "ROTATION_BY_TIME",
+  ROTATION_BY_DEGREES: "ROTATION_BY_DEGREES",
 };

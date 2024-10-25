@@ -1,4 +1,3 @@
-import React from "react";
 import { VideoBackgroundContainer } from "./VideoBackground.styles";
 
 export const VideoBackground = ({
@@ -9,7 +8,7 @@ export const VideoBackground = ({
   if (!videoSrc) return null;
   return (
     <VideoBackgroundContainer>
-      <video autoPlay muted loop>
+      <video preload="auto" autoPlay muted loop>
         <source src={videoSrc} type="video/mp4" />
       </video>
     </VideoBackgroundContainer>

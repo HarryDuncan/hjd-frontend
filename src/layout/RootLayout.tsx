@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { M_PLUS_Code_Latin } from "next/font/google";
+import { M_PLUS_Code_Latin as mPlusCodeLatin } from "next/font/google";
 import { ReactNode } from "react";
 
 const hjdFont = localFont({
@@ -7,7 +7,7 @@ const hjdFont = localFont({
   variable: "--font-hjd",
 });
 
-const googleFont = M_PLUS_Code_Latin({
+const googleFont = mPlusCodeLatin({
   subsets: ["latin"],
   weight: ["100", "300", "400", "700"], // Adjust weights as needed
   variable: "--font-default",
