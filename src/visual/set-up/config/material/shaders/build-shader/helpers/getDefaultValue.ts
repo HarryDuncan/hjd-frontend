@@ -13,9 +13,9 @@ export const getDefaultValue = (
           acc[curr.id] = curr.value ?? getDefaultValue(curr.valueType);
           return acc;
         }, {});
-      } else {
-        return null;
       }
+      return null;
+
     case ShaderPropertyValueTypes.FLOAT:
       return 0.0;
     case ShaderPropertyValueTypes.INT:

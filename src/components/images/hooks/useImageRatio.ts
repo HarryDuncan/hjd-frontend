@@ -12,9 +12,8 @@ export const useImageRatio = (
       if (height !== 0 && width !== 0) {
         if (antecedent === "height") {
           return [1, width / height];
-        } else {
-          return [height / width, 1];
         }
+        return [height / width, 1];
       }
     }
     return EMPTY_RATIO;

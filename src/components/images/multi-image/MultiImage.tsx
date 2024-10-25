@@ -44,7 +44,7 @@ export const MultiImage = ({
       >
         {images.map((image, index) => (
           <Thumbnail
-            key={`${title}-image-${index}`}
+            key={`${title}-image-${image}`}
             isSelected={index === selectedImageIndex}
             alt={`${title} image-${index}`}
             url={image}
