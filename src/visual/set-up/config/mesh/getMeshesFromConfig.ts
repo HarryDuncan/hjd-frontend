@@ -6,11 +6,11 @@ import { setUpRandomizedMeshConfigs } from "./randomized/setUpRandomizedMeshConf
 import { Asset } from "visual/set-up/assets/asset.types";
 import { SceneConfig } from "../config.types";
 import { transformGeometry } from "./geometry/transform-geometries/transformGeometries";
-import { ShaderAttributeConfig } from "../material/shaders/build-shader/buildShader.types";
-import { formatMeshTransforms } from "./geometry/formatMeshTransforms";
+import { ShaderAttributeConfig } from "../material/shaders/build-shader/types";
 import { multipleMeshes } from "./multiple-meshes/multipleMeshes";
 import { setUpAdvancedMeshes } from "./advanced-mesh/setUpAdvancedMeshes";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
+import { formatMeshAttributes } from "./attributes/formatMeshAttributes";
 
 export const getMeshesFromConfig = (
   assets: Asset[],
@@ -31,13 +31,13 @@ export const getMeshesFromConfig = (
     ...multipleMeshConfigs,
   ];
   const formattedGeometry = formatGeometry(assets, allMeshes);
-  const formattedTransforms = formatMeshTransforms(
+  const meshAttributes = formatMeshAttributes(
     meshTransforms ?? [],
     attributeConfigs
   );
 
   const transformedGeometry = transformGeometry(
-    formattedTransforms,
+    meshAttributes,
     formattedGeometry
   );
   const geometriesWithMaterials = addMaterials(

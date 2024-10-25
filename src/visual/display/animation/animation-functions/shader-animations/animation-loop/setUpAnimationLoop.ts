@@ -1,8 +1,9 @@
 import { ShaderMeshObject } from "visual/set-up/config/mesh/mesh.types";
-import { getLoopType } from "./getLoopTypes";
+import { getLoopType } from "./loops/getLoopTypes";
 import { updateObjectUniformByKey } from "../uniforms/updateObjectUniformByKey";
 import { AnimationLoopConfigItem } from "./animationloop.types";
 import { composeFunctions } from "../../../../../utils/composeFunctions";
+// import { transitionLoop } from "./transition-loop/transitionLoop";
 
 const defaultConfig = [
   {
@@ -12,6 +13,7 @@ const defaultConfig = [
 ];
 export const setUpAnimationLoop = (
   config: AnimationLoopConfigItem[],
+
   loopDuration: number
 ): ((
   shaderMesh: ShaderMeshObject,
@@ -22,22 +24,40 @@ export const setUpAnimationLoop = (
     ...config,
   ] as AnimationLoopConfigItem[];
   const animationLoopFunctions = animationConfig.map(
-    ({ uniform,toMaterial, loopType, duration, loopProps }) => {
+    ({
+      uniform,
+      toMaterial,
+      loopType,
+      duration,
+      loopProps,
+      uniformArrayIndex,
+    }) => {
       const animationLoopDuration = duration ?? loopDuration;
       const loopFunction = getLoopType(
         loopType,
         animationLoopDuration,
-       loopProps
+        loopProps
       );
       return (shaderMesh: ShaderMeshObject, time: number) => {
-        const uniformValue = loopFunction(time);
         if (toMaterial && shaderMesh?.material.name !== toMaterial) {
           return [shaderMesh, time];
         }
-        updateObjectUniformByKey(shaderMesh, uniform, uniformValue);
+        const uniformValue = loopFunction(time);
+        updateObjectUniformByKey(
+          shaderMesh,
+          uniform,
+          uniformValue,
+          uniformArrayIndex
+        );
         return [shaderMesh, time];
       };
     }
   );
+  // const transitionAnimationFunction = transitionLoop(
+  //   transitionAnimations ?? null
+  // );
+  // if (transitionAnimationFunction) {
+  //   animationLoopFunctions.push(transitionAnimationFunction);
+  // }
   return composeFunctions(animationLoopFunctions);
 };

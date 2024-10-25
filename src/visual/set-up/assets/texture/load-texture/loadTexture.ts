@@ -1,4 +1,10 @@
-import { TextureLoader, MathUtils as Math, Texture } from "three";
+import {
+  TextureLoader,
+  MathUtils as Math,
+  Texture,
+  LinearFilter,
+  RGBAFormat,
+} from "three";
 
 export const loadTexture = (path: string) =>
   new Promise((resolve: (value: Texture) => void) => {
@@ -10,6 +16,10 @@ export const loadTexture = (path: string) =>
       ) {
         console.warn(`"${path}" image size is not power of 2.`);
       }
+      data.minFilter = LinearFilter;
+      data.magFilter = LinearFilter;
+      data.format = RGBAFormat;
+
       data.needsUpdate = true;
       resolve(data);
     });

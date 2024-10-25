@@ -9,6 +9,9 @@ export const FRAGMENT_EFFECT = {
   INTERACTIVE: "INTERACTIVE",
   TRIGGERED: "TRIGGERED",
   VANISH: "VANISH",
+  BRIGHTNESS: "BRIGHTNESS",
+  PHYSICAL_MATERIAL: "PHYSICAL_MATERIAL",
+  PHONG: "PHONG",
 };
 
 export const FRAGMENT_COLOR_NAMES = {
@@ -20,17 +23,23 @@ export const FRAGMENT_COLOR_NAMES = {
   INTERACTIVE: "fragInteractive",
   TRIGGERED: "fragTriggered",
   VANISH: "fragVanish",
+  BRIGHTNESS: "fragBrightness",
+  PHYSICAL_MATERIAL: "fragPhysicalMaterial",
 };
 export const DEFAULT_FRAG_COLOR = "#ff1205";
-export const DEFAULT_POINT_MATERIAL = {
-  pointDisplayPercentage: 0.5,
-  pointDefinitions: [
-    { id: "uTexture1", pointColor: "#ff1205" },
-    { id: "uTexture2", pointColor: "#ff1005" },
-  ],
-  pointColor: "#ff1205",
-};
 
 export const DEFAULT_FRAGMENT_EFFECT_PARAMS = {
   declareInTransform: true,
+};
+
+export const TRIGGERED_FRAGMENT_EFFECT = {
+  COLOR: "COLOR",
+  OPACITY: "OPACITY",
+  EMPTY: "EMPTY",
+};
+
+export const IMAGE_FRAGMENT_EFFECT = {};
+
+export const INTERACTION_FRAGMENT_EFFECT = {
+  COLOR: "COLOR",
 };

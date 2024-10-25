@@ -3,7 +3,7 @@ import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
 import { useCallback, useMemo } from "react";
 import { Scene } from "three";
 import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
-import { updateUniformByKey } from "visual/display/animation/animation-functions/shader-animations/uniforms/updateUniformByKey";
+import { updateSceneMeshesUniform } from "visual/display/animation/animation-functions/shader-animations/uniforms/updateSceneMeshesUniforms";
 import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
 import { AnimationConfig } from "visual/display/animation/animation.types";
 import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
@@ -52,14 +52,14 @@ const useOnScrollEventConfig = (contentHeight: number) => {
     (scene: Scene, event: Event) => {
       const { scrollY } = event as Event & { scrollY: number };
       const scrollPercentage = scrollY / contentHeight;
-      updateUniformByKey(
+      updateSceneMeshesUniform(
         scene as InteractiveScene,
         "hjd-points",
         "uScroll",
         scrollPercentage * 30
       );
       const opacity = 1 - scrollPercentage * 2;
-      updateUniformByKey(
+      updateSceneMeshesUniform(
         scene as InteractiveScene,
         "hjd-chrome",
         "uOpacity",
