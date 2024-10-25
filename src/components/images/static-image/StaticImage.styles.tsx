@@ -18,12 +18,12 @@ export const ImageContainer = styled.div<{
       theme.breakpoints.tablet}px) {
     flex-direction: column;
     width: 100%;
-    height: ${({ $height }) => `${$height}px` ?? "50rem"};
+    height: ${({ $height }) => ($height ? `${$height}px` : "50rem")};
     margin-left: 0%;
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    height: ${({ $height }) => `${$height}px` ?? "30rem"};
+    height: ${({ $height }) => ($height ? `${$height}px` : "30rem")};
   }
 `;
 export const StyledImage = styled(Image)`
