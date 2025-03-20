@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { useArtData } from "./useArtData";
 import { Direction, moveThroughArray } from "utils/moveThroughArray";
 
-export const useScrollPaintings = () => {
+export const useScrollArts = () => {
   const {
     paintings: { paintings },
   } = useArtData();

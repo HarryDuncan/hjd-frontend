@@ -7,10 +7,12 @@ import {
   ProductControlContainer,
 } from "../ShopGallery.styles";
 import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
+import { useHandleRouting } from "hooks/routing/useHandleRouting";
 
 export const ProductControl = ({ productData }: { productData: Product }) => {
   const { stock, price } = productData;
   const { dispatch } = useShopContext();
+  const handleRouting = useHandleRouting("/checkout");
   const buttonRef = useRef<HTMLElement | null>(null);
   const handleAddToCart = useCallback(() => {
     dispatch({
@@ -20,7 +22,8 @@ export const ProductControl = ({ productData }: { productData: Product }) => {
         quantity: 1,
       },
     });
-  }, [dispatch, productData]);
+    handleRouting();
+  }, [dispatch, productData, handleRouting]);
 
   return (
     <ProductControlContainer>

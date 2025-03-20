@@ -25,7 +25,7 @@ export const CartTableControl = styled.div`
     flex-direction: column;
     justify-content: space-between;
     .trash-icon {
-      margin: 1rem;
+      margin-bottom: 1rem;
       width: 100%;
     }
     img {
