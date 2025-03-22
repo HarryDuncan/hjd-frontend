@@ -4,14 +4,14 @@ import { useQuery } from "react-query";
 import { getArt } from "services/art/getArt";
 
 export const useArtItemData = () => {
-  const paintingSlug = useParams("slug");
+  const artSlug = useParams("slug");
 
   const artData = useQuery<FetchArtResponse>(["painting-items"], () =>
     getArt()
   );
-  if (!artData?.data) return { painting: null, loading: true };
+  if (!artData?.data) return { art: null, loading: true };
 
-  const painting = artData?.data.art.find(({ slug }) => slug === paintingSlug);
+  const art = artData?.data.art.find(({ slug }) => slug === artSlug);
 
-  return { painting, loading: false };
+  return { art, loading: false };
 };

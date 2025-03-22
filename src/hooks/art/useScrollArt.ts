@@ -4,20 +4,18 @@ import { useCallback } from "react";
 import { useArtData } from "./useArtData";
 import { Direction, moveThroughArray } from "utils/moveThroughArray";
 
-export const useScrollArts = () => {
-  const {
-    paintings: { paintings },
-  } = useArtData();
+export const useScrollArt = () => {
+  const { art } = useArtData();
 
   const handleRouting = useHandleRouting("");
   const currentSlug = useParams("slug");
 
-  const currentIndex = paintings.findIndex(({ slug }) => slug === currentSlug);
+  const currentIndex = art.findIndex(({ slug }) => slug === currentSlug);
   return useCallback(
     (step: Direction) => {
-      const { newIndex } = moveThroughArray(paintings, currentIndex, step);
-      handleRouting(paintings[newIndex].slug);
+      const { newIndex } = moveThroughArray(art, currentIndex, step);
+      handleRouting(art[newIndex].slug);
     },
-    [paintings, currentIndex, handleRouting]
+    [art, currentIndex, handleRouting]
   );
 };

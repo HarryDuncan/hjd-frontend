@@ -1,15 +1,18 @@
-import { DynamicScene } from "components/visual-components/DynamicInteractiveNode";
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
 import type { NextPage } from "next";
 import { Suspense, useCallback, useMemo, useRef } from "react";
-import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
-import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
-import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
-import { useSceneData } from "visual/set-up/config/useSceneData";
+import {
+  useSetWindowState,
+  startSceneElementAnimations,
+  InteractiveScene,
+  useSceneData,
+  AnimationConfig,
+  SceneData,
+  SceneNode,
+} from "art-os-package";
 import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
-import { AnimationConfig } from "visual/display/animation/animation.types";
-import { SceneData } from "visual/set-up/config/config.types";
+
 import Head from "next/head";
 import TitlePageLayout from "layout/title-page-layout/TitlePageLayout";
 import { HomeContainerBottom } from "views/home/Home.styles";
@@ -17,7 +20,6 @@ import { SceneLoadingFallback } from "components/loading/fallbacks/scene-loading
 
 const Home: NextPage = () => {
   useSetWindowState();
-
   return (
     <>
       <Head>
@@ -65,7 +67,7 @@ const HomeSceneContent = () => {
   }, [configData, sceneData]);
 
   return sceneData !== null && sceneParameters !== null ? (
-    <DynamicScene {...sceneParameters} sceneData={sceneData as SceneData} />
+    <SceneNode {...sceneParameters} sceneData={sceneData as SceneData} />
   ) : null;
 };
 

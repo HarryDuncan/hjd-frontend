@@ -9,10 +9,8 @@ import { useMemo } from "react";
 
 export const Gallery = () => {
   const handleRouting = useHandleRouting("art/piece/");
-  const {
-    art: { art },
-  } = useArtData();
-  const paintingGalleryItems = useArtsInGallery(art);
+  const { art } = useArtData();
+  const paintingGalleryItems = useArtInGallery(art);
   return (
     <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
       <DynamicCardGallery
@@ -24,10 +22,10 @@ export const Gallery = () => {
   );
 };
 
-const useArtsInGallery = (paintings: Art[]) =>
+const useArtInGallery = (art: Art[]) =>
   useMemo(
     () =>
-      paintings
+      art
         .map(({ imageUrl, title, slug, yearCompleted }) => ({
           imageUrl: `${ART_ROOT_URL}${imageUrl}`,
           title,
@@ -36,5 +34,5 @@ const useArtsInGallery = (paintings: Art[]) =>
           yearCompleted,
         }))
         .sort((a, b) => b.yearCompleted - a.yearCompleted),
-    [paintings]
+    [art]
   );

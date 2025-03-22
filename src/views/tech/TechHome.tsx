@@ -2,13 +2,15 @@ import { DynamicScene } from "components/visual-components/DynamicInteractiveNod
 import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
 import { useCallback, useMemo } from "react";
 import { Scene } from "three";
-import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
-import { updateSceneMeshesUniform } from "visual/display/animation/animation-functions/shader-animations/uniforms/updateSceneMeshesUniforms";
-import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
-import { AnimationConfig } from "visual/display/animation/animation.types";
-import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
-import { SceneData } from "visual/set-up/config/config.types";
-import { useSceneData } from "visual/set-up/config/useSceneData";
+import {
+  useSetWindowState,
+  updateSceneMeshesUniform,
+  startSceneElementAnimations,
+  AnimationConfig,
+  InteractiveScene,
+  SceneData,
+  useSceneData,
+} from "art-os-package";
 
 interface TechHomeProps {
   contentHeight: number;

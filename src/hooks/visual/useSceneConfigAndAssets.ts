@@ -1,7 +1,5 @@
 import { useMemo } from "react";
-import { useAssets } from "visual/set-up/assets/useAssets";
-import { useFetchConfig } from "visual/set-up/config/useFetchConfig";
-import { SceneConfig } from "visual/set-up/config/config.types";
+import { useAssets, useFetchConfig, SceneConfig } from "art-os-package";
 
 export const useSceneConfigAndAssets = (configId: string) => {
   const selectedSceneFilePath = configId

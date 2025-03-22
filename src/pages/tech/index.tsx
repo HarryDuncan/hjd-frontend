@@ -6,7 +6,7 @@ import { useTechData } from "hooks/tech/useTechContent";
 import { TechContent } from "models/tech/tech.types";
 import { NextPage } from "next";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useSetWindowState } from "visual/compat/window-state/useSetWindowState";
+import { useSetWindowState } from "art-os-package";
 import { useLoadPageOnTop } from "hooks/client-hooks/useLoadPageOnTop";
 import { useOnScroll } from "hooks/client-hooks/useOnScroll";
 import { TechHome } from "views/tech/TechHome";

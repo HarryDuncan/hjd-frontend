@@ -1,9 +1,11 @@
-import { DynamicScene } from "components/visual-components/DynamicInteractiveNode";
+import {
+  useSceneData,
+  startSceneElementAnimations,
+  InteractiveScene,
+  SceneNode,
+} from "art-os-package";
 import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
 import { useMemo } from "react";
-import { startSceneElementAnimations } from "visual/display/animation/animation-manager/startSceneElementAnimations";
-import { InteractiveScene } from "visual/display/components/interactive-scene/InteractiveScene";
-import { useSceneData } from "visual/set-up/config/useSceneData";
 
 export const DefaultScene = () => {
   const configId = "default-scene";
@@ -31,6 +33,6 @@ export const DefaultScene = () => {
   }, [configData, sceneData]);
 
   return sceneData !== null && sceneParameters !== null ? (
-    <DynamicScene {...sceneParameters} sceneData={sceneData} />
+    <SceneNode {...sceneParameters} sceneData={sceneData} />
   ) : null;
 };

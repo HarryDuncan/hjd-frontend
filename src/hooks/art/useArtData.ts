@@ -7,10 +7,10 @@ export const useArtData = () => {
   const artData = useQuery<FetchArtResponse>(["painting-items"], () =>
     getArt()
   );
-  console.log(artData);
+
   return (
     artData?.data ?? {
-      art: { art: [] },
+      art: [],
       loading: true,
       isError: artData.status === NETWORK_STATUS_TYPES.ERROR,
     }

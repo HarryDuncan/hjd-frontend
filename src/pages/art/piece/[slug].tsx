@@ -1,6 +1,6 @@
 import { ContentText } from "components/text/Text";
 import { ART_ROOT_URL } from "constants/art.constants";
-import { useArtData } from "hooks/art/useArtData";
+
 import { useScrollArt } from "hooks/art/useScrollArt";
 import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
@@ -8,9 +8,10 @@ import SlideWithBackgroundTransition from "components/animations/page-transition
 import { Direction } from "utils/moveThroughArray";
 import Head from "next/head";
 import ViewItemLayout from "layout/view-item-layout/ViewItemLayout";
+import { useArtItemData } from "hooks/art/useArtItemData";
 
 const ArtDetails = () => {
-  const { art } = useArtData();
+  const { art } = useArtItemData();
   const changeArt = useScrollArt();
   const handleExit = useHandleExit();
   const [changedDirection, setChangedDirection] = useState<Direction>(
