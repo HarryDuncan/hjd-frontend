@@ -9,13 +9,14 @@ export type Product = {
   price: number | null;
   hasVariations: boolean;
   percentageDonated: number;
-  variations?: ProductVariations[];
+  hasEditions: boolean;
+  variations?: ProductVariation[];
   shippingOptionId: number | null;
   multiImages: string[] | null;
   isSoldOut?: boolean;
 };
 
-export type ProductVariations = {
+export type ProductVariation = {
   id: number;
   productId: number;
   title: string;
@@ -46,7 +47,7 @@ export type ShippingZone = {
 export type ReturnedShopData = FetchResponse & {
   shopData: {
     products: Product[];
-    productVariations: ProductVariations[];
+    productVariations: ProductVariation[];
     shippingZones: ShippingZone[];
     shippingOptions: ShippingOption[];
   };

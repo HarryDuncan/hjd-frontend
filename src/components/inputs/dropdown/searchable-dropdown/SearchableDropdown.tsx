@@ -4,11 +4,11 @@ import {
   DropdownList,
   DropdownItem,
   DropdownInput,
-} from "./Dropdown.styles";
+} from "../Dropdown.styles";
 import { StyledInput } from "components/inputs/inputs.styles";
 
 export interface DropdownOption {
-  value: string;
+  value: string | number;
   label: string;
 }
 

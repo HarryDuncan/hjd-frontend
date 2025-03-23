@@ -46,7 +46,6 @@ export const useSendReceipt = (
     billingDetails,
     customerDetails,
     cart,
-    hasSentReceipt,
     shippingData,
     transactionDetails,
     orderId,
@@ -60,7 +59,7 @@ export const useSendReceipt = (
     if (storedOrderId) {
       setOrderId(Number(storedOrderId));
     }
-  }, [sendReceiptData]);
+  }, [hasSentReceipt, sendReceiptData, transactionDetails?.refId]);
 
   return { sendReceiptData, orderId };
 };

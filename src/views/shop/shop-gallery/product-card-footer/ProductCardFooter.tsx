@@ -1,11 +1,11 @@
 import { CardFooter } from "components/card/Card.styles";
 import { Label } from "components/text/Text";
-import { ProductVariations } from "models/shop/types";
+import { ProductVariation } from "models/shop/types";
 import { Title } from "./ProductCardFooter.styles";
 
 interface ProductCardFooterProps {
   title: string;
-  variations: ProductVariations[];
+  variations: ProductVariation[];
   isSoldOut: boolean;
   price: number | null;
 }
@@ -34,7 +34,7 @@ export const ProductCardFooter = ({
 
 const getPriceLabel = (
   price: number | null,
-  variations: ProductVariations[]
+  variations: ProductVariation[]
 ) => {
   if (price) return price;
 

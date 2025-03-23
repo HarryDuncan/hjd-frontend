@@ -9,7 +9,7 @@ export const sendReceipt = async (receiptData: ReceiptData) => {
         @rest(
           type: "sendReceiptResponse"
           method: "POST"
-          path: "/shop/receipt"
+          path: "/shop/purchase-complete"
           bodyKey: "receiptData"
         ) {
         orderId

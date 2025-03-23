@@ -1,4 +1,10 @@
-import { EXIT, SCROLL_LEFT, SCROLL_RIGHT, TRASH } from "constants/ui.constants";
+import {
+  EXIT,
+  SCROLL_LEFT,
+  SCROLL_RIGHT,
+  TRASH,
+  DOWN,
+} from "constants/ui.constants";
 import { IconContainer } from "./IconButton.styles";
 import {
   DefaultIconProps,
@@ -47,6 +53,13 @@ const TrashIcon = ({ onClick }: DefaultIconProps) => (
     <HoverImage alt="trash" src={TRASH} onClick={onClick} />
   </IconContainer>
 );
+
+const DownIcon = ({ onClick }: DefaultIconProps) => (
+  <IconContainer className="down-icon">
+    <HoverImage alt="down" src={DOWN} onClick={onClick} />
+  </IconContainer>
+);
+
 const getIcon = (type: IconTypes, onClick: OnIconClick) => {
   switch (type) {
     case IconTypes.EXIT:
@@ -57,6 +70,8 @@ const getIcon = (type: IconTypes, onClick: OnIconClick) => {
       return <ScrollRightIcon onClick={onClick} />;
     case IconTypes.TRASH:
       return <TrashIcon onClick={onClick as OnClickFunction} />;
+    case IconTypes.DOWN:
+      return <DownIcon onClick={onClick as OnClickFunction} />;
     default:
       console.warn("no valid icon type");
       return <div />;
