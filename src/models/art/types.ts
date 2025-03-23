@@ -4,7 +4,7 @@ export type Art = {
   description: string;
   externalUrl: string;
   id: number;
-  imageUrl: string;
+  imageUrls: string[];
   medium: string;
   title: string;
   yearCompleted: number;

@@ -4,7 +4,7 @@ export type Product = {
   id: number;
   title: string;
   description: string;
-  imageUrl: string;
+  imageUrls: string[];
   stock: number;
   price: number | null;
   hasVariations: boolean;

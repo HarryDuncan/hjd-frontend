@@ -5,7 +5,7 @@ import { ImageDimensions } from "../images.types";
 import { imageLoader } from "../images.functions";
 
 interface StaticImageProps {
-  imageUrl: string;
+  imageUrl: string | null | undefined;
   imageTitle: string;
   onImageLoaded?: (imageDimensions: ImageDimensions) => void;
 }
@@ -17,7 +17,7 @@ export const StaticImage = ({
 }: StaticImageProps) => {
   const { onImageLoadingComplete, imageDimensions, isImageLoaded } =
     useLoadedImageDimensions(onImageLoaded);
-
+  if (!imageUrl) return null;
   return (
     <ImageContainer
       $height={imageDimensions?.height}

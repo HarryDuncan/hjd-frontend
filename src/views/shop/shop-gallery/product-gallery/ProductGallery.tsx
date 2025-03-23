@@ -34,8 +34,11 @@ const useProductsInGallery = () => {
   return useMemo(
     () =>
       formattedProducts.map(
-        ({ title, imageUrl, id, variations, isSoldOut, price }) => ({
-          imageUrl: `${SHOP_IMAGE_URL_ROOT}${imageUrl}`,
+        ({ title, imageUrls, id, variations, isSoldOut, price }) => ({
+          imageUrl: `${SHOP_IMAGE_URL_ROOT}${imageUrls[0]}`,
+          imageUrls: imageUrls.map(
+            (imageUrl) => `${SHOP_IMAGE_URL_ROOT}${imageUrl}`
+          ),
           title,
           id,
           footer: (

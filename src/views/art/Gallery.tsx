@@ -26,8 +26,9 @@ const useArtInGallery = (art: Art[]) =>
   useMemo(
     () =>
       art
-        .map(({ imageUrl, title, slug, yearCompleted }) => ({
-          imageUrl: `${ART_ROOT_URL}${imageUrl}`,
+        .map(({ imageUrls, title, slug, yearCompleted }) => ({
+          imageUrl: `${ART_ROOT_URL}${imageUrls[0]}`,
+          imageUrls: imageUrls.map((imageUrl) => `${ART_ROOT_URL}${imageUrl}`),
           title,
           slug,
           id: slug,

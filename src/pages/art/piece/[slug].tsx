@@ -36,25 +36,27 @@ const ArtDetails = () => {
         />
       </Head>
       <SlideWithBackgroundTransition direction={changedDirection}>
-        <ViewItemLayout
-          imageUrl={`${ART_ROOT_URL}${art?.imageUrl}`}
-          title={art?.title}
-          onChangeItem={onChangeItem}
-          handleExit={handleExit}
-        >
-          <ContentText>{art.description}</ContentText>
-          <br />
-          <br />
-          {art.medium && <ContentText>{art.medium}</ContentText>}
-          <br />
-          <br />
-          {art.yearCompleted && (
-            <ContentText>Completed in {art.yearCompleted}</ContentText>
-          )}
-          <br />
-          <br />
-          {art.dimensions && <ContentText>{art.dimensions}</ContentText>}
-        </ViewItemLayout>
+        {art && (
+          <ViewItemLayout
+            title={art?.title ?? ""}
+            onChangeItem={onChangeItem}
+            handleExit={handleExit}
+            imageUrls={art?.imageUrls}
+          >
+            <ContentText>{art.description}</ContentText>
+            <br />
+            <br />
+            {art.medium && <ContentText>{art.medium}</ContentText>}
+            <br />
+            <br />
+            {art.yearCompleted && (
+              <ContentText>Completed in {art.yearCompleted}</ContentText>
+            )}
+            <br />
+            <br />
+            {art.dimensions && <ContentText>{art.dimensions}</ContentText>}
+          </ViewItemLayout>
+        )}
       </SlideWithBackgroundTransition>
     </>
   );
