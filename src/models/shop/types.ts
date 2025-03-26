@@ -45,10 +45,8 @@ export type ShippingZone = {
 };
 
 export type ReturnedShopData = FetchResponse & {
-  shopData: {
-    products: Product[];
-    productVariations: ProductVariation[];
-    shippingZones: ShippingZone[];
-    shippingOptions: ShippingOption[];
-  };
+  products: Product[];
+  productVariations: ProductVariation[];
+  shippingZones: ShippingZone[];
+  shippingOptions: ShippingOption[];
 };

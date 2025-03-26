@@ -11,9 +11,7 @@ import { ContentSubText, ContentText } from "components/text/Text";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 
 export const ShippingOptions = () => {
-  const {
-    shopData: { shippingOptions, shippingZones },
-  } = useShopData();
+  const { shippingOptions, shippingZones } = useShopData();
   const { dispatch } = useShopContext();
   const options = useDropdownOptions(shippingZones);
   const [selectedShippingZoneId, setSelectedShippingZoneId] = useState<

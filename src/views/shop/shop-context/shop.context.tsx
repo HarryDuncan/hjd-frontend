@@ -1,14 +1,14 @@
-import { Product } from "models/shop/types";
+import { Product, ProductVariation } from "models/shop/types";
 import React, { createContext, useReducer, ReactNode, useContext } from "react";
 
 export type CartItem = {
-  product: Product;
+  product: Product | ProductVariation;
   quantity: number;
   errorMessage?: string;
   message?: string;
 };
 
-export type AppState = {
+export type ShopState = {
   cart: CartItem[];
   shippingZoneId: number | null;
   shippingTotal: number | null;
@@ -29,19 +29,19 @@ export type Action =
   | { type: "CHECKOUT" };
 
 type ShopContextType = {
-  state: AppState;
+  state: ShopState;
   dispatch: React.Dispatch<Action>;
 };
 
 const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
-const initialState: AppState = {
+const initialState: ShopState = {
   cart: [],
   shippingZoneId: null,
   shippingTotal: null,
 };
 
-const reducer = (state: AppState, action: Action): AppState => {
+const reducer = (state: ShopState, action: Action): ShopState => {
   switch (action.type) {
     case "UPDATE_CART":
       sessionStorage.setItem("cart", JSON.stringify(action.payload));

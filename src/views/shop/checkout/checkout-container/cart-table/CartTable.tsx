@@ -10,13 +10,60 @@ import {
 import { CartItem, useShopContext } from "views/shop/shop-context/shop.context";
 import { IconButton } from "components/buttons/icon-button/IconButton";
 import { IconTypes } from "components/buttons/icon-button/IconButton.types";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { SpinButton } from "components/inputs/spin-button/SpinButton";
+import { Product, ProductVariation } from "models/shop/types";
+import { useShopData } from "views/shop/hooks/useShopData";
 
 interface CartTableProps {
   isReadOnly?: boolean;
   parsedCartData?: CartItem[];
 }
+
+const useFormatImageUrls = () => {
+  const { products } = useShopData();
+  return useCallback(
+    (product: Product | ProductVariation) => {
+      const imageUrls = product.imageUrls
+        ? product.imageUrls
+        : products.find((p) => p.id === product.productId)?.imageUrls;
+      if (imageUrls) {
+        return imageUrls.map((url) => `${SHOP_IMAGE_URL_ROOT}${url}`);
+      }
+      return [];
+    },
+    [products]
+  );
+};
+
+const ItemTitle = ({
+  cartItem,
+  isReadOnly,
+}: {
+  cartItem: CartItem;
+  isReadOnly: boolean;
+}) => {
+  const { products } = useShopData();
+  const getTitle = useCallback(
+    (product: Product | ProductVariation) => {
+      const baseTitle =
+        "productId" in product
+          ? products.find((p) => p.id === product.productId)?.title ||
+            product.title
+          : product.title;
+      return "productId" in product
+        ? `${baseTitle} - ${product.title}`
+        : baseTitle;
+    },
+    [products]
+  );
+
+  return (
+    <p>
+      {getTitle(cartItem.product)} {isReadOnly && ` X ${cartItem.quantity}`}
+    </p>
+  );
+};
 const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
   const { dispatch, cartData } = useCartTableData(parsedCartData);
   const handleRemoveItem = (productId: number) => {
@@ -36,22 +83,21 @@ const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
       },
     });
   };
+  const formatImageUrls = useFormatImageUrls();
   return (
     <CheckoutSection>
       {cartData.map((cartItem) => (
         <CartTableRow key={cartItem.product.id}>
           <TableImageContainer>
             <Image
-              src={`${SHOP_IMAGE_URL_ROOT}${cartItem.product.imageUrl}`}
+              src={formatImageUrls(cartItem.product)[0]}
               alt={cartItem.product.title}
               fill
               objectFit="contain"
             />
           </TableImageContainer>
           <ItemDetails>
-            <p>
-              {cartItem.product.title} {isReadOnly && ` X ${cartItem.quantity}`}
-            </p>
+            <ItemTitle cartItem={cartItem} isReadOnly={isReadOnly} />
             <p>${cartItem.product.price} AUD</p>
 
             {cartItem.errorMessage && <p>{cartItem.errorMessage}</p>}

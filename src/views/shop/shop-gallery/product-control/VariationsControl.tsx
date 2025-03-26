@@ -36,6 +36,7 @@ export function VariationsControl({
       <Dropdown options={dropdownOptions} onChange={handleSelect} />
       <CircleActionButton
         ref={buttonRef}
+        disabled={!selectedVariation}
         onClick={handleAddToCart}
         title="Add To Cart"
         circleFill="#030303"

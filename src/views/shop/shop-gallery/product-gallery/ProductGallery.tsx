@@ -23,9 +23,7 @@ export const ProductGallery = () => {
 };
 
 const useProductsInGallery = () => {
-  const {
-    shopData: { products, productVariations },
-  } = useShopData();
+  const { products, productVariations } = useShopData();
   const formattedProducts = useProductsWithVariations(
     products,
     productVariations

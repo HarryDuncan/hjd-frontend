@@ -13,9 +13,7 @@ import { useShopData } from "views/shop/hooks/useShopData";
 import { VariationsControl } from "./VariationsControl";
 
 export const ProductControl = ({ productData }: { productData: Product }) => {
-  const {
-    shopData: { productVariations },
-  } = useShopData();
+  const { productVariations } = useShopData();
   const formattedProduct = useProductsWithVariations(
     [productData],
     productVariations
@@ -36,6 +34,16 @@ export const ProductControl = ({ productData }: { productData: Product }) => {
     handleRouting();
   }, [dispatch, productData, handleRouting]);
 
+  const onVariationAddToCart = (variationId: string) => {
+    const variation = variations?.find((v) => v.id === Number(variationId));
+    if (!variation) return;
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: { product: variation, quantity: 1 },
+    });
+    handleRouting();
+    // {/* hasEditions && <EditionsControl onAddToCart={handleAddToCart} />}
+  };
   return (
     <ProductControlContainer>
       <ProductControlContent
@@ -45,6 +53,7 @@ export const ProductControl = ({ productData }: { productData: Product }) => {
         stock={stock}
         price={price}
         handleAddToCart={handleAddToCart}
+        onVariationAddToCart={onVariationAddToCart}
       />
     </ProductControlContainer>
   );
@@ -57,6 +66,7 @@ const ProductControlContent = ({
   stock = 0,
   price = 0,
   handleAddToCart,
+  onVariationAddToCart,
 }: {
   hasVariations: boolean;
   variations: ProductVariation[] | null;
@@ -64,15 +74,8 @@ const ProductControlContent = ({
   stock: number;
   price: number | null;
   handleAddToCart: () => void;
+  onVariationAddToCart: (variationId: string) => void;
 }) => {
-  const onVariationAddToCart = (variationId: string) => {
-    // dispatch({
-    //   type: "ADD_TO_CART",
-    //   payload: { product: variation, quantity: 1 },
-    // });
-    // handleRouting();    {/* hasEditions && <EditionsControl onAddToCart={handleAddToCart} />}
-  };
-
   if (hasVariations && variations) {
     return (
       <VariationsControl

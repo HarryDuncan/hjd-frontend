@@ -10,7 +10,7 @@ export const useProductData = () => {
   const productData = useQuery<ReturnedShopData>(["shop-data"], () =>
     getShopData()
   );
-  const product = productData.data?.shopData.products.find(
+  const product = productData.data?.products.find(
     ({ id }) => id === Number(productId)
   );
 

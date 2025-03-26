@@ -139,9 +139,7 @@ const useDisplayErrors = () => {
 };
 
 const useSelectedShippingZoneCode = (selectedZoneId: null | number) => {
-  const {
-    shopData: { shippingZones },
-  } = useShopData();
+  const { shippingZones } = useShopData();
   return useMemo(
     () => shippingZones.find(({ id }) => id === selectedZoneId),
     [shippingZones, selectedZoneId]
