@@ -1,6 +1,7 @@
 import { useMemo } from "react";
-import { CartItem, useShopContext } from "../shop-context/shop.context";
+import { useShopContext } from "../shop-context/shop.context";
 import { ShippingData } from "../checkout/checkout.types";
+import { LineItem } from "models/shop/types";
 
 export const useShopDataFromStorage = () => {
   const {
@@ -13,7 +14,7 @@ export const useShopDataFromStorage = () => {
       const hasCheckedOut = sessionStorage.getItem("hasCheckedOut");
       if (cart) {
         return {
-          cart: cart ? (JSON.parse(cart) as CartItem[]) : ([] as CartItem[]),
+          cart: cart ? (JSON.parse(cart) as LineItem[]) : ([] as LineItem[]),
           shipping: shipping ? (JSON.parse(shipping) as ShippingData) : null,
           hasCheckedOut: hasCheckedOut ? JSON.parse(hasCheckedOut) : null,
         };
@@ -21,6 +22,6 @@ export const useShopDataFromStorage = () => {
     } else {
       console.error("sessionStorage is not supported in this environment.");
     }
-    return { cart: [] as CartItem[], shipping: null, hasCheckedOut: null };
+    return { cart: [] as LineItem[], shipping: null, hasCheckedOut: null };
   }, [savedCart, shippingTotal]);
 };

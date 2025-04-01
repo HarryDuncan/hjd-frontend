@@ -1,22 +1,15 @@
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
-import { useSceneConfigAndAssets } from "hooks/visual/useSceneConfigAndAssets";
+import { useSceneConfig } from "hooks/visual/useSceneConfig";
 import type { NextPage } from "next";
-import { Suspense, useCallback, useMemo, useRef } from "react";
-import {
-  useSetWindowState,
-  startSceneElementAnimations,
-  InteractiveScene,
-  useSceneData,
-  AnimationConfig,
-  SceneData,
-  SceneNode,
-} from "art-os-package";
+import { Suspense, useCallback, useRef } from "react";
+import { useSetWindowState, SceneNode } from "art-os-package";
 import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
 
 import Head from "next/head";
 import TitlePageLayout from "layout/title-page-layout/TitlePageLayout";
 import { HomeContainerBottom } from "views/home/Home.styles";
 import { SceneLoadingFallback } from "components/loading/fallbacks/scene-loading/SceneLoadingFallback";
+import { AnimatedSVG } from "components/loading/animated-svg/AnimatedSvg";
 
 const Home: NextPage = () => {
   useSetWindowState();
@@ -42,32 +35,9 @@ const Home: NextPage = () => {
 
 const HomeSceneContent = () => {
   const configId = "home-scene";
-  const { areAssetsInitialized, initializedAssets, configData } =
-    useSceneConfigAndAssets(configId);
-  const sceneData = useSceneData(
-    configData,
-    initializedAssets,
-    areAssetsInitialized
-  );
-
-  const sceneParameters = useMemo(() => {
-    if (!configData) return null;
-    const { animationConfig } = configData;
-    return {
-      sceneFunctions: {
-        onTimeUpdate: (scene: InteractiveScene) => {
-          startSceneElementAnimations(scene);
-        },
-      },
-      interactionEvents: [],
-      sceneData,
-      animations: animationConfig as AnimationConfig[],
-      events: [],
-    };
-  }, [configData, sceneData]);
-
-  return sceneData !== null && sceneParameters !== null ? (
-    <SceneNode {...sceneParameters} sceneData={sceneData as SceneData} />
+  const sceneConfig = useSceneConfig(configId);
+  return sceneConfig ? (
+    <SceneNode sceneConfig={sceneConfig} loaderComponent={<AnimatedSVG />} />
   ) : null;
 };
 

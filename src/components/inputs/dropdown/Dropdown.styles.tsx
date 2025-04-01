@@ -1,16 +1,25 @@
+import { IconContainer } from "components/buttons/icon-button/IconButton.styles";
 import styled from "styled-components";
 
 export const DropdownContainer = styled.div`
   position: relative;
   display: inline-block;
+
   & img {
     height: 1rem;
-    margin: 0.1rem;
+  }
+
+  ${IconContainer} {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 0.5rem;
   }
 `;
-
 export const DropdownInput = styled.div`
   display: flex;
+  align-items: center;
   position: relative;
   box-sizing: border-box;
   height: 32px;
@@ -18,6 +27,9 @@ export const DropdownInput = styled.div`
   border-color: ${({ theme }) => theme.colors.mono.lightGray};
   border: 1px solid;
   text-align: left;
+  & span {
+    padding-top: 0.4rem;
+  }
 `;
 export const DropdownList = styled.ul`
   list-style: none;

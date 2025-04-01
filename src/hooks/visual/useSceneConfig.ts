@@ -1,17 +1,26 @@
 import { useMemo } from "react";
-import { useAssets, useFetchConfig, SceneConfig } from "art-os-package";
+import { useFetchConfig, SceneConfig } from "art-os-package";
 
-export const useSceneConfigAndAssets = (configId: string) => {
+export const useSceneConfig = (configId: string) => {
   const selectedSceneFilePath = configId
     ? `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/visual-config/${configId}.json`
     : "";
   const sceneConfigData = useFetchConfig(selectedSceneFilePath);
   const configData = useSelectedConfig(sceneConfigData);
-  const { areAssetsInitialized, initializedAssets } = useAssets(
-    configData?.assets
-  );
-
-  return { areAssetsInitialized, initializedAssets, configData };
+  const formattedSceneConfig = useMemo(() => {
+    if (!configData) return null;
+    return {
+      ...configData,
+      assets: configData?.assets.map((asset) => ({
+        ...asset,
+        path: `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/${asset.path.replace(
+          "../",
+          ""
+        )}`,
+      })),
+    };
+  }, [configData]);
+  return formattedSceneConfig;
 };
 
 const useSelectedConfig = (

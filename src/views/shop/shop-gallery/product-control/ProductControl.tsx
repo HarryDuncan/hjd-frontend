@@ -1,5 +1,5 @@
 import { ContentSubText, ContentText } from "components/text/Text";
-import { Product, ProductVariation } from "models/shop/types";
+import { LineItem, Product, ProductVariation } from "models/shop/types";
 import { useCallback, useRef } from "react";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 import {
@@ -12,7 +12,10 @@ import { useProductsWithVariations } from "views/shop/hooks/useProductsWithVaria
 import { useShopData } from "views/shop/hooks/useShopData";
 import { VariationsControl } from "./VariationsControl";
 
-export const ProductControl = ({ productData }: { productData: Product }) => {
+interface ProductControlProps {
+  productData: Product;
+}
+export const ProductControl = ({ productData }: ProductControlProps) => {
   const { productVariations } = useShopData();
   const formattedProduct = useProductsWithVariations(
     [productData],
@@ -24,22 +27,40 @@ export const ProductControl = ({ productData }: { productData: Product }) => {
   const buttonRef = useRef<HTMLElement | null>(null);
 
   const handleAddToCart = useCallback(() => {
+    const newLineItem: LineItem = {
+      guid: productData.guid,
+      productId: productData.id,
+      variationId: null,
+      quantity: 1,
+      title: productData.title,
+      price: productData.price,
+      imageUrl: productData.imageUrls[0],
+      shippingOptionId: productData.shippingOptionId,
+    };
     dispatch({
       type: "ADD_TO_CART",
-      payload: {
-        product: productData,
-        quantity: 1,
-      },
+      payload: newLineItem,
     });
     handleRouting();
   }, [dispatch, productData, handleRouting]);
 
   const onVariationAddToCart = (variationId: string) => {
     const variation = variations?.find((v) => v.id === Number(variationId));
+    const newLineItem: LineItem = {
+      guid: variation?.guid || productData.guid,
+      productId: productData.id,
+      variationId: variation?.id || null,
+      quantity: 1,
+      title: `${productData.title} - ${variation?.title || ""}`,
+      price: variation?.price || productData.price,
+      imageUrl: productData.imageUrls[0],
+      shippingOptionId:
+        variation?.shippingOptionId || productData.shippingOptionId,
+    };
     if (!variation) return;
     dispatch({
       type: "ADD_TO_CART",
-      payload: { product: variation, quantity: 1 },
+      payload: newLineItem,
     });
     handleRouting();
     // {/* hasEditions && <EditionsControl onAddToCart={handleAddToCart} />}

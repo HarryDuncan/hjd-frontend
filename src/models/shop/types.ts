@@ -14,6 +14,7 @@ export type Product = {
   shippingOptionId: number | null;
   multiImages: string[] | null;
   isSoldOut?: boolean;
+  guid: string;
 };
 
 export type ProductVariation = {
@@ -23,6 +24,7 @@ export type ProductVariation = {
   price: number;
   stock: number;
   shippingOptionId: number;
+  guid: string;
 };
 
 export type ShippingOption = {
@@ -49,4 +51,15 @@ export type ReturnedShopData = FetchResponse & {
   productVariations: ProductVariation[];
   shippingZones: ShippingZone[];
   shippingOptions: ShippingOption[];
+};
+
+export type LineItem = {
+  guid: string;
+  productId: number;
+  variationId: number | null;
+  quantity: number;
+  title: string;
+  price: number | null;
+  shippingOptionId: number | null;
+  imageUrl: string | null;
 };

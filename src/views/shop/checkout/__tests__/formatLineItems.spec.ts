@@ -3,11 +3,11 @@ import { formatLineItems } from "../formatLineItems";
 
 const MOCK_CART = [
   {
-    product: { title: "test-1", price: 200 },
+    selectedItemId: { title: "test-1", price: 200 },
     quantity: 2,
   },
   {
-    product: { title: "test-2", price: 200 },
+    selectedItemId: { title: "test-2", price: 200 },
     quantity: 200,
   },
 ];

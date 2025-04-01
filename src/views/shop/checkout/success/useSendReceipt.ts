@@ -7,13 +7,13 @@ import {
   ShippingData,
   TransactionDetails,
 } from "../checkout.types";
-import { CartItem } from "views/shop/shop-context/shop.context";
+import { LineItem } from "views/shop/shop-context/shop.context";
 
 export const useSendReceipt = (
   billingDetails: BillingDetails | null,
   customerDetails: CustomerDetails | null,
   shippingData: ShippingData | null,
-  cart: CartItem[],
+  cart: LineItem[],
   transactionDetails: TransactionDetails | null,
   orderAlreadyCreated: boolean
 ) => {

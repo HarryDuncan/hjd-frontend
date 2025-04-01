@@ -1,16 +1,16 @@
 import { CURRENCIES } from "constants/shop.constants";
-import { CartItem } from "../shop-context/shop.context";
+import { LineItem } from "models/shop/types";
 
 export const formatLineItems = (
-  cartItems: CartItem[],
+  cartItems: LineItem[],
   shippingCost: number
 ) => {
   const lineItems = cartItems.flatMap((selectedProduct) => ({
     price_data: {
       currency: CURRENCIES.AUD,
-      unit_amount: (selectedProduct.product.price || 0) * 100,
+      unit_amount: (selectedProduct.price || 0) * 100,
       product_data: {
-        name: selectedProduct.product.title,
+        name: selectedProduct.title,
       },
     },
     quantity: selectedProduct.quantity,

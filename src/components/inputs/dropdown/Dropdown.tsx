@@ -1,5 +1,3 @@
-import * as React from "react";
-import styled from "styled-components";
 import { IconButton } from "components/buttons/icon-button/IconButton";
 import { IconTypes } from "components/buttons/icon-button/IconButton.types";
 import {
@@ -9,9 +7,8 @@ import {
   DropdownItem,
   DropdownList,
 } from "./Dropdown.styles";
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-// Types
 interface DropdownOption {
   value: string;
   label: string;
@@ -33,14 +30,14 @@ export function Dropdown({
   placeholder = "Select option",
   className,
 }: DropdownProps) {
-  const [open, setOpen] = React.useState(false);
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const [selectedOption, setSelectedOption] = useState<DropdownOption | null>(
     options.find((option) => option.value === value) || null
   );
 
-  const handleClickOutside = React.useCallback((event: MouseEvent) => {
+  const handleClickOutside = useCallback((event: MouseEvent) => {
     if (
       containerRef.current &&
       !containerRef.current.contains(event.target as Node)
@@ -54,7 +51,7 @@ export function Dropdown({
     setSelectedOption(option);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [handleClickOutside]);

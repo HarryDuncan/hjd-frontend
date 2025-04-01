@@ -16,7 +16,7 @@ export const useCalculateShipping = (
     );
     if (selectedZone) {
       return cart.reduce((prev, curr) => {
-        const { shippingOptionId } = curr.product;
+        const { shippingOptionId } = curr.selectedItem;
         if (!shippingOptionId) {
           return prev;
         }

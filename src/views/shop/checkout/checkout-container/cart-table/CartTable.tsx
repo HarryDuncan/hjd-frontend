@@ -7,115 +7,97 @@ import {
   ItemDetails,
   TableImageContainer,
 } from "../checkout.styles";
-import { CartItem, useShopContext } from "views/shop/shop-context/shop.context";
+import { useShopContext } from "views/shop/shop-context/shop.context";
 import { IconButton } from "components/buttons/icon-button/IconButton";
 import { IconTypes } from "components/buttons/icon-button/IconButton.types";
 import { useCallback, useMemo } from "react";
 import { SpinButton } from "components/inputs/spin-button/SpinButton";
-import { Product, ProductVariation } from "models/shop/types";
+import { LineItem } from "models/shop/types";
 import { useShopData } from "views/shop/hooks/useShopData";
 
 interface CartTableProps {
   isReadOnly?: boolean;
-  parsedCartData?: CartItem[];
+  parsedCartData?: LineItem[];
 }
 
-const useFormatImageUrls = () => {
-  const { products } = useShopData();
+const useGetProductStock = () => {
+  const { products, productVariations } = useShopData();
   return useCallback(
-    (product: Product | ProductVariation) => {
-      const imageUrls = product.imageUrls
-        ? product.imageUrls
-        : products.find((p) => p.id === product.productId)?.imageUrls;
-      if (imageUrls) {
-        return imageUrls.map((url) => `${SHOP_IMAGE_URL_ROOT}${url}`);
+    (itemGuid: string) => {
+      const product = products.find((product) => product.guid === itemGuid);
+      if (product) {
+        return product.stock;
       }
-      return [];
+      const productVariation = productVariations.find(
+        (variation) => variation.guid === itemGuid
+      );
+      if (productVariation) {
+        const product = products.find(
+          (product) => product.id === productVariation.productId
+        );
+        return product ? product.stock : 0;
+      }
+      return 0;
     },
-    [products]
-  );
-};
-
-const ItemTitle = ({
-  cartItem,
-  isReadOnly,
-}: {
-  cartItem: CartItem;
-  isReadOnly: boolean;
-}) => {
-  const { products } = useShopData();
-  const getTitle = useCallback(
-    (product: Product | ProductVariation) => {
-      const baseTitle =
-        "productId" in product
-          ? products.find((p) => p.id === product.productId)?.title ||
-            product.title
-          : product.title;
-      return "productId" in product
-        ? `${baseTitle} - ${product.title}`
-        : baseTitle;
-    },
-    [products]
-  );
-
-  return (
-    <p>
-      {getTitle(cartItem.product)} {isReadOnly && ` X ${cartItem.quantity}`}
-    </p>
+    [products, productVariations]
   );
 };
 const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
   const { dispatch, cartData } = useCartTableData(parsedCartData);
-  const handleRemoveItem = (productId: number) => {
+  const handleRemoveItem = (itemGuid: string) => {
     dispatch({
       type: "REMOVE_FROM_CART",
       payload: {
-        productId,
+        itemGuid,
       },
     });
   };
-  const handleUpdateQuantity = (updatedQuantity: number, productId: number) => {
+  const handleUpdateQuantity = (updatedQuantity: number, itemGuid: string) => {
     dispatch({
       type: "UPDATE_QUANTITY",
       payload: {
-        productId,
+        itemGuid,
         quantity: updatedQuantity,
       },
     });
   };
-  const formatImageUrls = useFormatImageUrls();
+
+  const getProductStock = useGetProductStock();
+
+  console.log(cartData);
   return (
     <CheckoutSection>
-      {cartData.map((cartItem) => (
-        <CartTableRow key={cartItem.product.id}>
+      {cartData.map((lineItem) => (
+        <CartTableRow key={lineItem.guid}>
           <TableImageContainer>
             <Image
-              src={formatImageUrls(cartItem.product)[0]}
-              alt={cartItem.product.title}
+              src={lineItem.imageUrl ?? ""}
+              alt={lineItem.title}
               fill
               objectFit="contain"
             />
           </TableImageContainer>
           <ItemDetails>
-            <ItemTitle cartItem={cartItem} isReadOnly={isReadOnly} />
-            <p>${cartItem.product.price} AUD</p>
-
-            {cartItem.errorMessage && <p>{cartItem.errorMessage}</p>}
+            <p>
+              {lineItem.title} {isReadOnly && ` X ${lineItem.quantity}`}
+            </p>
+            <p>${lineItem.price} AUD</p>
           </ItemDetails>
           {!isReadOnly && (
             <CartTableControl>
               <SpinButton
-                value={cartItem.quantity}
-                max={cartItem.product.stock}
+                value={lineItem.quantity}
+                max={getProductStock(lineItem.guid)}
                 min={1}
                 onChange={(updatedValue: number) => {
-                  handleUpdateQuantity(updatedValue, cartItem.product.id);
+                  handleUpdateQuantity(updatedValue, lineItem.guid);
                 }}
               />
               <IconButton
                 hasGesture
                 type={IconTypes.TRASH}
-                onClick={() => handleRemoveItem(cartItem.product.id)}
+                onClick={() => handleRemoveItem(lineItem.guid)}
+                aria-label="Remove item from cart"
               />
             </CartTableControl>
           )}
@@ -125,7 +107,7 @@ const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
   );
 };
 
-const useCartTableData = (parsedCartData: CartItem[] | undefined) => {
+const useCartTableData = (parsedCartData: LineItem[] | undefined) => {
   const {
     dispatch,
     state: { cart },
