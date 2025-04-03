@@ -97,7 +97,7 @@ const ProductControlContent = ({
   handleAddToCart: () => void;
   onVariationAddToCart: (variationId: string) => void;
 }) => {
-  if (hasVariations && variations) {
+  if (hasVariations && variations?.length) {
     return (
       <VariationsControl
         variations={variations}

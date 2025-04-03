@@ -10,6 +10,7 @@ export enum IconTypes {
   CHEVRON_RIGHT = "CHEVRON_RIGHT",
   TRASH = "TRASH",
   DOWN = "DOWN",
+  BACK = "BACK",
 }
 
 export interface IconProps {

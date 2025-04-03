@@ -5,7 +5,7 @@ export const SCROLL_RIGHT = "/assets/icons/right.svg";
 export const EXIT = "/assets/icons/close.svg";
 export const TRASH = "/assets/icons/trash.svg";
 export const DOWN = "/assets/icons/down.svg";
-
+export const BACK = "/assets/icons/back.svg";
 export const BANNER_IMAGE_HOVER_CONFIG = {
   default: {
     heightPx: MAIN_GALLERY_TOP_OFFSET,

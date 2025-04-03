@@ -4,6 +4,7 @@ import {
   SCROLL_RIGHT,
   TRASH,
   DOWN,
+  BACK,
 } from "constants/ui.constants";
 import { IconContainer } from "./IconButton.styles";
 import {
@@ -17,6 +18,13 @@ import {
 import { HoverImage } from "components/animations/gesture-animations/hover/HoverImage";
 import { Direction } from "utils/moveThroughArray";
 
+const BackIcon = ({ onClick }: DefaultIconProps) => {
+  return (
+    <IconContainer className="back-icon">
+      <HoverImage alt="back" src={BACK} onClick={onClick} />
+    </IconContainer>
+  );
+};
 const ExitIcon = ({ onClick }: DefaultIconProps) => {
   return (
     <IconContainer className="exit-icon">
@@ -72,6 +80,8 @@ const getIcon = (type: IconTypes, onClick: OnIconClick) => {
       return <TrashIcon onClick={onClick as OnClickFunction} />;
     case IconTypes.DOWN:
       return <DownIcon onClick={onClick as OnClickFunction} />;
+    case IconTypes.BACK:
+      return <BackIcon onClick={onClick as OnClickFunction} />;
     default:
       console.warn("no valid icon type");
       return <div />;

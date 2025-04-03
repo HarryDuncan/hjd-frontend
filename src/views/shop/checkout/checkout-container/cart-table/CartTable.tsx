@@ -1,4 +1,3 @@
-import { SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
 import Image from "next/image";
 import {
   CartTableControl,
@@ -24,7 +23,7 @@ const useGetProductStock = () => {
   const { products, productVariations } = useShopData();
   return useCallback(
     (itemGuid: string) => {
-      const product = products.find((product) => product.guid === itemGuid);
+      const product = products.find(({ guid }) => guid === itemGuid);
       if (product) {
         return product.stock;
       }
@@ -32,10 +31,10 @@ const useGetProductStock = () => {
         (variation) => variation.guid === itemGuid
       );
       if (productVariation) {
-        const product = products.find(
-          (product) => product.id === productVariation.productId
+        const parentProduct = products.find(
+          ({ id }) => id === productVariation.productId
         );
-        return product ? product.stock : 0;
+        return productVariation ? productVariation.stock : parentProduct?.stock;
       }
       return 0;
     },
@@ -64,7 +63,6 @@ const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
 
   const getProductStock = useGetProductStock();
 
-  console.log(cartData);
   return (
     <CheckoutSection>
       {cartData.map((lineItem) => (

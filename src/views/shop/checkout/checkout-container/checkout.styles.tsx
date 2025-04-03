@@ -68,7 +68,7 @@ export const ItemDetails = styled.div`
   padding: 0 1rem;
   min-width: 20%;
   p {
-    font-weight: 600;
+    font-weight: ${({ theme }) => theme.font.weight.normal};
     margin: 0;
   }
 `;
