@@ -6,7 +6,6 @@ import {
 } from "components/containers/Containers";
 import { ReactNode } from "react";
 import SwipeablePageNavigator from "components/mobile/SwipeableNavigator";
-import { Direction } from "utils/moveThroughArray";
 import { MainTitle } from "components/text/Text";
 import DefaultLayout from "layout/DefaultLayout";
 import { IconButton } from "components/buttons/icon-button/IconButton";
@@ -15,7 +14,7 @@ import { MultiImage } from "components/images/multi-image/MultiImage";
 
 interface ViewItemProps {
   title: string;
-  onChangeItem: (direction: Direction) => void;
+  onChangeItem: (direction: string) => void;
   handleExit: () => void;
   children: ReactNode;
   imageUrls?: string[] | null;
