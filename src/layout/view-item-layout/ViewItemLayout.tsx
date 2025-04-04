@@ -15,32 +15,26 @@ import { MultiImage } from "components/images/multi-image/MultiImage";
 
 interface ViewItemProps {
   title: string;
-  imageUrl: string;
   onChangeItem: (direction: Direction) => void;
   handleExit: () => void;
   children: ReactNode;
-  multiImage?: string[] | null;
+  imageUrls?: string[] | null;
 }
 export default function ViewItem({
-  imageUrl,
   title,
   onChangeItem,
   handleExit,
   children,
-  multiImage,
+  imageUrls,
 }: ViewItemProps) {
   return (
     <DefaultLayout hasFooter={false}>
       <SwipeablePageNavigator onSwipe={onChangeItem}>
         <ViewItemContainer>
-          {multiImage ? (
-            <MultiImage
-              mainImageUrl={imageUrl}
-              title={title}
-              multiImages={multiImage}
-            />
+          {imageUrls && imageUrls.length > 1 ? (
+            <MultiImage title={title} imageUrls={imageUrls} />
           ) : (
-            <StaticImage imageUrl={imageUrl} imageTitle={title} />
+            <StaticImage imageUrl={imageUrls?.[0]} imageTitle={title} />
           )}
 
           <ViewItemContent>

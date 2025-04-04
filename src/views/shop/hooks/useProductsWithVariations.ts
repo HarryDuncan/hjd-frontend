@@ -1,9 +1,9 @@
-import { Product, ProductVariations } from "models/shop/types";
+import { Product, ProductVariation } from "models/shop/types";
 import { useMemo } from "react";
 
 export const useProductsWithVariations = (
   products: Product[],
-  productVariations: ProductVariations[]
+  productVariations: ProductVariation[]
 ) =>
   useMemo(() => {
     const productsWithVariations = products.map((product) => {

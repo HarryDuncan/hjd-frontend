@@ -23,9 +23,7 @@ export const ProductGallery = () => {
 };
 
 const useProductsInGallery = () => {
-  const {
-    shopData: { products, productVariations },
-  } = useShopData();
+  const { products, productVariations } = useShopData();
   const formattedProducts = useProductsWithVariations(
     products,
     productVariations
@@ -34,8 +32,11 @@ const useProductsInGallery = () => {
   return useMemo(
     () =>
       formattedProducts.map(
-        ({ title, imageUrl, id, variations, isSoldOut, price }) => ({
-          imageUrl: `${SHOP_IMAGE_URL_ROOT}${imageUrl}`,
+        ({ title, imageUrls, id, variations, isSoldOut, price }) => ({
+          imageUrl: `${SHOP_IMAGE_URL_ROOT}${imageUrls[0]}`,
+          imageUrls: imageUrls.map(
+            (imageUrl) => `${SHOP_IMAGE_URL_ROOT}${imageUrl}`
+          ),
           title,
           id,
           footer: (
