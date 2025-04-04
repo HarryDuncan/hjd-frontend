@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 export const AnimatedSVG = () => {
   //  const [svgContent, setSvgContent] = useState<string>("");
@@ -18,16 +18,19 @@ export const AnimatedSVG = () => {
   //   fetchSvg();
   // }, [svgUrl]);
 
-  const messages = [
-    "Loading... Please wait.",
-    "Compiling infinite loops...",
-    "Reticulating splines...",
-    "Optimizing the optimizer...",
-    "Debugging the debugger...",
-    "Rendering pixels with love...",
-    "Fetching coffee for the CPU...",
-    "Turning it off and on again...",
-  ];
+  const messages = useMemo(
+    () => [
+      "Loading... Please wait.",
+      "Compiling infinite loops...",
+      "Reticulating splines...",
+      "Optimizing the optimizer...",
+      "Debugging the debugger...",
+      "Rendering pixels with love...",
+      "Fetching coffee for the CPU...",
+      "Turning it off and on again...",
+    ],
+    []
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {

@@ -20,6 +20,8 @@ export const useShopDataFromStorage = () => {
         };
       }
     } else {
+      console.error(savedCart);
+      console.error(shippingTotal);
       console.error("sessionStorage is not supported in this environment.");
     }
     return { cart: [] as LineItem[], shipping: null, hasCheckedOut: null };

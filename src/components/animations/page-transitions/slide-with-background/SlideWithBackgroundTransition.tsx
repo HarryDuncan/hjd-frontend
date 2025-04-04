@@ -74,7 +74,7 @@ const variants = {
   },
 };
 type BackgroundTransitionProps = PageTransitionProps & {
-  direction: Direction;
+  direction: string;
 };
 
 const SlideWithBackgroundTransition = ({

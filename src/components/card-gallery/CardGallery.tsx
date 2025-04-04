@@ -64,7 +64,7 @@ const useLoadMoreOnScroll = (
     if (height && scrollY >= height - (clientHeight + LOAD_MORE_OFFSET)) {
       setItemsDisplayed((i) => i + Number(loadMoreProps?.loadMoreSize ?? 0));
     }
-  }, [scrollY, scrollableContainerRef.current, clientHeight, loadMoreProps]);
+  }, [scrollY, scrollableContainerRef, clientHeight, loadMoreProps]);
 
   return {
     displayedItems: items.slice(0, itemsDisplayed),

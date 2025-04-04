@@ -13,13 +13,13 @@ const ProductDetails = () => {
 
   const changeProduct = useScrollProducts();
   const handleExit = useHandleExit();
-  const [changedDirection, setChangedDirection] = useState<Direction>(
+  const [changedDirection, setChangedDirection] = useState<string>(
     Direction.FORWARD
   );
 
   if (!product) return null;
   const { description } = product;
-  const onChangeItem = (direction: Direction) => {
+  const onChangeItem = (direction: string) => {
     setChangedDirection(direction);
     changeProduct(direction);
   };

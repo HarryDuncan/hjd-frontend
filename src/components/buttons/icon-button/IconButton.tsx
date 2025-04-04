@@ -68,7 +68,7 @@ const DownIcon = ({ onClick }: DefaultIconProps) => (
   </IconContainer>
 );
 
-const getIcon = (type: IconTypes, onClick: OnIconClick) => {
+const getIcon = (type: string, onClick: OnIconClick) => {
   switch (type) {
     case IconTypes.EXIT:
       return <ExitIcon onClick={onClick as OnClickFunction} />;

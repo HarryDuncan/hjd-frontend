@@ -37,7 +37,7 @@ export default function CheckoutPreview() {
       shippingTotal === null ||
       cartItemCount === 0 ||
       shippingZoneCode === undefined,
-    [shippingTotal, cart, cartItemCount, shippingZoneCode]
+    [shippingTotal, cartItemCount, shippingZoneCode]
   );
   getStripe();
 

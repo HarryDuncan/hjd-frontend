@@ -1,3 +1,4 @@
+// @ts-check
 export type ApiRequest = {
   method: string;
   headers: {

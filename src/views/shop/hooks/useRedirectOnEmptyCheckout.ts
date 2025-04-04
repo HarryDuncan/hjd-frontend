@@ -16,5 +16,5 @@ export const useRedirectOnEmptyCart = (checkForStoredCart = false) => {
     ) {
       goBack();
     }
-  }, [goBack, cart, storedCart]);
+  }, [goBack, cart, storedCart, checkForStoredCart]);
 };

@@ -12,13 +12,13 @@ const ArtDetails = () => {
   const { art } = useArtItemData();
   const changeArt = useScrollArt();
   const handleExit = useHandleExit();
-  const [changedDirection, setChangedDirection] = useState<Direction>(
+  const [changedDirection, setChangedDirection] = useState<string>(
     Direction.FORWARD
   );
 
   if (!art) return null;
 
-  const onChangeItem = (direction: Direction) => {
+  const onChangeItem = (direction: string) => {
     setChangedDirection(direction);
     changeArt(direction);
   };
