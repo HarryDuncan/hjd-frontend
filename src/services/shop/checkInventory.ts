@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
+import { LineItem } from "models/shop/types";
 import { client } from "network/ApolloClient";
-import { LineItem } from "views/shop/shop-context/shop.context";
 
 export const checkInventory = async (cart: LineItem[]) => {
   const mutation = gql`

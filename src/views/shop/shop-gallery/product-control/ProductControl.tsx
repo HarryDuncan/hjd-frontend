@@ -24,7 +24,7 @@ export const ProductControl = ({ productData }: ProductControlProps) => {
   const { stock, price, hasVariations, variations } = formattedProduct;
   const { dispatch } = useShopContext();
   const handleRouting = useHandleRouting("/checkout");
-  const buttonRef = useRef<HTMLElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   const handleAddToCart = useCallback(() => {
     const newLineItem: LineItem = {
@@ -91,7 +91,7 @@ const ProductControlContent = ({
 }: {
   hasVariations: boolean;
   variations: ProductVariation[] | null;
-  buttonRef: React.MutableRefObject<HTMLElement | null>;
+  buttonRef: React.MutableRefObject<HTMLButtonElement | null>;
   stock: number;
   price: number | null;
   handleAddToCart: () => void;

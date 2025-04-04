@@ -7,7 +7,7 @@ import {
   ShippingData,
   TransactionDetails,
 } from "../checkout.types";
-import { LineItem } from "views/shop/shop-context/shop.context";
+import { LineItem } from "models/shop/types";
 
 export const useSendReceipt = (
   billingDetails: BillingDetails | null,

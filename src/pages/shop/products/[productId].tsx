@@ -28,7 +28,7 @@ const ProductDetails = () => {
       <ViewItemLayout
         onChangeItem={onChangeItem}
         imageUrls={product?.imageUrls}
-        title={product?.title}
+        title={product?.title ?? ""}
         handleExit={handleExit}
       >
         <ContentText>{description}</ContentText>

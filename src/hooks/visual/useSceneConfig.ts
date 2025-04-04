@@ -11,13 +11,9 @@ export const useSceneConfig = (configId: string) => {
     if (!configData) return null;
     return {
       ...configData,
-      assets: configData?.assets.map((asset) => ({
-        ...asset,
-        path: `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/${asset.path.replace(
-          "../",
-          ""
-        )}`,
-      })),
+      assetPath: `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/${
+        configData?.assetPath || ""
+      }`,
     };
   }, [configData]);
   return formattedSceneConfig;

@@ -35,7 +35,6 @@ export default function CheckoutPreview() {
   const isCheckoutDisabled = useMemo(
     () =>
       shippingTotal === null ||
-      (shippingTotal !== null && cart.some((item) => item.errorMessage)) ||
       cartItemCount === 0 ||
       shippingZoneCode === undefined,
     [shippingTotal, cart, cartItemCount, shippingZoneCode]
@@ -113,7 +112,7 @@ const useDisplayErrors = () => {
     (updatedProductsInventory: Product[]) => {
       const updatedCart = cart.map((cartItem) => {
         const selectedProduct = updatedProductsInventory.find(
-          (product) => product.id === cartItem.product.id
+          (product) => product.id === cartItem.productId
         );
         if (selectedProduct) {
           if (selectedProduct.stock < cartItem.quantity) {

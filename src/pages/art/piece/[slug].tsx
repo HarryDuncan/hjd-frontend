@@ -1,6 +1,4 @@
 import { ContentText } from "components/text/Text";
-import { ART_ROOT_URL } from "constants/art.constants";
-
 import { useScrollArt } from "hooks/art/useScrollArt";
 import { useRouter } from "next/router";
 import { useCallback, useState } from "react";

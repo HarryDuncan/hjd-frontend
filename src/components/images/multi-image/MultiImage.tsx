@@ -26,8 +26,6 @@ export const MultiImage = ({ title, imageUrls }: MultiImageProps) => {
     setImageDimension(loadedImageDimensions);
   };
 
-  console.log(images);
-
   if (!images.length) {
     return null;
   }
