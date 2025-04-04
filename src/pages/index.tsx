@@ -2,9 +2,8 @@ import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useSceneConfig } from "hooks/visual/useSceneConfig";
 import type { NextPage } from "next";
 import { Suspense, useCallback, useRef } from "react";
-import { SceneNode, SceneData } from "art-os-package";
+import { SceneNode } from "art-os-package";
 import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
-
 import Head from "next/head";
 import TitlePageLayout from "layout/title-page-layout/TitlePageLayout";
 import { HomeContainerBottom } from "views/home/Home.styles";
@@ -37,7 +36,7 @@ const HomeSceneContent = () => {
   const sceneConfig = useSceneConfig(configId);
   return sceneConfig ? (
     <SceneNode
-      sceneConfig={sceneConfig as unknown as SceneData}
+      sceneConfig={sceneConfig}
       loaderComponent={<AnimatedSVG />}
       events={[]}
       interactionEvents={[]}

@@ -1,4 +1,4 @@
-import { SceneData, SceneNode } from "art-os-package";
+import { SceneNode } from "art-os-package";
 import { useSceneConfig } from "hooks/visual/useSceneConfig";
 
 export const DefaultScene = () => {
@@ -7,10 +7,6 @@ export const DefaultScene = () => {
   if (!sceneConfig) return null;
 
   return (
-    <SceneNode
-      sceneConfig={sceneConfig as unknown as SceneData}
-      events={[]}
-      interactionEvents={[]}
-    />
+    <SceneNode sceneConfig={sceneConfig} events={[]} interactionEvents={[]} />
   );
 };
