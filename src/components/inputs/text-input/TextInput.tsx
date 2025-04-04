@@ -2,13 +2,10 @@ import React, { InputHTMLAttributes } from "react";
 import styled from "styled-components";
 import { InputContainer, StyledLabel } from "../inputs.styles";
 
-// Define the custom input component
-interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  // Additional custom props can be added here
-  type?: "text" | "password";
-}
+type CustomInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 type CustomTextAreaProps = InputHTMLAttributes<HTMLTextAreaElement>;
+
 const StyledInput = styled.input<CustomInputProps>`
   padding: 8px;
   margin: 5px;
@@ -35,7 +32,6 @@ export const TextInput = ({
   onChange,
   required = false,
   multiLine = false,
-  type = "text",
 }: TextInputProps) => {
   const handleInputChange = (value: string) => {
     onChange(value);
@@ -47,14 +43,12 @@ export const TextInput = ({
       </StyledLabel>
       {multiLine ? (
         <StyledTextArea
-          type={type}
           rows={multiLine ? 5 : 1}
           placeholder={placeholder}
           onChange={(e) => handleInputChange(e.target.value)}
         />
       ) : (
         <StyledInput
-          type={type}
           placeholder={placeholder}
           onChange={(e) => handleInputChange(e.target.value)}
         />
