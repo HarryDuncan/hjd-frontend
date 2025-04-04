@@ -13,12 +13,6 @@ const StyledInput = styled.input<CustomInputProps>`
   padding: 8px;
   margin: 5px;
   border: 1px solid #ccc;
-  /* Custom styling based on type prop */
-  ${({ type }) =>
-    type === "password" &&
-    `
-
-  `}
 `;
 
 const StyledTextArea = styled.textarea<CustomTextAreaProps>`
