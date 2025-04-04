@@ -2,7 +2,7 @@ import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useSceneConfig } from "hooks/visual/useSceneConfig";
 import type { NextPage } from "next";
 import { Suspense, useCallback, useRef } from "react";
-import { useSetWindowState, SceneNode, SceneData } from "art-os-package";
+import { SceneNode, SceneData } from "art-os-package";
 import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
 
 import Head from "next/head";
@@ -12,7 +12,6 @@ import { SceneLoadingFallback } from "components/loading/fallbacks/scene-loading
 import { AnimatedSVG } from "components/loading/animated-svg/AnimatedSvg";
 
 const Home: NextPage = () => {
-  useSetWindowState();
   return (
     <>
       <Head>

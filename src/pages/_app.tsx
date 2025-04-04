@@ -4,7 +4,6 @@ import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle, THEME } from "theme";
-import { WindowStateProvider } from "art-os-package";
 import RootLayout from "layout/RootLayout";
 import Head from "next/head";
 import { PageTransitionWrapper } from "components/animations/page-transitions/PageTransitionsWrapper";
@@ -23,16 +22,13 @@ function MyApp({ Component, pageProps }: AppProps) {
           key="desc"
         />
       </Head>
-
       <ShopProvider>
-        <WindowStateProvider>
-          <ThemeProvider theme={THEME}>
-            <GlobalStyle />
-            <QueryClientProvider client={queryClient}>
-              <AppContent Component={Component} pageProps={pageProps} />
-            </QueryClientProvider>
-          </ThemeProvider>
-        </WindowStateProvider>
+        <ThemeProvider theme={THEME}>
+          <GlobalStyle />
+          <QueryClientProvider client={queryClient}>
+            <AppContent Component={Component} pageProps={pageProps} />
+          </QueryClientProvider>
+        </ThemeProvider>
       </ShopProvider>
     </RootLayout>
   );
