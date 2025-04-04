@@ -1,18 +1,8 @@
-import React, { InputHTMLAttributes } from "react";
+import React from "react";
 import styled from "styled-components";
-import { InputContainer, StyledLabel } from "../inputs.styles";
+import { InputContainer, StyledInput, StyledLabel } from "../inputs.styles";
 
-type CustomInputProps = InputHTMLAttributes<HTMLInputElement>;
-
-type CustomTextAreaProps = InputHTMLAttributes<HTMLTextAreaElement>;
-
-const StyledInput = styled.input<CustomInputProps>`
-  padding: 8px;
-  margin: 5px;
-  border: 1px solid #ccc;
-`;
-
-const StyledTextArea = styled.textarea<CustomTextAreaProps>`
+const StyledTextArea = styled.textarea`
   padding: 8px;
   margin: 5px;
   border: 1px solid #ccc;
@@ -48,6 +38,7 @@ export const TextInput = ({
         />
       ) : (
         <StyledInput
+          type="text"
           placeholder={placeholder}
           onChange={(e) => handleInputChange(e.target.value)}
         />
