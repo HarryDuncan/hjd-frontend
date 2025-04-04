@@ -2,7 +2,7 @@ import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useParams } from "hooks/routing/useParams";
 import { useCallback } from "react";
 import { useShopData } from "./useShopData";
-import { Direction, moveThroughArray } from "utils/moveThroughArray";
+import { moveThroughArray } from "utils/moveThroughArray";
 
 export const useScrollProducts = () => {
   const { products } = useShopData();
@@ -13,7 +13,7 @@ export const useScrollProducts = () => {
     ({ id }) => id === Number(currentProductId)
   );
   return useCallback(
-    (step: Direction) => {
+    (step: string) => {
       const { newIndex } = moveThroughArray(products, currentIndex, step);
       handleRouting(products[newIndex].id);
     },

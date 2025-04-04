@@ -24,7 +24,6 @@ interface TextInputProps {
   required?: boolean;
   placeholder?: string;
   multiLine?: boolean;
-  type?: "text" | "password" | undefined;
 }
 export const TextInput = ({
   placeholder = "",

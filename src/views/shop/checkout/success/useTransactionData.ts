@@ -31,10 +31,16 @@ export const useTransactionData = () => {
       if (response.ok) {
         const data = await response.json();
 
-        const { shippingDetails, customerDetails, paymentIntent, created } =
-          snakeCaseKeysToCamelCase(data.session);
+        const {
+          shippingDetails,
+          customerDetails: formattedCustomerDetails,
+          paymentIntent,
+          created,
+        } = snakeCaseKeysToCamelCase(data.session);
         setBillingDetails(shippingDetails as unknown as BillingDetails);
-        setCustomerDetails(customerDetails as unknown as CustomerDetails);
+        setCustomerDetails(
+          formattedCustomerDetails as unknown as CustomerDetails
+        );
         setTransactionDetails({
           refId: paymentIntent as string,
           purchaseDate: created as number,
