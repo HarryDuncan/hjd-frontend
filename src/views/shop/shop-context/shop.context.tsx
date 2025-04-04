@@ -1,47 +1,40 @@
-import { Product } from "models/shop/types";
+import { LineItem } from "models/shop/types";
 import React, { createContext, useReducer, ReactNode, useContext } from "react";
 
-export type CartItem = {
-  product: Product;
-  quantity: number;
-  errorMessage?: string;
-  message?: string;
-};
-
-export type AppState = {
-  cart: CartItem[];
+export type ShopState = {
+  cart: LineItem[];
   shippingZoneId: number | null;
   shippingTotal: number | null;
 };
 
 export type Action =
-  | { type: "ADD_TO_CART"; payload: CartItem }
-  | { type: "UPDATE_CART"; payload: CartItem[] }
+  | { type: "ADD_TO_CART"; payload: LineItem }
+  | { type: "UPDATE_CART"; payload: LineItem[] }
   | {
       type: "UPDATE_SHIPPING";
       payload: { shippingTotal: number; selectedShippingZoneId: null | number };
     }
-  | { type: "REMOVE_FROM_CART"; payload: { productId: number } }
+  | { type: "REMOVE_FROM_CART"; payload: { itemGuid: string } }
   | {
       type: "UPDATE_QUANTITY";
-      payload: { productId: number; quantity: number };
+      payload: { itemGuid: string; quantity: number };
     }
   | { type: "CHECKOUT" };
 
 type ShopContextType = {
-  state: AppState;
+  state: ShopState;
   dispatch: React.Dispatch<Action>;
 };
 
 const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
-const initialState: AppState = {
+const initialState: ShopState = {
   cart: [],
   shippingZoneId: null,
   shippingTotal: null,
 };
 
-const reducer = (state: AppState, action: Action): AppState => {
+const reducer = (state: ShopState, action: Action): ShopState => {
   switch (action.type) {
     case "UPDATE_CART":
       sessionStorage.setItem("cart", JSON.stringify(action.payload));
@@ -50,11 +43,11 @@ const reducer = (state: AppState, action: Action): AppState => {
         cart: action.payload,
       };
     case "UPDATE_QUANTITY": {
-      const updatedCart = state.cart.map((cartItem) => {
-        if (cartItem.product.id === action.payload.productId) {
-          return { ...cartItem, quantity: action.payload.quantity };
+      const updatedCart = state.cart.map((lineItem) => {
+        if (lineItem.guid === action.payload.itemGuid) {
+          return { ...lineItem, quantity: action.payload.quantity };
         }
-        return cartItem;
+        return lineItem;
       });
       sessionStorage.setItem("cart", JSON.stringify(updatedCart));
       return {
@@ -64,9 +57,9 @@ const reducer = (state: AppState, action: Action): AppState => {
     }
     case "ADD_TO_CART": {
       const updatedCart = [...state.cart, action.payload].reduce(
-        (result: CartItem[], cartItem) => {
+        (result: LineItem[], cartItem) => {
           const itemIndex = result.findIndex(
-            (item) => item.product.id === cartItem.product.id
+            ({ guid }) => guid === cartItem.guid
           );
           if (itemIndex === -1) {
             result.push(cartItem);
@@ -93,7 +86,7 @@ const reducer = (state: AppState, action: Action): AppState => {
       };
     case "REMOVE_FROM_CART": {
       const updatedCart = state.cart.filter(
-        (item) => item.product.id !== action.payload.productId
+        ({ guid }) => guid !== action.payload.itemGuid
       );
       sessionStorage.setItem("cart", JSON.stringify(updatedCart));
       return {

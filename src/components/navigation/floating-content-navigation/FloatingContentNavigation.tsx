@@ -15,7 +15,7 @@ export const FloatingContentNavigation = ({
   return (
     <FloatingNavigationContainer>
       {navigationRoutes.includes("back") && (
-        <IconButton onClick={routeHistory} type={IconTypes.EXIT} hasGesture />
+        <IconButton onClick={routeHistory} type={IconTypes.BACK} hasGesture />
       )}
       {navigationRoutes.includes("home") && (
         <IconButton onClick={goToLanding} type={IconTypes.EXIT} hasGesture />

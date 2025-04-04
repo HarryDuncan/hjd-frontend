@@ -8,12 +8,10 @@ export const useShopData = () => {
   );
   return (
     productData.data ?? {
-      shopData: {
-        products: [],
-        productVariations: [],
-        shippingZones: [],
-        shippingOptions: [],
-      },
+      products: [],
+      productVariations: [],
+      shippingZones: [],
+      shippingOptions: [],
       loading: true,
     }
   );

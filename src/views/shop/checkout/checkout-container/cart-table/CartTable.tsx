@@ -1,4 +1,3 @@
-import { SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
 import Image from "next/image";
 import {
   CartTableControl,
@@ -7,69 +6,96 @@ import {
   ItemDetails,
   TableImageContainer,
 } from "../checkout.styles";
-import { CartItem, useShopContext } from "views/shop/shop-context/shop.context";
+import { useShopContext } from "views/shop/shop-context/shop.context";
 import { IconButton } from "components/buttons/icon-button/IconButton";
 import { IconTypes } from "components/buttons/icon-button/IconButton.types";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { SpinButton } from "components/inputs/spin-button/SpinButton";
+import { LineItem } from "models/shop/types";
+import { useShopData } from "views/shop/hooks/useShopData";
 
 interface CartTableProps {
   isReadOnly?: boolean;
-  parsedCartData?: CartItem[];
+  parsedCartData?: LineItem[];
 }
+
+const useGetProductStock = () => {
+  const { products, productVariations } = useShopData();
+  return useCallback(
+    (itemGuid: string) => {
+      const product = products.find(({ guid }) => guid === itemGuid);
+      if (product) {
+        return product.stock;
+      }
+      const productVariation = productVariations.find(
+        (variation) => variation.guid === itemGuid
+      );
+      if (productVariation) {
+        const parentProduct = products.find(
+          ({ id }) => id === productVariation.productId
+        );
+        return productVariation ? productVariation.stock : parentProduct?.stock;
+      }
+      return 0;
+    },
+    [products, productVariations]
+  );
+};
 const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
   const { dispatch, cartData } = useCartTableData(parsedCartData);
-  const handleRemoveItem = (productId: number) => {
+  const handleRemoveItem = (itemGuid: string) => {
     dispatch({
       type: "REMOVE_FROM_CART",
       payload: {
-        productId,
+        itemGuid,
       },
     });
   };
-  const handleUpdateQuantity = (updatedQuantity: number, productId: number) => {
+  const handleUpdateQuantity = (updatedQuantity: number, itemGuid: string) => {
     dispatch({
       type: "UPDATE_QUANTITY",
       payload: {
-        productId,
+        itemGuid,
         quantity: updatedQuantity,
       },
     });
   };
+
+  const getProductStock = useGetProductStock();
+
   return (
     <CheckoutSection>
-      {cartData.map((cartItem) => (
-        <CartTableRow key={cartItem.product.id}>
+      {cartData.map((lineItem) => (
+        <CartTableRow key={lineItem.guid}>
           <TableImageContainer>
             <Image
-              src={`${SHOP_IMAGE_URL_ROOT}${cartItem.product.imageUrl}`}
-              alt={cartItem.product.title}
+              src={lineItem.imageUrl ?? ""}
+              alt={lineItem.title}
               fill
               objectFit="contain"
             />
           </TableImageContainer>
           <ItemDetails>
             <p>
-              {cartItem.product.title} {isReadOnly && ` X ${cartItem.quantity}`}
+              {lineItem.title} {isReadOnly && ` X ${lineItem.quantity}`}
             </p>
-            <p>${cartItem.product.price} AUD</p>
-
-            {cartItem.errorMessage && <p>{cartItem.errorMessage}</p>}
+            <p>${lineItem.price} AUD</p>
           </ItemDetails>
           {!isReadOnly && (
             <CartTableControl>
               <SpinButton
-                value={cartItem.quantity}
-                max={cartItem.product.stock}
+                value={lineItem.quantity}
+                max={getProductStock(lineItem.guid)}
                 min={1}
                 onChange={(updatedValue: number) => {
-                  handleUpdateQuantity(updatedValue, cartItem.product.id);
+                  handleUpdateQuantity(updatedValue, lineItem.guid);
                 }}
               />
               <IconButton
                 hasGesture
                 type={IconTypes.TRASH}
-                onClick={() => handleRemoveItem(cartItem.product.id)}
+                onClick={() => handleRemoveItem(lineItem.guid)}
+                aria-label="Remove item from cart"
               />
             </CartTableControl>
           )}
@@ -79,7 +105,7 @@ const CartTable = ({ isReadOnly = false, parsedCartData }: CartTableProps) => {
   );
 };
 
-const useCartTableData = (parsedCartData: CartItem[] | undefined) => {
+const useCartTableData = (parsedCartData: LineItem[] | undefined) => {
   const {
     dispatch,
     state: { cart },

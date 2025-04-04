@@ -5,7 +5,6 @@ import { ContentText } from "components/text/Text";
 import { useRouter } from "next/router";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/slide-with-background/SlideWithBackgroundTransition";
 import { Direction } from "utils/moveThroughArray";
-import { SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
 import ViewItemLayout from "layout/view-item-layout/ViewItemLayout";
 import { ProductControl } from "views/shop/shop-gallery/product-control/ProductControl";
 
@@ -28,16 +27,9 @@ const ProductDetails = () => {
     <SlideWithBackgroundTransition direction={changedDirection}>
       <ViewItemLayout
         onChangeItem={onChangeItem}
-        imageUrl={`${SHOP_IMAGE_URL_ROOT}${product?.imageUrl}`}
-        title={product?.title}
+        imageUrls={product?.imageUrls}
+        title={product?.title ?? ""}
         handleExit={handleExit}
-        multiImage={
-          product.multiImages
-            ? product.multiImages.map(
-                (multiImage) => `${SHOP_IMAGE_URL_ROOT}${multiImage}`
-              )
-            : null
-        }
       >
         <ContentText>{description}</ContentText>
         <br />

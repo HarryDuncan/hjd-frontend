@@ -1,10 +1,10 @@
 import { FetchResponse } from "models/general.types";
 
-export type Painting = {
+export type Art = {
   description: string;
   externalUrl: string;
   id: number;
-  imageUrl: string;
+  imageUrls: string[];
   medium: string;
   title: string;
   yearCompleted: number;
@@ -12,8 +12,6 @@ export type Painting = {
   dimensions: string;
 };
 
-export type FetchPaintingsResponse = FetchResponse & {
-  paintings: {
-    paintings: Painting[];
-  };
+export type FetchArtResponse = FetchResponse & {
+  art: Art[];
 };

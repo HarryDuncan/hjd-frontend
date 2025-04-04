@@ -4,6 +4,11 @@ import Image from "next/image";
 export const MultiImageContainer = styled.div`
   display: flex;
   flex-direction: row;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.tablet}px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 export const ThumbnailContainer = styled.div<{ $top: number; $left: number }>`
@@ -15,7 +20,13 @@ export const ThumbnailContainer = styled.div<{ $top: number; $left: number }>`
       theme.breakpoints.tablet}px) {
     display: flex;
     margin-top: ${({ $top }) => $top + 20}px;
-    margin-left: 10%;
+
+    justify-content: center;
+    flex-direction: row;
+  }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    margin: 0 auto;
     justify-content: center;
   }
 `;

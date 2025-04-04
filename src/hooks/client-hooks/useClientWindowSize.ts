@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTheme } from "styled-components";
-import { useWindowState } from "visual/compat/window-state/windowStateProvider";
+import { useWindowState } from "art-os-package";
 
 export const WINDOW_TYPE = {
   WIDE_SCREEN: "WIDE_SCREEN",

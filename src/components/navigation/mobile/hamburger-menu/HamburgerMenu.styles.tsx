@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HamburgerMenuContainer = styled.div`
+  margin: -1.2rem 0rem 0 -2rem;
   .ham {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
@@ -41,7 +42,7 @@ export const HamburgerMenuContainer = styled.div`
     }
   }
   @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
-    margin-right: 0.2rem;
+      theme.breakpoints.mobile}px) {
+    margin: -0.3rem 0 0 -0.5rem;
   }
 `;

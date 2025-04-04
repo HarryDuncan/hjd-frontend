@@ -5,9 +5,7 @@ import { useShopData } from "./useShopData";
 import { Direction, moveThroughArray } from "utils/moveThroughArray";
 
 export const useScrollProducts = () => {
-  const {
-    shopData: { products },
-  } = useShopData();
+  const { products } = useShopData();
 
   const handleRouting = useHandleRouting("");
   const currentProductId = useParams("productId");

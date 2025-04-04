@@ -17,4 +17,4 @@ export const useImageRatio = (
       }
     }
     return EMPTY_RATIO;
-  }, [imageDimensions]);
+  }, [imageDimensions, antecedent]);

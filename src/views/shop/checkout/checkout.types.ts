@@ -1,4 +1,4 @@
-import { CartItem } from "../shop-context/shop.context";
+import { LineItem } from "models/shop/types";
 
 export interface Address {
   city: string;
@@ -28,7 +28,7 @@ export interface TransactionDetails {
 export interface ReceiptData {
   customerDetails: CustomerDetails;
   billingDetails: BillingDetails;
-  cart: CartItem[];
+  cart: LineItem[];
   shippingData: ShippingData;
   transactionDetails: TransactionDetails;
   orderId?: number | null;

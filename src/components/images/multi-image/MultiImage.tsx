@@ -6,21 +6,16 @@ import { ImageDimensions } from "../images.types";
 
 interface MultiImageProps {
   title: string;
-  mainImageUrl: string;
-  multiImages: string[];
+  imageUrls: string[];
 }
-export const MultiImage = ({
-  title,
-  mainImageUrl,
-  multiImages,
-}: MultiImageProps) => {
+export const MultiImage = ({ title, imageUrls }: MultiImageProps) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
   const handleChangeImage = useCallback((imageIndex: number) => {
     setSelectedImageIndex(imageIndex);
   }, []);
   const images = useMemo(
-    () => [mainImageUrl, ...multiImages.map((multiImage) => multiImage)],
-    [mainImageUrl, multiImages]
+    () => [imageUrls[0], ...imageUrls.map((imageUrl) => imageUrl)],
+    [imageUrls]
   );
 
   const [imageDimension, setImageDimension] = useState<ImageDimensions>({
@@ -31,6 +26,10 @@ export const MultiImage = ({
     setImageDimension(loadedImageDimensions);
   };
 
+  if (!images.length) {
+    return null;
+  }
+
   return (
     <MultiImageContainer>
       <StaticImage
@@ -38,21 +37,23 @@ export const MultiImage = ({
         imageUrl={images[selectedImageIndex]}
         imageTitle={title}
       />
-      <ThumbnailContainer
-        $top={imageDimension.height}
-        $left={imageDimension.width}
-      >
-        {images.map((image, index) => (
-          <Thumbnail
-            key={`${title}-image-${image}`}
-            isSelected={index === selectedImageIndex}
-            alt={`${title} image-${index}`}
-            url={image}
-            onClick={handleChangeImage}
-            imageIndex={index}
-          />
-        ))}
-      </ThumbnailContainer>
+      {images.length > 1 ? (
+        <ThumbnailContainer
+          $top={imageDimension.height}
+          $left={imageDimension.width}
+        >
+          {images.map((image, index) => (
+            <Thumbnail
+              key={`${title}-image-${image}`}
+              isSelected={index === selectedImageIndex}
+              alt={`${title} image-${index}`}
+              url={image}
+              onClick={handleChangeImage}
+              imageIndex={index}
+            />
+          ))}
+        </ThumbnailContainer>
+      ) : null}
     </MultiImageContainer>
   );
 };

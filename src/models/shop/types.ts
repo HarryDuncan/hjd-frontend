@@ -4,24 +4,27 @@ export type Product = {
   id: number;
   title: string;
   description: string;
-  imageUrl: string;
+  imageUrls: string[];
   stock: number;
   price: number | null;
   hasVariations: boolean;
   percentageDonated: number;
-  variations?: ProductVariations[];
+  hasEditions: boolean;
+  variations?: ProductVariation[];
   shippingOptionId: number | null;
   multiImages: string[] | null;
   isSoldOut?: boolean;
+  guid: string;
 };
 
-export type ProductVariations = {
+export type ProductVariation = {
   id: number;
   productId: number;
   title: string;
   price: number;
   stock: number;
   shippingOptionId: number;
+  guid: string;
 };
 
 export type ShippingOption = {
@@ -44,10 +47,19 @@ export type ShippingZone = {
 };
 
 export type ReturnedShopData = FetchResponse & {
-  shopData: {
-    products: Product[];
-    productVariations: ProductVariations[];
-    shippingZones: ShippingZone[];
-    shippingOptions: ShippingOption[];
-  };
+  products: Product[];
+  productVariations: ProductVariation[];
+  shippingZones: ShippingZone[];
+  shippingOptions: ShippingOption[];
+};
+
+export type LineItem = {
+  guid: string;
+  productId: number;
+  variationId: number | null;
+  quantity: number;
+  title: string;
+  price: number | null;
+  shippingOptionId: number | null;
+  imageUrl: string | null;
 };

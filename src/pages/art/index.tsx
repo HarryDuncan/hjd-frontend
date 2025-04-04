@@ -7,7 +7,7 @@ import {
   MAIN_GALLERY_TOP_OFFSET,
 } from "constants/ui.constants";
 import { TextScroller } from "components/text-scroller/TextScroller";
-import { PaintingGallery } from "views/art/PaintingGallery";
+import { Gallery } from "views/art/Gallery";
 import Head from "next/head";
 import { Suspense } from "react";
 import DefaultLayout from "layout/DefaultLayout";
@@ -38,7 +38,7 @@ const Art: NextPage = () => {
           >
             <TextScroller text=" Original Paintings " />
           </ParallaxImage>
-          <PaintingGallery />
+          <Gallery />
         </Suspense>
       </DefaultLayout>
     </>
