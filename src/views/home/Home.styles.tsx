@@ -20,7 +20,7 @@ export const HomeContainerBottom = styled.div`
   height: 0vh;
   overflow: hidden;
   background: ${({ theme }) => theme.colors.gradients.dark};
-  z-index: 50;
+  z-index: 900;
   ${TextScrollerContainer} {
     position: relative;
     align-items: flex-start;

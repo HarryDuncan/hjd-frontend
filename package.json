@@ -18,7 +18,7 @@
     "@emotion/styled": "^11.11.0",
     "@stripe/stripe-js": "7.0.0",
     "apollo-link-rest": "^0.9.0-rc.1",
-    "art-os-package": "^1.1.12",
+    "art-os-package": "^1.1.13",
     "framer-motion": "^12.6.3",
     "graphql": "^15.8.0",
     "gsap": "^3.10.4",

@@ -36,12 +36,12 @@ export const CircleButton = styled.button<{ $disabled?: boolean }>`
     font-weight: 100;
     transition: transform 0.3s ease-out;
   }
-  :hover .circle-svg {
+  .hovered-circle {
     transform: ${({ $disabled }) =>
       $disabled ? "scale3d(1, 1, 1)" : "scale3d(1.2, 1.2, 1)"};
     transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
   }
-  :hover h2 {
+  .hovered-title {
     transform: translate3d(0, 50%, 0);
     transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
   }

@@ -3,21 +3,22 @@ import styled, { keyframes } from "styled-components";
 
 const growDown = keyframes`
 from {
-  height: 0;
+  opacity: 0;
 }
 to {
-  height: 20vh; /* Adjust the final height as needed */
+  opacity: 1; 
 }
 `;
 export const PageTitleContainer = styled.div`
   width: 100vw;
   position: relative;
   top: 0;
-  height: 0vh;
+  opacity: 0;
+  height: 15vh;
   background: ${({ theme }) => theme.colors.gradients.dark};
   z-index: 50;
   ${TextScrollerText} {
     font-size: ${({ theme }) => theme.font.size.large};
   }
-  animation: ${growDown} 1s ease-in-out 1.5s forwards;
+  animation: ${growDown} 1s ease-in-out 0.2s forwards;
 `;

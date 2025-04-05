@@ -2,7 +2,7 @@ import { ImageContainer, StyledImage } from "./StaticImage.styles";
 import { useLoadedImageDimensions } from "../hooks/useLoadedImageDimensions";
 import { ImageDimensions } from "../images.types";
 import { imageLoader } from "../images.functions";
-import { AnimatedSVG } from "components/loading/animated-svg/AnimatedSvg";
+import { ImageLoading } from "components/loading/animated-svg/ImageLoader";
 
 interface StaticImageProps {
   imageUrl: string | null | undefined;
@@ -23,7 +23,7 @@ export const StaticImage = ({
       $height={imageDimensions?.height}
       $width={imageDimensions?.width}
     >
-      {!isImageLoaded && <AnimatedSVG />}
+      {!isImageLoaded && <ImageLoading />}
       <StyledImage
         loader={imageLoader}
         alt={imageTitle}

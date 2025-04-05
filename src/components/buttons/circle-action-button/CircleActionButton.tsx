@@ -1,4 +1,4 @@
-import { RefObject, forwardRef } from "react";
+import { RefObject, forwardRef, useState } from "react";
 import { ButtonText, CircleButton } from "./CircleActionButton.styles";
 
 interface CircleButtonProps {
@@ -24,14 +24,20 @@ export const CircleActionButton = forwardRef(
         onClick();
       }
     };
+    const [hovered, setHovered] = useState(false);
+
     return (
       <CircleButton
         $disabled={disabled}
         ref={ref as RefObject<HTMLButtonElement> | null}
         onClick={handleButtonClick}
+        onMouseOver={() => setHovered(true)}
+        onMouseOut={() => setHovered(false)}
       >
-        <ButtonText>{title}</ButtonText>
-        <svg className="circle-svg" viewBox="0 0 100 100">
+        <svg
+          className={`circle-svg ${hovered ? "hovered-circle" : ""}`}
+          viewBox="0 0 100 100"
+        >
           <circle
             stroke="white"
             vectorEffect="non-scaling-stroke"
@@ -41,6 +47,9 @@ export const CircleActionButton = forwardRef(
             fill={disabled ? DISABLED_CIRCLE_FILL : circleFill}
           />
         </svg>
+        <ButtonText className={hovered ? "hovered-title" : ""}>
+          {title}
+        </ButtonText>
       </CircleButton>
     );
   }

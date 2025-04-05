@@ -23,10 +23,10 @@ const Home: NextPage = () => {
         />
       </Head>
       <TitlePageLayout>
-        <BottomSection />
         <Suspense fallback={<SceneLoadingFallback />}>
           <DynamicAnimatedScene configId={HOME_SCENE_ID} />
         </Suspense>
+        <BottomSection />
       </TitlePageLayout>
     </>
   );
