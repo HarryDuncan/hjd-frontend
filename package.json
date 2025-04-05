@@ -1,13 +1,16 @@
 {
   "name": "hjd-frontend",
-  "version": "2.2.1",
+  "version": "2.2.3",
   "private": true,
   "scripts": {
     "serve": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest"
+    "test": "vitest",
+    "analyze": "ANALYZE=true next build",
+    "clean": "rm -rf .next",
+    "build:clean": "npm run clean && next build"
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",
@@ -15,7 +18,7 @@
     "@emotion/styled": "^11.11.0",
     "@stripe/stripe-js": "7.0.0",
     "apollo-link-rest": "^0.9.0-rc.1",
-    "art-os-package": "^1.1.9",
+    "art-os-package": "^1.1.12",
     "framer-motion": "^12.6.3",
     "graphql": "^15.8.0",
     "gsap": "^3.10.4",
@@ -28,6 +31,7 @@
     "three": "^0.174.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.25.9",
     "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.4",
     "@types/lodash": "^4.14.182",
@@ -39,6 +43,7 @@
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "@vitejs/plugin-react": "^4.2.0",
+    "babel-loader": "^10.0.0",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-styled-components": "^2.0.7",
     "eslint": "^8.19.0",
