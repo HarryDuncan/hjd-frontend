@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatedScene } from "components/animations/scenes/AnimatedScene";
+import { DynamicAnimatedScene } from "components/animations/scenes/AnimatedScene";
 import FullScreenLayout from "layout/FullScreenLayout";
 import CartStorageHandler from "views/shop/checkout/cancel/CartStorageHandler";
 import CheckoutPreview from "views/shop/checkout/checkout-container/CheckoutContainer";
@@ -12,7 +12,7 @@ const Result = () => {
     <FullScreenLayout>
       <CartStorageHandler resetInventoryEnabled />
       <CheckoutPreview />
-      <AnimatedScene configId="default-scene" />
+      <DynamicAnimatedScene configId="default-scene" />
     </FullScreenLayout>
   );
 };

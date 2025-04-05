@@ -8,7 +8,7 @@ import Head from "next/head";
 import TitlePageLayout from "layout/title-page-layout/TitlePageLayout";
 import { HomeContainerBottom } from "views/home/Home.styles";
 import { SceneLoadingFallback } from "components/loading/fallbacks/scene-loading/SceneLoadingFallback";
-import { AnimatedScene } from "components/animations/scenes/AnimatedScene";
+import { DynamicAnimatedScene } from "components/animations/scenes/AnimatedScene";
 
 const HOME_SCENE_ID = "home-scene";
 const Home: NextPage = () => {
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
       <TitlePageLayout>
         <BottomSection />
         <Suspense fallback={<SceneLoadingFallback />}>
-          <AnimatedScene configId={HOME_SCENE_ID} />
+          <DynamicAnimatedScene configId={HOME_SCENE_ID} />
         </Suspense>
       </TitlePageLayout>
     </>

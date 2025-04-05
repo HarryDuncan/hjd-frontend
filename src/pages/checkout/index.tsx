@@ -1,7 +1,7 @@
 "use client";
 
 import Head from "next/head";
-import { AnimatedScene } from "components/animations/scenes/AnimatedScene";
+import { DynamicAnimatedScene } from "components/animations/scenes/AnimatedScene";
 import FullScreenLayout from "layout/FullScreenLayout";
 import CheckoutPreview from "views/shop/checkout/checkout-container/CheckoutContainer";
 import { useRedirectOnEmptyCart } from "views/shop/hooks/useRedirectOnEmptyCheckout";
@@ -20,7 +20,7 @@ const Checkout = () => {
       </Head>
       <FullScreenLayout>
         <CheckoutPreview />
-        <AnimatedScene configId="default-scene" />
+        <DynamicAnimatedScene configId="default-scene" />
       </FullScreenLayout>
     </>
   );

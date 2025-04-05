@@ -3,7 +3,7 @@
 import { LinkTree } from "views/link-tree/LinkTree";
 import { useLinkTree } from "hooks/content/useLinkTree";
 import Head from "next/head";
-import { AnimatedScene } from "components/animations/scenes/AnimatedScene";
+import { DynamicAnimatedScene } from "components/animations/scenes/AnimatedScene";
 import FullScreenLayout from "layout/FullScreenLayout";
 
 const Link = () => {
@@ -20,7 +20,7 @@ const Link = () => {
       </Head>
       <FullScreenLayout>
         <LinkTree links={links} />
-        <AnimatedScene configId="default-scene" />
+        <DynamicAnimatedScene configId="default-scene" />
       </FullScreenLayout>
     </>
   );

@@ -1,9 +1,27 @@
 "use client";
 
+import { SceneNode, useFetchConfig, SceneConfig } from "art-os-package";
+import { AnimatedSVG } from "components/loading/animated-svg/AnimatedSvg";
 import { useMemo } from "react";
-import { useFetchConfig, SceneConfig } from "art-os-package";
 
-export const useSceneConfig = (configId: string) => {
+interface AnimatedSceneProps {
+  configId: string;
+}
+const Scene = ({ configId }: AnimatedSceneProps) => {
+  const sceneConfig = useSceneConfig(configId);
+  if (!sceneConfig) return null;
+
+  return (
+    <SceneNode
+      sceneConfig={sceneConfig}
+      events={[]}
+      interactionEvents={[]}
+      loaderComponent={<AnimatedSVG />}
+    />
+  );
+};
+
+const useSceneConfig = (configId: string) => {
   const selectedSceneFilePath = configId
     ? `${process.env.NEXT_PUBLIC_CONTENT_ROOT}/visual-config/${configId}.json`
     : "";
@@ -35,3 +53,5 @@ const useSelectedConfig = (
     return sceneConfigData[0];
   }, [index, sceneConfigData]);
 };
+
+export default Scene;

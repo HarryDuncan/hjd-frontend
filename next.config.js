@@ -2,6 +2,7 @@
 
 module.exports = {
   reactStrictMode: false,
+  transpilePackages: ["art-os-package"],
   compiler: {
     // see https://styled-components.com/docs/tooling#babel-plugin for more info on the options.
     styledComponents: true,
