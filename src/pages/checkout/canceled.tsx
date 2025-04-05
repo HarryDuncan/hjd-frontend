@@ -12,7 +12,7 @@ const Result = () => {
     <FullScreenLayout>
       <CartStorageHandler resetInventoryEnabled />
       <CheckoutPreview />
-      <AnimatedScene configId={"default-scene"} />
+      <AnimatedScene configId="default-scene" />
     </FullScreenLayout>
   );
 };

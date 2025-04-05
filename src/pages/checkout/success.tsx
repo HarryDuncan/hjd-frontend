@@ -14,7 +14,7 @@ const Result = () => {
           <DynamicSuccessContent />
         </Suspense>
       </FloatingCentralContainer>
-      <AnimatedScene configId={"default-scene"} />
+      <AnimatedScene configId="default-scene" />
     </FullScreenLayout>
   );
 };

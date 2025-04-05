@@ -11,7 +11,7 @@ const Contact = () => {
       <FloatingCentralContainer>
         <ContactContent />
       </FloatingCentralContainer>
-      <AnimatedScene configId={"default-scene"} />
+      <AnimatedScene configId="default-scene" />
     </FullScreenLayout>
   );
 };

@@ -20,7 +20,7 @@ const Checkout = () => {
       </Head>
       <FullScreenLayout>
         <CheckoutPreview />
-        <AnimatedScene configId={"default-scene"} />
+        <AnimatedScene configId="default-scene" />
       </FullScreenLayout>
     </>
   );

@@ -93,7 +93,7 @@ const SlideWithBackgroundTransition = ({
   }, [divRef]);
   return (
     <TransitionEffectContainer>
-      <AnimatedScene configId={"default-scene"} />
+      <AnimatedScene configId="default-scene" />
       <AnimatePresence initial={false} mode="wait">
         <motion.div
           ref={divRef}

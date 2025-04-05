@@ -20,7 +20,7 @@ const Link = () => {
       </Head>
       <FullScreenLayout>
         <LinkTree links={links} />
-        <AnimatedScene configId={"default-scene"} />
+        <AnimatedScene configId="default-scene" />
       </FullScreenLayout>
     </>
   );
