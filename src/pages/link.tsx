@@ -1,7 +1,9 @@
+"use client";
+
 import { LinkTree } from "views/link-tree/LinkTree";
 import { useLinkTree } from "hooks/content/useLinkTree";
 import Head from "next/head";
-import { DefaultScene } from "components/animations/scenes/DefaultScene";
+import { DynamicAnimatedScene } from "components/animations/scenes/AnimatedScene";
 import FullScreenLayout from "layout/FullScreenLayout";
 
 const Link = () => {
@@ -18,7 +20,7 @@ const Link = () => {
       </Head>
       <FullScreenLayout>
         <LinkTree links={links} />
-        <DefaultScene />
+        <DynamicAnimatedScene configId="default-scene" />
       </FullScreenLayout>
     </>
   );

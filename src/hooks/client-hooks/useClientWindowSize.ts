@@ -1,6 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTheme } from "styled-components";
-import { useWindowState } from "visual/compat/window-state/windowStateProvider";
 
 export const WINDOW_TYPE = {
   WIDE_SCREEN: "WIDE_SCREEN",
@@ -15,11 +14,13 @@ type ScreenType = keyof typeof WINDOW_TYPE;
 
 export const useWindowScreenType = () => {
   const { breakpoints } = useTheme();
-  const {
-    state: {
-      windowSize: { width },
-    },
-  } = useWindowState();
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return useCallback(() => {
     if (width > breakpoints.desktop) {

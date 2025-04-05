@@ -1,12 +1,12 @@
-export enum Direction {
-  FORWARD = "forward",
-  REVERSE = "reverse",
-}
+export const Direction = {
+  FORWARD: "forward",
+  REVERSE: "reverse",
+};
 
 export function moveThroughArray<T>(
   array: Array<T>,
   index: number,
-  direction: Direction = Direction.FORWARD
+  direction: string = Direction.FORWARD
 ): { item: T; newIndex: number } {
   const step = direction === Direction.FORWARD ? 1 : -1;
   const newIndex = index + step;

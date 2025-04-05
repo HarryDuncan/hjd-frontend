@@ -1,4 +1,6 @@
-import { DefaultScene } from "components/animations/scenes/DefaultScene";
+"use client";
+
+import { DynamicAnimatedScene } from "components/animations/scenes/AnimatedScene";
 import { FloatingCentralContainer } from "components/containers/Containers";
 import FullScreenLayout from "layout/FullScreenLayout";
 import { Suspense } from "react";
@@ -12,7 +14,7 @@ const Result = () => {
           <DynamicSuccessContent />
         </Suspense>
       </FloatingCentralContainer>
-      <DefaultScene />
+      <DynamicAnimatedScene configId="default-scene" />
     </FullScreenLayout>
   );
 };

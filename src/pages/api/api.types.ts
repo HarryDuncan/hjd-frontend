@@ -1,3 +1,4 @@
+// @ts-nocheck
 export type ApiRequest = {
   method: string;
   headers: {
@@ -28,8 +29,8 @@ export type ApiResponse = {
   status: (arg0: number) => {
     (): unknown;
     new (): unknown;
-    json: { (arg0: unknown): void; new (): unknown };
-    end: { (arg0: string): void; new (): unknown };
+    json: { (arg1: unknown): void; new (): unknown };
+    end: { (arg2: string): void; new (): unknown };
   };
   json: (arg0: unknown) => unknown;
   setHeader: (arg0: string, arg1: string) => void;

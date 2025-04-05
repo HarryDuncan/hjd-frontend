@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CircleButton = styled.button`
+export const CircleButton = styled.button<{ $disabled?: boolean }>`
   z-index: 15;
   margin: 0 auto;
   position: relative;
@@ -36,11 +36,12 @@ export const CircleButton = styled.button`
     font-weight: 100;
     transition: transform 0.3s ease-out;
   }
-  :hover .circle-svg {
-    transform: scale3d(1.2, 1.2, 1);
+  .hovered-circle {
+    transform: ${({ $disabled }) =>
+      $disabled ? "scale3d(1, 1, 1)" : "scale3d(1.2, 1.2, 1)"};
     transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
   }
-  :hover h2 {
+  .hovered-title {
     transform: translate3d(0, 50%, 0);
     transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
   }

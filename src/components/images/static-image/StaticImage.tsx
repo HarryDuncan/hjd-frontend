@@ -1,11 +1,11 @@
-import { LoadingSvg } from "components/loading/loading-svg/LoadingSvg";
 import { ImageContainer, StyledImage } from "./StaticImage.styles";
 import { useLoadedImageDimensions } from "../hooks/useLoadedImageDimensions";
 import { ImageDimensions } from "../images.types";
 import { imageLoader } from "../images.functions";
+import { ImageLoading } from "components/loading/animated-svg/ImageLoader";
 
 interface StaticImageProps {
-  imageUrl: string;
+  imageUrl: string | null | undefined;
   imageTitle: string;
   onImageLoaded?: (imageDimensions: ImageDimensions) => void;
 }
@@ -17,13 +17,13 @@ export const StaticImage = ({
 }: StaticImageProps) => {
   const { onImageLoadingComplete, imageDimensions, isImageLoaded } =
     useLoadedImageDimensions(onImageLoaded);
-
+  if (!imageUrl) return null;
   return (
     <ImageContainer
       $height={imageDimensions?.height}
       $width={imageDimensions?.width}
     >
-      {!isImageLoaded && <LoadingSvg />}
+      {!isImageLoaded && <ImageLoading />}
       <StyledImage
         loader={imageLoader}
         alt={imageTitle}

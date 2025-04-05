@@ -3,7 +3,7 @@ import { SwipeableNavigatorContainer } from "./mobile.styles";
 import { Direction } from "utils/moveThroughArray";
 
 interface SwipeablePageNavigatorProps {
-  onSwipe: (direction: Direction) => void;
+  onSwipe: (direction: string) => void;
   children: ReactNode;
 }
 

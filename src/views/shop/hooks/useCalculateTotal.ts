@@ -1,15 +1,15 @@
 import { useMemo } from "react";
-import { CartItem } from "../shop-context/shop.context";
+import { LineItem } from "models/shop/types";
 
 export const useCalculateTotal = (
-  cart: CartItem[],
+  cart: LineItem[],
   shippingTotal: number | null
 ) =>
   useMemo(() => {
     return (
       cart.reduce((prev, curr) => {
-        if (curr.product && curr.product.price) {
-          return curr.product.price * curr.quantity + prev;
+        if (curr && curr.price) {
+          return curr.price * curr.quantity + prev;
         }
         return 0;
       }, 0) + (shippingTotal || 0)

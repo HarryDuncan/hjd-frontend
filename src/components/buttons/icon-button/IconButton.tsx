@@ -1,4 +1,11 @@
-import { EXIT, SCROLL_LEFT, SCROLL_RIGHT, TRASH } from "constants/ui.constants";
+import {
+  EXIT,
+  SCROLL_LEFT,
+  SCROLL_RIGHT,
+  TRASH,
+  DOWN,
+  BACK,
+} from "constants/ui.constants";
 import { IconContainer } from "./IconButton.styles";
 import {
   DefaultIconProps,
@@ -11,6 +18,13 @@ import {
 import { HoverImage } from "components/animations/gesture-animations/hover/HoverImage";
 import { Direction } from "utils/moveThroughArray";
 
+const BackIcon = ({ onClick }: DefaultIconProps) => {
+  return (
+    <IconContainer className="back-icon">
+      <HoverImage alt="back" src={BACK} onClick={onClick} />
+    </IconContainer>
+  );
+};
 const ExitIcon = ({ onClick }: DefaultIconProps) => {
   return (
     <IconContainer className="exit-icon">
@@ -47,7 +61,14 @@ const TrashIcon = ({ onClick }: DefaultIconProps) => (
     <HoverImage alt="trash" src={TRASH} onClick={onClick} />
   </IconContainer>
 );
-const getIcon = (type: IconTypes, onClick: OnIconClick) => {
+
+const DownIcon = ({ onClick }: DefaultIconProps) => (
+  <IconContainer className="down-icon">
+    <HoverImage alt="down" src={DOWN} onClick={onClick} />
+  </IconContainer>
+);
+
+const getIcon = (type: string, onClick: OnIconClick) => {
   switch (type) {
     case IconTypes.EXIT:
       return <ExitIcon onClick={onClick as OnClickFunction} />;
@@ -57,6 +78,10 @@ const getIcon = (type: IconTypes, onClick: OnIconClick) => {
       return <ScrollRightIcon onClick={onClick} />;
     case IconTypes.TRASH:
       return <TrashIcon onClick={onClick as OnClickFunction} />;
+    case IconTypes.DOWN:
+      return <DownIcon onClick={onClick as OnClickFunction} />;
+    case IconTypes.BACK:
+      return <BackIcon onClick={onClick as OnClickFunction} />;
     default:
       console.warn("no valid icon type");
       return <div />;

@@ -41,8 +41,8 @@ const CartStorageHandler = ({
     cart,
     shipping,
     contextCart.length,
-    resetInventory,
     shippingTotal,
+    resetInventoryEnabled,
   ]);
   useEffect(() => {
     setData();

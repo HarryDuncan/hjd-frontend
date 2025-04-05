@@ -1,3 +1,7 @@
+import {
+  useClientWindowSize,
+  WINDOW_TYPE,
+} from "hooks/client-hooks/useClientWindowSize";
 import { HamburgerMenuContainer } from "./HamburgerMenu.styles";
 
 interface HamburgerMenuProps {
@@ -13,13 +17,13 @@ export const HamburgerMenu = ({
 }: HamburgerMenuProps) => {
   const isActive = isOpen ? "active" : "";
   const showAsLight = isLight ? "" : "menu-light";
-
+  const windowSize = useClientWindowSize();
   return (
     <HamburgerMenuContainer>
       <svg
         className={`ham hamRotate ${isActive} ${showAsLight}`}
         viewBox="0 0 100 100"
-        width="90"
+        width={windowSize === WINDOW_TYPE.TABLET ? "140" : "100"}
         onClick={onClick}
       >
         <path

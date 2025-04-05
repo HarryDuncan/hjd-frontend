@@ -1,3 +1,5 @@
+"use client";
+
 import { BioPage } from "views/bio/Bio.styles";
 import { BioSection } from "views/bio/BioSection";
 import {

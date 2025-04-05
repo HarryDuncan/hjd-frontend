@@ -1,3 +1,5 @@
+"use client";
+
 import { useProductData } from "views/shop/hooks/useProductData";
 import { useScrollProducts } from "views/shop/hooks/useScrollProducts";
 import { useCallback, useState } from "react";
@@ -5,7 +7,6 @@ import { ContentText } from "components/text/Text";
 import { useRouter } from "next/router";
 import SlideWithBackgroundTransition from "components/animations/page-transitions/slide-with-background/SlideWithBackgroundTransition";
 import { Direction } from "utils/moveThroughArray";
-import { SHOP_IMAGE_URL_ROOT } from "constants/shop.constants";
 import ViewItemLayout from "layout/view-item-layout/ViewItemLayout";
 import { ProductControl } from "views/shop/shop-gallery/product-control/ProductControl";
 
@@ -14,13 +15,13 @@ const ProductDetails = () => {
 
   const changeProduct = useScrollProducts();
   const handleExit = useHandleExit();
-  const [changedDirection, setChangedDirection] = useState<Direction>(
+  const [changedDirection, setChangedDirection] = useState<string>(
     Direction.FORWARD
   );
 
   if (!product) return null;
   const { description } = product;
-  const onChangeItem = (direction: Direction) => {
+  const onChangeItem = (direction: string) => {
     setChangedDirection(direction);
     changeProduct(direction);
   };
@@ -28,16 +29,9 @@ const ProductDetails = () => {
     <SlideWithBackgroundTransition direction={changedDirection}>
       <ViewItemLayout
         onChangeItem={onChangeItem}
-        imageUrl={`${SHOP_IMAGE_URL_ROOT}${product?.imageUrl}`}
-        title={product?.title}
+        imageUrls={product?.imageUrls}
+        title={product?.title ?? ""}
         handleExit={handleExit}
-        multiImage={
-          product.multiImages
-            ? product.multiImages.map(
-                (multiImage) => `${SHOP_IMAGE_URL_ROOT}${multiImage}`
-              )
-            : null
-        }
       >
         <ContentText>{description}</ContentText>
         <br />
