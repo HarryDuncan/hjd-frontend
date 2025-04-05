@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo } from "react";
 import { useFetchConfig, SceneConfig } from "art-os-package";
 

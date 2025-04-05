@@ -1,3 +1,5 @@
+"use client";
+
 import { useProductData } from "views/shop/hooks/useProductData";
 import { useScrollProducts } from "views/shop/hooks/useScrollProducts";
 import { useCallback, useState } from "react";

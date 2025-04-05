@@ -1,3 +1,5 @@
+"use client";
+
 import { ViewItemContent } from "components/containers/Containers";
 import { ContentText, MainTitle } from "components/text/Text";
 import DefaultLayout from "layout/DefaultLayout";

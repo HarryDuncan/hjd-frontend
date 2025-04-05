@@ -1,3 +1,5 @@
+"use client";
+
 import { ParallaxImage } from "components/images/parallax-image/ParallaxImage";
 import type { NextPage } from "next";
 import { useContentForPage } from "hooks/content/useContentForPage";

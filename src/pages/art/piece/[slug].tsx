@@ -1,3 +1,5 @@
+"use client";
+
 import { ContentText } from "components/text/Text";
 import { useScrollArt } from "hooks/art/useScrollArt";
 import { useRouter } from "next/router";
