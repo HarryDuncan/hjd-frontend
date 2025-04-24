@@ -9,7 +9,7 @@ const growDown = keyframes`
     height: 0;
   }
   to {
-    height: 30vh; /* Adjust the final height as needed */
+    height: 20vh;
   }
 `;
 
@@ -21,6 +21,7 @@ export const HomeContainerBottom = styled.div`
   overflow: hidden;
   background: ${({ theme }) => theme.colors.gradients.dark};
   z-index: 900;
+  display: flex;
   ${TextScrollerContainer} {
     position: relative;
     align-items: flex-start;

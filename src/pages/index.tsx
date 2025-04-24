@@ -2,13 +2,13 @@
 
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import type { NextPage } from "next";
-import { Suspense, useCallback, useRef } from "react";
-import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
+import { Suspense, useCallback } from "react";
 import Head from "next/head";
 import TitlePageLayout from "layout/title-page-layout/TitlePageLayout";
 import { HomeContainerBottom } from "views/home/Home.styles";
 import { SceneLoadingFallback } from "components/loading/fallbacks/scene-loading/SceneLoadingFallback";
 import { DynamicAnimatedScene } from "components/animations/scenes/AnimatedScene";
+import { SVGButton } from "components/buttons/SVGButton";
 
 const HOME_SCENE_ID = "home-scene";
 const Home: NextPage = () => {
@@ -34,18 +34,14 @@ const Home: NextPage = () => {
 
 const BottomSection = () => {
   const handleRouting = useHandleRouting("bio");
-  const buttonRef = useRef<HTMLElement | null>(null);
+
   const onEnterClick = useCallback(() => {
     handleRouting();
   }, [handleRouting]);
 
   return (
     <HomeContainerBottom>
-      <CircleActionButton
-        ref={buttonRef}
-        onClick={onEnterClick}
-        title="ENTER"
-      />
+      <SVGButton onClick={onEnterClick} title="ENTER" />
     </HomeContainerBottom>
   );
 };

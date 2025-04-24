@@ -1,7 +1,7 @@
 "use client";
 
 import { SceneNode, useFetchConfig, SceneConfig } from "art-os-package";
-import { AnimatedSVG } from "components/loading/animated-svg/AnimatedSvg";
+import { AnimatedSVGLoader } from "components/loading/animated-svg/AnimatedSVGLoader";
 import { useMemo } from "react";
 
 interface AnimatedSceneProps {
@@ -16,7 +16,7 @@ const Scene = ({ configId }: AnimatedSceneProps) => {
       sceneConfig={sceneConfig}
       events={[]}
       interactionEvents={[]}
-      loaderComponent={<AnimatedSVG />}
+      loaderComponent={<AnimatedSVGLoader />}
     />
   );
 };

@@ -18,7 +18,7 @@ export const PageContainer = styled.div<{
   top: 0;
   left: 0;
   background-color: ${({ theme }) => theme.colors.mono.background};
-  padding: ${({ $topPadding }) => `${$topPadding ? "4rem" : 0} 0rem`};
+  padding: ${({ $topPadding }) => `${$topPadding ? "5rem" : 0} 0rem`};
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
@@ -58,24 +58,22 @@ export const ViewItemContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.mono.background};
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 90%;
-  margin: 0 5%;
+  justify-content: center;
+  width: 100%;
+  margin: 12rem 0% 0% 0%;
   position: relative;
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.laptop}px) => {
-    width: 100%;
-    margin: 0;
-  }
 
   @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
+      theme.breakpoints.laptop}px) {
+    width: 100%;
+    margin: 10rem 5% 0% 5%;
     flex-direction: column;
+    justify-content: flex-start;
     height: auto;
     min-height: calc(100vh - ${NAV_HEIGHT});
     padding-bottom: 1rem;
-    justify-content: flex-start;
   }
+
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
     width: 100%;
@@ -98,12 +96,14 @@ export const OverlayDiv = styled.div`
 `;
 
 export const ViewItemContent = styled.div`
-  text-align: center;
   width: 30%;
-  margin: 0 auto;
+  margin-left: 4rem;
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.laptop}px) {
-    width: 25%;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
   }
   ${MainTitle} {
     font-size: ${({ theme }) => theme.font.size.mediumLarge};
@@ -113,58 +113,32 @@ export const ViewItemContent = styled.div`
       margin: 1.5rem;
     }
   }
-  .exit-icon {
+`;
+
+export const DesktopIconContainer = styled.div`
+  display: block;
+  width: 50px;
+  .scroll-right-icon {
     position: absolute;
-    top: 2rem;
-    right: -3%;
+    top: 50%;
   }
   .scroll-left-icon {
     position: absolute;
     top: 50%;
-    left: -3%;
-  }
-
-  .scroll-right-icon {
-    position: absolute;
-    top: 50%;
-    right: -3%;
-  }
-
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    .exit-icon {
-      top: 2%;
-      right: 3%;
-    }
-    .scroll-left-icon {
-      top: 22%;
-      left: 3%;
-    }
-
-    .scroll-right-icon {
-      top: 22%;
-      right: 3%;
-    }
   }
   @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}px) {
-    position: relative;
-    .exit-icon {
-      top: 2%;
-      right: 3%;
-    }
-    .scroll-left-icon {
-      top: 22%;
-      left: 3%;
-    }
+      theme.breakpoints.laptop}px) {
+    display: none;
+  }
+`;
 
-    .scroll-right-icon {
-      top: 22%;
-      right: 3%;
-    }
+export const MobileIconContainer = styled.div`
+  display: none;
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.laptop}px) {
+    display: block;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
   }
 `;
 

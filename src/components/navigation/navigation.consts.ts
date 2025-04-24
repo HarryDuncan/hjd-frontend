@@ -25,4 +25,4 @@ export const NAV_THEMES = {
   DARK: "DARK",
 };
 export const NAV_SCROLL_BREAKPOINT_PX = 10;
-export const NAV_OVERLAY_HEIGHT = "4em";
+export const NAV_OVERLAY_HEIGHT = "5em";

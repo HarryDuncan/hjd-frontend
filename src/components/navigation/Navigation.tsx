@@ -6,8 +6,10 @@ import { LARGE_NAV_WINDOW_SIZES, NAV_THEMES } from "./navigation.consts";
 import { NavBackgroundOverlay, NavigationContainer } from "./Navigation.styles";
 import { useIsNavTop } from "./hooks/useIsNavTop";
 import { NavTheme } from "./navigation.types";
-import { HoverTitle } from "components/animations/gesture-animations/hover/HoverTitle";
+
 import { useGoToLanding } from "../../hooks/routing/useGoToLanding";
+import { NavTitleAnimation } from "./desktop/NavTitleAnimation";
+import { HoverTitle } from "components/animations/gesture-animations/hover/HoverTitle";
 
 const Navigation = () => {
   const windowSize = useClientWindowSize();
@@ -16,7 +18,11 @@ const Navigation = () => {
   return (
     <NavigationContainer $isLight={navTheme === NAV_THEMES.DARK}>
       <NavBackgroundOverlay $isOpen={navTheme === NAV_THEMES.DARK} />
-      <HoverTitle title="HARRY J DEE" onClick={goToLanding} />
+      {LARGE_NAV_WINDOW_SIZES.includes(windowSize) ? (
+        <NavTitleAnimation onClick={goToLanding} />
+      ) : (
+        <HoverTitle title="HARRY J DEE" onClick={goToLanding} />
+      )}
 
       {LARGE_NAV_WINDOW_SIZES.includes(windowSize) ? (
         <DesktopNav navTheme={navTheme} />

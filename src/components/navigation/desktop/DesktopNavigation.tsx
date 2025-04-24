@@ -47,7 +47,3 @@ export const DesktopNav = ({ navTheme }: DesktopNavProps) => {
     </NavItemList>
   );
 };
-
-// {SITE_PAGES.map((page: PageItem, _index: number) => (
-
-// ))}

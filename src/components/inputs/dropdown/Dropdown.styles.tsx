@@ -22,12 +22,13 @@ export const DropdownInput = styled.div`
   align-items: center;
   position: relative;
   box-sizing: border-box;
-  height: 32px;
+  height: 3rem;
   min-width: 86px;
   border-color: ${({ theme }) => theme.colors.mono.lightGray};
   border: 1px solid;
   text-align: left;
   & span {
+    font-size: ${({ theme }) => theme.font.size.xSmall};
     padding-top: 0.4rem;
   }
 `;
