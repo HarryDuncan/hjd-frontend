@@ -45,7 +45,7 @@ export const InnerContainer = styled.div<{ $topOffset?: number }>`
   width: 100%;
   min-height: 80vh;
   display: block;
-  margin-top: ${({ $topOffset }) => $topOffset ?? 0}px;
+
   z-index: 2;
   position: relative;
   animation: ${fadeIn} 2.5s ease-in-out;
@@ -60,13 +60,12 @@ export const ViewItemContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  margin: 12rem 0% 0% 0%;
+  margin: 1rem;
   position: relative;
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.laptop}px) {
     width: 100%;
-    margin: 10rem 5% 0% 5%;
     flex-direction: column;
     justify-content: flex-start;
     height: auto;
@@ -145,7 +144,6 @@ export const MobileIconContainer = styled.div`
 export const ViewItemDetails = styled.div`
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    margin: 2rem;
   }
 `;
 

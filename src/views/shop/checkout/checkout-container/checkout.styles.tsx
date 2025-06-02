@@ -34,9 +34,9 @@ export const CartTableControl = styled.div`
   }
 `;
 export const TableImageContainer = styled.div`
-  height: 100px;
+  height: 150px;
   position: relative;
-  width: 100px;
+  width: 200px;
 `;
 
 export const CheckoutSection = styled.div`

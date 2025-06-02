@@ -10,11 +10,6 @@ export const FooterContainer = styled.div`
   background: ${({ theme }) => theme.colors.gradients.dark};
   color: white;
   height: auto;
-  padding-top: 3rem;
-  color: white;
-  ${ContentText} {
-    color: white;
-  }
 `;
 
 export const FooterCenterText = styled.div`
@@ -30,6 +25,12 @@ export const FooterCenterText = styled.div`
   ${ContentText} {
     font-size: ${({ theme }) => theme.font.size.xSmall};
   }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    ${ContentText} {
+      font-size: ${({ theme }) => theme.font.size.xxsm};
+    }
+  }
 `;
 export const FooterLink = styled.a`
   padding: 5px 5px;
@@ -42,7 +43,7 @@ export const FooterLink = styled.a`
   ${ContentText} {
     font-family: ${({ theme }) => theme.font.alternative.family};
     text-transform: uppercase;
-    font-size: ${({ theme }) => theme.font.size.medium};
+    font-size: ${({ theme }) => theme.font.size.small};
     &:hover {
       text-decoration: underline;
     }

@@ -1,11 +1,10 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useRouter } from "next/router";
 import { TransitionEffectContainer } from "../Transitions.styles";
-
 import { PageTransitionProps } from "../pageTransitions.types";
 import { useCallback, useRef } from "react";
 import { Direction } from "utils/moveThroughArray";
-import { DynamicAnimatedScene } from "../../scenes/AnimatedScene";
+// import { DynamicAnimatedScene } from "../../scenes/AnimatedScene";
 
 const TRANSITION_DURATION = 0.4;
 const TRANSITION_DELAY = 0.3;
@@ -93,7 +92,6 @@ const SlideWithBackgroundTransition = ({
   }, [divRef]);
   return (
     <TransitionEffectContainer>
-      <DynamicAnimatedScene configId="default-scene" />
       <AnimatePresence initial={false} mode="wait">
         <motion.div
           ref={divRef}

@@ -2,7 +2,10 @@ import { Dropdown } from "components/inputs/dropdown/Dropdown";
 import { ProductVariation } from "models/shop/types";
 import { useCallback, useEffect, useState } from "react";
 import { ColumnContainer } from "../ShopGallery.styles";
-import { SVGButton } from "components/buttons/SVGButton";
+import {
+  CallToAction,
+  CTA_VARIANT,
+} from "components/buttons/call-to-action/CallToAction";
 
 interface VariationsControlProps {
   variations: ProductVariation[];
@@ -38,10 +41,10 @@ export function VariationsControl({
   return (
     <ColumnContainer>
       <Dropdown options={dropdownOptions} onChange={handleSelect} />
-      <SVGButton
+      <CallToAction
+        variant={CTA_VARIANT.RELATIVE}
         onClick={handleClick}
-        title="Add To Cart"
-        isDark
+        text="Add To Cart"
         disabled={selectedVariation == null || selectedVariation === ""}
       />
     </ColumnContainer>

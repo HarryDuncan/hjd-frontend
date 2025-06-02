@@ -84,7 +84,7 @@ export const LinkItem = ({
       timeline.to(primitiveValues, {
         duration: 0.4,
         opacity: 1,
-        startAt: { turbulence: 0.09 },
+        startAt: { turbulence: 0.01 },
         turbulence: 0,
       });
     }

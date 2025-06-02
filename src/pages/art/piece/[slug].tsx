@@ -43,18 +43,34 @@ const ArtDetails = () => {
             handleExit={handleExit}
             imageUrls={art?.imageUrls}
           >
-            <ContentText>{art.description}</ContentText>
-            <br />
-            <br />
-            {art.medium && <ContentText>{art.medium}</ContentText>}
-            <br />
-            <br />
-            {art.yearCompleted && (
-              <ContentText>Completed in {art.yearCompleted}</ContentText>
+            {art.description && (
+              <>
+                <ContentText>{art.description}</ContentText>
+                <br />
+                <br />
+              </>
             )}
-            <br />
-            <br />
-            {art.dimensions && <ContentText>{art.dimensions}</ContentText>}
+            {art.medium && (
+              <>
+                <ContentText>{art.medium}</ContentText>
+                <br />
+                <br />
+              </>
+            )}
+            {art.yearCompleted && (
+              <>
+                <ContentText>Completed in {art.yearCompleted}</ContentText>
+                <br />
+                <br />
+              </>
+            )}
+            {art.dimensions && (
+              <>
+                <ContentText>{art.dimensions}</ContentText>
+                <br />
+                <br />
+              </>
+            )}
           </ViewItemLayout>
         )}
       </SlideWithBackgroundTransition>

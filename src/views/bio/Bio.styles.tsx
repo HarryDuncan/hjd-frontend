@@ -47,13 +47,14 @@ export const BioContentContainer = styled.div<{ $index: number }>`
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
-    width: calc(100% - 4rem);
-    left: 2rem;
+    width: calc(100% - 3rem);
+    left: 1.5rem;
+
     ${ScrolledTypographyHeader} {
-      font-size: ${({ theme }) => theme.font.size.medium};
+      font-size: ${({ theme }) => theme.font.size.mediumSmall};
     }
     ${ScrolledTypographyText} {
-      font-size: ${({ theme }) => theme.font.size.xSmall};
+      font-size: ${({ theme }) => theme.font.size.xxsm};
     }
   }
 `;

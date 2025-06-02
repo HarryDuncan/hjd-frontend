@@ -26,12 +26,13 @@ export const BioSection = ({ image, text, index }: BioSectionProps) => {
   const scrollConfig = useScrollConfig(index);
 
   return (
-    <InnerContainer $topOffset={0}>
+    <InnerContainer>
       <ParallaxImage
         hoverImageConfig={bannerConfig}
         imageTitle="bio-header"
         imageUrl={image.imageUrl ?? ""}
         imageHeightPx={height}
+        mobileHeightPx={height}
       />
       {height && (
         <BioContentContainer $index={index}>
@@ -62,6 +63,8 @@ const useBannerSize = () => {
     const bannerConfig = BIO_BANNER_CONFIG;
     bannerConfig.default.heightPx = bioSectionHeight;
     bannerConfig.final.heightPx = bioSectionHeight;
+    bannerConfig.default.mobileHeightPx = bioSectionHeight;
+    bannerConfig.final.mobileHeightPx = bioSectionHeight;
     return { height: bioSectionHeight, bannerConfig };
   }, [bioSectionHeight]);
 };

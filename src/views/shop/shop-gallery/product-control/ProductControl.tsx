@@ -10,7 +10,10 @@ import {
 import { useProductsWithVariations } from "views/shop/hooks/useProductsWithVariations";
 import { useShopData } from "views/shop/hooks/useShopData";
 import { VariationsControl } from "./VariationsControl";
-import { SVGButton } from "components/buttons/SVGButton";
+import {
+  CallToAction,
+  CTA_VARIANT,
+} from "components/buttons/call-to-action/CallToAction";
 
 interface ProductControlProps {
   productData: Product;
@@ -107,7 +110,11 @@ const ProductControlContent = ({
       <ColumnContainer>
         <ContentText>AUD ${price}</ContentText>
         <ContentText>{stock} left</ContentText>
-        <SVGButton onClick={handleAddToCart} title="Add To Cart" />
+        <CallToAction
+          onClick={handleAddToCart}
+          text="Add To Cart"
+          variant={CTA_VARIANT.RELATIVE}
+        />
       </ColumnContainer>
     );
   }

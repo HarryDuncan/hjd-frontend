@@ -36,7 +36,7 @@ export const NavigationContainer = styled.div<{ $isLight?: boolean }>`
     @media only screen and (max-width: ${({ theme }) =>
         theme.breakpoints.mobile}px) {
       font-size: ${({ theme }) => theme.font.size.mediumLarge};
-      margin: -0.2rem 0 0 0;
+      margin: -0.4rem 0 0 0.1rem;
     }
   }
 `;

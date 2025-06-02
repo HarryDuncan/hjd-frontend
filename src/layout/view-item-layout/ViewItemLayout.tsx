@@ -1,7 +1,6 @@
 import { ParallaxImage, StaticImage } from "components/images";
 import {
   DesktopIconContainer,
-  MobileIconContainer,
   ViewItemContainer,
   ViewItemContent,
   ViewItemDetails,
@@ -21,6 +20,7 @@ import { useContentForPage } from "hooks/content/useContentForPage";
 import { SHOP_IMAGES } from "constants/shop.constants";
 import { TextScroller } from "components/text-scroller/TextScroller";
 import { ItemDetails } from "views/shop/checkout/checkout-container/checkout.styles";
+import MobileNavigator from "./MobileNavigator";
 
 interface ViewItemProps {
   title: string;
@@ -39,15 +39,15 @@ export default function ViewItem({
   const { images } = useContentForPage({ imageSelection: SHOP_IMAGES });
   return (
     <DefaultLayout hasFooter={false}>
-      <ParallaxImage
-        hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
-        imageTitle="shop-header"
-        imageUrl={images[0]?.imageUrl ?? ""}
-        imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
-      >
-        <TextScroller text={` ${title} `} />
-      </ParallaxImage>
       <SwipeablePageNavigator onSwipe={onChangeItem}>
+        <ParallaxImage
+          hoverImageConfig={BANNER_IMAGE_HOVER_CONFIG}
+          imageTitle="shop-header"
+          imageUrl={images[0]?.imageUrl ?? ""}
+          imageHeightPx={MAIN_GALLERY_TOP_OFFSET}
+        >
+          <TextScroller text={` ${title} `} />
+        </ParallaxImage>
         <ViewItemContainer>
           <DesktopIconContainer>
             <IconButton
@@ -63,30 +63,10 @@ export default function ViewItem({
           )}
 
           <ViewItemContent>
-            <MobileIconContainer>
-              <IconButton
-                onClick={onChangeItem}
-                type={IconTypes.CHEVRON_LEFT}
-                hasGesture
-              />
-            </MobileIconContainer>
             <ItemDetails>
               <MainTitle $isLight={false}>{title}</MainTitle>
               <ViewItemDetails>{children}</ViewItemDetails>
             </ItemDetails>
-
-            <MobileIconContainer>
-              <IconButton
-                onClick={handleExit}
-                type={IconTypes.EXIT}
-                hasGesture
-              />
-              <IconButton
-                onClick={onChangeItem}
-                type={IconTypes.CHEVRON_RIGHT}
-                hasGesture
-              />
-            </MobileIconContainer>
           </ViewItemContent>
           <DesktopIconContainer>
             <IconButton onClick={handleExit} type={IconTypes.EXIT} hasGesture />
@@ -97,6 +77,7 @@ export default function ViewItem({
             />
           </DesktopIconContainer>
         </ViewItemContainer>
+        <MobileNavigator handleExit={handleExit} onChangeItem={onChangeItem} />
       </SwipeablePageNavigator>
     </DefaultLayout>
   );

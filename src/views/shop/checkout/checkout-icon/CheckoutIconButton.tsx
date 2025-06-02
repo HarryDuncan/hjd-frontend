@@ -7,9 +7,9 @@ import { useCartItemCount } from "views/shop/hooks/useCartItemCount";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 import { useShopDataFromStorage } from "views/shop/hooks/useShopDataFromStorage";
 import CartTable from "../checkout-container/cart-table/CartTable";
-import { SVGButton } from "components/buttons/SVGButton";
 import { CheckoutTotal } from "../checkout-container/checkout-total/CheckoutTotal";
 import { useCalculateTotal } from "views/shop/hooks/useCalculateTotal";
+import { CallToAction } from "components/buttons/call-to-action/CallToAction";
 
 const CartIconContainer = styled.div`
   position: relative;
@@ -41,8 +41,10 @@ const CartIcon = styled.div<{ $isDark: boolean }>`
 
 export const Badge = styled.div<{ $isNavTop?: boolean }>`
   position: absolute;
-  top: 25px;
-  right: 25px;
+  top: 28px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
   color: ${({ $isNavTop }) => ($isNavTop ? "white" : "black")};
   font-family: ${({ theme }) => theme.font.alternative.family};
   font-size: ${({ theme }) => theme.font.size.xSmall};
@@ -54,18 +56,30 @@ export const Badge = styled.div<{ $isNavTop?: boolean }>`
     padding: 2px 5px;
   }
 `;
-
 const Callout = styled.div`
   position: absolute;
   top: 50px;
   right: 0;
   background: white;
   border: 1px solid #ccc;
-
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
   width: 500px;
   z-index: 10;
+  animation: growDown 0.3s ease-in-out;
+
+  @keyframes growDown {
+    0% {
+      opacity: 0;
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    100% {
+      opacity: 1;
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+  }
 
   ul {
     list-style: none;
@@ -131,7 +145,7 @@ const CartWithDropdown: React.FC = () => {
         <svg
           width="800px"
           height="800px"
-          viewBox="0 0 24 24"
+          viewBox="0 0 22 22"
           fill={isNavTop ? "white" : "black"}
           stroke={isNavTop ? "white" : "black"}
         >
@@ -152,7 +166,7 @@ const CartWithDropdown: React.FC = () => {
         <Callout>
           <CartTable />
           <CheckoutTotal total={checkoutTotal} />
-          <SVGButton onClick={onClick} title="Checkout" />
+          <CallToAction onClick={onClick} text="Checkout" />
         </Callout>
       )}
     </CartIconContainer>

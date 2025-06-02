@@ -29,6 +29,7 @@ declare module "styled-components" {
     };
     font: {
       size: {
+        xxsm: "1rem";
         xSmall: "1.5rem";
         small: "2rem";
         mediumSmall: "3rem";
