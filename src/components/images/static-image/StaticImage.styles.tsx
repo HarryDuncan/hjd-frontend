@@ -5,21 +5,16 @@ export const ImageContainer = styled.div<{
   $height: number | undefined;
   $width: number | undefined;
 }>`
-  height: 90%;
+  height: 100%;
   width: ${({ $width }) => `${$width}px`};
-  margin-left: 10%;
   position: relative;
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.laptop}px) {
-    margin-left: 5%;
-  }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.tablet}px) {
+    margin: 0 auto;
     flex-direction: column;
     width: 100%;
     height: ${({ $height }) => ($height ? `${$height}px` : "50rem")};
-    margin-left: 0%;
   }
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {

@@ -67,5 +67,6 @@ export const ButtonText = styled.h2`
   color: ${({ theme }) => theme.colors.mono.darkText};
   text-transform: uppercase;
   font-size: ${({ theme }) => theme.font.size.large};
+  font-weight: ${({ theme }) => theme.font.weight.light};
   z-index: 5;
 `;

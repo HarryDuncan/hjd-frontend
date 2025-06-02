@@ -8,4 +8,6 @@ export const SocialLinkContainer = styled.div`
 export const SocialLink = styled.a`
   cursor: pointer;
   margin: 1rem;
+  color: white;
+  &{}
 `;

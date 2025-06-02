@@ -5,4 +5,5 @@ export const SwipeableNavigatorContainer = styled.div`
   min-height: 100%;
   display: flex;
   position: relative;
+  flex-direction: column;
 `;

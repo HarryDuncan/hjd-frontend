@@ -11,6 +11,7 @@ import { useActiveNav } from "../hooks/useActiveNav";
 import { NavTheme } from "../navigation.types";
 import { NAV_THEMES } from "../navigation.consts";
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
+import { NavAnimation } from "./NavAnimation";
 
 interface LinkItemProps {
   title: string;
@@ -83,7 +84,7 @@ export const LinkItem = ({
       timeline.to(primitiveValues, {
         duration: 0.4,
         opacity: 1,
-        startAt: { turbulence: 0.09 },
+        startAt: { turbulence: 0.01 },
         turbulence: 0,
       });
     }
@@ -102,6 +103,7 @@ export const LinkItem = ({
       >
         <NavItemLabel $isLight={isLight}>{title}</NavItemLabel>
         <div className="line" ref={lineRef} />
+        <NavAnimation onClick={onLinkClick} id={title} />
       </NavItemLink>
     </NavItem>
   );

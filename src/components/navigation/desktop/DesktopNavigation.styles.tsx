@@ -19,7 +19,7 @@ export const NavItem = styled.li`
   margin: 0rem 0 0 1em;
   cursor: pointer;
   position: relative;
-  height: 3.8rem;
+  height: 4.5rem;
 `;
 
 export const NavItemLabel = styled.span<{ $isLight: boolean }>`
@@ -50,5 +50,33 @@ export const NavItemLink = styled.div<{
     height: 2px;
     width: 100%;
     background-color: ${({ $isLight }) => ($isLight ? "white" : "black")};
+  }
+  & > * {
+    cursor: pointer;
+  }
+`;
+
+export const NavAnimationContainer = styled.div`
+  position: absolute;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 100px;
+  height: 80%;
+  bottom: 10%;
+  left: 0%;
+  cursor: pointer;
+  svg {
+    cursor: pointer;
+  }
+`;
+
+export const TitleAnimationContainer = styled.div`
+  position: relative;
+  width: 32rem;
+  height: 6rem;
+  margin-top: -4rem;
+  cursor: pointer;
+  svg {
+    cursor: pointer;
   }
 `;

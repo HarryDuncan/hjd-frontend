@@ -1,19 +1,19 @@
 import styled, { keyframes } from "styled-components";
 import { NAV_OVERLAY_HEIGHT } from "./navigation.consts";
 
-export const NAV_HEIGHT = "8vh";
+export const NAV_HEIGHT = "5rem";
 
 export const NavigationContainer = styled.div<{ $isLight?: boolean }>`
   margin: 0 auto;
   left: 0;
   top: 0;
   z-index: 3;
-  height: 4rem;
+  height: ${NAV_HEIGHT};
   display: flex;
   justify-content: space-between;
   clear: both;
   position: fixed;
-  overflow: hidden;
+
   width: 100%;
   a {
     text-decoration: none;
@@ -23,7 +23,7 @@ export const NavigationContainer = styled.div<{ $isLight?: boolean }>`
     height: 3rem;
   }
   h1 {
-    margin: -1rem 0.5%;
+    margin: -0.8rem 2%;
     text-transform: uppercase;
     cursor: pointer;
     color: ${({ $isLight }) => ($isLight ? "white" : "black")};
@@ -36,7 +36,7 @@ export const NavigationContainer = styled.div<{ $isLight?: boolean }>`
     @media only screen and (max-width: ${({ theme }) =>
         theme.breakpoints.mobile}px) {
       font-size: ${({ theme }) => theme.font.size.mediumLarge};
-      margin: -0.2rem 0 0 0;
+      margin: -0.4rem 0 0 0.1rem;
     }
   }
 `;

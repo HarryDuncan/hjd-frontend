@@ -10,11 +10,6 @@ export const FooterContainer = styled.div`
   background: ${({ theme }) => theme.colors.gradients.dark};
   color: white;
   height: auto;
-  padding-top: 3rem;
-  color: white;
-  ${ContentText} {
-    color: white;
-  }
 `;
 
 export const FooterCenterText = styled.div`
@@ -23,10 +18,19 @@ export const FooterCenterText = styled.div`
   padding: 2rem 5px;
   position: relative;
   margin: 0 auto;
-  font-family: ${({ theme }) => theme.font.default.family};
+  font-family: ${({ theme }) => theme.font.alternative.family};
   text-align: center;
   width: 80%;
   color: white;
+  ${ContentText} {
+    font-size: ${({ theme }) => theme.font.size.xSmall};
+  }
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.mobile}px) {
+    ${ContentText} {
+      font-size: ${({ theme }) => theme.font.size.xxsm};
+    }
+  }
 `;
 export const FooterLink = styled.a`
   padding: 5px 5px;
@@ -34,31 +38,30 @@ export const FooterLink = styled.a`
   text-transform: none;
   text-decoration: underline;
   margin: 0 auto;
-  font-family: ${({ theme }) => theme.font.default.family};
   cursor: pointer;
   color: black;
+  ${ContentText} {
+    font-family: ${({ theme }) => theme.font.alternative.family};
+    text-transform: uppercase;
+    font-size: ${({ theme }) => theme.font.size.small};
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 export const FooterLinks = styled.div`
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 20%;
+  text-align: center;
   margin: 0 auto;
   width: 100%;
 `;
 export const FooterLinkContainer = styled.div`
   ${ContentText} {
     color: black;
+    text-align: center;
+    font-family: ${({ theme }) => theme.font.alternative.family};
+    font-size: ${({ theme }) => theme.font.size.small};
   }
-  .circle-svg {
-    height: 25rem;
-    margin: 0 auto;
-    width: 100%;
-  }
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.mobile}px) {
-    .circle-svg {
-      height: 15rem;
-    }
-  }
+  text-align: center;
 `;

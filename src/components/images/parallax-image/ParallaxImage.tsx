@@ -10,6 +10,7 @@ interface ParallaxImageProps {
   hoverImageConfig: ImageHoverConfig;
   mainTitle?: string;
   imageHeightPx?: number;
+  mobileHeightPx?: number;
   children?: ReactNode;
 }
 
@@ -19,9 +20,13 @@ export const ParallaxImage = ({
   hoverImageConfig,
   mainTitle,
   imageHeightPx = 250,
+  mobileHeightPx,
   children,
 }: ParallaxImageProps) => (
-  <ParallaxImageContainer $height={imageHeightPx}>
+  <ParallaxImageContainer
+    $height={imageHeightPx}
+    $mobileHeight={mobileHeightPx}
+  >
     {mainTitle && <MainTitle $isLight>{mainTitle}</MainTitle>}
     {children && children}
     <ImageHover

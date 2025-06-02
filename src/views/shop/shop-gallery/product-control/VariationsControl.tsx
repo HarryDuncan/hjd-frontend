@@ -1,45 +1,51 @@
-import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
 import { Dropdown } from "components/inputs/dropdown/Dropdown";
 import { ProductVariation } from "models/shop/types";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ColumnContainer } from "../ShopGallery.styles";
+import {
+  CallToAction,
+  CTA_VARIANT,
+} from "components/buttons/call-to-action/CallToAction";
 
 interface VariationsControlProps {
   variations: ProductVariation[];
   onAddToCart: (variationId: string) => void;
-  buttonRef: React.RefObject<HTMLButtonElement>;
 }
 
 export function VariationsControl({
   variations,
   onAddToCart,
-  buttonRef,
 }: VariationsControlProps) {
-  const [selectedVariation, setSelectedVariation] = useState<string>("");
+  const [selectedVariation, setSelectedVariation] = useState<string | null>("");
   const dropdownOptions = variations.map((variation) => ({
     value: String(variation.id),
     label: `${variation.title} - $${variation.price} (${variation.stock} in stock)`,
     disabled: variation.stock === 0,
   }));
 
-  const handleAddToCart = () => {
-    if (selectedVariation) {
-      onAddToCart(selectedVariation);
-    }
-  };
-
   const handleSelect = (optionValue: string) => {
     setSelectedVariation(optionValue);
   };
+
+  const [hasBeenClicked, setHasBeenClicked] = useState(false);
+  useEffect(() => {
+    if (selectedVariation && hasBeenClicked) {
+      onAddToCart(selectedVariation);
+      setHasBeenClicked(false);
+    }
+  }, [selectedVariation, hasBeenClicked, onAddToCart]);
+
+  const handleClick = useCallback(() => {
+    setHasBeenClicked(true);
+  }, [setHasBeenClicked]);
   return (
     <ColumnContainer>
       <Dropdown options={dropdownOptions} onChange={handleSelect} />
-      <CircleActionButton
-        ref={buttonRef}
-        disabled={!selectedVariation}
-        onClick={handleAddToCart}
-        title="Add To Cart"
-        circleFill="#030303"
+      <CallToAction
+        variant={CTA_VARIANT.RELATIVE}
+        onClick={handleClick}
+        text="Add To Cart"
+        disabled={selectedVariation == null || selectedVariation === ""}
       />
     </ColumnContainer>
   );

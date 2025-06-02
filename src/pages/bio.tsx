@@ -12,6 +12,7 @@ import Head from "next/head";
 import DefaultLayout from "layout/DefaultLayout";
 import { Suspense } from "react";
 import { SectionLoadingFallback } from "components/loading/fallbacks/section-loading/SectionLoadingFallback";
+import ScrollForMore from "components/buttons/scroll-for-more/ScrollForMore";
 
 const Bio: NextPage = () => {
   const { text, images } = useBioPageContent();
@@ -28,6 +29,7 @@ const Bio: NextPage = () => {
       </Head>
       <DefaultLayout>
         <Suspense fallback={<SectionLoadingFallback />}>
+          <ScrollForMore />
           <BioPage>
             {images.map((image, index) => (
               <BioSection

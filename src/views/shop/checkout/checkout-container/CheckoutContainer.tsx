@@ -7,7 +7,6 @@ import CartTable from "./cart-table/CartTable";
 import { CheckoutSection, CheckoutTitleContainer } from "./checkout.styles";
 import { CheckoutTotal } from "./checkout-total/CheckoutTotal";
 import { ShippingOptions } from "./shipping-options/ShippingOptions";
-import { ActionButton } from "components/buttons/action-button/ActionButton";
 import { checkInventory } from "services/shop/checkInventory";
 import { Product } from "models/shop/types";
 import { useCalculateTotal } from "views/shop/hooks/useCalculateTotal";
@@ -19,6 +18,7 @@ import { useShopData } from "views/shop/hooks/useShopData";
 import { FloatingContentNavigation } from "components/navigation/floating-content-navigation/FloatingContentNavigation";
 import { ContentSubText } from "components/text/Text";
 import { ThirdPartyLogo } from "components/icons/ThirdPartyLogo";
+import { CallToAction } from "components/buttons/call-to-action/CallToAction";
 
 const STRIPE_LOGO_PROPS = {
   link: "https://stripe.com",
@@ -86,10 +86,12 @@ export default function CheckoutPreview() {
               value={JSON.stringify(shippingZoneCode?.countryCode)}
             />
 
-            <ActionButton
-              isDisabled={isCheckoutDisabled}
-              type={isCheckoutDisabled ? "button" : "submit"}
-              title="Checkout"
+            <CallToAction
+              disabled={isCheckoutDisabled}
+              text="Checkout"
+              onClick={() => {
+                console.warn("Checkout button clicked");
+              }}
             />
           </form>
         </CheckoutSection>

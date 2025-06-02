@@ -73,9 +73,11 @@ export const CardWrapper = styled.div`
   box-shadow: 15px 15px 16px #ccc;
   cursor: pointer;
   margin: 2.5%;
+
   &:hover {
     ${CardTitle} {
       animation: ${showTitle} 500ms 1 forwards;
+      font-weight: ${({ theme }) => theme.font.weight.light};
     }
   }
   @media only screen and (max-width: ${({ theme }) =>

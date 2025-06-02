@@ -1,8 +1,9 @@
 import { ContentText } from "components/text/Text";
 import React, { useEffect, useMemo, useState } from "react";
 import { LoaderContainer } from "./AnimatedSvg.styles";
+import { AnimatedSVG } from "components/animations/svg-animations/AnimatedSVG";
 
-export const AnimatedSVG = () => {
+export const AnimatedSVGLoader = () => {
   const [randomMessage, setRandomMessage] = useState<string>("");
 
   const messages = useMemo(
@@ -29,9 +30,7 @@ export const AnimatedSVG = () => {
 
   return (
     <LoaderContainer>
-      <object type="image/svg+xml" data="/loader-svg.svg">
-        svg-animation
-      </object>
+      <AnimatedSVG id="loader-svg" dataUrl="/loader-svg.svg" />
       <ContentText>{randomMessage}</ContentText>
     </LoaderContainer>
   );

@@ -29,13 +29,14 @@ declare module "styled-components" {
     };
     font: {
       size: {
-        xSmall: "1rem";
-        small: "1.5rem";
-        mediumSmall: "2rem";
-        medium: "3rem";
-        mediumLarge: "4rem";
-        large: "5rem";
-        xLarge: "7rem";
+        xxsm: "1rem";
+        xSmall: "1.5rem";
+        small: "2rem";
+        mediumSmall: "3rem";
+        medium: "4rem";
+        mediumLarge: "4.5rem";
+        large: "6rem";
+        xLarge: "8rem";
       };
       weight: {
         none: 0;

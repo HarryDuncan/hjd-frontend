@@ -1,16 +1,19 @@
 import { ContentSubText, ContentText } from "components/text/Text";
 import { LineItem, Product, ProductVariation } from "models/shop/types";
-import { useCallback, useRef } from "react";
+import { useCallback } from "react";
 import { useShopContext } from "views/shop/shop-context/shop.context";
 import {
   ColumnContainer,
   ProductControlContainer,
 } from "../ShopGallery.styles";
-import { CircleActionButton } from "components/buttons/circle-action-button/CircleActionButton";
-import { useHandleRouting } from "hooks/routing/useHandleRouting";
+
 import { useProductsWithVariations } from "views/shop/hooks/useProductsWithVariations";
 import { useShopData } from "views/shop/hooks/useShopData";
 import { VariationsControl } from "./VariationsControl";
+import {
+  CallToAction,
+  CTA_VARIANT,
+} from "components/buttons/call-to-action/CallToAction";
 
 interface ProductControlProps {
   productData: Product;
@@ -23,8 +26,6 @@ export const ProductControl = ({ productData }: ProductControlProps) => {
   )[0];
   const { stock, price, hasVariations, variations } = formattedProduct;
   const { dispatch } = useShopContext();
-  const handleRouting = useHandleRouting("/checkout");
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   const handleAddToCart = useCallback(() => {
     const newLineItem: LineItem = {
@@ -41,36 +42,37 @@ export const ProductControl = ({ productData }: ProductControlProps) => {
       type: "ADD_TO_CART",
       payload: newLineItem,
     });
-    handleRouting();
-  }, [dispatch, productData, handleRouting]);
+  }, [dispatch, productData]);
 
-  const onVariationAddToCart = (variationId: string) => {
-    const variation = variations?.find((v) => v.id === Number(variationId));
-    const newLineItem: LineItem = {
-      guid: variation?.guid || productData.guid,
-      productId: productData.id,
-      variationId: variation?.id || null,
-      quantity: 1,
-      title: `${productData.title} - ${variation?.title || ""}`,
-      price: variation?.price || productData.price,
-      imageUrl: productData.imageUrls[0],
-      shippingOptionId:
-        variation?.shippingOptionId || productData.shippingOptionId,
-    };
-    if (!variation) return;
-    dispatch({
-      type: "ADD_TO_CART",
-      payload: newLineItem,
-    });
-    handleRouting();
-    // {/* hasEditions && <EditionsControl onAddToCart={handleAddToCart} />}
-  };
+  const onVariationAddToCart = useCallback(
+    (variationId: string) => {
+      const variation = variations?.find((v) => v.id === Number(variationId));
+      const newLineItem: LineItem = {
+        guid: variation?.guid || productData.guid,
+        productId: productData.id,
+        variationId: variation?.id || null,
+        quantity: 1,
+        title: `${productData.title} - ${variation?.title || ""}`,
+        price: variation?.price || productData.price,
+        imageUrl: productData.imageUrls[0],
+        shippingOptionId:
+          variation?.shippingOptionId || productData.shippingOptionId,
+      };
+      if (!variation) return;
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: newLineItem,
+      });
+
+      // {/* hasEditions && <EditionsControl onAddToCart={handleAddToCart} />}
+    },
+    [dispatch, productData, variations]
+  );
   return (
     <ProductControlContainer>
       <ProductControlContent
         hasVariations={hasVariations}
         variations={variations}
-        buttonRef={buttonRef}
         stock={stock}
         price={price}
         handleAddToCart={handleAddToCart}
@@ -83,7 +85,6 @@ export const ProductControl = ({ productData }: ProductControlProps) => {
 const ProductControlContent = ({
   hasVariations,
   variations,
-  buttonRef,
   stock = 0,
   price = 0,
   handleAddToCart,
@@ -91,7 +92,6 @@ const ProductControlContent = ({
 }: {
   hasVariations: boolean;
   variations: ProductVariation[] | null;
-  buttonRef: React.MutableRefObject<HTMLButtonElement | null>;
   stock: number;
   price: number | null;
   handleAddToCart: () => void;
@@ -102,7 +102,6 @@ const ProductControlContent = ({
       <VariationsControl
         variations={variations}
         onAddToCart={onVariationAddToCart}
-        buttonRef={buttonRef}
       />
     );
   }
@@ -111,11 +110,10 @@ const ProductControlContent = ({
       <ColumnContainer>
         <ContentText>AUD ${price}</ContentText>
         <ContentText>{stock} left</ContentText>
-        <CircleActionButton
-          ref={buttonRef}
+        <CallToAction
           onClick={handleAddToCart}
-          title="Add To Cart"
-          circleFill="#030303"
+          text="Add To Cart"
+          variant={CTA_VARIANT.RELATIVE}
         />
       </ColumnContainer>
     );

@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-const scrollText = keyframes`
+const scrollTextLeft = keyframes`
   0% {
     transform: translateX(0%);
   }
@@ -12,17 +12,17 @@ const scrollText = keyframes`
 export const TextScrollerText = styled.h1<{ $isLight: boolean }>`
   text-transform: uppercase;
   color: ${({ $isLight }) => ($isLight ? "white" : "black")};
-  font-size: ${({ theme }) => theme.font.size.large};
+  font-size: ${({ theme }) => theme.font.size.mediumLarge};
   font-weight: ${({ theme }) => theme.font.weight.light};
-  
   @media only screen and (max-width: ${({ theme }) =>
     theme.breakpoints.mobile}px) {
-      font-size: ${({ theme }) => theme.font.size.medium};
+      font-size: ${({ theme }) => theme.font.size.mediumSmall};
 `;
 
 export const TextScrollerContainer = styled.div<{
   $isAnimating: boolean;
   $verticalPosition: string;
+  $direction: "left" | "right";
 }>`
   height: 100%;
   pointer-events: none;
@@ -34,7 +34,7 @@ export const TextScrollerContainer = styled.div<{
   position: absolute;
   z-index: 2;
   margin-top: 0;
-  animation: ${scrollText} 3000s linear infinite;
+  animation: ${scrollTextLeft} 3000s linear infinite;
   & ${TextScrollerText} {
     display: inline-block;
     white-space: pre;

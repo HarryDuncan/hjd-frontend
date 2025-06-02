@@ -1,10 +1,13 @@
 import { MainTitle } from "components/text/Text";
 import styled from "styled-components";
 
-export const ParallaxImageContainer = styled.div<{ $height?: number }>`
+export const ParallaxImageContainer = styled.div<{
+  $height?: number;
+  $mobileHeight?: number;
+}>`
   width: 100%;
   height: ${({ $height }) => $height || 250}px;
-  position: absolute;
+  position: relative;
   overflow: hidden;
   & ${MainTitle} {
     z-index: 4;
@@ -22,5 +25,6 @@ export const ParallaxImageContainer = styled.div<{ $height?: number }>`
 
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.mobile}px) {
+    height: ${({ $mobileHeight }) => $mobileHeight || 80}px;
   }
 `;

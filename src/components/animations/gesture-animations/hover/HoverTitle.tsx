@@ -14,7 +14,7 @@ export const HoverTitle = ({ title, onClick }: HoverTitleProps) => {
       transition={{ type: "spring", stiffness: 400, damping: 10 }}
       whileTap={{ scale: 0.9 }}
     >
-      {title}
+      <div>{title}</div>
     </motion.h1>
   );
 };

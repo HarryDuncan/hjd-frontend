@@ -1,7 +1,6 @@
 import { DynamicCardGallery } from "components/card-gallery/DynamicGallery";
 import { InnerContainer } from "components/containers/Containers";
 import { SHOP_IMAGE_URL_ROOT, SHOP_LOAD_MORE } from "constants/shop.constants";
-import { MAIN_GALLERY_TOP_OFFSET } from "constants/ui.constants";
 import { useHandleRouting } from "hooks/routing/useHandleRouting";
 import { useProductsWithVariations } from "views/shop/hooks/useProductsWithVariations";
 import { useShopData } from "views/shop/hooks/useShopData";
@@ -12,7 +11,7 @@ export const ProductGallery = () => {
   const handleRouting = useHandleRouting("shop/products/");
   const productGalleryItems = useProductsInGallery();
   return (
-    <InnerContainer $topOffset={MAIN_GALLERY_TOP_OFFSET}>
+    <InnerContainer>
       <DynamicCardGallery
         items={productGalleryItems}
         onClick={handleRouting}

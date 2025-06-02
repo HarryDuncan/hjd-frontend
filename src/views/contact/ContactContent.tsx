@@ -1,4 +1,3 @@
-import { ActionButton } from "components/buttons/action-button/ActionButton";
 import { FloatingContentContainer } from "components/containers/Containers";
 import { TextInput } from "components/inputs/text-input/TextInput";
 import { FloatingContentNavigation } from "components/navigation/floating-content-navigation/FloatingContentNavigation";
@@ -6,6 +5,7 @@ import { ContentText, MainTitle } from "components/text/Text";
 import { useMemo, useState } from "react";
 import { ContactData } from "./contact.types";
 import { sendContactMessage } from "services/contact/sendContactMessage";
+import { CallToAction } from "components/buttons/call-to-action/CallToAction";
 
 export const ContactContent = () => {
   const [email, setEmail] = useState<string | null>(null);
@@ -52,9 +52,9 @@ export const ContactContent = () => {
             multiLine
             onChange={onMessageChange}
           />
-          <ActionButton
-            title="Submit"
-            isDisabled={isDisabled}
+          <CallToAction
+            text="Submit"
+            disabled={isDisabled}
             onClick={onSubmit}
           />
         </>

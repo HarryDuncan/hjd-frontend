@@ -34,21 +34,22 @@ export const CartTableControl = styled.div`
   }
 `;
 export const TableImageContainer = styled.div`
-  height: 100px;
+  height: 150px;
   position: relative;
-  width: 100px;
+  width: 200px;
 `;
 
 export const CheckoutSection = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0.5rem 1rem;
-  min-width: 25rem;
-  width: 20vw;
+  min-width: 30rem;
+
   margin: 0 auto;
+  text-align: left;
   margin-bottom: 0.5rem;
   ${ContentText} {
-    font-size: ${({ theme }) => theme.font.size.xSmall};
+    font-size: ${({ theme }) => theme.font.size.small};
   }
   form {
     display: flex;
