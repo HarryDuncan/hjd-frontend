@@ -6,7 +6,9 @@ module.exports = {
     // see https://styled-components.com/docs/tooling#babel-plugin for more info on the options.
     styledComponents: true,
   },
-
+  experimental: {
+    allowedDevOrigins: ["http://192.168.0.159:3000"], // Add your IP here
+  },
   async headers() {
     return [
       {
@@ -39,6 +41,7 @@ module.exports = {
     ];
   },
 };
+
 // const nextConfig = {};
 // module.exports = {
 //
