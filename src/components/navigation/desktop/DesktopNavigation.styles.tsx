@@ -65,6 +65,7 @@ export const NavAnimationContainer = styled.div`
   bottom: 10%;
   left: 0%;
   cursor: pointer;
+
   svg {
     cursor: pointer;
   }
