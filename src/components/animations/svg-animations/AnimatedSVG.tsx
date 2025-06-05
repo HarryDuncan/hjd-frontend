@@ -48,15 +48,14 @@ export const AnimatedSVG = ({ id, dataUrl, onClick }: AnimatedSVGProps) => {
         svgElement.removeEventListener("click", onClick);
       }
     };
-  }, [onClick, dataUrl]);
+  }, [onClick, objectRef]);
 
-  const assetPath = `${process.env.NEXT_PUBLIC_CONTENT_ROOT}${dataUrl}`;
   return (
     <object
       ref={objectRef}
       id={id}
       type="image/svg+xml"
-      data={assetPath}
+      data={dataUrl}
       aria-label="Interactive SVG"
     >
       {id}
