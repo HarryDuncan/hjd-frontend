@@ -160,7 +160,7 @@ export const FloatingCentralContainer = styled.div`
       theme.breakpoints.mobile}px) {
     width: 100vw;
     margin-top: 3rem;
-    min-height: 100vh;
+    min-height: 80vh;
     margin-bottom: 3rem;
   }
 `;
