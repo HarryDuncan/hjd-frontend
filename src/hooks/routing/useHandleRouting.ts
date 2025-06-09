@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 
-export const useHandleRouting = (urlParam: string) => {
+export const useHandleRouting = (urlParam = "") => {
   const router = useRouter();
   return useCallback(
     (itemId: number | string = "") => {

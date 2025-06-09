@@ -10,6 +10,7 @@ export const LinkItemOverlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  pointer-events: none;
 `;
 export const LinkItemsContainer = styled.div`
   display: flex;

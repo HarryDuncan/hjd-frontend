@@ -4,7 +4,6 @@ import { LinkTree } from "views/link-tree/LinkTree";
 import { useLinkTree } from "hooks/content/useLinkTree";
 import Head from "next/head";
 import { DynamicAnimatedScene } from "components/animations/scenes/AnimatedScene";
-import FullScreenLayout from "layout/FullScreenLayout";
 import TitlePageLayout from "layout/title-page-layout/TitlePageLayout";
 
 const HOME_SCENE_ID = "home-scene";
